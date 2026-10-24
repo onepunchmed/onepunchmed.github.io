@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Research | Chun Jui Lu</title>
+<meta name="description" content="Detecting undiagnosed diabetes and chronic kidney disease in primary care records with positive-unlabeled learning.">
+<meta name="robots" content="noai, noimageai">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="wrap">
+<header class="site">
+  <a class="name" href="index.html">Chun Jui Lu</a>
+  <nav>
+    <a href="index.html">About</a>
+    <a href="research.html" aria-current="page">Research</a>
+    <a href="data.html">Data</a>
+    <a href="disclosure.html">Disclosure</a>
+  </nav>
+</header>
+<main>
+  <h1>Finding the missing diagnoses</h1>
+  <p class="lead">Positive-unlabeled learning for undiagnosed type 2 diabetes and chronic kidney disease in long-term primary care records</p>
+
+  <h2>Problem</h2>
+  <p>A diagnosis code in a claims record is strong evidence that a condition exists. The absence of a code is weak evidence that it does not. In primary care, conditions such as type 2 diabetes and early chronic kidney disease frequently go unrecorded, either because they are never diagnosed or because they are managed without being coded.</p>
+  <p>Most prediction models trained on claims treat "no code" as "no disease." That assumption biases both the models and any prevalence estimate built on them. It also hides a second problem: how completely diagnoses are recorded is not fixed. It shifts with clinical practice patterns, coding rules, and changes in the clinicians who see patients over the years.</p>
+
+  <h2>Research questions</h2>
+  <ol>
+    <li>How complete is diagnostic recording for diabetes and chronic kidney disease when measured against laboratory evidence, and how does completeness vary over time?</li>
+    <li>Can positive-unlabeled learning that allows the labeling mechanism to change over time identify patients who likely have these conditions but carry no recorded diagnosis?</li>
+    <li>How well do models trained in one period transfer to periods with different recording behavior?</li>
+  </ol>
+
+  <h2>Approach</h2>
+  <p>Recorded diagnoses form the labeled positive set; all other patients are unlabeled rather than negative. Laboratory results interpreted with standard clinical thresholds (for example HbA1c and fasting glucose for diabetes, eGFR and albuminuria for chronic kidney disease) provide partial ground truth for estimating recording completeness and for evaluation.</p>
+  <p>Because recording behavior is not constant, the standard assumption that labeled positives are selected completely at random is unlikely to hold. The project therefore focuses on PU learning under a time-varying labeling mechanism, with evaluation on held-out laboratory-confirmed cases and attention to calibration, not only discrimination.</p>
+
+  <h2>Expected contributions</h2>
+  <ul>
+    <li>An estimate of diagnostic under-recording in long-term primary care, grounded in laboratory evidence</li>
+    <li>A PU learning formulation suited to labels whose completeness drifts over time</li>
+    <li>A case study of applying weak supervision to a single-site, multi-decade dataset</li>
+  </ul>
+
+  <h2>Status</h2>
+  <p>Proposal stage. A pre-registered analysis plan is in preparation. Code and detailed methods will be released with the first preprint.</p>
+
+  <div class="zh">中文摘要：健保申報中「有診斷碼」是有病的強證據，「沒有診斷碼」卻不代表沒病。本研究把已記錄診斷視為正例、其餘病人視為未標記，以檢驗值（如 HbA1c、空腹血糖、eGFR）作為部分真值，評估糖尿病與慢性腎病的診斷記錄完整度，並發展能處理「記錄完整度隨時間變動」的 PU learning 方法。目前為研究計畫階段，程式碼與詳細方法將隨第一篇預印本公開。</div>
+</main>
+<footer>
+  <div>Last updated: October 2026</div>
+</footer>
+</div>
+</body>
+</html>
