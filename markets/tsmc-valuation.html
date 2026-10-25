@@ -1,0 +1,331 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>用台積電練估值：四個方法、三個情境，答案的區間比答案重要 | Chun Jui Lu</title>
+<meta name="description" content="以台積電 2026 年第三季法說會後的公開資料為例，走一遍遠期本益比、DCF、P/B–ROE 與反向 DCF 四個估值方法，再把每個假設各動一格看結果變多少。終值占 DCF 的 83%，三情境高低相差 2.3 倍。所有輸出以基準情境 DCF 為 100 的指數呈現，只講方法與敏感度，不構成投資建議。">
+<meta name="robots" content="noai, noimageai">
+<link rel="stylesheet" href="../style.css">
+<link rel="stylesheet" href="../article.css">
+</head>
+<body>
+<div class="wrap">
+<header class="site">
+  <a class="name" href="../index.html">Chun Jui Lu</a>
+  <nav>
+    <a href="../index.html">About</a>
+    <a href="../research.html">Research</a>
+    <a href="../data.html">Data</a>
+    <a href="index.html" aria-current="page">Markets</a>
+    <a href="../notes.html">Notes</a>
+    <a href="../disclosure.html">Disclosure</a>
+  </nav>
+</header>
+<main>
+  <h1>用台積電練估值：四個方法、三個情境，答案的區間比答案重要</h1>
+  <p class="lead">估值常被當成「算出一個數字」，但數字背後的假設才是全部。本文以台積電 2026 年第三季法說會後的公開資料為例，走一遍遠期本益比、自由現金流折現（DCF）、P/B–ROE 與反向 DCF 四個方法，再把每個假設各動一格，看結果跟著動多少。所有輸出都以基準情境 DCF 為 100 的指數呈現：本文教的是方法與敏感度，不對任何個股給價格判斷。</p>
+  <p class="article-meta"><time datetime="2026-11-26">（發布日待定）</time> · 研究資料截至 2026 年 10 月 24 日，刻意延後發布，文中數字不反映發布時的狀況 · 估值方法、DCF、敏感度分析</p>
+
+<div class="mdms-article">
+<section class="verdict">
+<h2>四個重點</h2>
+<ol>
+<li><b>終值占 DCF 價值的 83%。</b>2027 到 2030 年四年逐年預測的現值加起來只占 17%。所以決定 DCF 結果的，不是「明年成長幾個百分點」，而是折現率與永續成長率這兩個對無限期未來的假設。</li>
+<li><b>最重要的假設不是最常被討論的那個。</b>把每個假設各動一格：四年成長率整體上下 5 個百分點（<span class="good">+16%</span>／<span class="bad">−14%</span>）、永續成長率上下 1 個百分點（<span class="good">+17%</span>／<span class="bad">−12%</span>）、終值倍數在 14 到 20 倍之間（<span class="good">+13%</span>／<span class="bad">−15%</span>）是前三名；FCF 利潤率上下 3 個百分點與 WACC 上下 0.5 個百分點各約 ±9%；只動 2027 年一年的成長率上下 10 個百分點只有 ±7%；淨現金上下 1 兆元只有 ±2%。</li>
+<li><b>區間很寬，而且寬度本身就是結論。</b>三方法加權後，悲觀情境約為基準的 62%、樂觀約 145%，高低相差 2.3 倍。即使固定在基準情境，只把 WACC 在 8% 到 10%、永續成長在 2% 到 4% 之間移動，結果就從 77 到 146。任何落在這個區間內的市場價格都「說得通」，這正是估值不能直接變成買賣理由的原因。</li>
+<li><b>反向 DCF 的結論是「我和市場差不多」。</b>市場價格隱含的 2027 到 2030 年美元營收年複合成長約 22%，基準情境的假設是 21%。做完一整套估值，發現自己的假設和市場隱含的假設幾乎一樣，是常態而不是失敗：它告訴你，接下來值得花時間的是「哪個假設會先被公開資料驗證」，不是再多算一位小數。</li>
+</ol>
+</section>
+
+<section>
+<h2>一、成熟上市公司為什麼要用四個方法</h2>
+<p>未上市公司只能用融資輪與合約價格當錨，因為沒有盈餘。台積電有 30 年財報、穩定配息和完整的歷史本益比，所以可以用多個方法互相檢核，再疊上情境與機率。每個方法回答的問題不一樣，缺點也不一樣，權重反映的是「市場主要用什麼定價」與「哪個方法能當煞車」。</p>
+<div class="tbl"><table><thead><tr><th>方法</th><th>做法</th><th class="n">權重</th><th>為什麼這樣用</th></tr></thead><tbody>
+<tr><td>遠期本益比</td><td>下一年 EPS × 情境本益比</td><td class="n">50%</td><td>市場主要用這個定價台積電；10 年遠期本益比區間 12.0x 到 30.7x，中位數 19.8x，可作錨點。缺點是倍數本身就是結論的一半。</td></tr>
+<tr><td>DCF（自由現金流折現）</td><td>2027 到 2030 逐年自由現金流折現，加終值與淨現金</td><td class="n">35%</td><td>台積電資本支出極重，DCF 能把「錢花在擴產」的代價算進去，是本益比法的煞車。缺點是終值占比極高（見第四節）。</td></tr>
+<tr><td>P/B–ROE</td><td>合理淨值比 =（ROE − g）÷（r − g），乘每股淨值</td><td class="n">15%</td><td>檢查高 ROE 能不能持續；ROE 一回落，淨值比會大幅下修。缺點是分母 r − g 很小，結果對 g 極度敏感。</td></tr>
+<tr><td>反向 DCF</td><td>固定利潤率，倒推讓 DCF 等於市價的營收成長率</td><td class="n">檢核用</td><td>先問「市場已經定價了什麼」，再判斷自己的假設是比市場樂觀還是悲觀。不直接產生數字。</td></tr>
+<tr><td>景氣循環調整盈餘</td><td>悲觀情境用接近歷史平均的淨利率（42% 到 45%）與谷底倍數</td><td class="n">情境錨</td><td>半導體有週期，2022 年遠期本益比曾跌到 12x。沒有這個錨，悲觀情境會太溫和。</td></tr>
+<tr><td>股利折現（DDM）</td><td>未採用</td><td class="n">0%</td><td>殖利率約 1.2%，配息率刻意壓低以支應資本支出，DDM 對成長期公司會算得太低。</td></tr>
+</tbody></table></div>
+</section>
+
+<section>
+<h2>二、輸入從哪裡來：全部是公開資料</h2>
+<p>估值的第一步是把「事實」與「推估」分開標記。下表是模型用到的每一個輸入，事實有來源，推估寫出怎麼推。沒有取得的資料直接寫沒有，不用猜的數字補。</p>
+<div class="tbl"><table><thead><tr><th>項目</th><th>數字</th><th>性質</th><th>來源</th></tr></thead><tbody>
+<tr><td>2025 全年</td><td>營收 US$122.0B、毛利率 59.9%、營益率 50.8%、EPS NT$66.25</td><td><span class="tag fact">事實</span></td><td><a href="https://www.ctee.com.tw/news/20260115701196-430501" target="_blank" rel="noopener">工商時報</a>，2026-01-15</td></tr>
+<tr><td>2026 年第二季</td><td>營收 US$40.2B、毛利率 67.7%、營益率 60.3%、EPS NT$27.25</td><td><span class="tag fact">事實</span></td><td><a href="https://technews.tw/2026/07/16/tsmcs-second-quarter-revenue-and-net-profit-both-exceeded-expectations/" target="_blank" rel="noopener">科技新報</a>，2026-07-16</td></tr>
+<tr><td>2026 年第三季</td><td>營收 US$46.72B、毛利率 66.4%、營益率 58.7%、淨利率 51.1%、ROE 45.5%、EPS NT$29.43；HPC 占 68%、7 奈米以下占 79%</td><td><span class="tag fact">事實</span></td><td><a href="https://www.fool.com/earnings/call-transcripts/2026/10/15/tsmc-tsm-q3-2026-earnings-call-transcript/" target="_blank" rel="noopener">法說會逐字稿</a>，2026-10-15</td></tr>
+<tr><td>2026 年第四季財測</td><td>營收 US$52.3B 到 54.3B、毛利率 65% 到 67%、營益率 56.5% 到 58.5%；匯率假設 31.8</td><td><span class="tag fact">事實（財測）</span></td><td>同上</td></tr>
+<tr><td>2026 全年推估</td><td>營收約 US$175.7B（公司指引美元成長約 44%）、EPS 約 NT$111.8</td><td><span class="tag est">推估</span></td><td>由前三季實際值加第四季財測中值推得</td></tr>
+<tr><td>資本支出</td><td>2026 年 600 億到 640 億美元；2026 到 2028 年「顯著更高」，法人估 2027 年 750 億到 900 億美元</td><td><span class="tag fact">事實</span>／法人估 <span class="tag est">推估</span></td><td>法說會逐字稿；<a href="https://www.ctee.com.tw/news/20261014700084-439901" target="_blank" rel="noopener">工商時報</a>，2026-10-14</td></tr>
+<tr><td>毛利率壓力</td><td>第三季毛利率季減 1.3 個百分點，主因 2 奈米爬坡與海外廠；海外廠稀釋後段將擴大到 3 到 4 個百分點</td><td><span class="tag fact">事實（公司說法）</span></td><td>法說會逐字稿</td></tr>
+<tr><td>現金與淨現金</td><td>現金與有價證券約 NT$4 兆；模型取淨現金 NT$3 兆</td><td><span class="tag fact">事實</span>／淨現金 <span class="tag est">推估</span></td><td>法說會；負債金額本次未取得，無公開資料可核</td></tr>
+<tr><td>股數</td><td>約 259.3 億股（由市值 66.9 兆 ÷ 盤中價 2,580 回推）</td><td><span class="tag est">推估</span></td><td><a href="https://www.cna.com.tw/news/afe/202610050031.aspx" target="_blank" rel="noopener">中央社</a>，2026-10-05</td></tr>
+<tr><td>每股淨值</td><td>2026 年底約 NT$285（由第三季 ROE 45.5% 回推約 260，再加第四季獲利扣除配息）</td><td><span class="tag est">推估</span></td><td>精確資產負債表本次未取得</td></tr>
+<tr><td>歷史本益比</td><td>遠期本益比 19.0x；10 年區間 12.0x（2022-09）到 30.7x（2021-03），中位數 19.8x。年底 TTM 本益比：2015 年 9.5x、2021 年 35.2x、2022 年 11.0x</td><td><span class="tag fact">事實</span></td><td><a href="https://www.gurufocus.com/term/forward-pe-ratio/TSM" target="_blank" rel="noopener">GuruFocus</a>，2026-10-23；<a href="https://www.macrotrends.net/stocks/charts/TSM/taiwan-semiconductor-manufacturing/pe-ratio" target="_blank" rel="noopener">Macrotrends</a></td></tr>
+<tr><td>市價（只用於反向 DCF）</td><td>2026-10-22 收盤 NT$2,385</td><td><span class="tag fact">事實</span></td><td><a href="https://tw.stock.yahoo.com/quote/2330.TW" target="_blank" rel="noopener">Yahoo 股市</a></td></tr>
+<tr><td>折現率（WACC）</td><td>9%：無風險利率約 2% ＋ β 1.2 × 股權風險溢酬約 6%，近乎零負債所以 WACC ≈ 股權成本</td><td><span class="tag est">推估</span></td><td>各項參數都是常見取值，第六節會看它的敏感度</td></tr>
+<tr><td>永續成長率</td><td>3%</td><td><span class="tag est">假設</span></td><td>略高於長期通膨，低於名目 GDP 成長</td></tr>
+</tbody></table></div>
+<p class="mut">本次未能取得：台積電官方新聞稿全文（改用媒體與逐字稿）、精確資產負債表、2026 年第一季的營收與毛利率。這些缺口都標在表裡，重做時優先補上。</p>
+</section>
+
+<section>
+<h2>三、三個情境與它們的故事</h2>
+<p>情境不是「好、中、壞」三個數字，而是三個彼此一致的故事：營收成長、利潤率、倍數和 ROE 要互相搭配。悲觀情境特別需要一個真實的錨，這裡用的是半導體景氣循環：2028 年營收衰退、淨利率回到歷史平均、倍數接近 2022 年谷底。機率 25%／50%／25% 是主觀判斷，第五節會看它的影響。</p>
+<div class="tbl"><table><thead><tr><th>假設</th><th>樂觀（25%）</th><th>基準（50%）</th><th>悲觀（25%）</th></tr></thead><tbody>
+<tr><td>故事</td><td>AI 需求延續、漲價成功、2 奈米與 A14 獨占</td><td>成長放緩但仍高，接近法人對 EPS 的共識</td><td>2027 年下半起 AI 資本支出消化，2028 年營收衰退</td></tr>
+<tr><td>美元營收成長 2027／28／29／30</td><td>45%／30%／20%／12%</td><td>38%／22%／15%／10%</td><td>15%／−8%／8%／8%</td></tr>
+<tr><td>四年年複合成長</td><td>26.2%</td><td>20.8%</td><td>5.4%</td></tr>
+<tr><td>淨利率 2027／28／29／30</td><td>53%／53%／52%／51%</td><td>51%／50%／49%／48%</td><td>47%／42%／44%／45%</td></tr>
+<tr><td>FCF 利潤率 2027 → 2030</td><td>30% → 36%</td><td>27% → 33%</td><td>24% → 27%</td></tr>
+<tr><td>遠期本益比</td><td>22x（10 年區間上半）</td><td>18x（略低於中位數 19.8x）</td><td>14x（接近 2022 年谷底 12x）</td></tr>
+<tr><td>ROE／長期成長（P/B 法）</td><td>42%／6%</td><td>35%／6%</td><td>28%／4%</td></tr>
+</tbody></table></div>
+<h3>EPS 路徑（NT$，由營收成長 × 淨利率 ÷ 股數推得）</h3>
+<div class="tbl"><table><thead><tr><th>情境</th><th class="n">2026E</th><th class="n">2027E</th><th class="n">2028E</th><th class="n">2029E</th><th class="n">2030E</th></tr></thead><tbody>
+<tr><td>樂觀</td><td class="n">111.8</td><td class="n">165.6</td><td class="n">215.3</td><td class="n">253.5</td><td class="n">278.4</td></tr>
+<tr><td>基準</td><td class="n">111.8</td><td class="n">151.7</td><td class="n">181.4</td><td class="n">204.4</td><td class="n">220.3</td></tr>
+<tr><td>悲觀</td><td class="n">111.8</td><td class="n">116.5</td><td class="n">95.7</td><td class="n">108.3</td><td class="n">119.7</td></tr>
+<tr><td>對照：美銀估計</td><td class="n">112</td><td class="n">161</td><td class="n">203</td><td class="n">—</td><td class="n">—</td></tr>
+</tbody></table></div>
+<p class="mut">EPS 交叉檢核：2026 年 10 月法說會前後，美銀估 2027 年 EPS 161、滙豐最高 152.77、中國信託證券約 150（來源：<a href="https://news.nextapple.com/finance/20261014/16E2C16009F67827FEFAE7C64DC3FA01" target="_blank" rel="noopener">壹蘋新聞網</a>、<a href="https://money.udn.com/money/story/5607/9820087" target="_blank" rel="noopener">經濟日報</a>）。基準情境 151.7 落在這個區間的下緣，樂觀情境 165.6 略高於最高估計。這裡只比對 EPS，不比對任何機構對價格的看法。</p>
+</section>
+
+<section>
+<h2>四、四個方法怎麼算</h2>
+<h3>4.1 遠期本益比</h3>
+<p>值 = 下一年 EPS × 倍數。兩個輸入都是線性的：倍數從 18x 動到 22x 或 14x，結果就 ±22%；EPS 動 10%，結果就動 10%。這個方法簡單到幾乎沒有「模型」，所以它的全部難處在於倍數怎麼選。歷史區間 12.0x 到 30.7x 告訴你倍數本身可以差 2.5 倍，三個情境用 22x／18x／14x 只覆蓋了區間的中段。</p>
+<h3>4.2 自由現金流折現（基準情境）</h3>
+<p>逐年算營收、乘 FCF 利潤率得自由現金流、按 9% 折現；2030 年以後用永續成長公式算終值：終值 = 2030 年 FCF ×（1 + 3%）÷（9% − 3%），再折現四年。注意最後一欄的占比。</p>
+<div class="tbl"><table><thead><tr><th>年</th><th class="n">營收成長</th><th class="n">營收 US$B</th><th class="n">FCF 利潤率</th><th class="n">FCF US$B</th><th class="n">折現因子</th><th class="n">現值 US$B</th><th class="n">占企業價值</th></tr></thead><tbody>
+<tr><td>2027</td><td class="n">38%</td><td class="n">242.5</td><td class="n">27%</td><td class="n">65.5</td><td class="n">0.917</td><td class="n">60.1</td><td class="n">3.3%</td></tr>
+<tr><td>2028</td><td class="n">22%</td><td class="n">295.8</td><td class="n">29%</td><td class="n">85.8</td><td class="n">0.842</td><td class="n">72.2</td><td class="n">4.0%</td></tr>
+<tr><td>2029</td><td class="n">15%</td><td class="n">340.2</td><td class="n">31%</td><td class="n">105.5</td><td class="n">0.772</td><td class="n">81.5</td><td class="n">4.5%</td></tr>
+<tr><td>2030</td><td class="n">10%</td><td class="n">374.2</td><td class="n">33%</td><td class="n">123.5</td><td class="n">0.708</td><td class="n">87.5</td><td class="n">4.9%</td></tr>
+<tr><td class="strong">四年合計</td><td class="n"></td><td class="n"></td><td class="n"></td><td class="n"></td><td class="n"></td><td class="n strong">301.3</td><td class="n strong">16.7%</td></tr>
+<tr><td class="strong">終值</td><td colspan="4">123.5 × 1.03 ÷ 0.06 = 2,120（隱含 17.2 倍 2030 年 FCF）</td><td class="n">0.708</td><td class="n strong">1,501.6</td><td class="n strong">83.3%</td></tr>
+<tr><td class="strong">企業價值</td><td colspan="5"></td><td class="n strong">1,802.9</td><td class="n strong">100%</td></tr>
+</tbody></table></div>
+<p>企業價值 US$1,803B × 匯率 31.8 ＝ NT$57.3 兆，加淨現金 3 兆 ＝ 股權價值 NT$60.3 兆，除以 259.3 億股就是每股值。本文把這個基準情境 DCF 值定為指數 100，之後所有方法、情境與敏感度都換算成相對於它的指數。想要絕對數字的讀者，用第二節的輸入自己按一次計算機，十分鐘就夠。</p>
+<div class="callout"><p>83% 的價值來自終值，而終值只由三個數字決定：2030 年 FCF、永續成長率、折現率。四年的逐年預測花掉大部分研究時間，卻只決定 17%。這不是台積電特有，是所有高成長公司 DCF 的通病，也是為什麼第六節的敏感度表要以折現率和永續成長率為主軸。</p></div>
+<h3>4.3 P/B–ROE</h3>
+<p>合理淨值比 =（ROE − g）÷（r − g），其中 r 是股權成本（取 9%）、g 是長期成長（基準 6%）。基準情境（35% − 6%）÷（9% − 6%）＝ 9.67 倍，乘 2026 年底每股淨值估計 285。這個公式的陷阱在分母：r − g 只有 3 個百分點，所以 g 從 6% 動到 4%，結果掉 36%；動到 7%，結果漲 45%。ROE 從 35% 動到 42% 或 28% 各是 ±24%。它適合當「高 ROE 能不能持續」的警鈴，不適合當主要方法，所以只給 15%。</p>
+<h3>4.4 反向 DCF</h3>
+<p>把第 4.2 節的模型倒過來：固定基準情境的 FCF 利潤率、WACC 9%、永續成長 3%，問「2027 到 2030 年每年要成長多少，DCF 才會等於 2026-10-22 的市價」。答案是每年約 22.1%。對照三個情境的四年年複合成長：樂觀 26.2%、基準 20.8%、悲觀 5.4%。市場隱含的成長率落在基準與樂觀之間、非常靠近基準。這個結果的用法不是「所以市價對不對」，而是：如果你的假設和市場幾乎一樣，估值不會給你任何市場還沒知道的東西。</p>
+</section>
+
+<section>
+<h2>五、結果：方法 × 情境</h2>
+<p>所有數字都是相對於基準情境 DCF 值的指數（基準 DCF ＝ 100）。本益比法代表 2026 年底、DCF 與 P/B 法以研究日為基準，口徑略有不同；三方法加權用第一節的權重。</p>
+<div class="tbl"><table><thead><tr><th>情境</th><th class="n">本益比法（50%）</th><th class="n">DCF（35%）</th><th class="n">P/B–ROE（15%）</th><th class="n">三方法加權</th></tr></thead><tbody>
+<tr><td>樂觀（25%）</td><td class="n">157</td><td class="n">128</td><td class="n">147</td><td class="n strong">145</td></tr>
+<tr><td>基準（50%）</td><td class="n">117</td><td class="n">100</td><td class="n">118</td><td class="n strong">111</td></tr>
+<tr><td>悲觀（25%）</td><td class="n">70</td><td class="n">51</td><td class="n">59</td><td class="n strong">62</td></tr>
+<tr><td>機率加權</td><td class="n">115</td><td class="n">95</td><td class="n">111</td><td class="n strong">107</td></tr>
+</tbody></table></div>
+<figure>
+<div class="chartbox">
+<svg class="chart" viewBox="0 0 640 208" role="img" aria-label="四種估值輸出在三個情境下的指數">
+<line class="grid v" x1="130.0" y1="14" x2="130.0" y2="174"/>
+<text class="ax" x="130.0" y="190" text-anchor="middle">40</text>
+<line class="grid v" x1="203.8" y1="14" x2="203.8" y2="174"/>
+<text class="ax" x="203.8" y="190" text-anchor="middle">60</text>
+<line class="grid v" x1="277.7" y1="14" x2="277.7" y2="174"/>
+<text class="ax" x="277.7" y="190" text-anchor="middle">80</text>
+<line class="grid v" x1="351.5" y1="14" x2="351.5" y2="174"/>
+<text class="ax" x="351.5" y="190" text-anchor="middle">100</text>
+<line class="grid v" x1="425.4" y1="14" x2="425.4" y2="174"/>
+<text class="ax" x="425.4" y="190" text-anchor="middle">120</text>
+<line class="grid v" x1="499.2" y1="14" x2="499.2" y2="174"/>
+<text class="ax" x="499.2" y="190" text-anchor="middle">140</text>
+<line class="grid v" x1="573.1" y1="14" x2="573.1" y2="174"/>
+<text class="ax" x="573.1" y="190" text-anchor="middle">160</text>
+<line class="ref" x1="351.5" y1="8" x2="351.5" y2="178"/>
+<line x1="240.8" y1="34.0" x2="562.0" y2="34.0" stroke="var(--line)" stroke-width="6" stroke-linecap="round"/>
+<circle cx="240.8" cy="34.0" r="6" fill="var(--s2)"/>
+<circle cx="414.3" cy="34.0" r="6" fill="var(--s1)"/>
+<circle cx="562.0" cy="34.0" r="6" fill="var(--s3)"/>
+<text class="ax" x="230.8" y="38.0" text-anchor="end">70</text>
+<text class="ax" x="572.0" y="38.0">157</text>
+<text class="ax" x="414.3" y="24.0" text-anchor="middle">117</text>
+<text class="val" x="8" y="38.0" font-size="12">本益比法</text>
+<line x1="170.6" y1="74.0" x2="454.9" y2="74.0" stroke="var(--line)" stroke-width="6" stroke-linecap="round"/>
+<circle cx="170.6" cy="74.0" r="6" fill="var(--s2)"/>
+<circle cx="351.5" cy="74.0" r="6" fill="var(--s1)"/>
+<circle cx="454.9" cy="74.0" r="6" fill="var(--s3)"/>
+<text class="ax" x="160.6" y="78.0" text-anchor="end">51</text>
+<text class="ax" x="464.9" y="78.0">128</text>
+<text class="ax" x="351.5" y="64.0" text-anchor="middle">100</text>
+<text class="val" x="8" y="78.0" font-size="12">DCF</text>
+<line x1="200.2" y1="114.0" x2="525.1" y2="114.0" stroke="var(--line)" stroke-width="6" stroke-linecap="round"/>
+<circle cx="200.2" cy="114.0" r="6" fill="var(--s2)"/>
+<circle cx="418.0" cy="114.0" r="6" fill="var(--s1)"/>
+<circle cx="525.1" cy="114.0" r="6" fill="var(--s3)"/>
+<text class="ax" x="190.2" y="118.0" text-anchor="end">59</text>
+<text class="ax" x="535.1" y="118.0">147</text>
+<text class="ax" x="418.0" y="104.0" text-anchor="middle">118</text>
+<text class="val" x="8" y="118.0" font-size="12">P/B–ROE</text>
+<line x1="211.2" y1="154.0" x2="517.7" y2="154.0" stroke="var(--line)" stroke-width="6" stroke-linecap="round"/>
+<circle cx="211.2" cy="154.0" r="6" fill="var(--s2)"/>
+<circle cx="392.2" cy="154.0" r="6" fill="var(--s1)"/>
+<circle cx="517.7" cy="154.0" r="6" fill="var(--s3)"/>
+<text class="ax" x="201.2" y="158.0" text-anchor="end">62</text>
+<text class="ax" x="527.7" y="158.0">145</text>
+<text class="ax" x="392.2" y="144.0" text-anchor="middle">111</text>
+<text class="val" x="8" y="158.0" font-size="12">三方法加權</text>
+<text class="ax" x="351.5" y="204" text-anchor="middle">指數（基準情境 DCF ＝ 100）</text>
+</svg>
+</div>
+<div class="legend"><span style="--c:var(--s2)" class="pt">悲觀</span><span style="--c:var(--s1)" class="pt">基準</span><span style="--c:var(--s3)" class="pt">樂觀</span><span class="mut">線段為悲觀到樂觀的區間</span></div>
+<figcaption>圖一：四種估值輸出在三個情境下的指數（基準情境 DCF ＝ 100）。本益比法的區間最寬（70 到 157），因為 EPS 與倍數兩個輸入在情境之間同向移動再相乘；但以高低比來看，DCF（128 ÷ 51 ＝ 2.5 倍）比本益比法（2.2 倍）更大，因為終值把成長率與利潤率的差異放大。本益比法整體偏高，因為它用的是 2027 年 EPS，比 DCF 晚一年的基準點。</figcaption>
+</figure>
+<p>三個觀察。第一，同一個情境裡，三個方法的差距在 18 到 29 個指數點，比情境之間的差距（基準到悲觀差 49 點）小：情境假設比方法選擇重要。第二，悲觀情境把所有方法都拉到 70 以下，而樂觀情境最多到 157，下行比上行陡，這來自悲觀情境裡「成長與倍數同時收縮」的乘法效果。第三，機率加權 107 和基準 111 很接近，因為 25／50／25 是對稱的；把機率改成 15／50／35，加權值變 99；改成 35／50／15，變 116。機率本身就是一個值 ±8% 的假設。</p>
+</section>
+
+<section>
+<h2>六、敏感度：哪些假設最重要</h2>
+<h3>6.1 折現率 × 永續成長率（基準情境 DCF 指數）</h3>
+<div class="two">
+<div>
+<h3>DCF 指數</h3>
+<table class="heat"><thead><tr><th>WACC ＼ g</th><th>2%</th><th>3%</th><th>4%</th></tr></thead><tbody>
+<tr><th>8.0%</th><td>103</td><td>120</td><td>146</td></tr>
+<tr><th>8.5%</th><td>95</td><td>109</td><td>130</td></tr>
+<tr><th>9.0%</th><td>88</td><td><b>100</b></td><td>117</td></tr>
+<tr><th>9.5%</th><td>82</td><td>92</td><td>106</td></tr>
+<tr><th>10.0%</th><td>77</td><td>86</td><td>98</td></tr>
+</tbody></table>
+</div>
+<div>
+<h3>終值占企業價值</h3>
+<table class="heat"><thead><tr><th>WACC ＼ g</th><th>2%</th><th>3%</th><th>4%</th></tr></thead><tbody>
+<tr><th>8.0%</th><td>83%</td><td>86%</td><td>88%</td></tr>
+<tr><th>9.0%</th><td>81%</td><td><b>83%</b></td><td>86%</td></tr>
+<tr><th>10.0%</th><td>79%</td><td>81%</td><td>83%</td></tr>
+</tbody></table>
+<p class="mut" style="margin-top:8px">不管怎麼調，終值都占八成上下。</p>
+</div>
+</div>
+<p>WACC 每差 0.5 個百分點，DCF 約變動 7% 到 9%；永續成長率每差 1 個百分點，約變動 12% 到 22%，而且越往右下角（低折現率、高成長）越敏感，因為 r − g 越小。表格的四個角落（77 到 146）全部都是「合理」的參數組合：沒有任何教科書會說 WACC 8% 比 10% 錯。如果國際資金用接近 5% 的美國 10 年期公債殖利率當無風險利率，結果會落在表格下半段。</p>
+<h3>6.2 一次只動一個假設</h3>
+<p>以基準情境為中心，把每個假設往上、往下各動一格，看 DCF 指數變多少。幅度是各假設在公開資料裡看得到的合理變動範圍，不是等距。</p>
+<figure>
+<div class="chartbox">
+<svg class="chart" viewBox="0 0 640 286" role="img" aria-label="單一假設變動對基準情境 DCF 指數的影響">
+<line class="grid v" x1="236.0" y1="14" x2="236.0" y2="252"/>
+<text class="ax" x="236.0" y="268" text-anchor="middle">70</text>
+<line class="grid v" x1="295.1" y1="14" x2="295.1" y2="252"/>
+<text class="ax" x="295.1" y="268" text-anchor="middle">80</text>
+<line class="grid v" x1="354.2" y1="14" x2="354.2" y2="252"/>
+<text class="ax" x="354.2" y="268" text-anchor="middle">90</text>
+<line class="grid v" x1="413.2" y1="14" x2="413.2" y2="252"/>
+<text class="ax" x="413.2" y="268" text-anchor="middle">100</text>
+<line class="grid v" x1="472.3" y1="14" x2="472.3" y2="252"/>
+<text class="ax" x="472.3" y="268" text-anchor="middle">110</text>
+<line class="grid v" x1="531.4" y1="14" x2="531.4" y2="252"/>
+<text class="ax" x="531.4" y="268" text-anchor="middle">120</text>
+<line class="grid v" x1="590.5" y1="14" x2="590.5" y2="252"/>
+<text class="ax" x="590.5" y="268" text-anchor="middle">130</text>
+<rect class="bar pos" x="413.2" y="22.0" width="93.3" height="18" rx="2"/>
+<rect class="bar neg" x="330.5" y="22.0" width="82.7" height="18" rx="2"/>
+<text class="ax" x="511.6" y="35.0">+16%</text>
+<text class="ax" x="325.5" y="35.0" text-anchor="end">−14%</text>
+<text class="val" x="8" y="36.0" font-size="12">四年成長率 每年 ±5 個百分點</text>
+<rect class="bar pos" x="413.2" y="56.0" width="99.2" height="18" rx="2"/>
+<rect class="bar neg" x="342.3" y="56.0" width="70.9" height="18" rx="2"/>
+<text class="ax" x="517.5" y="69.0">+17%</text>
+<text class="ax" x="337.3" y="69.0" text-anchor="end">−12%</text>
+<text class="val" x="8" y="70.0" font-size="12">永續成長率 2% 到 4%</text>
+<rect class="bar pos" x="413.2" y="90.0" width="77.4" height="18" rx="2"/>
+<rect class="bar neg" x="327.0" y="90.0" width="86.3" height="18" rx="2"/>
+<text class="ax" x="495.6" y="103.0">+13%</text>
+<text class="ax" x="322.0" y="103.0" text-anchor="end">−15%</text>
+<text class="val" x="8" y="104.0" font-size="12">終值倍數 14x 到 20x</text>
+<rect class="bar pos" x="413.2" y="124.0" width="52.0" height="18" rx="2"/>
+<rect class="bar neg" x="361.2" y="124.0" width="52.0" height="18" rx="2"/>
+<text class="ax" x="470.2" y="137.0">+9%</text>
+<text class="ax" x="356.2" y="137.0" text-anchor="end">−9%</text>
+<text class="val" x="8" y="138.0" font-size="12">FCF 利潤率 每年 ±3 個百分點</text>
+<rect class="bar pos" x="413.2" y="158.0" width="53.2" height="18" rx="2"/>
+<rect class="bar neg" x="368.3" y="158.0" width="44.9" height="18" rx="2"/>
+<text class="ax" x="471.4" y="171.0">+9%</text>
+<text class="ax" x="363.3" y="171.0" text-anchor="end">−8%</text>
+<text class="val" x="8" y="172.0" font-size="12">WACC 8.5% 到 9.5%</text>
+<rect class="bar pos" x="413.2" y="192.0" width="40.8" height="18" rx="2"/>
+<rect class="bar neg" x="372.5" y="192.0" width="40.8" height="18" rx="2"/>
+<text class="ax" x="459.0" y="205.0">+7%</text>
+<text class="ax" x="367.5" y="205.0" text-anchor="end">−7%</text>
+<text class="val" x="8" y="206.0" font-size="12">只動 2027 年成長率 ±10 個百分點</text>
+<rect class="bar pos" x="413.2" y="226.0" width="10.0" height="18" rx="2"/>
+<rect class="bar neg" x="403.2" y="226.0" width="10.0" height="18" rx="2"/>
+<text class="ax" x="428.3" y="239.0">+2%</text>
+<text class="ax" x="398.2" y="239.0" text-anchor="end">−2%</text>
+<text class="val" x="8" y="240.0" font-size="12">淨現金 2 兆到 4 兆</text>
+<line class="ref" x1="413.2" y1="8" x2="413.2" y2="256"/>
+<text class="ax" x="413.2" y="282" text-anchor="middle">基準情境 DCF 指數（＝100）</text>
+</svg>
+</div>
+<div class="legend"><span style="--c:var(--s1)">假設往有利方向動</span><span style="--c:var(--s2)">假設往不利方向動</span></div>
+<figcaption>圖二：單一假設變動對基準情境 DCF 指數的影響，按區間寬度排序。虛線為基準 100。</figcaption>
+</figure>
+<div class="tbl"><table><thead><tr><th>假設（基準值）</th><th>變動</th><th class="n">往上</th><th class="n">往下</th><th class="n">區間寬度</th></tr></thead><tbody>
+<tr><td>2027 到 2030 每年成長率</td><td>每年各 +5／−5 個百分點</td><td class="n"><span class="good">+16%</span></td><td class="n"><span class="bad">−14%</span></td><td class="n">30</td></tr>
+<tr><td>永續成長率（3%）</td><td>4%／2%</td><td class="n"><span class="good">+17%</span></td><td class="n"><span class="bad">−12%</span></td><td class="n">29</td></tr>
+<tr><td>終值算法（隱含 17.2 倍 FCF）</td><td>改用退出倍數 20x／14x</td><td class="n"><span class="good">+13%</span></td><td class="n"><span class="bad">−15%</span></td><td class="n">28</td></tr>
+<tr><td>FCF 利潤率（27% → 33%）</td><td>每年各 +3／−3 個百分點</td><td class="n"><span class="good">+9%</span></td><td class="n"><span class="bad">−9%</span></td><td class="n">18</td></tr>
+<tr><td>WACC（9%）</td><td>8.5%／9.5%</td><td class="n"><span class="good">+9%</span></td><td class="n"><span class="bad">−8%</span></td><td class="n">17</td></tr>
+<tr><td>只動 2027 年成長率（38%）</td><td>48%／28%</td><td class="n"><span class="good">+7%</span></td><td class="n"><span class="bad">−7%</span></td><td class="n">14</td></tr>
+<tr><td>淨現金（3 兆）</td><td>4 兆／2 兆</td><td class="n"><span class="good">+2%</span></td><td class="n"><span class="bad">−2%</span></td><td class="n">3</td></tr>
+</tbody></table></div>
+<h3>6.3 怎麼讀這張表</h3>
+<ul>
+<li><b>前三名都和終值有關。</b>四年成長率整體上下移動之所以重要，不是因為那四年的現金流，而是它決定 2030 年的 FCF 基數，終值再把它乘 17 倍。永續成長率與終值倍數則直接進終值公式。三者合起來說的是同一件事：這個 DCF 其實是在對 2030 年以後下注。</li>
+<li><b>一年的成長率不太重要。</b>只把 2027 年成長率從 38% 動到 48% 或 28%，整整 10 個百分點，DCF 只動 7%。法說會前後市場花最多力氣爭論的那個數字，在模型裡是第六名。</li>
+<li><b>FCF 利潤率是資本支出的代理，但只有「持續」才重要。</b>2027 年資本支出 750 億與 900 億美元的差距是 150 億美元，約是當年營收的 6 個百分點，可是只動 2027 年一年，DCF 只少 0.7%；表中 ±9% 是每年都少 3 個百分點的結果。所以該問的不是明年資本支出多少，而是高資本支出會不會變成常態。這是本益比法完全看不到的變數。</li>
+<li><b>淨現金幾乎不重要。</b>淨現金 3 兆聽起來很大，但只占股權價值 5%；負債金額沒取得這件事，對結果影響在 2% 以內，可以放心標為「未取得」。</li>
+<li><b>P/B–ROE 法比 DCF 更敏感。</b>它對 g 的敏感度（−36%／+45%）比 DCF 對永續成長率的敏感度大一倍以上，所以它只能當警鈴。</li>
+</ul>
+</section>
+
+<section>
+<h2>七、哪些事件會動到哪個假設</h2>
+<p>估值做完之後，比結果更有用的是這張對照表：之後看到新聞時，知道它動的是模型裡的哪一格、方向往哪邊。這些都是研究日當時公開資料裡看得到的變數。</p>
+<div class="tbl"><table class="rules"><thead><tr><th>事件或資料</th><th>動到哪個假設</th><th>方向與量級</th></tr></thead><tbody>
+<tr><td>2027 年 1 月法說會的 2027 年營收與資本支出指引</td><td>2027 年成長率、FCF 利潤率</td><td>這是模型裡最早會被公開資料驗證的假設。單看 2027 年成長率影響 ±7%；若連帶改變對 2028 年以後的看法，影響放大到 ±15%。</td></tr>
+<tr><td>雲端業者與 AI 新創的融資成本（研究日時 CoreWeave 債券殖利率近 16%、Oracle CDS 創 18 年高）</td><td>2028 年成長率、悲觀情境機率</td><td>融資變貴，下游買算力的能力下降；悲觀情境機率每加 10 個百分點，加權值約少 8%。</td></tr>
+<tr><td>2027 年資本支出落在 750 億還是 900 億美元</td><td>FCF 利潤率</td><td>單一年的差距只影響 DCF 不到 1%；若 2028 年以後也維持同樣水準，接近每年 FCF 利潤率少 3 個百分點，約 −9%。資本支出同時墊高 2028 年後的產能與成長，方向不是單邊的。</td></tr>
+<tr><td>2 奈米爬坡與海外廠稀釋（公司估後段 3 到 4 個百分點）</td><td>毛利率 → 淨利率與 FCF 利潤率</td><td>稀釋擴大則三個情境的利潤率同步下修；2027 年漲價與美國產能另行定價是反向因素。</td></tr>
+<tr><td>美國 10 年期公債殖利率（研究日前後一度接近 5%）</td><td>WACC</td><td>無風險利率每高 0.5 個百分點，DCF 約少 8%，而且終值縮得最多。</td></tr>
+<tr><td>2 奈米產能 2027 年翻倍、A14 2028 年量產；Samsung 與 Intel 先進製程進度</td><td>2029 年後成長率、永續成長率、終值倍數</td><td>獨占延續則終值相關假設可用上緣；競爭者追上則反之。這組假設合計決定八成的 DCF 價值，卻最難用近期資料驗證。</td></tr>
+<tr><td>景氣循環：2022 年遠期本益比曾到 12x</td><td>悲觀情境的倍數與淨利率</td><td>悲觀情境之所以到 51 到 70，是成長、利潤率與倍數同時收縮的結果。在 DCF 裡只把成長率換成悲觀路徑就到 61，只換利潤率到 83；在本益比法裡只換 EPS 或只換倍數都在 90 左右。</td></tr>
+</tbody></table></div>
+</section>
+
+<section>
+<h2>方法與限制</h2>
+<ul>
+<li>資料全部來自公開報導與法說會逐字稿，來源列在第二節；研究資料截至 2026 年 10 月 24 日。精確資產負債表、2026 年第一季營收與毛利率本次未取得，淨現金 3 兆與每股淨值 285 都是推估。</li>
+<li>本文刻意延後發布，文中所有數字反映研究日的公開資料，不反映發布時的狀況；之後的財報與法說會可能已經改變第二節的多個輸入。</li>
+<li>DCF 只逐年預測四年，終值占 83%，所以本質上是對 2030 年以後的假設；永續成長公式假設 2030 年後成長率與利潤率永遠固定，這在半導體業很強。</li>
+<li>情境機率 25／50／25 是主觀判斷，第五節算過它本身值 ±8%。方法權重 50／35／15 也是判斷，不是估計出來的。</li>
+<li>匯率固定 31.8、股數固定 259.3 億股；未模擬庫藏股、增資或匯率變動對 EPS 的影響。本益比法用 2027 年 EPS，與 DCF 的基準點差一年，第五節已說明。</li>
+<li>原研究有對個股價格水準的判斷、價格區間與未來各期的價格路徑，本文全部不放：那是對個股的買賣意見，不是研究方法。本文所有輸出都換算成基準情境 DCF ＝ 100 的指數，也不與市價比較。</li>
+<li>程式與原始資料：不公開。方法、資料來源與假設如上，足以用公開資料重做；有疑問歡迎來信討論。</li>
+</ul>
+</section>
+<section class="disc">
+<p><b>免責聲明</b>　本文為作者個人學習紀錄，內容為估值方法教學與對公開資料的敏感度分析，不構成任何有價證券之買賣建議或投資推介，也不對任何個股的價格水準表示意見。作者非證券投資顧問業者，本站不收取任何費用、不接受委託。文中所有數字為研究日的公開資料與作者假設，不代表未來結果。讀者應自行判斷並承擔投資風險。</p>
+<p><b>持有揭露</b>　（發布前填寫）</p>
+</section>
+</div>
+</main>
+<footer>
+  <div>Last updated: October 2026</div>
+</footer>
+</div>
+</body>
+</html>
