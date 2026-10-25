@@ -65,3 +65,9 @@
 .mdms-article .legend .mut::before{display:none}
 .mdms-article .mini h3{margin:0 0 4px 8px;font-size:14px}
 .mdms-article .mini figcaption{padding:4px 8px 6px}
+.mdms-article table.heat{min-width:0;font-size:12.5px;margin-top:4px}
+.mdms-article .heat th,.mdms-article .heat td{padding:5px 4px;text-align:center;font-family:var(--mono);font-variant-numeric:tabular-nums}
+.mdms-article .heat th:first-child{text-align:left;white-space:nowrap}
+.mdms-article .sw{display:inline-block;width:14px;height:3px;vertical-align:middle;margin-right:4px}
+.mdms-article .rules td{white-space:normal}
+.mdms-article .tbl td:first-child{white-space:nowrap}
