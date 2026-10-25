@@ -1,0 +1,217 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>沒有正常價格時怎麼估值：Anthropic 的盤前合約與宇樹的 7% 流通盤 | Chun Jui Lu</title>
+<meta name="description" content="一家還沒上市、只有加密交易所的盤前永續合約在報價；一家剛上市兩個月、流通盤只有 7%。用這兩個案例練習：公開資料能把估值做到哪裡、每個數字該標什麼可信度、情境與敏感度怎麼呈現才不會變成一個數字。研究方法，不構成投資建議。">
+<meta name="robots" content="noai, noimageai">
+<link rel="stylesheet" href="../style.css">
+<link rel="stylesheet" href="../article.css">
+</head>
+<body>
+<div class="wrap">
+<header class="site">
+  <a class="name" href="../index.html">Chun Jui Lu</a>
+  <nav>
+    <a href="../index.html">About</a>
+    <a href="../research.html">Research</a>
+    <a href="../data.html">Data</a>
+    <a href="index.html" aria-current="page">Markets</a>
+    <a href="../notes.html">Notes</a>
+    <a href="../disclosure.html">Disclosure</a>
+  </nav>
+</header>
+<main>
+  <h1>沒有正常價格時怎麼估值：Anthropic 的盤前合約與宇樹的 7% 流通盤</h1>
+  <p class="lead">估值方法的教科書案例都假設有一個流動的市場價格可以對照。這兩個案例都沒有：Anthropic 在 2026 年 10 月還沒上市，唯一每天跳動的「價格」是加密交易所的盤前永續合約；宇樹科技在科創板掛牌兩個月，流通盤只有 7%，股價十個交易日內腰斬再反彈。本文不是要算出它們值多少，而是走一遍：公開資料能把估值做到哪裡、每個數字該標什麼可信度、情境與敏感度怎麼呈現才不會變成一個數字。所有估值輸出都以基準情境為 100 的指數呈現。</p>
+  <p class="article-meta"><time datetime="2026-11-26">2026 年 11 月 26 日</time> · 研究資料截至 2026 年 10 月 24 日，刻意延後發布，文中數字不反映發布時的狀況 · 估值方法、證據分級、情境分析</p>
+
+<div class="mdms-article">
+<section class="verdict">
+<h2>四個重點</h2>
+<ol>
+<li><b>先替每個數字分級，再談估值。</b>兩份原始研究用到的數字裡，有一手來源（公告、招股書、交易所文件）的是少數；多數是媒體轉述 S-1 草稿、投資人簡報、第三方出貨統計，或本文自己的推估。沒有分級，估值表看起來精確，其實每一格的可信度差了好幾個等級。</li>
+<li><b>盤前永續合約不是股價。</b>幣安的 Anthropic 合約用「假設 10 億股」把公司估值換算成每股價格，分母是交易所的估計、不是公司股數；合約不代表任何股權，上市後怎麼轉換也沒有公告。把它當成「市場對 Anthropic 的定價」會高估這個數字的資訊含量。</li>
+<li><b>兩個案例的估值區間都寬到讓單一數字沒有意義。</b>Anthropic 三情境在 2027 年底的輸出是基準的 30% 到 198%；宇樹是 32% 到 229%。區間這麼寬的原因不是模型差，而是決定結果的假設（Anthropic 的毛利率與季增率、宇樹的均價與境外收入）在公開資料裡根本還沒有可靠的值。</li>
+<li><b>反向 DCF 比正向 DCF 更誠實。</b>與其宣稱一個「合理值」，不如反過來問：目前的價格隱含什麼成長假設，和一致預期差多少。對宇樹，10 月 23 日收盤價反推的 2027 到 2030 年營收年複合成長約 83%，Wind 一致預期 2026 到 2027 年是約 52%。這個差距是可以被後續財報驗證的事實陳述，不需要任何人先同意一個折現率。</li>
+</ol>
+</section>
+
+<section>
+<h2>一、每個數字先分級：事實、推估、無公開資料</h2>
+<p>臨床研究看證據會先問「這是隨機試驗、觀察研究，還是專家意見」。估值的輸入也該這樣分。兩份研究用的是同一套標籤，本文沿用：</p>
+<div class="tbl"><table class="rules"><thead><tr><th>等級</th><th>定義</th><th>例子</th></tr></thead><tbody>
+<tr><td><span class="pill yes">事實</span></td><td>有一手公開來源：交易所公告、招股書、公司財報、法規文件</td><td>宇樹發行價、總股本、解禁時程；Anthropic 各輪融資的投後估值（公司或領投方對外證實）</td></tr>
+<tr><td><span class="pill maybe">事實（報導）</span></td><td>可信媒體轉述未公開文件或消息來源，無法直接核對原文</td><td>Anthropic S-1 草稿的 2025 營收與虧損（Reuters、WSJ）；宇樹 2026 上半年扣非淨利（媒體整理半年報）</td></tr>
+<tr><td><span class="pill maybe">第三方估計</span></td><td>研究機構或資料商的統計，口徑可能和公司不同</td><td>SAG 統計的人形機器人出貨量；Wind 一致預期；二級市場平台的成交估值</td></tr>
+<tr><td><span class="pill no">推估</span></td><td>本文自己算出來的數字</td><td>所有情境假設、倍數、折現率、指數化的輸出</td></tr>
+<tr><td><span class="pill no">無公開資料</span></td><td>找不到可引用的來源，寫明而不是猜</td><td>Anthropic 的 GAAP 毛利率；宇樹是否已納入滬股通；宇樹 2022 年淨利</td></tr>
+</tbody></table></div>
+<div class="callout"><p>兩個案例裡最重要的假設，剛好都落在「無公開資料」或「事實（報導）」那兩格：Anthropic 的毛利率只有 The Information 轉述的內部預估（2025 年約 40%，內部預測 2028 年約 77%），宇樹的人形機器人均價與境外收入占比只有媒體整理。這決定了後面的區間為什麼那麼寬。</p></div>
+</section>
+
+<section>
+<h2>二、Anthropic：價格從哪裡來</h2>
+<p>沒有上市的公司，公開資料裡的「估值」有三種來源，可信度依序遞減：公司自己融資時的投後估值、二級市場平台撮合的成交價、以及加密交易所的盤前永續合約。下表把 2025 到 2026 年的軌跡列出來，數字是公司估值，不是任何每股價格。</p>
+<div class="tbl"><table><thead><tr><th>時間</th><th>事件</th><th class="n">金額</th><th class="n">投後估值</th><th>等級</th></tr></thead><tbody>
+<tr><td>2025 年 3 月</td><td>Series E，Lightspeed 領投</td><td class="n">US$3.5B</td><td class="n">US$61.5B</td><td><span class="pill yes">事實</span></td></tr>
+<tr><td>2025 年 9 月</td><td>Series F，ICONIQ 等</td><td class="n">≈US$13B</td><td class="n">≈US$183B</td><td><span class="pill yes">事實</span></td></tr>
+<tr><td>2026 年 2 月</td><td>Series G</td><td class="n">US$30B</td><td class="n">US$380B</td><td><span class="pill yes">事實</span></td></tr>
+<tr><td>2026 年 5 月</td><td>Series H，預期為最後一輪私募；含 US$15B 雲端業者既有承諾</td><td class="n">US$65B</td><td class="n">US$965B</td><td><span class="pill yes">事實</span></td></tr>
+<tr><td>2026 年 7 月</td><td>二級市場平台（Caplight、Rainmaker）撮合價；賣方稀少</td><td class="n">—</td><td class="n">≈US$1.2T</td><td><span class="pill maybe">第三方估計</span></td></tr>
+<tr><td>2026 年 6 月起</td><td>幣安上線盤前永續合約；8 月起 Hyperliquid 也有</td><td class="n">—</td><td class="n">合約價 × 10 億</td><td><span class="pill maybe">市場報價，見下</span></td></tr>
+<tr><td>2026 年 6 月 1 日</td><td>秘密遞交 S-1；10 月下旬報導稱即將公開，截至 10 月 24 日未見 EDGAR 公開版</td><td class="n">—</td><td class="n">—</td><td><span class="pill maybe">事實（報導）</span></td></tr>
+</tbody></table></div>
+<h3>盤前永續合約是什麼、不是什麼</h3>
+<ul>
+<li>合約以 USDT 結算，最高 20 倍槓桿，每 8 小時收資金費率。它是交易所設計的衍生品，不代表任何股權，也沒有任何公司資料背書。</li>
+<li>「合約價 ≈ 公司估值 ÷ 10 億」的換算，分母是交易所假設的股數，不是 Anthropic 的實際股數。公司掛牌後的真實股數、以及合約怎麼轉成追蹤真實股價的合約，到 10 月 24 日為止都沒有公告。</li>
+<li>合約的日成交量約數百萬美元，相對於它所對應的上兆美元估值，這個價格由很少的資金決定。</li>
+<li>所以本文把合約價當成「一個市場參與者對估值的投票」，等級與二級市場撮合價相同，不當成基準。後面所有輸出都不和合約價比較。</li>
+</ul>
+</section>
+
+<section>
+<h2>三、Anthropic：營收數字的口徑問題</h2>
+<p>這是公開資料最豐富、也最容易被誤讀的一塊。數字本身是媒體轉述 S-1 草稿與投資人簡報，等級全部是「事實（報導）」。</p>
+<div class="tbl"><table><thead><tr><th>期間</th><th class="n">營收</th><th class="n">成長</th><th>獲利與成本</th><th>來源性質</th></tr></thead><tbody>
+<tr><td>2024 全年</td><td class="n">US$0.39B</td><td class="n">—</td><td>營業虧損 US$2.98B</td><td>Reuters 引 S-1 草稿</td></tr>
+<tr><td>2025 全年</td><td class="n">US$4.59B</td><td class="n">+1,088%</td><td>營業虧損 US$8.06B；淨損 US$41.97B，其中約 US$34B 是可轉債非現金重估；算力支出 US$7.33B</td><td>同上</td></tr>
+<tr><td>2026 Q1</td><td class="n">≈US$4.8B</td><td class="n">—</td><td>—</td><td>媒體</td></tr>
+<tr><td>2026 Q2</td><td class="n">US$11.5–11.6B</td><td class="n">≈+140% 季增</td><td>上半年淨損 US$80.7B，其中約 US$72B 非現金；上半年算力支出近 US$9B</td><td>WSJ 引 S-1 草稿</td></tr>
+<tr><td>2026 Q3</td><td class="n">US$16.8B</td><td class="n">+45% 季增</td><td>公司稱連兩季「調整後」獲利、現金流為正；調整後營業利益率約 11%（排除股權薪酬），口徑未定義</td><td>FT 等</td></tr>
+</tbody></table></div>
+<p>四個口徑問題，每一個都會讓「估值 ÷ 營收」的倍數差一截：</p>
+<ul>
+<li><b>總額與淨額。</b>Anthropic 經雲端平台轉售的營收以總額認列，OpenAI 以淨額認列。兩家的「年化營收」不能直接比，任何「Anthropic 比 OpenAI 便宜或貴」的倍數比較都先要調整這一項。</li>
+<li><b>GAAP 與調整後。</b>「調整後獲利」排除了股權薪酬，但沒有公開定義；2025 年淨損裡有 US$34B 是可轉債重估，這種非現金項目在公開版 S-1 裡會怎麼呈現，直接影響市場看到的虧損規模。</li>
+<li><b>年化與實際。</b>公司向投資人說的「年底 run-rate US$100–120B」是最近一個月乘以 12，不是年度營收；季增率已從近 140% 降到 45%，用哪一季年化，差距可以是一倍。</li>
+<li><b>毛利率沒有確數。</b>這是整個估值最重要、卻只有轉述內部預估的假設（2025 年約 40%，內部預測 2028 年約 77%）。十年算力承諾 US$518B、約 80% 不可取消，意味著成本結構接近固定成本。</li>
+</ul>
+</section>
+
+<section>
+<h2>四、Anthropic：三情境與輸出指數</h2>
+<p>沒有上市的公司做不了 P/E 或 P/B，可做的是「未來 12 個月營收 × 倍數 + 淨現金」。情境的差別在季增率與倍數；倍數的參照是 OpenAI 最近洽談價對年化營收約 20 倍、Mistral 約 21 倍，以及 2026 年 AI 基建題材 IPO 轉冷的環境。三組假設全部是推估。</p>
+<div class="tbl"><table><thead><tr><th>情境（權重）</th><th>營收成長假設</th><th>營業利益率</th><th>NTM 倍數</th><th class="n">2026 / 2027 / 2028 營收</th></tr></thead><tbody>
+<tr><td>樂觀（25%）</td><td>Q4 季增 30%；2027 每季 +20%；2028 每季 +12%</td><td>2027 20% → 2028 30%</td><td>18x → 12x</td><td class="n">US$55B / 141B / 242B</td></tr>
+<tr><td>基準（50%）</td><td>Q4 季增 20%；2027 每季 +12%；2028 每季 +9%</td><td>2027 10% → 2028 20%</td><td>15x → 9x</td><td class="n">US$53B / 108B / 158B</td></tr>
+<tr><td>悲觀（25%）</td><td>Q4 季增 5%；2027 每季 +3%（大客戶自研、價格戰）；2028 每季 +4%</td><td>2027 −10% → 2028 0%</td><td>8x → 5x</td><td class="n">US$51B / 76B / 88B</td></tr>
+</tbody></table></div>
+<p>輸出以「同一期的基準情境 = 100」呈現。這樣做有兩個用意：第一，避免把推估包裝成價格；第二，指數讓讀者一眼看到區間的寬度，這才是這個練習的結論。</p>
+<div class="tbl"><table><thead><tr><th>期末</th><th class="n">樂觀</th><th class="n">基準</th><th class="n">悲觀</th><th class="n">機率加權</th><th class="n">高低比</th></tr></thead><tbody>
+<tr><td>2026 年底</td><td class="n">152</td><td class="n">100</td><td class="n">40</td><td class="n">98</td><td class="n">3.9×</td></tr>
+<tr><td>2027 年底</td><td class="n">198</td><td class="n">100</td><td class="n">30</td><td class="n">107</td><td class="n">6.6×</td></tr>
+<tr><td>2028 年底</td><td class="n">210</td><td class="n">100</td><td class="n">29</td><td class="n">110</td><td class="n">7.4×</td></tr>
+</tbody></table></div>
+<div class="callout"><p>區間隨時間越拉越寬，是因為季增率的假設會複利：樂觀與基準每季差 8 個百分點，八季後營收差 1.8 倍，再乘上倍數的差距。悲觀情境則是營收成長抵不過倍數壓縮，指數逐年下滑。這張表要說的不是哪個情境會發生，而是：在毛利率與季增率有可靠公開數字之前，任何單一估值都只是挑了其中一列。</p></div>
+<h3>哪些公開事件會先驗證哪個假設</h3>
+<ul>
+<li>公開版 S-1 上 EDGAR：GAAP 毛利率、實際股數、客戶集中度（兩大客戶約占 20% 營收）。這一份文件會同時更新本文一半的「無公開資料」。</li>
+<li>定價區間與路演認購倍數：決定上市後的起始倍數落在哪個情境。</li>
+<li>第一份上市後季報（約 2027 年 2 到 3 月）：Q4 季增率是否高於 15%，是基準與悲觀的分水嶺。</li>
+<li>承銷商靜默期結束後的研究覆蓋（約 2026 年 12 月）：會給出市場主流的倍數假設，可以和本文的 15 倍比對。</li>
+</ul>
+</section>
+
+<section>
+<h2>五、宇樹：上市公司模板之外的六層檢查</h2>
+<p>宇樹科技 2026 年 8 月 19 日在上交所科創板上市（688836，簡稱帶 W 代表同股不同權）。它有財報、有股價，看起來可以用一般上市公司的模板，但有六件事會讓模板失真，每一件都要先查、先標等級：</p>
+<div class="tbl"><table class="rules"><thead><tr><th>檢查</th><th>查到什麼</th><th>等級</th><th>對估值的意義</th></tr></thead><tbody>
+<tr><td>上市場所與結構</td><td>只有 A 股，無 H 股、無 ADR、無 VIE。創辦人持股 21.44% 加員工平台 9.85%，A 類股每股 10 票，合計表決權約 65%</td><td><span class="pill yes">事實</span></td><td>沒有跨市場價差可以參照；治理折價</td></tr>
+<tr><td>流通盤與解禁</td><td>上市首日可流通 3,009 萬股（7.44%）；2027 年 2 月解禁 0.56%，2027 年 8 月 19 日解禁約 56.6%，早期股東成本為個位數到數十元</td><td><span class="pill yes">事實</span>（解禁股數依比例更正了一則報導的誤植）</td><td>7% 流通盤下的股價是小額資金決定的；解禁是已知日期的供給變化</td></tr>
+<tr><td>政策與監管</td><td>中國端：首批 6 項人形機器人國標 2027 年 4 月 1 日實施、九部門推動具身智能進入商貿。美國端：1260H 清單 2026 年 6 月生效、NDAA 條款眾議院通過參議院未跟進、GUARD Act 委員會審議中、301 關稅 25% 加 12.5%</td><td><span class="pill yes">事實</span>，逐項標「已生效／審議中／未發生」</td><td>境外收入逾 35%，美國端每一項審議中的法案都是悲觀情境的輸入</td></tr>
+<tr><td>資料可信度</td><td>營收、淨利、出貨量分別有公司口徑與第三方口徑，見第六節交叉驗證</td><td>混合</td><td>同一指標兩個數字時兩個都列，寫明採用哪一個</td></tr>
+<tr><td>本地倍數與境外倍數</td><td>港股同業優必選約 10 倍 2026E P/S；A 股給宇樹的 P/S 高一個數量級。恒生 AH 溢價指數 124.5，A 股平均比 H 股貴約 25%</td><td><span class="pill maybe">第三方估計</span></td><td>這個案例沒有「中國折價」，是 A 股題材溢價加小流通盤；本地倍數與境外倍數要分開看、不預設方向</td></tr>
+<tr><td>互聯互通</td><td>是否已納入滬股通：無公開資料。科創板個股通常須先成為指數成份股</td><td><span class="pill no">無公開資料</span></td><td>外資管道影響未來的投資人結構，目前無法納入</td></tr>
+</tbody></table></div>
+</section>
+
+<section>
+<h2>六、宇樹：財務數字的交叉驗證</h2>
+<div class="tbl"><table><thead><tr><th>億元人民幣</th><th class="n">2022</th><th class="n">2023</th><th class="n">2024</th><th class="n">2025</th><th class="n">2026H1</th></tr></thead><tbody>
+<tr><td>營收</td><td class="n">1.23</td><td class="n">1.59</td><td class="n">3.92</td><td class="n">17.08</td><td class="n">11.52</td></tr>
+<tr><td>營收年增</td><td class="n">—</td><td class="n">—</td><td class="n">—</td><td class="n">+335%</td><td class="n">+48.5%</td></tr>
+<tr><td>歸母淨利</td><td class="n">無公開資料</td><td class="n">−0.11</td><td class="n">0.95</td><td class="n">2.78–2.88</td><td class="n">2.74</td></tr>
+<tr><td>扣非淨利</td><td class="n">無公開資料</td><td class="n">−0.18</td><td class="n">0.78</td><td class="n">5.91–6.00</td><td class="n">2.44（年減 19%）</td></tr>
+<tr><td>主營毛利率</td><td class="n">無公開資料</td><td class="n">44.2%</td><td class="n">無公開資料</td><td class="n">60.1%</td><td class="n">無公開資料</td></tr>
+<tr><td>人形機器人收入占比</td><td class="n">0</td><td class="n">1.9%</td><td class="n">27.6%</td><td class="n">51.5%（前三季）</td><td class="n">無公開資料</td></tr>
+</tbody></table></div>
+<p>2025 年扣非淨利高於歸母淨利，是因為 ¥3.49 億股份支付費用。一張表裡有五格「無公開資料」，本身就是結論的一部分：這家公司的歷史財務只有三年半可用。</p>
+<div class="tbl"><table class="rules"><thead><tr><th>檢查</th><th>結果</th><th>判定</th></tr></thead><tbody>
+<tr><td>2025 營收：17.08 vs 16.99</td><td>招股書口徑為營業收入 ¥17.08 億，另一媒體整理為 ¥16.99 億，差異可能來自主營與總營收口徑。模型採用 17.08</td><td><span class="pill maybe">小差異</span></td></tr>
+<tr><td>出貨 × 均價 vs 收入占比</td><td>5,511 台 × 均價 ¥16.6 萬 ≈ ¥9.1 億，約占 2025 營收 54%，與前三季 51.5% 的占比一致</td><td><span class="pill yes">吻合</span></td></tr>
+<tr><td>公司出貨 vs 第三方</td><td>SAG 估 2026 上半年約 5,900 台、全球份額 31%，被智元（約 8,400 台）超越；公司沒有單獨公布上半年出貨量</td><td><span class="pill maybe">僅一個來源</span></td></tr>
+<tr><td>均價走勢</td><td>人形均價從 2023 年 ¥59.3 萬降到 2025 年 ¥16.6 萬；入門機種 2026 年 6 月降至 ¥2.99 萬。營收成長主要靠量</td><td><span class="pill no">毛利壓力</span></td></tr>
+<tr><td>現金流品質</td><td>2026 Q1 經營現金流年減 85.7%；招股書提示存貨與應收增長快</td><td><span class="pill no">警訊</span></td></tr>
+<tr><td>海關與政府採購</td><td>境外收入占比長期逾 35%，但海關數據無法對到單一公司；高校採購標案未系統彙整</td><td><span class="pill no">無法驗證</span></td></tr>
+<tr><td>需求結構</td><td>2025 年前三季人形機器人收入中，科研教育占逾 70%，工業與商業只約 5%；2026 上半年全球出貨逾六成流向展演與科研</td><td><span class="pill maybe">第三方估計</span></td></tr>
+</tbody></table></div>
+</section>
+
+<section>
+<h2>七、宇樹：情境、敏感度與反向 DCF</h2>
+<p>剛轉盈、高成長的公司，P/E 會失真（發行時的 P/E 是 219 倍，行業平均 38.6 倍），所以原研究把現值設成倍數法 60%（NTM 營收 × P/S 與 NTM 淨利 × P/E 各半）加 DCF 40%（10 年三段式）。情境權重設成 25／45／30，空頭權重拉高是為了反映題材與政策風險。三組假設全部是推估，淨現金假設 ¥75 億（IPO 募資 ¥61 億加上市前現金，上市後尚未公布）。</p>
+<div class="tbl"><table><thead><tr><th>假設（億元人民幣）</th><th>多頭 25%</th><th>基準 45%</th><th>空頭 30%</th></tr></thead><tbody>
+<tr><td>營收 2026 / 27 / 28</td><td class="n">31 / 55 / 90</td><td class="n">28.5 / 43 / 62</td><td class="n">26 / 33 / 38</td></tr>
+<tr><td>營收 2030</td><td class="n">185</td><td class="n">102</td><td class="n">50</td></tr>
+<tr><td>淨利率</td><td class="n">25% → 28%</td><td class="n">23% → 24%</td><td class="n">18% → 15%</td></tr>
+<tr><td>NTM P/S × P/E</td><td class="n">35x × 120x</td><td class="n">20x × 70x</td><td class="n">8x × 35x</td></tr>
+<tr><td>FCF 率（2027 → 30）</td><td class="n">18% → 25%</td><td class="n">15% → 20%</td><td class="n">8% → 12%</td></tr>
+<tr><td>情境敘事</td><td>工業與家庭應用在 2028 年前起量，維持出貨前二</td><td>科研教育穩健，工業緩慢導入，價格戰抵銷部分成長</td><td>價格戰加劇、美國禁售、需求停在科研展演</td></tr>
+</tbody></table></div>
+<h3>現值指數（基準情境的合成值 = 100）</h3>
+<div class="tbl"><table><thead><tr><th>情境</th><th class="n">倍數法</th><th class="n">DCF</th><th class="n">合成（60／40）</th></tr></thead><tbody>
+<tr><td>多頭</td><td class="n">223</td><td class="n">240</td><td class="n">229</td></tr>
+<tr><td>基準</td><td class="n">100</td><td class="n">100</td><td class="n">100</td></tr>
+<tr><td>空頭</td><td class="n">29</td><td class="n">38</td><td class="n">32</td></tr>
+<tr><td>機率加權</td><td class="n">109</td><td class="n">117</td><td class="n">111</td></tr>
+</tbody></table></div>
+<p>倍數法和 DCF 給出的相對結構幾乎一樣，表示區間的寬度來自情境假設本身，不是方法。高低比 7.2 倍，和 Anthropic 2028 年的 7.4 倍差不多：兩家公司的業務完全不同，但「公開資料還不足以收斂」這一點是一樣的。</p>
+<h3>基準 DCF 對折現率與永續成長率的敏感度（WACC 10%、g 3.5% 那格 = 100）</h3>
+<div class="tbl"><table class="heat"><thead><tr><th>WACC ＼ g</th><th class="n">2.5%</th><th class="n">3.5%</th><th class="n">4.5%</th></tr></thead><tbody>
+<tr><th class="n">9.0%</th><td>104</td><td>118</td><td>136</td></tr>
+<tr><th class="n">9.5%</th><td>97</td><td>108</td><td>123</td></tr>
+<tr><th class="n">10.0%</th><td>91</td><td>100</td><td>113</td></tr>
+<tr><th class="n">11.0%</th><td>81</td><td>88</td><td>96</td></tr>
+<tr><th class="n">12.0%</th><td>73</td><td>79</td><td>85</td></tr>
+</tbody></table></div>
+<p>WACC 10% 的依據：中國 10 年期國債 1.62%，加股權風險溢價約 6.5% × β 1.3，再加小型成長股溢價（推估）。光是 WACC 在 9% 到 12%、g 在 2.5% 到 4.5% 之間移動，基準 DCF 就從 73 到 136，這還是在「營收路徑完全正確」的前提下。</p>
+<h3>反向 DCF：價格隱含什麼</h3>
+<p>以 10 月 23 日收盤價、FCF 率 15% 到 20%、WACC 10% 反推，2027 到 2030 年營收年複合成長需約 83%，2030 年營收約 ¥322 億（2025 年為 ¥17 億）。Wind 一致預期的 2026 到 2027 年營收成長約 52%。這兩個數字的差距，是後續每一季財報都可以直接驗證的：季報的營收年增率落在 52% 附近、83% 附近，還是都不到，就是市場假設與一致預期哪一個先被修正。本文對此不下判斷，只記錄當時的數字。</p>
+</section>
+
+<section>
+<h2>八、兩個案例共同的教訓</h2>
+<ul>
+<li><b>可信度分級要寫在表裡，不是寫在免責聲明裡。</b>讀者看到「2025 營收 US$4.59B」時，應該同時看到它是 Reuters 轉述 S-1 草稿，而不是在文末才被提醒「數字可能修正」。</li>
+<li><b>沒有正常價格時，不要製造一個。</b>盤前合約與 7% 流通盤的報價都是真實成交，但它們反映的是很少的資金在很窄的通道裡的行為。把估值輸出指數化，是避免讓推估看起來像報價的一種做法。</li>
+<li><b>區間的寬度就是結論。</b>兩個案例的高低比都超過 7 倍。這時候「加權值」只是權重的函數，換一組權重就換一個數字；真正有資訊的是「哪個假設會先被公開資料驗證」，以及驗證的日期。</li>
+<li><b>反向推算比正向宣稱更可檢驗。</b>「價格隱含 83% 成長」是一個可以被下一季財報打臉的陳述；「合理值是多少」不是。</li>
+</ul>
+</section>
+
+<section>
+<h2>方法與限制</h2>
+<ul>
+<li>資料截止 2026 年 10 月 24 日。Anthropic 的財務數字來自 Reuters、WSJ、FT 等對 S-1 草稿與投資人簡報的報導，公開版 S-1 出現後可能全面修正；宇樹的數字多來自財經媒體對招股書與半年報的整理，未直接取得原文，重要數字應以上交所公告為準。</li>
+<li>Anthropic 的情境模型是簡化的營收倍數法，未計入股權稀釋、IPO 新募資金對股數的影響、以及合約的資金費率成本。宇樹的 DCF 為 10 年三段式，終值占比高，對 WACC 與 g 的敏感度見第七節。</li>
+<li>兩個案例的情境權重（25／50／25 與 25／45／30）是主觀設定；加權值只用來展示權重的影響，不代表預期值。</li>
+<li>利益衝突：Anthropic 是本文撰寫工具 Claude 的開發公司。本文的結構與數字由作者設定與核對，但讀者應自行判斷是否存在偏誤。</li>
+<li>原研究含有合約價對照、券商目標價階梯、季度價格路徑、以及幣安合約的技術指標；本文全部拿掉，只保留方法、資料與指數化的情境輸出。</li>
+<li>程式與原始資料：不公開。方法、資料來源與假設如上，足以用公開資料重做；有疑問歡迎來信討論。</li>
+</ul>
+</section>
+<section class="disc">
+<p><b>免責聲明</b>　本文為作者個人學習紀錄，內容為研究方法與公開資料整理，不構成任何有價證券、衍生性商品或加密資產之買賣建議或投資推介。作者非證券投資顧問業者，本站不收取任何費用、不接受委託。文中所有情境與數字均為推估，讀者應自行判斷並承擔投資風險。</p>
+<p><b>持有揭露</b>　寫作時作者對文中提及標的之持有狀態：（發布前填寫）。</p>
+</section>
+</div>
+</main>
+<footer>
+  <div>Last updated: November 2026</div>
+</footer>
+</div>
+</body>
+</html>
