@@ -55,3 +55,13 @@
 .mdms-article a{color:var(--accent)}.mdms-article h2{margin:0}
 .mdms-article .disc p{margin:0 0 8px}.mdms-article .disc p:last-child{margin:0}
 .article-meta{font:500 13px/1.4 "Inter",system-ui,sans-serif;color:var(--muted);margin:0 0 20px}
+/* Legends and mini-chart headings (added for the hedge backtest article) */
+.mdms-article .legend{display:flex;flex-wrap:wrap;gap:4px 16px;font-size:13px;color:var(--mut);padding:2px 8px 0}
+.mdms-article .legend span{display:inline-flex;align-items:center;gap:6px;white-space:nowrap}
+.mdms-article .legend span::before{content:"";display:inline-block;width:16px;height:3px;border-radius:2px;background:var(--c)}
+.mdms-article .legend .dash::before{background:repeating-linear-gradient(90deg,var(--c) 0 5px,transparent 5px 8px)}
+.mdms-article .legend .pt::before{width:9px;height:9px;border-radius:50%}
+.mdms-article .legend .dia::before{width:8px;height:8px;border-radius:1px;transform:rotate(45deg)}
+.mdms-article .legend .mut::before{display:none}
+.mdms-article .mini h3{margin:0 0 4px 8px;font-size:14px}
+.mdms-article .mini figcaption{padding:4px 8px 6px}
