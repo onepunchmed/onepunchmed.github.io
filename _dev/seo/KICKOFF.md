@@ -4,7 +4,7 @@
 
 ```
 讀 CLAUDE.md、_dev/seo/SEO_PLAN.md、_dev/seo/TASKS.md。
-執行 TASKS.md 的 Phase 1，第 1 到 9 項。第 10 項等我提供 GSC token。
+執行 TASKS.md 的 Phase 1，第 1 到 10 項。第 11 項等我提供 GSC token。
 每項一個 commit，每個 commit 後跑 python3 _dev/seo/seo_check.py。
 全部完成後：
 1. 回報 seo_check 結果與 diff 摘要。

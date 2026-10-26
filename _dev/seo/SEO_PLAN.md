@@ -21,7 +21,8 @@
 - Markets 文章有可見的 `<time datetime>` 發布日，但**沒有作者署名**；作者名只出現在站名。YMYL 頁沒有負責人資訊，品質評分指南會給最低評等。
 - 英文首頁 `index.html` 已有姓名、職稱、學歷、ORCID、GitHub；中文摘要段落包在 `lang="en"` 頁面裡，沒有標 `lang="zh-Hant"`。
 - 用 `"Chun Jui Lu"` 搜尋，前 10 名沒有本站（同名或近似名的人很多），推測尚未被充分索引或權重不足。
-- 執行 `python3 _dev/seo/seo_check.py`：目前 95 個 FAIL，即 TASKS 的驗收基線。
+- 執行 `python3 _dev/seo/seo_check.py`：目前 148 個 FAIL，即 TASKS 的驗收基線。照 Phase 1 規格做完的模擬複本為 0 FAIL。
+- 站內導覽連結用 `index.html`、`../index.html`，會產生 `/index.html`、`/markets/index.html` 兩個非 canonical 網址；要改成 `./`、`../`。
 
 ## 3. 關鍵字研究（Markets 區）
 
@@ -86,10 +87,11 @@
 ### 4.1 每頁 `<head>`
 
 - `<link rel="canonical">`：絕對網址、指向自己。
-- Open Graph：`og:title`、`og:description`、`og:url`（= canonical）、`og:type`（文章 `article`，其他 `website`）、`og:site_name`（`Chun Jui Lu`）、`og:locale`（`zh_TW` 或 `en_US`）；有圖再加 `og:image`。
+- Open Graph：`og:title`、`og:description`、`og:url`（= canonical）、`og:type`（6 篇文章 `article`；`markets/index.html` 與英文頁一律 `website`）、`og:site_name`（`Chun Jui Lu`）、`og:locale`（`zh_TW` 或 `en_US`）；有圖再加 `og:image`。
 - `twitter:card`：`summary`（沒圖）或 `summary_large_image`（有圖）。
 - 刪除 `<meta name="robots" content="noai, noimageai">`。
-- 英文頁裡的中文段落標 `lang="zh-Hant"`。
+- 英文頁裡的中文段落標 `lang="zh-Hant"`；`markets/index.html` 裡的英文段落（`<div class="zh">`）標 `lang="en"`。
+- 站內連結一律指向 canonical 網址：`./`、`../`、`markets/`，不寫 `index.html`。
 - **不加 hreflang**：英文頁和中文頁不是互譯版本。
 - **不做 llms.txt**：Google 文件明說出現在 AI Overviews／AI Mode 沒有額外要求。
 
@@ -119,18 +121,18 @@ Sitemap: https://onepunchmed.github.io/sitemap.xml
 
 ### 4.3 結構化資料（JSON-LD）
 
-- **Markets 文章**：`Article`，含 `headline`（= H1）、`datePublished`（= 可見 `<time>`）、`dateModified`（內容有實質修改才更新）、`author: {"@type":"Person","name":"Chun Jui Lu","url":"<site>/"}`、`inLanguage: "zh-Hant"`、`publisher` 同作者；另加 `BreadcrumbList`（About › Markets › 文章）。
-- **index.html**：`ProfilePage`，`mainEntity` 為 `Person`：`name`、`description`（取頁面上已寫的職稱與學歷）、`sameAs`（ORCID、GitHub）、`url`。結構化資料只能描述頁面上看得到的內容。
+- **Markets 文章**：`Article`，含 `headline`（必須等於 H1 文字，即使 `<title>` 之後改寫也不變）、`datePublished`（= 可見 `<time>`）、`dateModified`（內容有實質修改才更新）、`author: {"@type":"Person","name":"Chun Jui Lu","url":"<site>/"}`（不得加 jobTitle、description、alumniOf 等頭銜欄位）、`inLanguage: "zh-Hant"`、`publisher` 同作者；另加 `BreadcrumbList`（About › Markets › 文章）。
+- **index.html**：`ProfilePage`，`mainEntity` 為 `Person`：`name`、`description`（逐字照抄頁面上的職稱與學歷那一行，不改寫）、`sameAs`（ORCID、GitHub）、`url`。結構化資料只能描述頁面上看得到的內容。
 - **markets/index.html**：`CollectionPage` 或只加 `BreadcrumbList`。
 - FAQPage：Google 已大幅限縮 FAQ 複合式結果的顯示範圍（此點未在本輪重新查證），不列為必要；如果文章加 FAQ 區塊，以可見內容為主。
 
 ### 4.4 sitemap.xml
 
-只列 canonical 網址；`lastmod` 只在內容實質變動時更新；不用 `priority`、`changefreq`。手寫即可，12 頁不需要產生器；之後頁數變多再寫小腳本。
+只列 canonical 網址；Phase 1 的 `lastmod` 一律寫 `2026-10-26`（現有內容都在這天前後完成，Phase 1 只改 head 不算實質變動），之後只在內文實質變動時更新該頁；不用 `priority`、`changefreq`。手寫即可，12 頁不需要產生器；之後頁數變多再寫小腳本。
 
 ### 4.5 作者署名（E-E-A-T，依站長選擇只用英文名）
 
-每篇 Markets 文章在 `article-meta` 加可見署名：`<a rel="author" href="../index.html">Chun Jui Lu</a>`。英文個人頁已有學歷與職稱，署名連過去即可，不在中文文章加頭銜。
+每篇 Markets 文章在 `article-meta` 加可見署名：`<a rel="author" href="../">Chun Jui Lu</a>`，連結文字只能是英文名。英文個人頁已有學歷與職稱，署名連過去即可，不在中文文章加頭銜。
 
 ## 5. 英文學術頁目標
 

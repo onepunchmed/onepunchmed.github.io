@@ -16,32 +16,54 @@
 
 ## Phase 1　技術基礎（🤖 Sonnet medium）
 
-在 `seo-handoff` 分支上做，一個項目一個 commit。不改任何內文文字與數字。
+在 `seo-handoff` 分支上做，一個項目一個 commit。不改任何內文文字與數字。全部範圍＝12 個 HTML 頁：`index.html`、`research.html`、`data.html`、`notes.html`、`disclosure.html`、`markets/index.html`，以及 6 篇 `markets/*.html` 文章。
 
-1. **robots.txt**：照 SEO_PLAN §4.2 改寫。
-2. **移除** 所有頁面的 `<meta name="robots" content="noai, noimageai">`。
-3. **canonical**：每頁加絕對網址 canonical。
+1. **robots.txt**：照 SEO_PLAN §4.2 逐字改寫。
+2. **移除**所有頁面的 `<meta name="robots" content="noai, noimageai">`。
+3. **canonical**：每頁加一個絕對網址 canonical。
    - `index.html` → `https://onepunchmed.github.io/`
    - `markets/index.html` → `https://onepunchmed.github.io/markets/`
    - 其他 → 檔案路徑
-4. **Open Graph／Twitter**：每頁加 SEO_PLAN §4.1 的標籤。`og:title`、`og:description` 沿用現有 title 與 description；`og:locale`：英文頁 `en_US`，Markets `zh_TW`。
-5. **JSON-LD**：
-   - 6 篇 Markets 文章：`Article` + `BreadcrumbList`，用 `@graph` 放在同一個 script。`datePublished` 等於頁面 `<time datetime>`，`dateModified` 先等於 `datePublished`。
-   - `index.html`：`ProfilePage` + `Person`。description 只能用頁面上已寫的文字：Researcher in clinical machine learning; Director of Research at a community primary care clinic in New Taipei City, Taiwan; M.D., Chang Gung University。`sameAs`：ORCID、GitHub。
-   - `markets/index.html`：`BreadcrumbList`。
-6. **作者署名**：6 篇文章的 `<p class="article-meta">` 開頭加 `<a rel="author" href="../index.html">Chun Jui Lu</a> · `。只用英文名，不加頭銜。
-7. **語系**：`index.html` 等英文頁內的中文段落加 `lang="zh-Hant"`。
-8. **sitemap.xml**：手寫，列 12 個 canonical 網址，`lastmod` 用各頁 git 最後實質修改日，不用 `priority`／`changefreq`。
-9. **CI**：啟用 `_dev/seo/seo-check.yml`（搬到 `.github/workflows/`），PR 與 push 時跑 seo_check 與 lychee 斷鏈檢查。
-10. **GSC 驗證 meta**：拿到站長提供的值才加，沒拿到就跳過，不要自己編。
+4. **站內連結改指 canonical**：導覽列與內文中所有 `href="index.html"` 改成 `./`，`href="../index.html"` 改成 `../`。只動 href，連結文字不動。
+5. **Open Graph／Twitter**：每頁加以下標籤：
+   - `og:title`、`og:description`：沿用該頁 `<title>` 與 meta description
+   - `og:url`：等於 canonical
+   - `og:type`：6 篇文章用 `article`，其他 6 頁（含 `markets/index.html`）用 `website`
+   - `og:site_name`：`Chun Jui Lu`
+   - `og:locale`：`lang="zh-Hant"` 的頁用 `zh_TW`，其他用 `en_US`
+   - `twitter:card`：`summary`
+6. **JSON-LD**：每頁一個 `<script type="application/ld+json">`，用 `{"@context":"https://schema.org","@graph":[...]}`。
+   - **6 篇文章**：`Article` 加 `BreadcrumbList`（About › Markets › 文章）。`Article` 的欄位：
+     - `headline`：逐字等於 H1 文字
+     - `datePublished`、`dateModified`：都等於頁面上的 `<time datetime>`
+     - `author` 與 `publisher`：同一個 `{"@type":"Person","name":"Chun Jui Lu","url":"https://onepunchmed.github.io/"}`，不加任何其他欄位
+     - `inLanguage`：`zh-Hant`
+     - `mainEntityOfPage`：canonical
+   - **`index.html`**：`ProfilePage`，`mainEntity` 為 `Person`，欄位如下：
+     - `name`：`Chun Jui Lu`
+     - `url`：`https://onepunchmed.github.io/`
+     - `description`：逐字照抄頁面上職稱與學歷那一行
+     - `sameAs`：ORCID 與 GitHub 兩個網址，從頁面上的連結抄
+   - **`markets/index.html`**：`BreadcrumbList`（About › Markets）。
+   - 結構化資料只能描述頁面上看得到的內容。
+7. **作者署名**：6 篇文章的 `<p class="article-meta">` 開頭加 `<a rel="author" href="../">Chun Jui Lu</a> · `。連結文字只能是英文名，不加頭銜。
+8. **語系標記**：
+   - `index.html`、`research.html`、`data.html`、`disclosure.html`、`notes.html` 裡的中文段落，在包住它的元素加 `lang="zh-Hant"`。
+   - `markets/index.html` 裡的英文段落 `<div class="zh">` 加 `lang="en"`。
+9. **sitemap.xml**：手寫，列 12 個 canonical 網址（跟第 3 項同一組），`lastmod` 一律 `2026-10-26`，不用 `priority`、`changefreq`。
+10. **CI**：把 `_dev/seo/seo-check.yml` 移到 `.github/workflows/seo-check.yml`。push 若因 token 沒有 workflow 權限被拒，就把這個 commit 留在本機，並告訴站長由他手動推。
+11. **GSC 驗證 meta**：拿到站長提供的值才加，沒拿到就跳過，不要自己編。
 
-**驗收**：`seo_check.py` 0 FAIL；lychee 無斷鏈；用瀏覽器開每頁，版面與修改前一致。
+**驗收**
+- `python3 _dev/seo/seo_check.py` 結果為 0 FAIL。WARN 只允許「no og:image」。
+- lychee 無斷鏈。
+- 用瀏覽器開每頁，版面與修改前一致（署名那一行除外）。
 
 ## Phase 2　內容調整（✅ 每項需站長逐篇核可）
 
 起草：🤖 Opus high（對外文案）。核可：🧑。
 
-1. 6 篇文章的 `<title>`，依 SEO_PLAN §6.1 建議。H1 不動。改了 title 要同步改 `og:title` 與 JSON-LD `headline`，或維持 headline 等於 H1，二擇一並在全站一致。
+1. 6 篇文章的 `<title>`，依 SEO_PLAN §6.1 建議。H1 不動，JSON-LD `headline` 維持等於 H1；`og:title` 跟著新 title 改。
 2. meta description 超過 160 字的縮短；保留「不構成投資建議」字樣。
 3. 每篇補一段「X 是什麼」定義段，放在第一個相關 H2 底下，2–3 句，可被引用。
    - backtest-checklist：前瞻偏誤、存活者偏誤、過度擬合
@@ -79,10 +101,11 @@
 
 ## 驗證（每個 Phase 結束時）
 
-另開一個 Opus high 子代理，不給它開發過程，只給以下三樣：
-1. SEO_PLAN.md
-2. 本檔
-3. diff
+另開一個 Opus high 子代理，不給它開發過程，只給以下四樣：
+1. CLAUDE.md
+2. SEO_PLAN.md
+3. 本檔
+4. diff
 
 它要檢查：
 - seo_check 是否通過
