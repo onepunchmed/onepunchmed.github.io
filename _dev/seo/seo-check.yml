@@ -1,0 +1,22 @@
+# Move to .github/workflows/seo-check.yml in Phase 1, task 9.
+name: seo-check
+on:
+  push:
+    branches: [main, seo-handoff]
+  pull_request:
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: SEO acceptance check
+        run: python3 _dev/seo/seo_check.py
+      - name: Broken links (offline, internal only)
+        uses: lycheeverse/lychee-action@v2
+        with:
+          args: --offline --no-progress --root-dir "${{ github.workspace }}" './**/*.html'
+          fail: true
