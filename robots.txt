@@ -11,4 +11,4 @@ User-agent: *
 Allow: /
 Disallow: /_dev/
 
-Sitemap: https://onepunchmed.github.io/sitemap.xml
+Sitemap: https://onepunchmed.com/sitemap.xml

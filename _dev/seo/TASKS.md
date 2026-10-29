@@ -9,7 +9,7 @@
 
 ## Phase 0　站長準備（🧑，可與 Phase 1 平行）
 
-- [ ] 買網域，把網域名稱告訴 Claude Code（Phase 3 才需要）
+- [x] 買網域：onepunchmed.com（2026-10-29，Cloudflare Registrar）
 - [x] Google Search Console 新增「網址前置字元」資源 `https://onepunchmed.github.io/`，選「HTML 標記」，把 meta tag 的 content 值交給 Claude Code（放進 `index.html`）（PR #3）
 - [x] Bing Webmaster Tools：Search Console 驗證完成後，從 GSC 匯入（2026-10-29 匯入成功，sitemap 已重新提交）
 - [x] ORCID、GitHub profile 的網站欄填 `https://onepunchmed.github.io/`（換網域後改新網址）（2026-10-29 確認兩邊都已填）
