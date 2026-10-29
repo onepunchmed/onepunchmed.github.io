@@ -1,4 +1,3 @@
-# Move to .github/workflows/seo-check.yml in Phase 1, task 10.
 name: seo-check
 permissions:
   contents: read
