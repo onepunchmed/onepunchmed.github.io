@@ -92,6 +92,8 @@
 6. 🧑 Search Console 新增新網域的「網域」資源（DNS 驗證）。舊資源用「網址變更」工具，如果不支援 github.io，改為只提交新 sitemap。
 7. 🧑 ORCID、GitHub profile 改填新網址。
 
+**狀態（2026-10-29）：** 1–5 完成（PR #10）；6 已新增 `sc-domain:onepunchmed.com` 並提交 sitemap，舊資源的「網址變更」工具可用，尚未送出；Bing 已從 GSC 匯入 onepunchmed.com 並提交 sitemap；7 GitHub、ORCID 都已改。實測結果見 `_dev/seo/CHANGELOG.md`。
+
 ## Phase 4　追蹤（每月）
 
 - 🧑 讀 GSC：排名 4–20、曝光高但點擊低的頁 → 回 Phase 2 調 title 與 description
