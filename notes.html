@@ -32,7 +32,7 @@
   <h1>Notes</h1>
   <p class="lead">Short research notes: working ideas, methodological reminders, and things I want to get right before they reach a paper. Newest first.</p>
 
-  <div class="zh">研究筆記與短文：工作中的想法、方法上的提醒、以及想在寫成論文前先釐清的事。新的在上面。</div>
+  <div class="zh" lang="zh-Hant">研究筆記與短文：工作中的想法、方法上的提醒、以及想在寫成論文前先釐清的事。新的在上面。</div>
 
   <!--
     To add a note: copy one <article class="note"> block, paste it at the top of
@@ -45,7 +45,7 @@
     <h2><a href="#2026-10-25-reporting-thresholds">How I report a test statistic</a></h2>
     <p>A rule I keep for myself so that results do not get upgraded after the fact. If a test was pre-registered with a threshold of |t| &gt; 3, the threshold is not revisited when the number comes in at 2.6. A single pre-specified test that lands between 2 and 3 is reported as reaching the conventional 5% level but not the pre-set threshold, in those words. Anything found by slicing the data afterwards is reported next to a baseline and a bootstrap interval, never as a stand-alone p-value.</p>
     <p>None of this is new. It is written down because the temptation to relax a threshold is strongest exactly when the result is almost there.</p>
-    <div class="zh">摘要：預先登記的門檻（例如 |t| &gt; 3）事後不動；單一事前檢定落在 2 到 3 之間，就照實寫「達傳統 5% 水準但未過預設門檻」；事後切片的結果一定附基準與 bootstrap 區間，不單獨報 p 值。寫下來是因為最想放寬門檻的時候，正是結果差一點點的時候。</div>
+    <div class="zh" lang="zh-Hant">摘要：預先登記的門檻（例如 |t| &gt; 3）事後不動；單一事前檢定落在 2 到 3 之間，就照實寫「達傳統 5% 水準但未過預設門檻」；事後切片的結果一定附基準與 bootstrap 區間，不單獨報 p 值。寫下來是因為最想放寬門檻的時候，正是結果差一點點的時候。</div>
   </article>
 
   <article class="note" id="2026-10-25-no-code-is-not-negative">
@@ -53,7 +53,7 @@
     <h2><a href="#2026-10-25-no-code-is-not-negative">"No diagnosis code" is not a negative label</a></h2>
     <p>Most claims-based prediction models treat patients without a diagnosis code as non-cases. In primary care that assumption fails in two ways at once. Some patients are never diagnosed. Others are managed for years without the condition ever being coded. Both end up in the "negative" set, and a model trained on that set learns to reproduce the gap rather than close it.</p>
     <p>The framing I use instead is positive-unlabeled: recorded diagnoses are positives, everyone else is unlabeled. Laboratory values interpreted with standard thresholds give partial ground truth for a subset, which is enough to estimate how incomplete the labels are and to evaluate without pretending the gap does not exist. The harder part, and the actual research question, is that the labeling mechanism is not constant over three decades of records.</p>
-    <div class="zh">摘要：把「沒有診斷碼」當成陰性，會把「從未被診斷」和「有在治療但沒寫碼」兩種病人都算進負例，模型學到的是記錄的缺口而不是疾病。改用正例與未標記（PU）的框架，以檢驗值做部分真值，才能估計標記不完整的程度；真正的難題是這個標記機制在三十年間並不固定。</div>
+    <div class="zh" lang="zh-Hant">摘要：把「沒有診斷碼」當成陰性，會把「從未被診斷」和「有在治療但沒寫碼」兩種病人都算進負例，模型學到的是記錄的缺口而不是疾病。改用正例與未標記（PU）的框架，以檢驗值做部分真值，才能估計標記不完整的程度；真正的難題是這個標記機制在三十年間並不固定。</div>
   </article>
 </main>
 <footer>
