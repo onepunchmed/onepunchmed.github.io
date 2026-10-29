@@ -1,0 +1,182 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>夏普值、最大回撤怎麼看：用讀臨床試驗終點的方式讀策略績效 | Chun Jui Lu</title>
+<meta name="description" content="夏普值和最大回撤是讀策略績效最常用的兩個數字，也最常被誤讀。用讀臨床試驗終點的方式：先定主要終點、看對照組、附信賴區間、分清替代終點與硬終點。數字取自本站已發布的回測。研究方法，不構成投資建議。">
+<link rel="canonical" href="https://onepunchmed.github.io/markets/sharpe-drawdown.html">
+<meta property="og:type" content="article">
+<meta property="og:title" content="夏普值、最大回撤怎麼看：用讀臨床試驗終點的方式讀策略績效 | Chun Jui Lu">
+<meta property="og:description" content="夏普值和最大回撤是讀策略績效最常用的兩個數字，也最常被誤讀。用讀臨床試驗終點的方式：先定主要終點、看對照組、附信賴區間、分清替代終點與硬終點。數字取自本站已發布的回測。研究方法，不構成投資建議。">
+<meta property="og:url" content="https://onepunchmed.github.io/markets/sharpe-drawdown.html">
+<meta property="og:locale" content="zh_TW">
+<meta property="og:site_name" content="Chun Jui Lu">
+<meta name="twitter:card" content="summary">
+<script type="application/ld+json">
+{"@context": "https://schema.org", "@graph": [{"@type": "Article", "headline": "夏普值與最大回撤怎麼讀：把策略績效當成臨床試驗的終點", "datePublished": "2026-10-29", "dateModified": "2026-10-29", "author": {"@type": "Person", "name": "Chun Jui Lu", "url": "https://onepunchmed.github.io/"}, "publisher": {"@type": "Person", "name": "Chun Jui Lu", "url": "https://onepunchmed.github.io/"}, "inLanguage": "zh-Hant", "mainEntityOfPage": "https://onepunchmed.github.io/markets/sharpe-drawdown.html"}, {"@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "About", "item": "https://onepunchmed.github.io/"}, {"@type": "ListItem", "position": 2, "name": "Markets", "item": "https://onepunchmed.github.io/markets/"}, {"@type": "ListItem", "position": 3, "name": "夏普值與最大回撤怎麼讀：把策略績效當成臨床試驗的終點", "item": "https://onepunchmed.github.io/markets/sharpe-drawdown.html"}]}]}
+</script>
+<link rel="stylesheet" href="../style.css">
+<link rel="stylesheet" href="../article.css">
+</head>
+<body>
+<div class="wrap">
+<header class="site">
+  <a class="name" href="../">Chun Jui Lu</a>
+  <nav>
+    <a href="../">About</a>
+    <a href="../research.html">Research</a>
+    <a href="../data.html">Data</a>
+    <a href="./" aria-current="page">Markets</a>
+    <a href="../notes.html">Notes</a>
+    <a href="../disclosure.html">Disclosure</a>
+  </nav>
+</header>
+<main>
+  <h1>夏普值與最大回撤怎麼讀：把策略績效當成臨床試驗的終點</h1>
+  <p class="lead">一份回測報告最常放在第一行的兩個數字，是夏普值（Sharpe ratio）和最大回撤（maximum drawdown）。它們也是最容易被誤讀的兩個數字：夏普值被當成精確的分數，最大回撤被當成「最壞也就這樣」。臨床試驗讀終點的方法剛好可以拿來讀它們：先講好主要終點、一定要有對照組、效果量要附信賴區間、分清替代終點與硬終點、把效益和傷害放在同一張表。本文用本站已發布回測裡的真實數字，一項一項示範。</p>
+  <p class="article-meta"><a rel="author" href="../">Chun Jui Lu</a> · <time datetime="2026-10-29">2026 年 10 月 29 日</time> · 方法論、夏普值、最大回撤</p>
+
+<div class="mdms-article">
+<section class="verdict">
+<h2>四個重點</h2>
+<ol>
+<li><b>夏普值是效果量，要附信賴區間。</b>用常見的近似公式估算，5 年回測裡夏普值 0.33 的策略，95% 信賴區間大約是 −0.59 到 +1.25；要讓下界高於 0，需要約 37 年的資料。連同期加權指數的 0.95，區間也跨過 0。</li>
+<li><b>最大回撤是「觀察到的最嚴重一次」，不是上限。</b>它只是一條歷史路徑上的單一事件。同一個加權指數，5 年視窗的最大回撤是 −32%，20 年視窗是 −57%；期間越長，看到的最壞情況通常越深。</li>
+<li><b>回撤小不一定代表安全，可能只是很少上場。</b>一個只在超跌時做多的版本，20 年最大回撤只有 −17.3%，看起來最穩；但它只有 16% 的時間有部位，年化報酬也只有 +4.4%。這像是不良事件很少，因為大部分受試者根本沒吃藥。</li>
+<li><b>樣本內的夏普值是替代終點，扣完成本的樣本外報酬才是硬終點。</b>本站一篇回測裡，樣本內夏普值最高的參數組合是 0.42，到樣本外變成 −0.54。</li>
+</ol>
+</section>
+
+<section>
+<h2>一、先講好主要終點</h2>
+<p>臨床試驗在收第一位受試者之前，就要登記主要終點：要看死亡率、住院率，還是某個檢驗值。原因是終點一多，總會有一個看起來顯著；事後才挑終點，等於先射箭再畫靶。</p>
+<p>策略績效的終點也很多：總報酬、年化報酬、夏普值、索提諾比率、最大回撤、卡瑪比率、勝率、最差單月。一份報告如果在 A 策略強調夏普值、在 B 策略改講勝率、在 C 策略只講總報酬，讀者就該問：是不是每次都挑了最好看的那個？</p>
+<p>本站的回測固定用同一組終點，而且同時列出：年化報酬、年化波動、夏普值、最大回撤，再加上一個買進持有的對照組。<a href="tw-hedge-backtest.html">三組多空避險回測</a>的主表長這樣：</p>
+<div class="tbl"><table><thead><tr><th>2022-01 至 2026-10（約 4.8 年）</th><th class="n">年化</th><th class="n">年化波動</th><th class="n">夏普值</th><th class="n">最大回撤</th><th class="n">月勝率</th></tr></thead><tbody>
+<tr><td>S1 配對中性籃</td><td class="n">+13.7%</td><td class="n">51%</td><td class="n">0.33</td><td class="n">−37%</td><td class="n">40%</td></tr>
+<tr><td>S2 多方＋指數空</td><td class="n">−6.0%</td><td class="n">35%</td><td class="n">−0.20</td><td class="n">−67%</td><td class="n">38%</td></tr>
+<tr><td>S3 空方＋指數多</td><td class="n">−8.4%</td><td class="n">27%</td><td class="n">−0.33</td><td class="n">−77%</td><td class="n">50%</td></tr>
+<tr><td>對照：加權指數買進持有（不含息）</td><td class="n">+21.2%</td><td class="n">22%</td><td class="n">0.95</td><td class="n">−32%</td><td class="n">62%</td></tr>
+<tr><td>對照：0050 買進持有（含息）</td><td class="n">+28.9%</td><td class="n">24%</td><td class="n">1.16</td><td class="n">−34%</td><td class="n">62%</td></tr>
+</tbody></table></div>
+<p>單看 S1 的 +13.7% 年化，是一個賺錢的策略；放到對照組旁邊，每一個終點都輸。這就是對照組的作用：沒有它，你只知道「病人變好了」，不知道是不是藥的功勞。</p>
+<div class="callout"><p>名字也不是終點。S1 叫「配對中性」，聽起來是低風險；它的年化波動 51%，是加權指數 22% 的兩倍多。讀績效表時，風險看波動和回撤欄，不看策略名稱。</p></div>
+</section>
+
+<section>
+<h2>二、夏普值是效果量，要附信賴區間</h2>
+<p>夏普值是「超額報酬 ÷ 波動」，意思是每承擔一單位波動換到多少報酬。它的角色很像臨床試驗裡的標準化效果量：把效果除以雜訊，讓不同規模的策略可以放在一起比。</p>
+<p>臨床試驗不會只報「風險降低 30%」，一定會附上信賴區間，因為同樣是 30%，區間是 25% 到 35% 和區間是 −5% 到 55%，是完全不同的證據強度。夏普值也一樣。最常用的近似公式（Lo, 2002）假設每期報酬彼此獨立、分布接近常態：</p>
+<div class="callout"><p>夏普值的標準誤 ≈ √[(1 + 夏普值² ÷ 2) ÷ 年數]，95% 信賴區間 ≈ 夏普值 ± 1.96 × 標準誤。</p></div>
+<p>把本站兩篇回測的數字代進去：</p>
+<div class="tbl"><table><thead><tr><th>策略（期間）</th><th class="n">夏普值</th><th class="n">標準誤</th><th class="n">95% 信賴區間</th><th>區間跨過 0？</th></tr></thead><tbody>
+<tr><td>S1 配對中性籃（4.8 年）</td><td class="n">0.33</td><td class="n">0.47</td><td class="n">−0.59 到 +1.25</td><td>是</td></tr>
+<tr><td>加權指數買進持有（同期 4.8 年）</td><td class="n">0.95</td><td class="n">0.55</td><td class="n">−0.13 到 +2.03</td><td>是</td></tr>
+<tr><td>0050 含息買進持有（同期 4.8 年）</td><td class="n">1.16</td><td class="n">0.59</td><td class="n">0.00 到 +2.32</td><td>剛好碰到</td></tr>
+<tr><td>台積電 C 核心＋超跌加碼（20.8 年）</td><td class="n">0.84</td><td class="n">0.26</td><td class="n">+0.34 到 +1.34</td><td>否</td></tr>
+<tr><td>台積電含息買進持有（同期 20.8 年）</td><td class="n">0.88</td><td class="n">0.26</td><td class="n">+0.37 到 +1.39</td><td>否</td></tr>
+<tr><td>台積電 A 原始雙腳（20.8 年）</td><td class="n">−0.19</td><td class="n">0.22</td><td class="n">−0.62 到 +0.24</td><td>是</td></tr>
+</tbody></table></div>
+<p>三件事從這張表看得出來：</p>
+<ul>
+<li><b>5 年太短。</b>4.8 年的回測裡，連加權指數這種公認有正報酬的資產，夏普值的區間都跨過 0。拿 5 年回測說某個策略「夏普值 0.33，有效」，統計上和「不知道」差不多。</li>
+<li><b>兩個夏普值接近時，分不出高下。</b>台積電 C 版本 0.84 和直接持有台積電 0.88，兩個區間幾乎完全重疊。<a href="tsmc-taiex-hedge.html">原文</a>的結論是「C 多出來的報酬大致等於多加的槓桿」，信賴區間給的是同一個答案。</li>
+<li><b>需要的年數比直覺多很多。</b>同一個公式反推，要讓區間下界高於 0：</li>
+</ul>
+<div class="tbl"><table><thead><tr><th>真實夏普值</th><th class="n">0.33</th><th class="n">0.50</th><th class="n">0.84</th><th class="n">1.00</th></tr></thead><tbody>
+<tr><td>大約需要幾年的資料</td><td class="n">37 年</td><td class="n">17 年</td><td class="n">7 年</td><td class="n">6 年</td></tr>
+</tbody></table></div>
+<p>這和臨床試驗的樣本數計算是同一件事：效果越小，需要的受試者越多。效果小的策略，靠回測幾乎不可能證明它有效。</p>
+</section>
+
+<section>
+<h2>三、替代終點與硬終點</h2>
+<p>臨床研究吃過很多次替代終點的虧：藥物把某個檢驗值降下來了，死亡率卻沒有跟著降，甚至上升。檢驗值是替代終點，量起來快、便宜；死亡率是硬終點，才是病人真正在乎的。</p>
+<p>回測的替代終點是樣本內的夏普值：用同一段資料選參數、再用同一段資料打分數。硬終點是「沒參與選參數的資料上、扣完交易成本之後」的報酬。兩者的落差可以很大。<a href="tsmc-taiex-hedge.html">台積電 × 台指</a>每個版本跑 120 組參數，分 2006 到 2016 的樣本內和 2017 以後的樣本外：</p>
+<div class="tbl"><table><thead><tr><th>版本</th><th class="n">樣本內夏普值</th><th class="n">樣本外夏普值</th><th class="n">逐年 walk-forward 夏普值</th></tr></thead><tbody>
+<tr><td>A 原始雙腳</td><td class="n">0.01</td><td class="n">−0.39</td><td class="n">−0.24</td></tr>
+<tr><td>A 原始雙腳，樣本內最佳參數</td><td class="n">0.42</td><td class="n">−0.54</td><td class="n">—</td></tr>
+<tr><td>B 只做超跌多</td><td class="n">0.44</td><td class="n">0.24</td><td class="n">0.20</td></tr>
+</tbody></table></div>
+<p>樣本內挑出來的最佳參數，夏普值從 0.42 變成 −0.54，比預設參數的樣本外 −0.39 還差。成本也是一樣的道理：<a href="tw-hedge-backtest.html">三組多空避險</a>的 S1 在零成本時五年 +188%，每次成交多 1 檔滑價變 +85%，2 檔變 +5%。零成本的夏普值是替代終點，扣完成本的才是硬終點。</p>
+</section>
+
+<section>
+<h2>四、最大回撤是最嚴重的一次不良事件</h2>
+<p>最大回撤是「從前一個高點到之後最低點，最多跌了幾 %」。它很像臨床試驗裡的「最嚴重不良事件」：重要，但有三個讀法上的陷阱。</p>
+<h3>它是單一事件，樣本數是 1</h3>
+<p>整段回測只會產生一個最大回撤。換一個起點、換一個換倉日，路徑就不同，最大回撤也跟著變。<a href="tw-hedge-backtest.html">三組多空避險</a>只把換倉日往後挪 5 到 15 個交易日，S1 的五年總報酬就落在 −45% 到 +141%；路徑變成這樣，最大回撤當然不會是同一個數字。</p>
+<h3>期間越長，看到的越深</h3>
+<p>同一個加權指數，在避險回測的 4.8 年視窗裡最大回撤是 −32%；在台積電回測的 20.8 年視窗（含 2008 年金融海嘯）是 −56.7%。兩個數字都對，只是觀察期不同。比較兩個策略的最大回撤之前，先確認它們是同一段期間；拿 5 年回測的回撤和別人 20 年的回撤比，等於拿追蹤 1 年和追蹤 10 年的不良事件率比。</p>
+<h3>要看暴露時間</h3>
+<p>臨床研究算不良事件率時，分母是「人年」，不是人數，因為吃藥吃得越久，出事的機會越多。策略也一樣：</p>
+<div class="tbl"><table><thead><tr><th>台積電 × 台指（20.8 年）</th><th class="n">有部位時間</th><th class="n">年化</th><th class="n">最大回撤</th></tr></thead><tbody>
+<tr><td>B 只做超跌多</td><td class="n">16%</td><td class="n">+4.4%</td><td class="n">−17.3%</td></tr>
+<tr><td>C 核心持有台積電＋超跌加碼</td><td class="n">一直持有</td><td class="n">+25.7%</td><td class="n">−53.2%</td></tr>
+<tr><td>對照：台積電含息買進持有</td><td class="n">一直持有</td><td class="n">+24.2%</td><td class="n">−46.5%</td></tr>
+</tbody></table></div>
+<p>B 的回撤最小，是因為它 84% 的時間都沒有部位，等於大部分受試者沒吃藥。它的低回撤和它的低報酬是同一件事的兩面，不是「比較會控制風險」。</p>
+</section>
+
+<section>
+<h2>五、效益和傷害放在同一張表</h2>
+<p>臨床指引會把「多少人因此受益」和「多少人因此受害」並列，因為只看一邊會做出錯誤的決定。策略的效益是報酬，傷害是回撤；把年化報酬除以最大回撤的絕對值，就是卡瑪比率（Calmar ratio），可以當成一個粗略的效益傷害比。</p>
+<div class="tbl"><table><thead><tr><th>策略</th><th class="n">年化</th><th class="n">最大回撤</th><th class="n">年化 ÷ |最大回撤|</th></tr></thead><tbody>
+<tr><td colspan="4"><b>2022-01 至 2026-10（4.8 年）</b></td></tr>
+<tr><td>S1 配對中性籃</td><td class="n">+13.7%</td><td class="n">−37%</td><td class="n">0.37</td></tr>
+<tr><td>加權指數買進持有</td><td class="n">+21.2%</td><td class="n">−32%</td><td class="n">0.66</td></tr>
+<tr><td>0050 含息買進持有</td><td class="n">+28.9%</td><td class="n">−34%</td><td class="n">0.85</td></tr>
+<tr><td colspan="4"><b>2006-01 至 2026-10（20.8 年）</b></td></tr>
+<tr><td>B 只做超跌多</td><td class="n">+4.4%</td><td class="n">−17.3%</td><td class="n">0.25</td></tr>
+<tr><td>C 核心＋超跌加碼</td><td class="n">+25.7%</td><td class="n">−53.2%</td><td class="n">0.48</td></tr>
+<tr><td>台積電含息買進持有</td><td class="n">+24.2%</td><td class="n">−46.5%</td><td class="n">0.52</td></tr>
+<tr><td>加權指數含息買進持有</td><td class="n">+14.1%</td><td class="n">−56.7%</td><td class="n">0.25</td></tr>
+</tbody></table></div>
+<p>同一段期間內，這個比值才有意義；上下兩段期間不同，不能互相比（加權指數在 5 年視窗是 0.66，在 20 年視窗是 0.25）。在各自的期間內，對照組都不輸：S1 輸給大盤和 0050，C 也沒有贏過直接持有台積電。</p>
+</section>
+
+<section>
+<h2>六、勝率是反應率，不是效果量</h2>
+<p>臨床試驗的「反應率」說的是多少人有改善，不說改善了多少。一個讓 90% 病人血壓降 1 mmHg 的藥，反應率很高，臨床上沒有意義。勝率也是一樣：</p>
+<ul>
+<li><a href="tw-hedge-backtest.html">三組多空避險</a>的 S3 月勝率 50%，和擲銅板一樣，五年總報酬卻是 −34%：賠的月份賠得比賺的月份多。</li>
+<li><a href="tw-arbitrage.html">台股套利</a>的 ADR 溢價回歸規則，用收盤對收盤算，54 筆勝率 100%、每筆 +6.4%；改用真實能成交的時點，勝率掉到 69%、每筆 +1.5%。100% 的勝率不是證據，是警訊：臨床研究看到效果大到不合理時，第一個懷疑的也是設計。</li>
+</ul>
+</section>
+
+<section>
+<h2>怎麼用：讀一張績效表的六個步驟</h2>
+<ol>
+<li>先找對照組。沒有買進持有或大盤的同期數字，其他欄位都先不用看。</li>
+<li>確認所有策略和對照組是同一段期間、同一個無風險利率。</li>
+<li>看期間長度，用上面的公式估一下夏普值的信賴區間；5 年以內的夏普值，當成方向就好。</li>
+<li>問這是樣本內還是樣本外、有沒有扣成本。只有樣本內、零成本的數字，當成替代終點。</li>
+<li>看最大回撤時，同時看期間長度和有部位的時間比例。</li>
+<li>勝率只和每筆平均盈虧一起看，不單獨看。</li>
+</ol>
+</section>
+
+<section>
+<h2>方法與限制</h2>
+<ul>
+<li>本文沒有新的回測。所有報酬、波動、夏普值、最大回撤與勝率，都取自本站已發布的<a href="tw-hedge-backtest.html">三組多空避險回測</a>、<a href="tsmc-taiex-hedge.html">台積電 × 台指</a>與<a href="tw-arbitrage.html">台股套利</a>；資料來源、期間與成本假設見各篇。</li>
+<li>本文新增的計算只有三項：夏普值的標準誤與 95% 信賴區間、讓下界高於 0 所需的年數、年化報酬除以最大回撤。期間長度依各篇回測的起訖日換算：避險回測 2022-01-03 至 2026-10-22 約 4.8 年，台積電回測 2006-01-02 至 2026-10-22 約 20.8 年。</li>
+<li>信賴區間用 Lo（2002, Financial Analysts Journal）在報酬獨立同分布下的近似。真實的日報酬有自我相關和厚尾，實際區間通常更寬；對有槓桿或空方部位的策略尤其如此。區間只說明單一策略的不確定性；要檢定兩個策略的夏普值差異，還需要兩者報酬的相關係數，本文沒有做。</li>
+<li>兩篇回測計算夏普值的無風險利率不同（避險回測 1.5%、台積電回測 1.2%），跨篇比較夏普值只能看大概。</li>
+<li>臨床研究概念與績效指標的對應是類比，用來幫助判讀，不是統計上的等價。</li>
+<li>程式與原始資料：不公開。所有輸入數字都在各篇文章中可見，上述公式可以直接重算。</li>
+</ul>
+</section>
+<section class="disc">
+<p><b>免責聲明</b>　本文為作者個人學習紀錄，內容為研究方法，不構成任何有價證券之買賣建議或投資推介。作者非證券投資顧問業者，本站不收取任何費用、不接受委託。過去績效不代表未來結果，回測受資料與假設限制。讀者應自行判斷並承擔投資風險。</p>
+<p><b>持有揭露</b>　寫作時作者對文中提及標的之持有狀態：（發布前填寫）。</p>
+</section>
+</div>
+</main>
+<footer>
+  <div>Last updated: October 2026</div>
+</footer>
+</div>
+</body>
+</html>
