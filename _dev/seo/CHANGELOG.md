@@ -12,3 +12,4 @@
   - `http://onepunchmed.com/` → 301 → `https://onepunchmed.com/`
 - Search Console：新增「網域」資源 `onepunchmed.com`（DNS TXT 驗證，記錄要保留），提交 `https://onepunchmed.com/sitemap.xml`。
 - Bing Webmaster：從 GSC 匯入 onepunchmed.com，提交新 sitemap。
+- GitHub 個人頁與 ORCID 的網站欄改為 https://onepunchmed.com 。
