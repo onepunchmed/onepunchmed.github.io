@@ -3,18 +3,18 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>用讀臨床試驗的方式讀回測：十個問題 | Chun Jui Lu</title>
+<title>回測可信嗎？用讀臨床試驗的方式檢查前瞻偏誤、過度擬合與存活者偏誤 | Chun Jui Lu</title>
 <meta name="description" content="臨床研究花了幾十年整理出來的偏誤清單，幾乎可以原封不動套到投資回測上。十個問題，每一個都用本站已發布文章裡的真實結果當例子。研究方法，不構成投資建議。">
 <link rel="canonical" href="https://onepunchmed.github.io/markets/backtest-checklist.html">
 <meta property="og:type" content="article">
-<meta property="og:title" content="用讀臨床試驗的方式讀回測：十個問題 | Chun Jui Lu">
+<meta property="og:title" content="回測可信嗎？用讀臨床試驗的方式檢查前瞻偏誤、過度擬合與存活者偏誤 | Chun Jui Lu">
 <meta property="og:description" content="臨床研究花了幾十年整理出來的偏誤清單，幾乎可以原封不動套到投資回測上。十個問題，每一個都用本站已發布文章裡的真實結果當例子。研究方法，不構成投資建議。">
 <meta property="og:url" content="https://onepunchmed.github.io/markets/backtest-checklist.html">
 <meta property="og:locale" content="zh_TW">
 <meta property="og:site_name" content="Chun Jui Lu">
 <meta name="twitter:card" content="summary">
 <script type="application/ld+json">
-{"@context": "https://schema.org", "@graph": [{"@type": "Article", "headline": "用讀臨床試驗的方式讀回測：十個問題", "datePublished": "2026-10-26", "dateModified": "2026-10-26", "author": {"@type": "Person", "name": "Chun Jui Lu", "url": "https://onepunchmed.github.io/"}, "publisher": {"@type": "Person", "name": "Chun Jui Lu", "url": "https://onepunchmed.github.io/"}, "inLanguage": "zh-Hant", "mainEntityOfPage": "https://onepunchmed.github.io/markets/backtest-checklist.html"}, {"@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "About", "item": "https://onepunchmed.github.io/"}, {"@type": "ListItem", "position": 2, "name": "Markets", "item": "https://onepunchmed.github.io/markets/"}, {"@type": "ListItem", "position": 3, "name": "用讀臨床試驗的方式讀回測：十個問題", "item": "https://onepunchmed.github.io/markets/backtest-checklist.html"}]}]}
+{"@context": "https://schema.org", "@graph": [{"@type": "Article", "headline": "用讀臨床試驗的方式讀回測：十個問題", "datePublished": "2026-10-26", "dateModified": "2026-10-29", "author": {"@type": "Person", "name": "Chun Jui Lu", "url": "https://onepunchmed.github.io/"}, "publisher": {"@type": "Person", "name": "Chun Jui Lu", "url": "https://onepunchmed.github.io/"}, "inLanguage": "zh-Hant", "mainEntityOfPage": "https://onepunchmed.github.io/markets/backtest-checklist.html"}, {"@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "About", "item": "https://onepunchmed.github.io/"}, {"@type": "ListItem", "position": 2, "name": "Markets", "item": "https://onepunchmed.github.io/markets/"}, {"@type": "ListItem", "position": 3, "name": "用讀臨床試驗的方式讀回測：十個問題", "item": "https://onepunchmed.github.io/markets/backtest-checklist.html"}]}]}
 </script>
 <link rel="stylesheet" href="../style.css">
 <link rel="stylesheet" href="../article.css">
@@ -66,6 +66,7 @@
 
 <section>
 <h2>一、時間：最容易犯、也最難察覺</h2>
+<p>前瞻偏誤（look-ahead bias）是回測在做決定的時點，用到了當時還拿不到的資料。最常見的來源是收盤時間差：台股 13:30 收盤，美股收盤在台北隔天清晨，用兩者一起算出的訊號，等於先偷看了答案。本站的套利回測修正這一點之後，每筆平均報酬從 +6.4% 掉到 +1.5%。</p>
 <p>臨床研究的不朽時間偏誤是這樣發生的：研究者把「追蹤期間才開始用藥」的病人歸到用藥組，於是用藥組在開始用藥前那段時間「不可能死亡」，看起來活得比較久。錯不在藥，在分組用了未來的資訊。</p>
 <p>回測的版本是：訊號用到了決策當下還拿不到的價格。台股 13:30 收盤，美股收盤在台北隔天清晨；用兩者一起算出的訊號，已經包含台股還沒反應的美股消息。<a href="tw-arbitrage.html">台股套利</a>第四節的結果是最好的示範：</p>
 <div class="tbl"><table><thead><tr><th>成交假設（台積電 ADR 溢價回歸）</th><th class="n">筆數</th><th class="n">勝率</th><th class="n">平均淨利</th></tr></thead><tbody>
@@ -79,6 +80,7 @@
 
 <section>
 <h2>二、多重比較：參數最佳化就是 p-hacking</h2>
+<p>過度擬合（overfitting）是參數被調得太貼合過去的資料，學到的是那段期間的雜訊，而不是會重複出現的規律，所以樣本內很漂亮、換一段資料就變差。檢查的方法是把資料切成樣本內和樣本外：本站一篇回測裡，樣本內夏普值最高的參數組合是 0.42，到樣本外變成 −0.54。</p>
 <p>臨床試驗要求預先登記主要終點，原因很簡單：測 20 個終點，即使藥完全無效，平均也會有一個在 5% 水準上「顯著」。回測的參數網格是同一回事，只是終點換成了參數組合。</p>
 <p><a href="tsmc-taiex-hedge.html">台積電 × 台指</a>每個版本跑 120 組參數，再分樣本內（2006 到 2016）與樣本外（2017 以後）。如果參數最佳化有用，樣本內排名高的參數，樣本外排名也該高。實際結果：</p>
 <ul>
@@ -98,6 +100,7 @@
 
 <section>
 <h2>四、樣本與證據等級</h2>
+<p>存活者偏誤（survivorship bias）是只用今天還存在的股票、基金或契約去回推過去，期間下市、被剔除或清算的樣本都消失了，結果通常偏樂觀。這和只追蹤還在門診回診的病人會高估療效，是同一種偏誤。</p>
 <p>存活者偏誤在臨床研究裡常見於「只追蹤還在門診的病人」。回測的版本是用今天的成分股或今天還存在的契約回推過去。<a href="tw-hedge-backtest.html">三組多空避險</a>的選股池是 2026 年 10 月還有股票期貨的股票，期間下市、被取消股期的股票沒有排除乾淨，結果會對多方有利。這一點本站在限制段寫明了，但沒有修正。寫明而不修正，至少讓讀者知道誤差的方向。</p>
 <p>證據等級是另一件事。臨床指引會在每條建議旁邊標證據等級，因為一個隨機試驗的結論和一位專家的意見不該等重。<a href="pre-ipo-valuation.html">Pre-IPO 估值</a>把每個輸入數字分成事實、事實（報導）、第三方估計、推估、無公開資料五級，結果發現估值裡最重要的假設，剛好都落在最弱的兩級。沒有分級的估值表看起來一樣精確，其實每一格的可信度差了好幾個等級。</p>
 </section>
@@ -128,6 +131,13 @@
 <li>本文沒有新的分析。所有數字都取自本站已發布的五篇文章，資料來源、期間與成本假設見各篇的「方法與限制」。</li>
 <li>臨床研究偏誤和回測錯誤的對應是類比，不是一對一的等價；例如不朽時間偏誤嚴格說是分組時點的錯誤，前瞻偏誤是資料可得性的錯誤，兩者的共同點是「用了決策當下沒有的資訊」。</li>
 <li>這份清單不是完整的。交易成本模型、流動性、槓桿與保證金、稅制改變等實務問題，各篇文章的限制段有個別討論。</li>
+</ul>
+</section>
+<section>
+<h2>延伸閱讀</h2>
+<ul>
+<li><a href="sharpe-drawdown.html">夏普值與最大回撤怎麼讀：把策略績效當成臨床試驗的終點</a>：續篇：夏普值與最大回撤，用讀臨床試驗終點的方式讀。</li>
+<li><a href="dca-vs-dip-0050.html">定期定額還是逢低加碼？0050 回測 2010–2026：留現金等大跌，等的代價比撿到的便宜大</a>：預先登記的實例：規則先寫死，再跑 0050 回測。</li>
 </ul>
 </section>
 <section class="disc">
