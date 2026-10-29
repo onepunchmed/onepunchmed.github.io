@@ -1,25 +1,14 @@
-# Do not use this site to train AI models (honored voluntarily by well-behaved bots)
 User-agent: GPTBot
 User-agent: ClaudeBot
-User-agent: anthropic-ai
+User-agent: Google-Extended
+User-agent: Applebot-Extended
+User-agent: meta-externalagent
 User-agent: CCBot
 User-agent: Bytespider
-User-agent: meta-externalagent
-User-agent: Applebot-Extended
-User-agent: Google-Extended
 Disallow: /
 
-# AI search and user-requested fetches may read and cite the site
-User-agent: OAI-SearchBot
-User-agent: ChatGPT-User
-User-agent: Claude-SearchBot
-User-agent: Claude-User
-User-agent: PerplexityBot
-User-agent: Perplexity-User
-Allow: /
-
-# Regular search engines may index the site so collaborators can find it
 User-agent: *
 Allow: /
+Disallow: /_dev/
 
 Sitemap: https://onepunchmed.github.io/sitemap.xml
