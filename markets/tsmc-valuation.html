@@ -3,18 +3,18 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>用台積電練估值：四個方法、三個情境，答案的區間比答案重要 | Chun Jui Lu</title>
+<title>台積電估值怎麼做：本益比、DCF、反向 DCF 與三情境敏感度 | Chun Jui Lu</title>
 <meta name="description" content="以台積電 2026 年第三季法說會後的公開資料為例，走一遍遠期本益比、DCF、P/B–ROE 與反向 DCF 四個估值方法，再把每個假設各動一格看結果變多少。終值占 DCF 的 83%，三情境高低相差 2.3 倍。所有輸出以基準情境 DCF 為 100 的指數呈現，只講方法與敏感度，不構成投資建議。">
 <link rel="canonical" href="https://onepunchmed.github.io/markets/tsmc-valuation.html">
 <meta property="og:type" content="article">
-<meta property="og:title" content="用台積電練估值：四個方法、三個情境，答案的區間比答案重要 | Chun Jui Lu">
+<meta property="og:title" content="台積電估值怎麼做：本益比、DCF、反向 DCF 與三情境敏感度 | Chun Jui Lu">
 <meta property="og:description" content="以台積電 2026 年第三季法說會後的公開資料為例，走一遍遠期本益比、DCF、P/B–ROE 與反向 DCF 四個估值方法，再把每個假設各動一格看結果變多少。終值占 DCF 的 83%，三情境高低相差 2.3 倍。所有輸出以基準情境 DCF 為 100 的指數呈現，只講方法與敏感度，不構成投資建議。">
 <meta property="og:url" content="https://onepunchmed.github.io/markets/tsmc-valuation.html">
 <meta property="og:locale" content="zh_TW">
 <meta property="og:site_name" content="Chun Jui Lu">
 <meta name="twitter:card" content="summary">
 <script type="application/ld+json">
-{"@context": "https://schema.org", "@graph": [{"@type": "Article", "headline": "用台積電練估值：四個方法、三個情境，答案的區間比答案重要", "datePublished": "2026-10-26", "dateModified": "2026-10-26", "author": {"@type": "Person", "name": "Chun Jui Lu", "url": "https://onepunchmed.github.io/"}, "publisher": {"@type": "Person", "name": "Chun Jui Lu", "url": "https://onepunchmed.github.io/"}, "inLanguage": "zh-Hant", "mainEntityOfPage": "https://onepunchmed.github.io/markets/tsmc-valuation.html"}, {"@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "About", "item": "https://onepunchmed.github.io/"}, {"@type": "ListItem", "position": 2, "name": "Markets", "item": "https://onepunchmed.github.io/markets/"}, {"@type": "ListItem", "position": 3, "name": "用台積電練估值：四個方法、三個情境，答案的區間比答案重要", "item": "https://onepunchmed.github.io/markets/tsmc-valuation.html"}]}]}
+{"@context": "https://schema.org", "@graph": [{"@type": "Article", "headline": "用台積電練估值：四個方法、三個情境，答案的區間比答案重要", "datePublished": "2026-10-26", "dateModified": "2026-10-29", "author": {"@type": "Person", "name": "Chun Jui Lu", "url": "https://onepunchmed.github.io/"}, "publisher": {"@type": "Person", "name": "Chun Jui Lu", "url": "https://onepunchmed.github.io/"}, "inLanguage": "zh-Hant", "mainEntityOfPage": "https://onepunchmed.github.io/markets/tsmc-valuation.html"}, {"@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "About", "item": "https://onepunchmed.github.io/"}, {"@type": "ListItem", "position": 2, "name": "Markets", "item": "https://onepunchmed.github.io/markets/"}, {"@type": "ListItem", "position": 3, "name": "用台積電練估值：四個方法、三個情境，答案的區間比答案重要", "item": "https://onepunchmed.github.io/markets/tsmc-valuation.html"}]}]}
 </script>
 <link rel="stylesheet" href="../style.css">
 <link rel="stylesheet" href="../article.css">
@@ -125,6 +125,7 @@
 <h3>4.3 P/B–ROE</h3>
 <p>合理淨值比 =（ROE − g）÷（r − g），其中 r 是股權成本（取 9%）、g 是長期成長（基準 6%）。基準情境（35% − 6%）÷（9% − 6%）＝ 9.67 倍，乘 2026 年底每股淨值估計 285。這個公式的陷阱在分母：r − g 只有 3 個百分點，所以 g 從 6% 動到 4%，結果掉 36%；動到 7%，結果漲 45%。ROE 從 35% 動到 42% 或 28% 各是 ±24%。它適合當「高 ROE 能不能持續」的警鈴，不適合當主要方法，所以只給 15%。</p>
 <h3>4.4 反向 DCF</h3>
+<p>一般的 DCF 是先假設成長率，再算公司值多少；反向 DCF 倒過來，固定折現率、利潤率與永續成長率，問現在的市價隱含了多少成長。本文的答案是 2027 到 2030 年每年約 22.1%，非常接近基準情境的 20.8%。</p>
 <p>把第 4.2 節的模型倒過來：固定基準情境的 FCF 利潤率、WACC 9%、永續成長 3%，問「2027 到 2030 年每年要成長多少，DCF 才會等於 2026-10-22 的市價」。答案是每年約 22.1%。對照三個情境的四年年複合成長：樂觀 26.2%、基準 20.8%、悲觀 5.4%。市場隱含的成長率落在基準與樂觀之間、非常靠近基準。這個結果的用法不是「所以市價對不對」，而是：如果你的假設和市場幾乎一樣，估值不會給你任何市場還沒知道的東西。</p>
 </section>
 
@@ -325,6 +326,14 @@
 <li>匯率固定 31.8、股數固定 259.3 億股；未模擬庫藏股、增資或匯率變動對 EPS 的影響。本益比法用 2027 年 EPS，與 DCF 的基準點差一年，第五節已說明。</li>
 <li>原研究有對個股價格水準的判斷、價格區間與未來各期的價格路徑，本文全部不放：那是對個股的買賣意見，不是研究方法。本文所有輸出都換算成基準情境 DCF ＝ 100 的指數，也不與市價比較。</li>
 <li>程式與原始資料：不公開。方法、資料來源與假設如上，足以用公開資料重做；有疑問歡迎來信討論。</li>
+</ul>
+</section>
+<section>
+<h2>延伸閱讀</h2>
+<ul>
+<li><a href="pre-ipo-valuation.html">沒有正常價格時怎麼估值：Anthropic 的盤前合約與宇樹的 7% 流通盤</a>：沒有正常市價時，同一套方法能做到哪裡。</li>
+<li><a href="backtest-checklist.html">用讀臨床試驗的方式讀回測：十個問題</a>：為什麼要給區間，而不是一個點估計。</li>
+<li><a href="tsmc-taiex-hedge.html">台積電超跌加碼、台指超漲放空：20 年回測只有一半成立</a>：同一檔股票的 20 年回測：超跌做多與超漲放空。</li>
 </ul>
 </section>
 <section class="disc">

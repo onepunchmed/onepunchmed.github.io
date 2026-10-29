@@ -4,7 +4,7 @@
 
 起草日期：2026-10-29。依據：`_dev/seo/TASKS.md` Phase 2、`_dev/seo/SEO_PLAN.md` §3.3、§6.1。
 
-**這份檔案只是草稿，沒有改任何 HTML。** 請在每一項的「核可」欄寫「可」、「不要」或修改後的文字。核可的項目會另開一個 PR 實作；實作時同步更新該頁的 `dateModified`、sitemap `lastmod` 與頁尾「Last updated」（TASKS Phase 2 第 6 項）。
+**2026-10-29 站長核可全部項目，已在 PR 實作。** 下方保留原始草稿供對照。 請在每一項的「核可」欄寫「可」、「不要」或修改後的文字。核可的項目會另開一個 PR 實作；實作時同步更新該頁的 `dateModified`、sitemap `lastmod` 與頁尾「Last updated」（TASKS Phase 2 第 6 項）。
 
 共同規則（TASKS Phase 2 規範）：
 - 數字一律不改。定義段只引用該篇已經寫出的數字。
