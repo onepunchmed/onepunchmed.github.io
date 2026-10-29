@@ -17,7 +17,7 @@ import xml.etree.ElementTree as ET
 from html.parser import HTMLParser
 from pathlib import Path
 
-DEFAULT_SITE = "https://onepunchmed.github.io"
+DEFAULT_SITE = "https://onepunchmed.com"
 AUTHOR_NAME = "Chun Jui Lu"
 EXCLUDE = {"_dev"}
 
