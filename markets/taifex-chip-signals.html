@@ -1,0 +1,148 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>外資、散戶與 P/C 比能預測台指嗎？6 個籌碼訊號扣成本後的檢驗 | Chun Jui Lu</title>
+<meta name="description" content="把外資台指期與選擇權部位、小台散戶多空比、P/C 未平倉比寫成固定規則，T+1 開盤進場、扣成本回測台指期：6 個訊號都不顯著，賺錢的版本靠多頭期間做多，外資成本線守住率接近隨機。研究方法，不構成投資建議。">
+<link rel="canonical" href="https://onepunchmed.com/markets/taifex-chip-signals.html">
+<meta property="og:type" content="article">
+<meta property="og:title" content="外資、散戶與 P/C 比能預測台指嗎？6 個籌碼訊號扣成本後的檢驗 | Chun Jui Lu">
+<meta property="og:description" content="把外資台指期與選擇權部位、小台散戶多空比、P/C 未平倉比寫成固定規則，T+1 開盤進場、扣成本回測台指期：6 個訊號都不顯著，賺錢的版本靠多頭期間做多，外資成本線守住率接近隨機。研究方法，不構成投資建議。">
+<meta property="og:url" content="https://onepunchmed.com/markets/taifex-chip-signals.html">
+<meta property="og:locale" content="zh_TW">
+<meta property="og:site_name" content="Chun Jui Lu">
+<meta name="twitter:card" content="summary">
+<script type="application/ld+json">
+{"@context": "https://schema.org", "@graph": [{"@type": "Article", "headline": "外資、散戶與 P/C 比能預測台指嗎？6 個籌碼訊號扣成本後的檢驗", "datePublished": "2026-10-30", "dateModified": "2026-10-30", "author": {"@type": "Person", "name": "Chun Jui Lu", "url": "https://onepunchmed.com/"}, "publisher": {"@type": "Person", "name": "Chun Jui Lu", "url": "https://onepunchmed.com/"}, "inLanguage": "zh-Hant", "mainEntityOfPage": "https://onepunchmed.com/markets/taifex-chip-signals.html"}, {"@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "About", "item": "https://onepunchmed.com/"}, {"@type": "ListItem", "position": 2, "name": "Markets", "item": "https://onepunchmed.com/markets/"}, {"@type": "ListItem", "position": 3, "name": "外資、散戶與 P/C 比能預測台指嗎？6 個籌碼訊號扣成本後的檢驗", "item": "https://onepunchmed.com/markets/taifex-chip-signals.html"}]}]}
+</script>
+<link rel="stylesheet" href="../style.css">
+<link rel="stylesheet" href="../article.css">
+</head>
+<body>
+<div class="wrap">
+<header class="site">
+  <a class="name" href="../">Chun Jui Lu</a>
+  <nav>
+    <a href="../">About</a>
+    <a href="../research.html">Research</a>
+    <a href="../data.html">Data</a>
+    <a href="./" aria-current="page">Markets</a>
+    <a href="../health/">Health</a>
+    <a href="../notes.html">Notes</a>
+    <a href="../disclosure.html">Disclosure</a>
+  </nav>
+</header>
+<main>
+  <h1>外資、散戶與 P/C 比能預測台指嗎？6 個籌碼訊號扣成本後的檢驗</h1>
+  <p class="lead">外資期貨多單增加、散戶過度偏多、P/C 比偏高，是盤後最常被拿來解讀台指期的籌碼。本文把 6 種常見說法寫成固定規則，籌碼公布後隔天開盤才進場、扣掉期交稅、手續費與滑價，再和「每天都做多」比。結果是 6 個訊號都沒有統計上的意義，看起來賺錢的版本，獲利幾乎都來自多頭期間的做多。外資期貨成本線當支撐壓力，守住率也和隨機價位差不多。法人資料只能回溯約 3 年，這是本文最大的限制。</p>
+  <p class="article-meta"><a rel="author" href="../">Chun Jui Lu</a> · <time datetime="2026-10-30">2026 年 10 月 30 日</time> · 回測、台指期、籌碼</p>
+
+<div class="mdms-article">
+<section class="verdict">
+<h2>四個重點</h2>
+<ol>
+<li><b>6 個外資、散戶與 P/C 比訊號，扣成本後沒有一個顯著。</b>同時做 6 個檢定，排除巧合大約要 |t| ≥ 2.6；t 值最高的是散戶反指標的 1.38。</li>
+<li><b>看起來賺錢的版本，獲利來自多頭期間的做多腿。</b>散戶反指標的多單平均每筆 +342 點、空單 +7 點；P/C 比多單 +136 點、空單 −46 點。同期間「每 5 天都做多」平均每筆就有 +164 點。</li>
+<li><b>換參數，方向就翻。</b>回看天數、門檻與持有天數的 36 個組合裡，淨損益正負都有，沒有一個 |t| 超過 2.0；逐年結果也不一致。</li>
+<li><b>外資期貨成本線的守住率接近隨機。</b>當天收盤守在成本線同側的比例約 39% 到 43%，隨機平移的價位約 36% 到 37%，百分位 69% 到 88%，都沒到 95%。</li>
+</ol>
+</section>
+
+<section>
+<h2>一、問題與規則</h2>
+<p>盤後常見的籌碼解讀有三類：外資台指期與選擇權的部位增減、小台散戶多空比（反指標）、選擇權 Put/Call 未平倉比。本文把它們寫成固定規則，檢查扣完成本後能不能預測隔天或 5 天後的台指期。</p>
+<ul>
+<li><b>不偷看。</b>籌碼在 T 日 15:00 公布，所以最早 T+1 日盤開盤進場。「當沖」＝T+1 開盤進、收盤出；「5 日」＝T+1 開盤進、T+5 收盤出，持倉期間不重複進場。</li>
+<li><b>標的與成本。</b>台指期大台近月日盤，每點 200 元；成本為期交稅十萬分之二乘契約金額、每邊手續費 50 元、每邊滑價 1 點，來回約 4.4 點（約 870 元）。</li>
+<li><b>顯著性。</b>用每筆淨損益的 t 值，6 個檢定一起看，Bonferroni 5% 約需 |t| ≥ 2.6。</li>
+<li><b>樣本。</b>期交所的三大法人資料只開放下載最近約 3 年，因此外資相關檢定只有 2023-10-30 到 2026-10-22（約 724 個交易日）。這段期間台指期從約 16,200 點漲到約 46,300 點，是強勁多頭，做多那一側天生占便宜。P/C 比與小台資料可回溯到 2020 年。</li>
+</ul>
+</section>
+
+<section>
+<h2>二、6 個訊號的結果</h2>
+<div class="tbl"><table><thead><tr><th>訊號</th><th>持有</th><th class="n">筆數</th><th class="n">勝率</th><th class="n">淨點數／筆</th><th class="n">t 值</th><th class="n">多單／筆</th><th class="n">空單／筆</th><th class="n">每天做多基準</th></tr></thead><tbody>
+<tr><td>1. 外資台指期淨未平倉 增→多、減→空</td><td>當沖</td><td class="n">722</td><td class="n">50%</td><td class="n">+3.8</td><td class="n">0.34</td><td class="n">+6.0</td><td class="n">+1.8</td><td class="n">−1.9</td></tr>
+<tr><td>2. 外資淨未平倉 60 日高檔→多、低檔→空</td><td>5 日</td><td class="n">93</td><td class="n">49%</td><td class="n">−5.8</td><td class="n">−0.05</td><td class="n">+161.5</td><td class="n">−97.9</td><td class="n">+163.8</td></tr>
+<tr><td>3. 外資選擇權淨多方金額 增→多、減→空</td><td>當沖</td><td class="n">722</td><td class="n">49%</td><td class="n">+8.3</td><td class="n">0.75</td><td class="n">+9.3</td><td class="n">+7.1</td><td class="n">−1.9</td></tr>
+<tr><td>4. 小台散戶多空比 極偏多→空、極偏空→多</td><td>5 日</td><td class="n">58</td><td class="n">59%</td><td class="n">+163.0</td><td class="n">1.38</td><td class="n">+342.0</td><td class="n">+7.1</td><td class="n">+163.8</td></tr>
+<tr><td>5. P/C 未平倉比 偏高→多、偏低→空（2020 起）</td><td>5 日</td><td class="n">236</td><td class="n">53%</td><td class="n">+44.1</td><td class="n">0.90</td><td class="n">+136.1</td><td class="n">−46.4</td><td class="n">+87.9</td></tr>
+<tr><td>5′. 同上，只看 2023-10 起</td><td>5 日</td><td class="n">111</td><td class="n">53%</td><td class="n">+87.7</td><td class="n">0.89</td><td class="n">+240.5</td><td class="n">−67.8</td><td class="n">—</td></tr>
+<tr><td>6. 訊號 1 與 3 同向才進場</td><td>當沖</td><td class="n">415</td><td class="n">50%</td><td class="n">+13.2</td><td class="n">0.92</td><td class="n">+16.1</td><td class="n">+10.1</td><td class="n">−1.9</td></tr>
+</tbody></table></div>
+<p>「每天做多基準」是同期間每天用同樣持有期做多的平均淨點數。訊號 4 的 +163.0 點和「每 5 天都做多」的 +163.8 點幾乎一樣；它賺的是多頭，不是散戶的反向資訊。訊號 2 和 5 也一樣：多單賺、空單賠。</p>
+<div class="callout"><p>這像是一個只在病情自然好轉期間收案的試驗：治療組改善了，但對照組也改善了同樣多。沒有「每天都做多」這個對照組，訊號 4 看起來會像一個勝率 59%、t 值最高的策略。</p></div>
+<p>另外檢查了 T 日收盤到 T+1 開盤的跳空：沿訊號方向平均只有 −6.9 到 +7.7 點，籌碼裡就算有資訊，也沒有大量在可交易之前被跳空吃掉。</p>
+</section>
+
+<section>
+<h2>三、換參數會不會翻轉</h2>
+<p>訊號 2、4、5 的「高檔／低檔」要自己定義，所以把回看 20、60、120 日 × 門檻 80、90 百分位 × 持有 1、5 日全部跑一次（每個訊號 12 組）：</p>
+<div class="tbl"><table><thead><tr><th>訊號</th><th class="n">組合數</th><th class="n">淨損益為正</th><th class="n">淨點數／筆範圍</th><th class="n">最高 t 值</th></tr></thead><tbody>
+<tr><td>2. 外資淨未平倉高低檔</td><td class="n">12</td><td class="n">7</td><td class="n">−142.0 到 +53.4</td><td class="n">1.30</td></tr>
+<tr><td>4. 小台散戶反指標</td><td class="n">12</td><td class="n">5</td><td class="n">−45.0 到 +163.0</td><td class="n">1.38</td></tr>
+<tr><td>5. P/C 未平倉比</td><td class="n">12</td><td class="n">8</td><td class="n">−49.3 到 +94.8</td><td class="n">1.94</td></tr>
+</tbody></table></div>
+<p>原本選用的參數（訊號 4 的 60 日／90 百分位／5 日）剛好是該訊號 12 組裡最好的一組；同一個回看天數改成 80 百分位，就變成每筆 −45.0 點。訊號 1、3、6 把持有期改成 3 日或 5 日，淨損益也大多轉負（訊號 1 持有 3 日每筆 −61.3 點）。</p>
+</section>
+
+<section>
+<h2>四、逐年</h2>
+<div class="tbl"><table><thead><tr><th>淨點數／筆（筆數）</th><th class="n">2024</th><th class="n">2025</th><th class="n">2026</th></tr></thead><tbody>
+<tr><td>1. 外資台指期淨未平倉增減</td><td class="n">+16.5（242）</td><td class="n">+2.6（243）</td><td class="n">−9.9（194）</td></tr>
+<tr><td>2. 外資淨未平倉高低檔</td><td class="n">+141.1（29）</td><td class="n">−55.9（33）</td><td class="n">−90.0（31）</td></tr>
+<tr><td>3. 外資選擇權淨多方金額</td><td class="n">−5.0（242）</td><td class="n">−13.6（243）</td><td class="n">+54.4（194）</td></tr>
+<tr><td>4. 小台散戶反指標</td><td class="n">+169.5（18）</td><td class="n">+13.9（25）</td><td class="n">+403.8（15）</td></tr>
+<tr><td>5. P/C 未平倉比</td><td class="n">+80.9（34）</td><td class="n">+169.4（40）</td><td class="n">+14.2（30）</td></tr>
+<tr><td>6. 訊號 1 與 3 同向</td><td class="n">+12.1（143）</td><td class="n">−6.8（146）</td><td class="n">+49.1（96）</td></tr>
+</tbody></table></div>
+<p>2023 年只有 11 月到 12 月，筆數太少，沒有列入。訊號 1 逐年遞減、訊號 3 前兩年賠第三年賺，沒有一個訊號是年年穩定的。P/C 比在 2020 到 2022 年每筆約 −9.7 到 +1.8 點，獲利集中在 2023 年之後的多頭。</p>
+</section>
+
+<section>
+<h2>五、外資成本線是不是支撐壓力</h2>
+<p>另一種常見說法是「外資台指期成本」會變成支撐或壓力。期交所不公布外資真實成本，所以用估計值：外資淨部位同方向加碼時，以當天（高＋低＋收）÷ 3 加權進成本；減碼不改成本；翻多翻空時重設，前 40 天當暖機。價位一律用前一天以前的資料算出，套用在隔天。</p>
+<p>前一日收盤在價位之上、當天最低點碰到價位，算一次支撐測試；反之是壓力測試。「守住率」是當天收盤仍在同一側的比例。對照組是把成本線在 ±3% 內隨機平移 100 次；實際守住率要贏過 95% 的隨機版本，才算有效。</p>
+<div class="tbl"><table><thead><tr><th>價位</th><th>持有</th><th class="n">事件數</th><th class="n">守住率</th><th class="n">隨機價位守住率</th><th class="n">百分位</th><th class="n">淨點數／筆</th><th class="n">t 值</th></tr></thead><tbody>
+<tr><td>外資台指期成本（大台）</td><td>當日</td><td class="n">102</td><td class="n">40%</td><td class="n">37%</td><td class="n">75%</td><td class="n">−11.4</td><td class="n">−0.51</td></tr>
+<tr><td>外資台指期成本（大台）</td><td>5 日</td><td class="n">92</td><td class="n">39%</td><td class="n">36%</td><td class="n">71%</td><td class="n">+21.2</td><td class="n">0.29</td></tr>
+<tr><td>外資台指期成本（大台＋小台÷4）</td><td>當日</td><td class="n">113</td><td class="n">43%</td><td class="n">37%</td><td class="n">88%</td><td class="n">−5.4</td><td class="n">−0.23</td></tr>
+<tr><td>外資台指期成本（大台＋小台÷4）</td><td>5 日</td><td class="n">98</td><td class="n">39%</td><td class="n">36%</td><td class="n">69%</td><td class="n">+92.3</td><td class="n">1.15</td></tr>
+</tbody></table></div>
+<p>方向是對的，守住率比隨機價位高 3 到 6 個百分點，但每種只有約 100 個事件，最高的百分位 88% 也沒到 95%。觸價進場的交易版本扣成本後有正有負，t 值都在 1.2 以內。現有樣本分不出它和隨機價位的差別，要等法人資料累積更久才能再驗證。</p>
+<p>選擇權最大未平倉履約價與整數關卡的結果在<a href="settlement-max-oi.html">結算週三、最大未平倉履約價與整數關卡</a>。</p>
+</section>
+
+<section>
+<h2>方法與限制</h2>
+<ul>
+<li>資料：期交所三大法人期貨與選擇權（買賣權分計）、P/C ratio、小台與台指選擇權每日行情。法人資料只開放回溯約 3 年，2020 到 2023 年的法人資料已無法下載，所以外資檢定只涵蓋一段多頭；做空訊號在這段期間天生吃虧，結果不能外推到盤整或空頭。</li>
+<li>外資期貨成本是用每日均價估計的，不是真實成交成本。期交所只公布法人買賣權的總口數與金額、沒有分履約價，所以無法估外資的選擇權成本價位。</li>
+<li>觸價限價單假設碰到就成交，對策略偏樂觀；日 K 無法知道同一天內先碰哪個價位。</li>
+<li>報酬以 1 口大台的點數計算，未計保證金利息與資金成本。持有期跨過結算時改用次月合約。</li>
+<li>本文報的是過去約 3 年的規則檢驗，不是對現在籌碼的解讀。</li>
+<li>程式與原始資料：不公開。</li>
+</ul>
+</section>
+<section>
+<h2>延伸閱讀</h2>
+<ul>
+<li><a href="settlement-max-oi.html">結算週三、最大未平倉履約價與整數關卡</a>：同一批資料的姊妹篇：結算日做多與關卡支撐壓力。</li>
+<li><a href="sharpe-drawdown.html">夏普值與最大回撤怎麼讀</a>：t 值、信賴區間與樣本長度的讀法。</li>
+<li><a href="backtest-checklist.html">用讀臨床試驗的方式讀回測：十個問題</a>：多重比較、樣本內外與成本的檢查清單。</li>
+<li><a href="night-session.html">台積電期貨夜盤</a>：另一個「看起來有規律、扣完成本是負的」期貨案例。</li>
+</ul>
+</section>
+<section class="disc">
+<p><b>免責聲明</b>　本文為作者個人學習紀錄，內容為研究方法，不構成任何有價證券之買賣建議或投資推介。作者非證券投資顧問業者，本站不收取任何費用、不接受委託。過去績效不代表未來結果，回測受資料與假設限制。讀者應自行判斷並承擔投資風險。</p>
+<p><b>持有揭露</b>　寫作時作者未持有文中提及之任何標的、期貨或 ADR 部位。</p>
+</section>
+</div>
+</main>
+<footer>
+  <div>Last updated: October 2026</div>
+</footer>
+</div>
+</body>
+</html>

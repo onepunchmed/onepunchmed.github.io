@@ -1,0 +1,186 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>台積電 ADR 溢價會回歸嗎？用 26 年歷史數據看中樞、斷點與收斂方式 | Chun Jui Lu</title>
+<meta name="description" content="台積電 ADR 溢價會不會回到 0？用 2000 到 2026 年 TSM 與 2330 日資料檢定：溢價繞著會移動的中樞均值回歸，中樞在 2002、2004、2023 年三次斷裂；收斂多半靠台股追上，不是 ADR 下跌。研究方法，不構成投資建議。">
+<link rel="canonical" href="https://onepunchmed.com/markets/tsmc-adr-premium.html">
+<meta property="og:type" content="article">
+<meta property="og:title" content="台積電 ADR 溢價會回歸嗎？用 26 年歷史數據看中樞、斷點與收斂方式 | Chun Jui Lu">
+<meta property="og:description" content="台積電 ADR 溢價會不會回到 0？用 2000 到 2026 年 TSM 與 2330 日資料檢定：溢價繞著會移動的中樞均值回歸，中樞在 2002、2004、2023 年三次斷裂；收斂多半靠台股追上，不是 ADR 下跌。研究方法，不構成投資建議。">
+<meta property="og:url" content="https://onepunchmed.com/markets/tsmc-adr-premium.html">
+<meta property="og:locale" content="zh_TW">
+<meta property="og:site_name" content="Chun Jui Lu">
+<meta name="twitter:card" content="summary">
+<script type="application/ld+json">
+{"@context": "https://schema.org", "@graph": [{"@type": "Article", "headline": "台積電 ADR 溢價會回歸嗎？用歷史數據看", "datePublished": "2026-10-30", "dateModified": "2026-10-30", "author": {"@type": "Person", "name": "Chun Jui Lu", "url": "https://onepunchmed.com/"}, "publisher": {"@type": "Person", "name": "Chun Jui Lu", "url": "https://onepunchmed.com/"}, "inLanguage": "zh-Hant", "mainEntityOfPage": "https://onepunchmed.com/markets/tsmc-adr-premium.html"}, {"@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "About", "item": "https://onepunchmed.com/"}, {"@type": "ListItem", "position": 2, "name": "Markets", "item": "https://onepunchmed.com/markets/"}, {"@type": "ListItem", "position": 3, "name": "台積電 ADR 溢價會回歸嗎？用歷史數據看", "item": "https://onepunchmed.com/markets/tsmc-adr-premium.html"}]}]}
+</script>
+<link rel="stylesheet" href="../style.css">
+<link rel="stylesheet" href="../article.css">
+</head>
+<body>
+<div class="wrap">
+<header class="site">
+  <a class="name" href="../">Chun Jui Lu</a>
+  <nav>
+    <a href="../">About</a>
+    <a href="../research.html">Research</a>
+    <a href="../data.html">Data</a>
+    <a href="./" aria-current="page">Markets</a>
+    <a href="../health/">Health</a>
+    <a href="../notes.html">Notes</a>
+    <a href="../disclosure.html">Disclosure</a>
+  </nav>
+</header>
+<main>
+  <h1>台積電 ADR 溢價會回歸嗎？用歷史數據看</h1>
+  <p class="lead">台積電 ADR 溢價（TSM 換算回每股新台幣後比台股 2330 貴多少）常被說成「遲早會收斂」。本站<a href="tw-arbitrage.html">台股套利</a>那篇已經講過它為什麼不會收斂到 0、為什麼收盤對收盤的套利回測會騙人。這篇換一個問題：如果不是回到 0，那它回到哪裡？用 2000 年到 2026 年 10 月的日資料，檢定溢價的中樞、中樞何時移動、跟行情和資金的關係，以及收斂時到底是誰在動。</p>
+  <p class="article-meta"><a rel="author" href="../">Chun Jui Lu</a> · <time datetime="2026-10-30">2026 年 10 月 30 日</time> · 台積電、ADR 溢價、均值回歸</p>
+
+<div class="mdms-article">
+<section class="verdict">
+<h2>五個重點</h2>
+<ol>
+<li><b>會回歸，但回到的是一個會移動的中樞，不是 0。</b>短期偏離大約 5 到 7 週回一半；中樞本身在 2002、2004、2023 年三次斷裂，四段平均依序是 44.0%、15.3%、5.7%、16.6%。</li>
+<li><b>用全期平均當參照點是錯的。</b>全期 ADF 檢定拒絕單根（p = 0.0001），但 KPSS 同時拒絕定態，各子期間的 ADF 多半不顯著。合起來的意思是：有回歸，但回歸的目標在漂移。</li>
+<li><b>收斂多半靠台股追上，不是 ADR 跌下來。</b>溢價偏離 1 年均值最高的那一組（z &gt; 1.5），之後 63 個交易日溢價平均縮 1.6 個百分點，但同期 ADR 平均 +6.6%、台股換算價 +8.3%，兩邊都漲。</li>
+<li><b>推動溢價的是「美國端相對台灣端的熱度」，不是單純漲跌。</b>費城半導體指數減加權指數的月差，五分位由低到高，溢價變化幾乎單調上升；單看加權漲跌，效果小而且不對稱的檢定不顯著。</li>
+<li><b>溢價的下一步大致無法預測。</b>樣本外只有未來 4 週有一點預測力，而且只來自溢價自己的偏離；13 週以上的樣本外 R² 接近 0。</li>
+</ol>
+</section>
+
+<section>
+<h2>一、溢價怎麼算，為什麼不是 0</h2>
+<p>溢價 = TSM ÷（2330 × 5 ÷ 美元兌新台幣匯率）− 1，1 單位 ADR 代表 5 股普通股。制度面的原因在<a href="tw-arbitrage.html">台股套利</a>第三節講過：ADR 可以註銷換回台股，台股轉成 ADR 卻只能用先前註銷釋出的額度，所以溢價只有下緣，沒有上緣。</p>
+<p>這篇補一個對照組：聯電（UMC）同樣是台灣 ADR、受同樣的轉換規定約束，2013 年以後平均溢價只有 −0.5%。單向轉換是溢價存在的必要條件，但溢價有多高，取決於美國投資人對那一檔 ADR 有多少需求。</p>
+</section>
+
+<section>
+<h2>二、26 年的溢價：四個中樞</h2>
+<p>用二元切割加 sup-F 檢定找結構斷點，再用 HAC t 值 ≥ 3 過濾掉自相關造成的假斷點，留下三個：</p>
+<div class="tbl"><table><thead><tr><th>區間</th><th class="n">區間平均溢價</th><th>斷點 HAC t 值</th><th>背景</th></tr></thead><tbody>
+<tr><td>2000-01 至 2002-06</td><td class="n">44.0%</td><td>—</td><td>外資投資上限，買不到足夠台股只能買 ADR</td></tr>
+<tr><td>2002-06 至 2004-01</td><td class="n">15.3%</td><td>−7.8</td><td>外資限制放寬（2003 年廢除 QFII 制度）</td></tr>
+<tr><td>2004-01 至 2023-06</td><td class="n">5.7%</td><td>−5.0</td><td>2004 到 2019 年大致在 0 到 8% 之間</td></tr>
+<tr><td>2023-06 至 2026-10</td><td class="n">16.6%</td><td>+5.8</td><td>與 AI 行情啟動同時</td></tr>
+</tbody></table></div>
+<p>滾動 3 年平均溢價（年底）把中樞的漂移畫得更清楚：</p>
+<div class="tbl"><table><thead><tr><th>年底</th><th class="n">2005</th><th class="n">2010</th><th class="n">2015</th><th class="n">2019</th><th class="n">2021</th><th class="n">2023</th><th class="n">2024</th><th class="n">2025</th></tr></thead><tbody>
+<tr><td>滾動 3 年平均</td><td class="n">12.9%</td><td class="n">8.9%</td><td class="n">1.9%</td><td class="n">3.4%</td><td class="n">7.1%</td><td class="n">7.4%</td><td class="n">8.8%</td><td class="n">14.2%</td></tr>
+</tbody></table></div>
+<p>以週均溢價做時間趨勢（HAC 標準誤）：2005–2019 年每年 −0.3 個百分點（t −2.18），2013–2026 年每年 +1.2 個百分點（t 5.49）。前 15 年中樞往下，近 13 年往上。</p>
+</section>
+
+<section>
+<h2>三、會回歸嗎：定態檢定與半衰期</h2>
+<div class="tbl"><table><thead><tr><th>期間</th><th class="n">平均溢價</th><th class="n">ADF p</th><th class="n">KPSS p</th><th class="n">半衰期（週）</th><th class="n">共整合 p</th></tr></thead><tbody>
+<tr><td>2000–2026</td><td class="n">11.0%</td><td class="n">0.0001</td><td class="n">≤0.01</td><td class="n">13.3</td><td class="n">0.0012</td></tr>
+<tr><td>2000–2004</td><td class="n">29.1%</td><td class="n">0.21</td><td class="n">≤0.01</td><td class="n">7.2</td><td class="n">0.48</td></tr>
+<tr><td>2005–2012</td><td class="n">6.2%</td><td class="n">0.12</td><td class="n">0.021</td><td class="n">4.7</td><td class="n">0.058</td></tr>
+<tr><td>2013–2019</td><td class="n">2.8%</td><td class="n">0.079</td><td class="n">≤0.01</td><td class="n">1.7</td><td class="n">0.054</td></tr>
+<tr><td>2020–2026</td><td class="n">11.8%</td><td class="n">0.18</td><td class="n">≤0.01</td><td class="n">7.3</td><td class="n">0.20</td></tr>
+<tr><td>2023–2026</td><td class="n">15.4%</td><td class="n">0.063</td><td class="n">≤0.01</td><td class="n">5.4</td><td class="n">0.18</td></tr>
+</tbody></table></div>
+<p>ADF 的虛無假設是「不會回歸」，KPSS 的虛無假設是「會回歸到固定均值」。全期兩個都被拒絕，子期間 ADF 多半拒絕不了，這組結果最自然的解讀是：溢價會往中樞拉，但中樞不是固定的。全期 13 週的半衰期，有一部分是把不同中樞混在一起算出來的；分段看，近年大約 5 到 7 週。</p>
+<p>預測迴歸也一致：溢價偏離 1 年均值越多，之後 21 個交易日溢價變化的係數是 −0.21（t −6.47），63、126、252 日的係數也都是負的（t −2.95 到 −2.01）。</p>
+<div class="callout"><p>日資料的溢價有一大塊是時差。台股 13:30 收盤，美股在台北隔天清晨才收，同日費半報酬對日溢價變化的係數 0.54、前一日係數 −0.40，合起來 R² 0.48。日溢價的標準差約 2.1 個百分點，月均降到 1.5。所以本文的回歸結論都用週均或月均。<a href="night-session.html">夜盤</a>那篇用逐筆資料看過這段時差裡溢價怎麼移動。</p></div>
+</section>
+
+<section>
+<h2>四、收斂時，誰在動</h2>
+<p>把每天的溢價偏離 1 年均值換算成 z 分數，分五組，看之後 63 個交易日（2005–2026）：</p>
+<div class="tbl"><table><thead><tr><th>偏離分組</th><th class="n">天數</th><th class="n">溢價變化（百分點）</th><th class="n">朝均值方向的比例</th><th class="n">ADR 報酬</th><th class="n">台股換算價報酬（美元）</th></tr></thead><tbody>
+<tr><td>z &lt; −1.5</td><td class="n">558</td><td class="n">+2.0</td><td class="n">74%</td><td class="n">+3.4%</td><td class="n">+1.4%</td></tr>
+<tr><td>−1.5 到 −0.5</td><td class="n">1,275</td><td class="n">+0.3</td><td class="n">55%</td><td class="n">+4.3%</td><td class="n">+4.0%</td></tr>
+<tr><td>−0.5 到 0.5</td><td class="n">1,476</td><td class="n">+0.1</td><td class="n">53%</td><td class="n">+4.8%</td><td class="n">+4.7%</td></tr>
+<tr><td>0.5 到 1.5</td><td class="n">1,175</td><td class="n">−0.3</td><td class="n">57%</td><td class="n">+5.8%</td><td class="n">+6.1%</td></tr>
+<tr><td>z &gt; 1.5</td><td class="n">612</td><td class="n">−1.6</td><td class="n">70%</td><td class="n">+6.6%</td><td class="n">+8.3%</td></tr>
+</tbody></table></div>
+<p>偏離大的兩端，七成左右會往回走；但回走的方式不是 ADR 跌。偏高時兩邊都漲、台股漲得多；偏低時兩邊也都漲、ADR 漲得多。迴歸版本給同樣的答案：偏離 1 年均值對未來 126 日 ADR 報酬的係數 +0.99、對台股換算價 +1.26，兩者都是正的，台股較大。</p>
+<p>這也是為什麼<a href="tw-arbitrage.html">台股套利</a>那篇的溢價回歸規則，改成真實能成交的時點之後幾乎不剩：收斂常常發生在兩邊一起漲的時候，賭 ADR 回落的那一腿，常是賠的。</p>
+</section>
+
+<section>
+<h2>五、什麼在推動溢價</h2>
+<h3>漲跌本身：方向對，幅度小</h3>
+<p>2005–2026 年把加權指數月報酬分五組，最弱的一組當月溢價平均 −0.43 個百分點，最強的 +0.55。上漲月和下跌月分開估，係數 0.064（t 1.33）和 0.052（t 0.84），都不顯著，看不出「漲時擴大比跌時收斂更快」的穩定規律。</p>
+<h3>美國相對台灣的熱度：比較乾淨</h3>
+<p>改用費半減加權的月差分五組，溢價變化由 −0.71、−0.16、+0.02、+0.26 到 +0.65 個百分點，幾乎單調。多變數月迴歸控制加權報酬、匯率、VIX、外資持股變化之後，這個變數仍然顯著。</p>
+<h3>外資：短期同向，長期反向</h3>
+<p>月變化上，外資當月加碼台積電，溢價同月擴大（2013–2026 年 t 6.3，R² 0.28）。長期水準卻是負相關（2013 年後相關係數 −0.55）：外資持股從 2017 年約 80% 降到 2026 年的 68.6%，同期溢價反而升高。合理的解讀是台股端改由本地資金接手，美國資金集中在 ADR，兩邊投資人越分離，價差越難被抹平。</p>
+<h3>匯率與 VIX：不是主因</h3>
+<p>匯率的單變數迴歸各期都不顯著（t 介於 −1.6 到 0.9）；VIX 單變數微負，放進行情變數後就消失。</p>
+<h3>重大行情事件</h3>
+<div class="tbl"><table><thead><tr><th>事件</th><th class="n">TSM</th><th class="n">加權</th><th class="n">溢價起</th><th class="n">溢價迄</th><th class="n">期間最高</th></tr></thead><tbody>
+<tr><td>金融海嘯（2008-06 至 2008-11）</td><td class="n">−51%</td><td class="n">−53%</td><td class="n">6.7%</td><td class="n">6.3%</td><td class="n">29.8%</td></tr>
+<tr><td>2018 貿易戰</td><td class="n">−22%</td><td class="n">−13%</td><td class="n">3.6%</td><td class="n">−1.4%</td><td class="n">8.8%</td></tr>
+<tr><td>COVID（2020-01 至 2020-03）</td><td class="n">−27%</td><td class="n">−29%</td><td class="n">4.2%</td><td class="n">7.6%</td><td class="n">9.4%</td></tr>
+<tr><td>2022 升息</td><td class="n">−57%</td><td class="n">−31%</td><td class="n">15.5%</td><td class="n">3.9%</td><td class="n">15.5%</td></tr>
+<tr><td>2024 夏季修正</td><td class="n">−23%</td><td class="n">−17%</td><td class="n">19.2%</td><td class="n">18.6%</td><td class="n">19.2%</td></tr>
+<tr><td>2025 關稅</td><td class="n">−37%</td><td class="n">−22%</td><td class="n">28.9%</td><td class="n">14.4%</td><td class="n">28.9%</td></tr>
+</tbody></table></div>
+<p>以台積電或美國科技股領跌的修正（2018、2022、2025），溢價收斂；全球流動性恐慌（2008、COVID）期間，溢價反而短暫衝高。同樣是「下跌」，對溢價的方向可以相反。</p>
+</section>
+
+<section>
+<h2>六、為什麼 2009 年後中樞能一直往上</h2>
+<p>台積電 20-F 申報的 ADR 流通單位數顯示：2003 到 2008 年，國發基金和飛利浦分 5 次以 ADR 形式釋股，ADR 占總股本由 9.9% 升到 22.0%，同期溢價由 17% 左右降到 4%。2009 年之後再沒有新的 ADR 釋出，單位數只因兌回而緩慢減少，到 2026 年占股本 20.5%。2023 年以後溢價從未低於 0，兌回幾乎停止。</p>
+<p>供給固定，需求的變化就全部反映在價格上。這說明了 2009 年後溢價跟著美國端熱度擺動，以及為什麼沒有一個把它往 0 拉的機制。5 次釋股的事件研究樣本太少，而且 2002–2003 年的幾次和外資限制放寬重疊，不能單獨歸因。</p>
+<p>台灣端的 0050、006208 申購也被拿來解釋溢價收斂。2020–2026 年單看同月，申購越多溢價越小（t −2.05）；加入費半減加權和外資持股變化之後就不顯著（t 1.26），也無法預測下個月。比較合理的解讀是：申購多發生在台股相對強的月份，真正推動價差的仍是兩地相對熱度。</p>
+</section>
+
+<section>
+<h2>七、能預測下一步嗎</h2>
+<p>用 2010–2026 年做逐期重新估計的樣本外測試，預測期不與訓練資料重疊：</p>
+<ul>
+<li>只有<b>未來 4 週</b>有一點預測力，來源是溢價自己相對 52 週與 13 週均值的偏離、近 4 週變化和台股休市天數。預測值的幅度遠小於實際變化，大部分變動仍無法預測。</li>
+<li><b>13 週以上</b>，樣本外 R² 接近 0。中樞會移動，中期方向猜不準。</li>
+<li>費半減加權、外資持股變化、三大法人買賣超、ETF 申購、ADR 供給變化、融資、VIX、匯率、TSM 融券量、財報週，在樣本內有些 t 值不錯，<b>樣本外都沒有增加預測力</b>；放進全部因子的模型和梯度提升反而過度擬合。</li>
+<li>拿模型每 4 週決定持有 2330 或 TSM，換腿前每 4 週多約 0.4%（t 約 2.1–2.5），扣掉每次約 0.6% 的換腿成本後不顯著（t 0.9–1.4）。</li>
+</ul>
+<p>這和<a href="sharpe-drawdown.html">夏普值與最大回撤</a>那篇講的替代終點是同一件事：樣本內的 t 值是替代終點，樣本外扣成本的結果才是硬終點。</p>
+</section>
+
+<section>
+<h2>回到標題：會回歸嗎</h2>
+<ul>
+<li><b>回到 0：</b>歷史上沒有發生過持續回到 0 的情況，2004 年後溢價也從未長期低於 0；制度上沒有把它往 0 拉的機制，除非 ADR 供給再增加。</li>
+<li><b>回到中樞：</b>有。偏離越大回得越明顯，大約 5 到 7 週回一半，而且多半是台股追上。</li>
+<li><b>中樞在哪裡：</b>這是最難的部分。它在 26 年裡移動了三次，最近一次跟美國端的 AI 熱度同時發生；用任何單一期間的平均當成「合理溢價」，都可能拿錯參照點。</li>
+</ul>
+</section>
+
+<section>
+<h2>方法與限制</h2>
+<ul>
+<li>資料：Yahoo Finance 日收盤（TSM、2330.TW、UMC、2303.TW、加權指數、費半、VIX），FRED DEXTAUS 匯率（2026-10-23 後改用 Yahoo），FinMind 外資持股、三大法人、融資與 ETF 受益權單位數，台積電 20-F 的 ADR 流通單位數，SEC 424B 的釋股日期。期間 2000-01 至 2026-10-22。</li>
+<li>溢價用兩地收盤價計算，同日 ADR 收盤包含台股收盤後的美股走勢，日資料約有 ±2% 的時差雜訊；週均、月均可以降低但不能消除。</li>
+<li>斷點檢定以 HAC t ≥ 3 過濾；斷點日期是統計估計，和制度事件的對應是事後解讀。</li>
+<li>Yahoo 的 TSM 漏記 2007、2008 年兩次 0.5% 股票股利，已手動校正。匯率用紐約中午買入價，與實際成交匯率有小差。</li>
+<li>外資持股含 ADR 存託股；ADR 單位數只有年度資料，月度變化無法拆分。主管機關轉換規定沒有找到一手條文，引用自新聞與券商報告。</li>
+<li>本文與<a href="tw-arbitrage.html">台股套利</a>的 2020 年後平均溢價略有差異（11.8% 與 11.7%），來自資料截止日與計算細節不同。</li>
+<li>本文只描述歷史統計，不判斷目前溢價的高低，也不提供任何進出場條件。</li>
+<li>程式與原始資料：不公開。</li>
+</ul>
+</section>
+<section>
+<h2>延伸閱讀</h2>
+<ul>
+<li><a href="tw-arbitrage.html">台股套利為什麼對散戶不成立：用 6.8 年期貨資料算一次</a>：ADR 溢價的制度成因，以及收盤對收盤回測的時差陷阱。</li>
+<li><a href="night-session.html">夜盤能反映真實價格嗎？台積電期貨夜盤是避險工具，不是套利機會</a>：溢價在美股盤中怎麼移動、隔天會不會補回來。</li>
+<li><a href="sharpe-drawdown.html">夏普值與最大回撤怎麼讀：把策略績效當成臨床試驗的終點</a>：樣本內與樣本外、替代終點與硬終點。</li>
+</ul>
+</section>
+<section class="disc">
+<p><b>免責聲明</b>　本文為作者個人學習紀錄，內容為研究方法，不構成任何有價證券之買賣建議或投資推介。作者非證券投資顧問業者，本站不收取任何費用、不接受委託。過去績效不代表未來結果，回測受資料與假設限制。讀者應自行判斷並承擔投資風險。</p>
+<p><b>持有揭露</b>　寫作時作者未持有文中提及之任何標的、期貨或 ADR 部位。</p>
+</section>
+</div>
+</main>
+<footer>
+  <div>Last updated: October 2026</div>
+</footer>
+</div>
+</body>
+</html>

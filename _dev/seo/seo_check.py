@@ -112,7 +112,7 @@ def url_for(rel, site):
 
 
 def is_article(rel):
-    return rel.startswith("markets/") and not rel.endswith("index.html")
+    return rel.startswith(("markets/", "health/")) and not rel.endswith("index.html")
 
 
 def as_list(x):

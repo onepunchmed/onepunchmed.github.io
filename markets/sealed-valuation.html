@@ -1,0 +1,166 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>估值先封存：看到股價前先把答案鎖起來 | Chun Jui Lu</title>
+<meta name="description" content="估值結果常常落在現價附近，原因多半是輸入裡早就有價格。示範一套防定錨流程：只用財報、參數先寫死、全市場同一規則、SHA-256 封存後才看股價。台股 1,603 家盲估後只有 8.2% 低於內在價值；台積電結果以現價 = 100 指數化。研究方法，不構成投資建議。">
+<link rel="canonical" href="https://onepunchmed.com/markets/sealed-valuation.html">
+<meta property="og:type" content="article">
+<meta property="og:title" content="估值先封存：看到股價前先把答案鎖起來 | Chun Jui Lu">
+<meta property="og:description" content="估值結果常常落在現價附近，原因多半是輸入裡早就有價格。示範一套防定錨流程：只用財報、參數先寫死、全市場同一規則、SHA-256 封存後才看股價。台股 1,603 家盲估後只有 8.2% 低於內在價值；台積電結果以現價 = 100 指數化。研究方法，不構成投資建議。">
+<meta property="og:url" content="https://onepunchmed.com/markets/sealed-valuation.html">
+<meta property="og:locale" content="zh_TW">
+<meta property="og:site_name" content="Chun Jui Lu">
+<meta name="twitter:card" content="summary">
+<script type="application/ld+json">
+{"@context": "https://schema.org", "@graph": [{"@type": "Article", "headline": "估值先封存：看到股價前先把答案鎖起來", "datePublished": "2026-10-30", "dateModified": "2026-10-30", "author": {"@type": "Person", "name": "Chun Jui Lu", "url": "https://onepunchmed.com/"}, "publisher": {"@type": "Person", "name": "Chun Jui Lu", "url": "https://onepunchmed.com/"}, "inLanguage": "zh-Hant", "mainEntityOfPage": "https://onepunchmed.com/markets/sealed-valuation.html"}, {"@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "About", "item": "https://onepunchmed.com/"}, {"@type": "ListItem", "position": 2, "name": "Markets", "item": "https://onepunchmed.com/markets/"}, {"@type": "ListItem", "position": 3, "name": "估值先封存：看到股價前先把答案鎖起來", "item": "https://onepunchmed.com/markets/sealed-valuation.html"}]}]}
+</script>
+<link rel="stylesheet" href="../style.css">
+<link rel="stylesheet" href="../article.css">
+</head>
+<body>
+<div class="wrap">
+<header class="site">
+  <a class="name" href="../">Chun Jui Lu</a>
+  <nav>
+    <a href="../">About</a>
+    <a href="../research.html">Research</a>
+    <a href="../data.html">Data</a>
+    <a href="./" aria-current="page">Markets</a>
+    <a href="../health/">Health</a>
+    <a href="../notes.html">Notes</a>
+    <a href="../disclosure.html">Disclosure</a>
+  </nav>
+</header>
+<main>
+  <h1>估值先封存：看到股價前先把答案鎖起來</h1>
+  <p class="lead">估一家公司值多少，最常見的結果是「合理價就在現價附近」。這不一定代表市場很有效率，更常見的原因是估值的輸入裡早就有價格：同業本益比、歷史本益比區間、法人共識 EPS，都是看得到股價的人或市場本身產生的。臨床試驗用盲法和預先登記處理同樣的問題；估值也可以：先只用財報把內在價值算完、封存，之後才看股價。本文示範這套流程，用在台股上市櫃全市場與台積電兩份研究上。</p>
+  <p class="article-meta"><a rel="author" href="../">Chun Jui Lu</a> · <time datetime="2026-10-30">2026 年 10 月 30 日</time> · 方法論、估值、定錨偏誤</p>
+
+<div class="mdms-article">
+<section class="verdict">
+<h2>四個重點</h2>
+<ol>
+<li><b>估值貼近現價，多半是方法造成的。</b>倍數法用的倍數來自市場交易，等於把現價換個單位再乘回去；共識 EPS 也會跟著股價調整。這樣的方法沒有能力說「不」。</li>
+<li><b>防定錨的四個動作：</b>只用財報、參數在看價格前寫死、全市場同一套規則、算完先用 SHA-256 雜湊封存再抓股價。</li>
+<li><b>沒有定錨的證據是分布不集中在 1 倍。</b>1,603 家上市櫃公司盲估後，只有 8.2% 的股價低於內在價值，股價 ÷ 內在價值的中位數是 3.57 倍。</li>
+<li><b>台積電的盲估結果離現價很遠，而且兩條腿一高一低。</b>以現價 = 100，給成長的版本是 137，不給成長的版本是 31；第一版用歷史本益比的估值是 105，就是被定錨的那一個。</li>
+</ol>
+</section>
+
+<section>
+<h2>一、定錨從哪裡來</h2>
+<p>定錨（anchoring）是先看到一個數字，之後的估計就往它靠。估值時，價格可以從四個地方滲進來：</p>
+<div class="tbl"><table><thead><tr><th>來源</th><th>為什麼會把結果拉向現價</th></tr></thead><tbody>
+<tr><td>同業倍數、歷史本益比區間</td><td>倍數本身就是市場價格除以獲利；取歷史中位數附近的倍數，等於重現過去的價格水準。</td></tr>
+<tr><td>法人共識 EPS、目標價</td><td>由看得到股價的人產生，會跟著股價修正。</td></tr>
+<tr><td>看價後才挑的參數</td><td>折現率、終值成長率、情境權重，每一個都可以「看起來合理」地往現價挪一點。</td></tr>
+<tr><td>估值者自己</td><td>先看到現價，再判斷什麼假設合理。人如此，語言模型在數字估計上也有已知的錨定效應。</td></tr>
+</tbody></table></div>
+<div class="callout"><p>這和臨床試驗不設盲的問題一樣：評估者知道受試者分到哪一組，判讀就會偏向預期。不需要故意，只要知道就夠了。</p></div>
+</section>
+
+<section>
+<h2>二、流程：只用基本面、參數先定、封存再比對</h2>
+<ol>
+<li><b>只用財報。</b>內在價值只由每股淨值、歷年 ROE（台積電另用 ROIC、再投資率、稅率）推出，不用任何股價、目標價、同業倍數或共識預估。</li>
+<li><b>參數先寫死。</b>全市場版本：權益成本 Ke 10%、長期成長 g 2%、ROE 上限 25%，在下載任何價格前寫進程式。台積電版本另把參數檔本身也算雜湊。</li>
+<li><b>全市場同一規則。</b>不針對個股調整假設，就沒辦法替某一家公司湊出想要的答案。</li>
+<li><b>SHA-256 封存。</b>算完把內在價值檔存下，記下 SHA-256 雜湊值與時間戳，之後才抓收盤價。檔案事後被改過，雜湊就對不上。</li>
+<li><b>用反推代替正推。</b>不問「合理價多少」，而是比較「現價隱含公司要做到多少 ROE」和「公司過去實際做到多少」。</li>
+</ol>
+<p>全市場版本的估值式是剩餘收益法與零成長獲利能力價值的平均：</p>
+<div class="callout"><p>正常化 ROE = min(10 年平均 ROE, 近 5 年平均 ROE, 25%)；獲利正在惡化時再往下修。<br>內在價值 = [每股淨值 ×（ROE − g）÷（Ke − g）＋ 每股淨值 × ROE ÷ Ke] ÷ 2</p></div>
+<p>取 10 年和 5 年平均中較低者，可以壓掉景氣高峰，也會懲罰獲利正在下滑的公司。品質條件（排除金融股、至少 8 年資料、10 年內最多 1 年虧損、正常化 ROE ≥ 8%、負債／權益 ≤ 1、營業現金流／淨利 ≥ 0.8）也在看價格前決定。</p>
+</section>
+
+<section>
+<h2>三、全市場結果：分布說明沒有定錨</h2>
+<p>如果估值偷偷參考了價格，股價 ÷ 內在價值（P/IV）應該擠在 1 倍附近。實際上大部分落在 1 倍右邊：</p>
+<div class="tbl"><table><thead><tr><th>上市櫃，2026-10-22 收盤</th><th class="n">家數</th><th class="n">低於內在價值的比例</th><th class="n">P/IV 中位數</th></tr></thead><tbody>
+<tr><td>全市場（有股價者）</td><td class="n">1,580</td><td class="n">8.2%</td><td class="n">3.57 倍</td></tr>
+<tr><td>其中通過品質條件</td><td class="n">308</td><td class="n">19.8%</td><td class="n">1.54 倍</td></tr>
+</tbody></table></div>
+<p>P/IV 落在 0.71 到 1.41 倍之間（1 倍上下各約三成）的只有 272 家，約 17%；P/IV 超過 11 倍的最右一格就有 559 家，其中 436 家的正常化 ROE 低於 2%，盲估價值小於等於 0。</p>
+<div class="tbl"><table><thead><tr><th>權益成本敏感度</th><th class="n">Ke 8%</th><th class="n">Ke 10%（主設定）</th><th class="n">Ke 12%</th></tr></thead><tbody>
+<tr><td>全市場低於內在價值的比例</td><td class="n">16.3%</td><td class="n">8.2%</td><td class="n">4.1%</td></tr>
+<tr><td>品質股低於內在價值的比例</td><td class="n">36.7%</td><td class="n">19.8%</td><td class="n">—</td></tr>
+</tbody></table></div>
+<p>這套方法不給成長溢價，會系統性地讓高成長公司看起來「貴」。所以「多數股票高於盲估價值」說的是市場整體在為成長付錢，不代表多數股票被高估。它是價值篩選的尺，不是全市場的合理價。</p>
+</section>
+
+<section>
+<h2>四、台積電：兩條腿，結果以現價 = 100 表示</h2>
+<p>台積電另做一份盲估，兩條腿並列。A 腿與全市場同法，不給成長；B 腿只用財報推出的成長：過去 5 年淨再投資率 51.0% × 平均 ROIC 42.5% = 21.7%，高成長期後線性衰退到 2%。以下所有估值都除以 2026-10-22 收盤價再乘 100。</p>
+<div class="tbl"><table><thead><tr><th>版本（現價 = 100）</th><th class="n">樂觀</th><th class="n">基準</th><th class="n">悲觀</th><th class="n">加權</th></tr></thead><tbody>
+<tr><td>B 腿：ROIC × 再投資 DCF，折現率 10%</td><td class="n">188</td><td class="n">161</td><td class="n">56</td><td class="n">137</td></tr>
+<tr><td>B 腿壓力測試：折現率 12%</td><td class="n">135</td><td class="n">118</td><td class="n">45</td><td class="n">100</td></tr>
+<tr><td>A 腿：不給成長（RI＋EPV）</td><td class="n">40</td><td class="n">30</td><td class="n">25</td><td class="n">31</td></tr>
+<tr><td>第一版（看價後，以倍數法為主）</td><td colspan="3" class="n">—</td><td class="n">105</td></tr>
+</tbody></table></div>
+<p>情境權重為樂觀 25%、基準 45%、悲觀 30%，也在看價前定好。反推的結果比單一數字更有用：</p>
+<ul>
+<li>維持 B 腿基準結構，現價只需要前 5 年稅後營業利益年成長 13.7%，基本面推算是 21.7%；若成長照 21.7%，市場隱含折現率是 13.2%。</li>
+<li>照 A 腿的規則，現價要求 ROE 永久維持 79.6%，過去 10 年平均是 28.3%。台積電的價值幾乎全部來自成長能延續多久。</li>
+</ul>
+<h3>第一版哪裡被定錨</h3>
+<p>第一版估值在看過股價後做：預估本益比佔 50% 權重，用的倍數區間剛好包住台積電過去 10 年本益比的中位數；EPS 用法人共識；DCF 的折現率與終值成長率也是看價後挑的。三個輸入都帶著價格，結果落在 105，幾乎就是現價。</p>
+<p>盲估的兩條腿一高一低、離現價都超過 30%。這說明「合理價」其實取決於兩個判斷：相信高成長能延續幾年，以及要求多少風險溢酬。第一版把這個分歧藏在一個接近現價的數字裡。</p>
+</section>
+
+<section>
+<h2>五、誠實揭露：封存前已經看過股價</h2>
+<p>盲法做不到完美時，臨床試驗的做法是寫清楚哪裡破盲。台積電這份研究的揭露：</p>
+<ul>
+<li><b>封存前已知價格資訊。</b>研究前已經知道近期收盤價大致水準、ADR 價格、第一版估值結果，以及全市場盲估裡台積電的隱含 ROE。這些數字沒有進入模型，但可能影響規則的選擇，例如用 5 年視窗、終值 ROIC 取中點。</li>
+<li><b>A 腿規則沿用前次全市場盲估</b>，那時規則已先封存；B 腿規則是這次新訂，受到上一點影響的空間較大。</li>
+<li><b>解封後沒有改任何參數。</b>反推、ADR 換算都是解封後計算，標示清楚。</li>
+<li><b>定錨警訊。</b>主結論兩條腿離現價都超過 30%；但 B 腿 12% 折現的壓力值和現價幾乎一樣，屬壓力測試，仍值得留意。基本面推算的 21.7% 成長和第一版反推的營收成長約 22% 很接近，兩者定義不同（稅後營業利益 vs 營收），視為巧合。</li>
+<li><b>全市場版本</b>的封存時間是 2026-10-26 06:07:35 UTC，之後才下載 10-22 收盤價；台積電版本是 2026-10-26 23:31:06 UTC。</li>
+</ul>
+<div class="callout"><p>封存保證的是「算完之後沒有改」，不保證「算之前沒看過」。後者只能靠揭露，讓讀者自己判斷污染的程度。</p></div>
+</section>
+
+<section>
+<h2>怎麼用：自己做一次封存估值</h2>
+<ol>
+<li>列出所有輸入，刪掉任何來自市場價格的項目：倍數、目標價、共識預估。</li>
+<li>把參數與規則寫成檔案，算出雜湊值，寫下時間。</li>
+<li>全部標的跑同一套規則，結果存檔並算雜湊。</li>
+<li>之後才抓價格，比較 P/IV 的分布：擠在 1 倍附近就要回頭檢查。</li>
+<li>解封後改了任何東西，都要寫下來、標示是解封後的版本。</li>
+<li>寫清楚封存前已經知道哪些價格資訊。</li>
+</ol>
+</section>
+
+<section>
+<h2>方法與限制</h2>
+<ul>
+<li>財報來自公開資訊觀測站彙總報表（2015 至 2026 年第二季，上市與上櫃）與 FinMind 合併財報；股價為 2026-10-22 收盤（10-23 颱風休市）。</li>
+<li>全市場模型不給成長溢價，會系統性低估高成長公司；排除金融股；TTM 只到 2026 上半年，第三季財報公布後數字會變。自由現金流用營業＋投資現金流近似。</li>
+<li>台積電 B 腿終值占估值 39% 到 56%，高成長年數多或少 2 年，結果差距很大；指數化數字只代表模型在當時參數下的輸出，不是合理價。</li>
+<li>本文刻意不列出任何個股的篩選結果與每股價格，只報方法與彙總統計；台積電估值以現價 = 100 指數表示。</li>
+<li>盲法與預先登記是類比，用來幫助理解，不是統計上的等價。</li>
+<li>程式與原始資料：不公開。</li>
+</ul>
+</section>
+<section>
+<h2>延伸閱讀</h2>
+<ul>
+<li><a href="tsmc-valuation.html">用台積電練估值：四個方法、三個情境，答案的區間比答案重要</a>：本文第一版估值的完整方法與情境。</li>
+<li><a href="backtest-checklist.html">用讀臨床試驗的方式讀回測：十個問題</a>：預先登記與盲法的觀念用在回測上。</li>
+</ul>
+</section>
+<section class="disc">
+<p><b>免責聲明</b>　本文為作者個人學習紀錄，內容為研究方法，不構成任何有價證券之買賣建議或投資推介。作者非證券投資顧問業者，本站不收取任何費用、不接受委託。過去績效不代表未來結果，回測受資料與假設限制。讀者應自行判斷並承擔投資風險。</p>
+<p><b>持有揭露</b>　寫作時作者未持有文中提及之任何標的、期貨或 ADR 部位。</p>
+</section>
+</div>
+</main>
+<footer>
+  <div>Last updated: October 2026</div>
+</footer>
+</div>
+</body>
+</html>

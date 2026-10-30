@@ -1,0 +1,137 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>結算週三、最大未平倉履約價與整數關卡：台指期三個說法的回測 | Chun Jui Lu</title>
+<meta name="description" content="結算日早盤守住低點就做多、最大未平倉 Put／Call 是支撐壓力、整數關卡會守住，三個台指期說法寫成規則扣成本回測：週三做多每筆淨 −25.7 點，最大 OI 履約價與整數關卡守住率都不高於隨機價位。研究方法，不構成投資建議。">
+<link rel="canonical" href="https://onepunchmed.com/markets/settlement-max-oi.html">
+<meta property="og:type" content="article">
+<meta property="og:title" content="結算週三、最大未平倉履約價與整數關卡：台指期三個說法的回測 | Chun Jui Lu">
+<meta property="og:description" content="結算日早盤守住低點就做多、最大未平倉 Put／Call 是支撐壓力、整數關卡會守住，三個台指期說法寫成規則扣成本回測：週三做多每筆淨 −25.7 點，最大 OI 履約價與整數關卡守住率都不高於隨機價位。研究方法，不構成投資建議。">
+<meta property="og:url" content="https://onepunchmed.com/markets/settlement-max-oi.html">
+<meta property="og:locale" content="zh_TW">
+<meta property="og:site_name" content="Chun Jui Lu">
+<meta name="twitter:card" content="summary">
+<script type="application/ld+json">
+{"@context": "https://schema.org", "@graph": [{"@type": "Article", "headline": "結算週三、最大未平倉履約價與整數關卡：台指期三個說法的回測", "datePublished": "2026-10-30", "dateModified": "2026-10-30", "author": {"@type": "Person", "name": "Chun Jui Lu", "url": "https://onepunchmed.com/"}, "publisher": {"@type": "Person", "name": "Chun Jui Lu", "url": "https://onepunchmed.com/"}, "inLanguage": "zh-Hant", "mainEntityOfPage": "https://onepunchmed.com/markets/settlement-max-oi.html"}, {"@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "About", "item": "https://onepunchmed.com/"}, {"@type": "ListItem", "position": 2, "name": "Markets", "item": "https://onepunchmed.com/markets/"}, {"@type": "ListItem", "position": 3, "name": "結算週三、最大未平倉履約價與整數關卡：台指期三個說法的回測", "item": "https://onepunchmed.com/markets/settlement-max-oi.html"}]}]}
+</script>
+<link rel="stylesheet" href="../style.css">
+<link rel="stylesheet" href="../article.css">
+</head>
+<body>
+<div class="wrap">
+<header class="site">
+  <a class="name" href="../">Chun Jui Lu</a>
+  <nav>
+    <a href="../">About</a>
+    <a href="../research.html">Research</a>
+    <a href="../data.html">Data</a>
+    <a href="./" aria-current="page">Markets</a>
+    <a href="../health/">Health</a>
+    <a href="../notes.html">Notes</a>
+    <a href="../disclosure.html">Disclosure</a>
+  </nav>
+</header>
+<main>
+  <h1>結算週三、最大未平倉履約價與整數關卡：台指期三個說法的回測</h1>
+  <p class="lead">台指期圈子有三個流傳很久的說法：結算週三早盤殺低守住、下午會被拉上去；選擇權未平倉最大的履約價是支撐和壓力；整數關卡容易守住。本文把三個說法寫成固定規則，扣掉期交稅、手續費與滑價，並和隨機挑的價位比較。結果三個都不成立：週三做多反而虧，最大未平倉履約價和整數關卡被碰到後，收盤守住的比例不比隨機價位高。</p>
+  <p class="article-meta"><a rel="author" href="../">Chun Jui Lu</a> · <time datetime="2026-10-30">2026 年 10 月 30 日</time> · 回測、台指期、結算日</p>
+
+<div class="mdms-article">
+<section class="verdict">
+<h2>三個重點</h2>
+<ol>
+<li><b>週三結算日盤中做多，反而虧。</b>147 個週三進場 115 次，每筆平均淨 −25.7 點（t −2.43）；其他日子平均 +1.1 點。兩者差距的置換檢定 p = 0.03，改進場門檻或停損緩衝，結果都一樣。</li>
+<li><b>選擇權最大未平倉履約價不是可靠的支撐壓力。</b>最大 Put 履約價的守住率 33%，比隨機價位的 38% 還低；最大 Call 也沒贏過隨機價位。</li>
+<li><b>整數關卡比隨機價位更常被穿越。</b>每 1000、500、100 點的關卡，守住率都沒高過隨機格線，觸價進場扣成本後多半是負的。</li>
+</ol>
+</section>
+
+<section>
+<h2>一、結算週三：早盤守住低點就做多？</h2>
+<p>常見說法是：結算日早盤殺低後若守住，下午容易被拉上去。寫成規則：</p>
+<ul>
+<li>早盤低點＝09:00 到 10:00 的最低點；10:00 到 11:00 再創新低就不做。</li>
+<li>11:00 價格比早盤低點高 10 點以上就做多，停損設在早盤低點，沒停損就 13:30 平倉。</li>
+<li>成本為期交稅十萬分之二乘契約金額、每邊手續費 50 元、每邊滑價 1 點，來回約 4.4 點（約 870 元）。</li>
+<li>資料用加權指數 60 分 K，2023-10-23 到 2026-10-22，共 724 個交易日、147 個週三。規則的判斷點和停損都落在整點，所以 60 分 K 是精確的；再拿最近 59 天的 5 分 K 重算，進場判斷 100% 一致。</li>
+</ul>
+<div class="tbl"><table><thead><tr><th>組別</th><th class="n">交易日</th><th class="n">進場</th><th class="n">勝率</th><th class="n">停損率</th><th class="n">淨點數／筆</th><th class="n">t 值</th></tr></thead><tbody>
+<tr><td>週三（結算日）</td><td class="n">147</td><td class="n">115</td><td class="n">43%</td><td class="n">21%</td><td class="n">−25.7</td><td class="n">−2.43</td></tr>
+<tr><td>週一、二、四、五</td><td class="n">577</td><td class="n">381</td><td class="n">49%</td><td class="n">17%</td><td class="n">+1.1</td><td class="n">0.17</td></tr>
+<tr><td>週一</td><td class="n">145</td><td class="n">105</td><td class="n">46%</td><td class="n">14%</td><td class="n">−4.0</td><td class="n">−0.37</td></tr>
+<tr><td>週二</td><td class="n">151</td><td class="n">92</td><td class="n">63%</td><td class="n">17%</td><td class="n">+14.0</td><td class="n">1.07</td></tr>
+<tr><td>週四</td><td class="n">143</td><td class="n">90</td><td class="n">42%</td><td class="n">20%</td><td class="n">−17.4</td><td class="n">−1.70</td></tr>
+<tr><td>週五（2025-07 前，非結算日）</td><td class="n">82</td><td class="n">51</td><td class="n">45%</td><td class="n">14%</td><td class="n">+5.1</td><td class="n">0.44</td></tr>
+<tr><td>週五（2025-07 起，週選擇權結算）</td><td class="n">56</td><td class="n">43</td><td class="n">49%</td><td class="n">21%</td><td class="n">+19.5</td><td class="n">0.70</td></tr>
+</tbody></table></div>
+<p>期交所 2025-06-27 起加掛週五到期的台指選擇權，所以之後的週五也是結算日，另外拆開。週五結算日沒有出現週三的負值。</p>
+<h3>敏感度與逐年</h3>
+<p>進場門檻改成 0、10、20、30 點，停損緩衝改成 0、10、20 點，12 種組合下週三每筆淨 −25.4 到 −27.2 點，t 值 −2.30 到 −2.47；其他日子都在 −0.9 到 +1.4 點之間。逐年看，週三在 2023（11 月到 12 月）、2024、2026 年都是負的，2025 年是 +8.5 點，2026 年最差，−69.3 點。</p>
+<p>不看訊號，單純比 11:00 到收盤的平均走勢：週三 −20.7 點（t −1.69），週一 −4.5、週二 +6.0、週四 −16.0、週五 −2.1 點。週三下午本來就偏弱；結算價取 13:00 到 13:30 的平均，可能有結算前的賣壓。規則挑出的「早盤守住低點」並沒有扭轉這個傾向。</p>
+<div class="callout"><p>t −2.43 看起來顯著，但它來自一個「做多會賺」的假設被反過來否定，不是一個事先登記的做空假設。把它反過來當成做空規則，等於看完結果才畫靶；p = 0.03 也不足以撐住只有 3 年的單一樣本。</p></div>
+</section>
+
+<section>
+<h2>二、選擇權最大未平倉履約價</h2>
+<p>另一個常見說法是：未平倉量最大的 Put 履約價是支撐、最大的 Call 履約價是壓力。做法和外資成本線相同：價位用前一天以前的資料算出，套用在隔天；前一日收盤在價位之上、當天最低點碰到價位算支撐測試，反之為壓力測試；「守住率」是當天收盤仍在同一側的比例。對照組是把價位在 ±3% 內隨機平移 100 次，百分位要 ≥ 95% 才算有效。</p>
+<div class="tbl"><table><thead><tr><th>價位</th><th>持有</th><th class="n">事件數</th><th class="n">守住率</th><th class="n">隨機價位守住率</th><th class="n">百分位</th><th class="n">淨點數／筆</th><th class="n">t 值</th></tr></thead><tbody>
+<tr><td>OI 最大 Put（全部到期）</td><td>當日</td><td class="n">93</td><td class="n">33%</td><td class="n">38%</td><td class="n">11%</td><td class="n">−8.2</td><td class="n">−0.31</td></tr>
+<tr><td>OI 最大 Put（全部到期）</td><td>5 日</td><td class="n">83</td><td class="n">33%</td><td class="n">38%</td><td class="n">13%</td><td class="n">+87.8</td><td class="n">0.71</td></tr>
+<tr><td>OI 最大 Call（全部到期）</td><td>當日</td><td class="n">118</td><td class="n">35%</td><td class="n">36%</td><td class="n">49%</td><td class="n">+14.7</td><td class="n">0.67</td></tr>
+<tr><td>OI 最大 Call（全部到期）</td><td>5 日</td><td class="n">104</td><td class="n">33%</td><td class="n">35%</td><td class="n">38%</td><td class="n">−92.9</td><td class="n">−1.10</td></tr>
+<tr><td>OI 最大 Put（近月）</td><td>當日</td><td class="n">26</td><td class="n">31%</td><td class="n">31%</td><td class="n">52%</td><td class="n">−141.5</td><td class="n">−2.08</td></tr>
+<tr><td>OI 最大 Call（近月）</td><td>5 日</td><td class="n">54</td><td class="n">33%</td><td class="n">36%</td><td class="n">29%</td><td class="n">−374.4</td><td class="n">−3.13</td></tr>
+</tbody></table></div>
+<p>最大 Put 履約價被碰到之後，只有三分之一的日子收盤守住，比隨機挑的價位還少。近月最大 Call 的 5 日版本 t −3.13，是因為多頭期間在「壓力」放空，被一路軋上去（54 筆勝率 24%）；隨機價位同樣放空也平均每筆 −183 點，它反映的是多頭，不是 Call 牆的效果。</p>
+</section>
+
+<section>
+<h2>三、整數關卡</h2>
+<p>整數關卡用同樣的測試，對照組是把整數格線整體平移 60 次。列出 2020 年起全期的結果：</p>
+<div class="tbl"><table><thead><tr><th>關卡（2020 起）</th><th>持有</th><th class="n">事件數</th><th class="n">守住率</th><th class="n">隨機格線守住率</th><th class="n">百分位</th><th class="n">淨點數／筆</th><th class="n">t 值</th></tr></thead><tbody>
+<tr><td>每 1000 點</td><td>當日</td><td class="n">526</td><td class="n">36%</td><td class="n">38%</td><td class="n">8%</td><td class="n">−14.3</td><td class="n">−0.98</td></tr>
+<tr><td>每 500 點（不含 1000 倍數）</td><td>當日</td><td class="n">566</td><td class="n">37%</td><td class="n">38%</td><td class="n">28%</td><td class="n">−20.2</td><td class="n">−1.49</td></tr>
+<tr><td>每 100 點（不含 500 倍數）</td><td>當日</td><td class="n">4,506</td><td class="n">38%</td><td class="n">38%</td><td class="n">3%</td><td class="n">−12.5</td><td class="n">−2.60</td></tr>
+<tr><td>每 1000 點</td><td>5 日</td><td class="n">453</td><td class="n">35%</td><td class="n">38%</td><td class="n">7%</td><td class="n">−6.2</td><td class="n">−0.12</td></tr>
+<tr><td>每 500 點（不含 1000 倍數）</td><td>5 日</td><td class="n">480</td><td class="n">37%</td><td class="n">38%</td><td class="n">32%</td><td class="n">−38.8</td><td class="n">−0.79</td></tr>
+<tr><td>每 100 點（不含 500 倍數）</td><td>5 日</td><td class="n">3,863</td><td class="n">37%</td><td class="n">38%</td><td class="n">3%</td><td class="n">+10.0</td><td class="n">0.58</td></tr>
+</tbody></table></div>
+<p>百分位全部低於 50%，多數低於 10%：整數關卡比隨機格線更常被穿越，不是更常守住。只看 2023-12 起的同期間，結果方向相同（每 1000 點當日守住率 36%、隨機 37%）。每 100 點當日版本的 t −2.60，是約 4,500 筆小額虧損累積出來的：每筆成本 4.4 點，比觸價後的平均反彈還大。</p>
+<p>外資籌碼訊號與外資期貨成本線的結果在<a href="taifex-chip-signals.html">外資、散戶與 P/C 比能預測台指嗎？</a>。</p>
+</section>
+
+<section>
+<h2>方法與限制</h2>
+<ul>
+<li>結算日研究用加權指數 60 分 K 代替台指期分 K。期貨 08:45 開盤，比現貨早 15 分鐘，這 15 分鐘的低點沒納入；期交所逐筆資料這次沒有取得。</li>
+<li>選擇權未平倉來自期交所台指選擇權每日行情；期交所沒有公布外資分履約價的部位，所以這裡的「選擇權關卡」是全市場未平倉，不是外資成本。</li>
+<li>觸價限價單假設碰到就成交（開盤已跳空穿越就用開盤價），對策略偏樂觀；日 K 無法知道同一天內先碰支撐還是壓力。</li>
+<li>盤中與選擇權樣本約 3 年，且大多是多頭；放空的版本天生吃虧，結果不能外推到其他行情。</li>
+<li>報酬以 1 口大台的點數計算，未計保證金利息與資金成本。</li>
+<li>本文報的是過去的規則檢驗，不是對現在任何價位或結算日的判斷。</li>
+<li>程式與原始資料：不公開。</li>
+</ul>
+</section>
+<section>
+<h2>延伸閱讀</h2>
+<ul>
+<li><a href="taifex-chip-signals.html">外資、散戶與 P/C 比能預測台指嗎？</a>：同一批資料的姊妹篇：6 個籌碼訊號與外資成本線。</li>
+<li><a href="sharpe-drawdown.html">夏普值與最大回撤怎麼讀</a>：t 值、信賴區間與樣本長度的讀法。</li>
+<li><a href="backtest-checklist.html">用讀臨床試驗的方式讀回測：十個問題</a>：多重比較、樣本內外與成本的檢查清單。</li>
+<li><a href="night-session.html">台積電期貨夜盤</a>：另一個「看起來有規律、扣完成本是負的」期貨案例。</li>
+</ul>
+</section>
+<section class="disc">
+<p><b>免責聲明</b>　本文為作者個人學習紀錄，內容為研究方法，不構成任何有價證券之買賣建議或投資推介。作者非證券投資顧問業者，本站不收取任何費用、不接受委託。過去績效不代表未來結果，回測受資料與假設限制。讀者應自行判斷並承擔投資風險。</p>
+<p><b>持有揭露</b>　寫作時作者未持有文中提及之任何標的、期貨或 ADR 部位。</p>
+</section>
+</div>
+</main>
+<footer>
+  <div>Last updated: October 2026</div>
+</footer>
+</div>
+</body>
+</html>

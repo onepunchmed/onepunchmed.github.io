@@ -1,0 +1,146 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>停損與做空時機回測：ATR 停損毀掉進場訊號，空方擇時沒有加分 | Chun Jui Lu</title>
+<meta name="description" content="同一份預先登記台股回測的後半：ATR 停損與移動停利讓有效的進場訊號年化從抱 120 日的約 18–20%，掉到 2–15%；高估轉差股票的池子有效，但五個做空時機訊號都沒有加分，純空單每一組都虧損。只報歷史統計，不構成投資建議。">
+<link rel="canonical" href="https://onepunchmed.com/markets/stops-and-shorts.html">
+<meta property="og:type" content="article">
+<meta property="og:title" content="停損與做空時機回測：ATR 停損毀掉進場訊號，空方擇時沒有加分 | Chun Jui Lu">
+<meta property="og:description" content="同一份預先登記台股回測的後半：ATR 停損與移動停利讓有效的進場訊號年化從抱 120 日的約 18–20%，掉到 2–15%；高估轉差股票的池子有效，但五個做空時機訊號都沒有加分，純空單每一組都虧損。只報歷史統計，不構成投資建議。">
+<meta property="og:url" content="https://onepunchmed.com/markets/stops-and-shorts.html">
+<meta property="og:locale" content="zh_TW">
+<meta property="og:site_name" content="Chun Jui Lu">
+<meta name="twitter:card" content="summary">
+<script type="application/ld+json">
+{"@context": "https://schema.org", "@graph": [{"@type": "Article", "headline": "停損與做空時機：ATR 停損與移動停利為什麼毀掉策略，做空為什麼等不到好時機", "datePublished": "2026-10-30", "dateModified": "2026-10-30", "author": {"@type": "Person", "name": "Chun Jui Lu", "url": "https://onepunchmed.com/"}, "publisher": {"@type": "Person", "name": "Chun Jui Lu", "url": "https://onepunchmed.com/"}, "inLanguage": "zh-Hant", "mainEntityOfPage": "https://onepunchmed.com/markets/stops-and-shorts.html"}, {"@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "About", "item": "https://onepunchmed.com/"}, {"@type": "ListItem", "position": 2, "name": "Markets", "item": "https://onepunchmed.com/markets/"}, {"@type": "ListItem", "position": 3, "name": "停損與做空時機：ATR 停損與移動停利為什麼毀掉策略，做空為什麼等不到好時機", "item": "https://onepunchmed.com/markets/stops-and-shorts.html"}]}]}
+</script>
+<link rel="stylesheet" href="../style.css">
+<link rel="stylesheet" href="../article.css">
+</head>
+<body>
+<div class="wrap">
+<header class="site">
+  <a class="name" href="../">Chun Jui Lu</a>
+  <nav>
+    <a href="../">About</a>
+    <a href="../research.html">Research</a>
+    <a href="../data.html">Data</a>
+    <a href="./" aria-current="page">Markets</a>
+    <a href="../health/">Health</a>
+    <a href="../notes.html">Notes</a>
+    <a href="../disclosure.html">Disclosure</a>
+  </nav>
+</header>
+<main>
+  <h1>停損與做空時機：ATR 停損與移動停利為什麼毀掉策略，做空為什麼等不到好時機</h1>
+  <p class="lead">進場訊號有效，不代表照它交易會賺錢。這篇是<a href="value-entry-timing.html">低估股什麼時候開始動</a>那份預先登記回測的後半，看兩件事：用 ATR 停損加移動停利出場的代價，以及「又貴又轉差」的股票該等什麼訊號再放空。答案都不太好聽：緊的停損在發動初期把部位洗掉；做空的優勢全部來自選對池子，擇時沒有加分，而裸空在這 11 年裡每一組都虧錢。</p>
+  <p class="article-meta"><a rel="author" href="../">Chun Jui Lu</a> · <time datetime="2026-10-30">2026 年 10 月 30 日</time> · 預先登記、停損、做空</p>
+
+<div class="mdms-article">
+<section class="verdict">
+<h2>四個重點</h2>
+<ol>
+<li><b>緊的停損會在發動初期把你洗出場。</b>帶量創新高的低估股訊號，用 ATR 停損加移動停利出場，樣本內年化只有 +1.8%；同樣的進場改成抱滿 120 日是 +18.8%。這個交易規則勝率只有 3 成多，平均 27 天就出場。</li>
+<li><b>加了營收條件也一樣。</b>帶量新高＋營收成長的版本，ATR 出場年化 +8.8%／+14.5%（樣本內／外），抱 120 日是 +20.2%／+18.4%。</li>
+<li><b>做空的優勢來自選股，不來自擇時。</b>「高 P/B＋ROE 轉差」的池子 120 日落後大盤 4.6%／8.1%，但五個做空時機訊號都沒有穩定勝過直接空整個池子。</li>
+<li><b>純空單在 2015–2026 每一組都虧錢。</b>年化 −4.9% 到 −37.0%，最大回撤 −68% 到 −89%。</li>
+</ol>
+</section>
+
+<section>
+<h2>一、停損：進場訊號對了，出場規則毀掉它</h2>
+<p>這是<a href="value-entry-timing.html">低估股什麼時候開始動</a>那份預先登記回測的後半。進場訊號在看結果前寫死；出場規則也一樣：停損設在進場價減 2.5×ATR20，移動出場設在進場後最高收盤減 3×ATR20，多單最長 250 日。所有部位等權，有部位就滿倉，沒有就放現金。</p>
+<p>「抱 120 日」是看完結果後才加的對照組，用來量化 ATR 出場的代價，不屬於事前登記的規則。</p>
+<div class="tbl"><table><thead><tr><th>多方規則</th><th>期間</th><th class="n">ATR 出場年化</th><th class="n">最大回撤</th><th class="n">抱 120 日年化</th><th class="n">最大回撤</th><th class="n">勝率</th><th class="n">平均天數</th></tr></thead><tbody>
+<tr><td>低估池直接買（對照）</td><td>樣本內</td><td class="n">+10.5%</td><td class="n">−35%</td><td class="n">—</td><td class="n">—</td><td class="n">—</td><td class="n">—</td></tr>
+<tr><td>低估池直接買（對照）</td><td>樣本外</td><td class="n">+10.6%</td><td class="n">−27%</td><td class="n">—</td><td class="n">—</td><td class="n">—</td><td class="n">—</td></tr>
+<tr><td>L1 站回年線</td><td>樣本內</td><td class="n">+2.0%</td><td class="n">−33%</td><td class="n">+7.2%</td><td class="n">−37%</td><td class="n">29%</td><td class="n">28</td></tr>
+<tr><td>L1 站回年線</td><td>樣本外</td><td class="n">−4.7%</td><td class="n">−42%</td><td class="n">+5.6%</td><td class="n">−31%</td><td class="n">29%</td><td class="n">26</td></tr>
+<tr><td>L2 帶量創 120 日新高</td><td>樣本內</td><td class="n">+1.8%</td><td class="n">−40%</td><td class="n">+18.8%</td><td class="n">−35%</td><td class="n">37%</td><td class="n">27</td></tr>
+<tr><td>L2 帶量創 120 日新高</td><td>樣本外</td><td class="n">+14.3%</td><td class="n">−33%</td><td class="n">+19.4%</td><td class="n">−28%</td><td class="n">34%</td><td class="n">27</td></tr>
+<tr><td>L5 帶量新高＋營收成長</td><td>樣本內</td><td class="n">+8.8%</td><td class="n">−31%</td><td class="n">+20.2%</td><td class="n">−32%</td><td class="n">40%</td><td class="n">28</td></tr>
+<tr><td>L5 帶量新高＋營收成長</td><td>樣本外</td><td class="n">+14.5%</td><td class="n">−44%</td><td class="n">+18.4%</td><td class="n">−29%</td><td class="n">38%</td><td class="n">29</td></tr>
+</tbody></table></div>
+<p>同期加權含息年化：樣本內 +14.2%、樣本外 +26.4%。</p>
+<p>每一列，抱 120 日都比 ATR 出場好；L5 樣本外的最大回撤，ATR 出場（−44%）甚至比抱著（−29%）更深。停損本來是為了限制傷害，在這裡卻同時降低了報酬、沒有降低回撤。大部分停損發生在真正發動之前：剛突破的股票波動大，2.5 倍 ATR 很容易被正常的回檔碰到。</p>
+<h3>停損寬一點、窄一點都救不回來</h3>
+<div class="tbl"><table><thead><tr><th>ATR 出場年化</th><th class="n">L2 內</th><th class="n">L2 外</th><th class="n">L5 內</th><th class="n">L5 外</th></tr></thead><tbody>
+<tr><td>停損 2 倍 ATR</td><td class="n">+5.6%</td><td class="n">+17.1%</td><td class="n">+10.8%</td><td class="n">+14.7%</td></tr>
+<tr><td>停損 2.5 倍 ATR（主設定）</td><td class="n">+1.8%</td><td class="n">+14.3%</td><td class="n">+8.8%</td><td class="n">+14.5%</td></tr>
+<tr><td>停損 3.5 倍 ATR</td><td class="n">+1.0%</td><td class="n">+13.7%</td><td class="n">+4.9%</td><td class="n">+13.6%</td></tr>
+</tbody></table></div>
+<p>三種停損寬度都沒有接近抱 120 日的水準。L2 的 ATR 規則年化在不同參數下從低個位數到 20% 以上都有，代表交易規則的結果不穩，進場訊號本身比較穩。</p>
+</section>
+
+<section>
+<h2>二、做空時機：池子有用，時機沒用</h2>
+<p>空方用鏡像規則。黯淡池：P/B 位於全市場最高 30%，且最新 ROE ≤ 0 或低於前 4 年平均的 0.7 倍，20 日均成交值 ≥ 3,000 萬，平均 42 檔。時機訊號 S1–S5 和多方 L1–L5 對稱：跌破年線、帶量破 120 日新低、相對強弱轉負、營收年增轉負、帶量破底＋營收衰退。</p>
+<p>下表數字已換算成做空的獲利方向；擇時超額是相對「同月直接空整個黯淡池」。</p>
+<div class="tbl"><table><thead><tr><th>空方</th><th class="n">事件數 內／外</th><th class="n">120 日對大盤 內</th><th class="n">外</th><th class="n">擇時超額 內</th><th class="n">t</th><th class="n">擇時超額 外</th><th class="n">t</th></tr></thead><tbody>
+<tr><td>黯淡池直接空（對照）</td><td class="n">2,792／3,116</td><td class="n">+4.6%</td><td class="n">+8.1%</td><td class="n">基準</td><td class="n"></td><td class="n">基準</td><td class="n"></td></tr>
+<tr><td>S1 跌破年線</td><td class="n">261／262</td><td class="n">−1.6%</td><td class="n">+7.3%</td><td class="n">−0.7%</td><td class="n">−0.4</td><td class="n">−2.3%</td><td class="n">−0.5</td></tr>
+<tr><td>S2 帶量破 120 日新低</td><td class="n">119／105</td><td class="n">−0.8%</td><td class="n">+8.4%</td><td class="n">+3.6%</td><td class="n">1.0</td><td class="n">+3.7%</td><td class="n">0.9</td></tr>
+<tr><td>S3 相對強弱轉負</td><td class="n">393／430</td><td class="n">+5.3%</td><td class="n">+9.0%</td><td class="n">+1.0%</td><td class="n">0.6</td><td class="n">+0.9%</td><td class="n">0.3</td></tr>
+<tr><td>S4 營收年增轉負</td><td class="n">114／88</td><td class="n">+6.1%</td><td class="n">+12.0%</td><td class="n">+2.6%</td><td class="n">1.0</td><td class="n">+7.7%</td><td class="n">1.3</td></tr>
+<tr><td>S5 帶量破底＋營收衰退</td><td class="n">34／33</td><td class="n">−8.2%</td><td class="n">+2.9%</td><td class="n">−14.1%</td><td class="n">−1.0</td><td class="n">−4.4%</td><td class="n">−0.7</td></tr>
+</tbody></table></div>
+<p>黯淡池本身每 120 日穩定落後大盤，120 日勝率 67%／71%；但五個時機訊號的 t 值都不到 1.4，沒有一個通過事前判讀標準。S4 的 120 日為正但 60 日為負；S5 明顯為負，帶量破底又營收衰退的股票，之後常出現反彈。S2 在敏感度測試裡也正負不定。</p>
+</section>
+
+<section>
+<h2>三、裸空：每一組都虧</h2>
+<p>上一節是「空個股＋多大盤」的相對報酬。如果只放空、不搭配做多，結果是：</p>
+<div class="tbl"><table><thead><tr><th>空方規則</th><th>期間</th><th class="n">純空單年化</th><th class="n">最大回撤</th><th class="n">空股＋多大盤年化</th><th class="n">融券限制版年化</th><th class="n">獲利因子</th></tr></thead><tbody>
+<tr><td>S1 跌破年線</td><td>樣本內</td><td class="n">−18.9%</td><td class="n">−76%</td><td class="n">−5.5%</td><td class="n">−13.2%</td><td class="n">0.44</td></tr>
+<tr><td>S1 跌破年線</td><td>樣本外</td><td class="n">−14.4%</td><td class="n">−69%</td><td class="n">−1.9%</td><td class="n">−9.8%</td><td class="n">0.33</td></tr>
+<tr><td>S2 帶量破新低</td><td>樣本內</td><td class="n">−4.9%</td><td class="n">−68%</td><td class="n">+3.0%</td><td class="n">−0.3%</td><td class="n">0.67</td></tr>
+<tr><td>S2 帶量破新低</td><td>樣本外</td><td class="n">−14.0%</td><td class="n">−68%</td><td class="n">+5.9%</td><td class="n">−18.1%</td><td class="n">0.47</td></tr>
+<tr><td>S3 相對強弱轉負</td><td>樣本內</td><td class="n">−23.2%</td><td class="n">−85%</td><td class="n">−9.9%</td><td class="n">−18.6%</td><td class="n">0.62</td></tr>
+<tr><td>S3 相對強弱轉負</td><td>樣本外</td><td class="n">−24.1%</td><td class="n">−81%</td><td class="n">−0.8%</td><td class="n">−12.8%</td><td class="n">0.58</td></tr>
+<tr><td>S4 營收年增轉負</td><td>樣本內</td><td class="n">−11.6%</td><td class="n">−75%</td><td class="n">+2.7%</td><td class="n">−1.3%</td><td class="n">0.76</td></tr>
+<tr><td>S4 營收年增轉負</td><td>樣本外</td><td class="n">−22.8%</td><td class="n">−77%</td><td class="n">−0.6%</td><td class="n">−21.0%</td><td class="n">0.52</td></tr>
+<tr><td>S5 帶量破底＋營收衰退</td><td>樣本內</td><td class="n">−18.0%</td><td class="n">−81%</td><td class="n">−13.5%</td><td class="n">−11.4%</td><td class="n">0.41</td></tr>
+<tr><td>S5 帶量破底＋營收衰退</td><td>樣本外</td><td class="n">−37.0%</td><td class="n">−89%</td><td class="n">−28.4%</td><td class="n">−27.8%</td><td class="n">0.20</td></tr>
+</tbody></table></div>
+<p>直接空整個黯淡池，樣本外純空單年化 −17.2%。十組純空單全部虧損，獲利因子都低於 1。搭配做多大盤的版本有幾組小幅為正，但一加上融券限制（每年 4/20 強制回補、4/20–6/30 不開新空單，模擬股東會停券），又幾乎全部轉負。</p>
+<p>原因很單純：2015–2026 是多頭，相對弱勢的股票絕對價格仍可能上漲；放空的報酬上限是 100%，虧損沒有上限。再加上融券強制回補、借券可能被召回、高 P/B 股票券資比常偏高的軋空風險，回測裡的空方結果已經是偏樂觀的版本。</p>
+</section>
+
+<section>
+<h2>方法與限制</h2>
+<ul>
+<li>資料：台股上市櫃目前仍掛牌的 1,572 檔，股價資料至 2026-10-22；月營收取自公開資訊觀測站彙總表，2013/1–2026/9 共 306 頁缺 7 頁，缺頁月份附近的營收訊號會少算。</li>
+<li>規則在看結果前寫成登記文件並封存（2026-10-27），封存後才跑回測。樣本內 2015/4–2021，樣本外 2022–2026/10；參數敏感度只報告，不拿來選參數。</li>
+<li>P/B 用年報每股淨值，4 月 1 日後才使用前一年度資料以避免前視；沒有用季報，淨值變化最多晚 15 個月反映。</li>
+<li>成本：來回 0.785%（手續費 0.1425%×2、證交稅 0.3%、滑價每邊 0.1%）；空單另計借券費 2.5%／年。訊號日隔天開盤進場；同一檔 60 個交易日內只算一次事件；顯著性先按月平均再做 t 檢定，避免重疊事件灌水。</li>
+<li>存活者偏差：不含下市公司。對做空而言，真正下市的公司本來是最有利的空方樣本，所以空方結果可能偏保守。</li>
+<li>樣本外期間 2022–2026 是權值股主導的多頭，結論可能受這段行情影響。</li>
+<li>程式與原始資料：不公開。</li>
+<li>停損：進場價 ∓ 2.5×ATR20；移動出場：進場後最高（空單用最低）收盤 ∓ 3×ATR20；多單最長 250 日、空單最長 120 日。空單的現金股利由還原價計入應付。</li>
+<li>「抱 120 日」是看完結果後加的對照組，不屬於事前登記規則，只用來說明 ATR 出場的代價；不能視為預先登記的發現。</li>
+<li>多方交易規則平均同時持有約 7 檔（L5），組合集中，年化數字受少數部位影響大。</li>
+<li>本文只報告歷史統計與方法，不提供任何個股名單、目前的訊號狀態或停損價位。</li>
+</ul>
+</section>
+<section>
+<h2>延伸閱讀</h2>
+<ul>
+<li><a href="value-entry-timing.html">低估股什麼時候開始動</a>：同一份預先登記回測的前半：五種發動定義的擇時超額。</li>
+<li><a href="tw-hedge-backtest.html">三組多空避險回測</a>：另一組多空配對的回測，空方同樣吃虧。</li>
+<li><a href="sharpe-drawdown.html">夏普值與最大回撤怎麼讀</a>：讀績效表時怎麼看回撤與勝率。</li>
+</ul>
+</section>
+<section class="disc">
+<p><b>免責聲明</b>　本文為作者個人學習紀錄，內容為研究方法，不構成任何有價證券之買賣建議或投資推介。作者非證券投資顧問業者，本站不收取任何費用、不接受委託。過去績效不代表未來結果，回測受資料與假設限制。讀者應自行判斷並承擔投資風險。</p>
+<p><b>持有揭露</b>　寫作時作者未持有文中提及之任何標的、期貨或 ADR 部位。</p>
+</section>
+</div>
+</main>
+<footer>
+  <div>Last updated: October 2026</div>
+</footer>
+</div>
+</body>
+</html>
