@@ -27,6 +27,7 @@
     <a href="../research.html">Research</a>
     <a href="../data.html">Data</a>
     <a href="./" aria-current="page">Markets</a>
+    <a href="../health/">Health</a>
     <a href="../notes.html">Notes</a>
     <a href="../disclosure.html">Disclosure</a>
   </nav>
@@ -35,6 +36,54 @@
   <h1>投資研究</h1>
   <p class="lead">用實證醫學看待證據的方式研究市場：先問方法對不對，再看結果漂不漂亮。估值方法、策略回測與市場結構，每篇都附方法與限制，不提供任何買賣建議。</p>
   <div class="zh" lang="en">Market research notes in Chinese: valuation methods, strategy backtests and market structure, written with the same attention to bias that clinical evidence demands. Methods and historical backtests only; nothing here is investment advice.</div>
+
+  <article class="note" id="sealed-valuation">
+    <time datetime="2026-10-30">2026 年 10 月 30 日</time>
+    <h2><a href="sealed-valuation.html">估值先封存：看到股價前先把答案鎖起來</a></h2>
+    <p>估值結果常常落在現價附近，多半是因為輸入裡早就有價格：倍數、共識 EPS、看價後才挑的參數。改成只用財報、參數先寫死、全市場同一規則，算完用 SHA-256 封存後才看股價：上市櫃 1,580 家只有 8.2% 低於內在價值，股價 ÷ 內在價值中位數 3.57 倍。台積電以現價 = 100 表示，盲估兩條腿是 137 和 31，並揭露封存前已看過哪些價格。</p>
+  </article>
+
+  <article class="note" id="value-entry-timing">
+    <time datetime="2026-10-30">2026 年 10 月 30 日</time>
+    <h2><a href="value-entry-timing.html">低估股什麼時候開始動？預先登記的右側訊號回測</a></h2>
+    <p>便宜的股票可以便宜很久，等股價「開始動」再進場有沒有比較好？先把五種發動定義寫死封存，再用台股 2015–2021 樣本內、2022 年起樣本外檢驗。站回 200 日均線樣本內外都輸給直接買；帶量創 120 日新高且營收年增為正，同期多賺約 5%。但訊號改善的是時點，低估股這幾年本身仍落後大盤。</p>
+  </article>
+
+  <article class="note" id="stops-and-shorts">
+    <time datetime="2026-10-30">2026 年 10 月 30 日</time>
+    <h2><a href="stops-and-shorts.html">停損與做空時機：ATR 停損與移動停利為什麼毀掉策略，做空為什麼等不到好時機</a></h2>
+    <p>進場訊號有效，照它交易不一定賺錢。用 ATR 停損加移動停利出場，帶量新高訊號的年化從抱 120 日的約 18–20% 掉到 2–15%。做空方面，「高 P/B＋ROE 轉差」的池子確實落後大盤，但五個做空時機訊號都沒有加分；純空單 2015–2026 每一組都虧損，最大回撤 −68% 到 −89%。</p>
+  </article>
+
+  <article class="note" id="taifex-chip-signals">
+    <time datetime="2026-10-30">2026 年 10 月 30 日</time>
+    <h2><a href="taifex-chip-signals.html">外資、散戶與 P/C 比能預測台指嗎？6 個籌碼訊號扣成本後的檢驗</a></h2>
+    <p>外資期貨多單增減、散戶多空比、P/C 未平倉比，寫成固定規則、扣掉稅費與滑價回測台指期：6 個訊號沒有一個顯著，t 值最高 1.38。看起來賺錢的版本，獲利幾乎都來自多頭期間的做多，散戶反指標每筆 +163 點，和「每 5 天都做多」一樣。外資期貨成本線守住率 40%，隨機價位 37%。法人資料只能回溯約 3 年。</p>
+  </article>
+
+  <article class="note" id="settlement-max-oi">
+    <time datetime="2026-10-30">2026 年 10 月 30 日</time>
+    <h2><a href="settlement-max-oi.html">結算週三、最大未平倉履約價與整數關卡：台指期三個說法的回測</a></h2>
+    <p>結算週三早盤守住低點就做多、未平倉最大的 Put／Call 是支撐壓力、整數關卡容易守住，三個台指期說法寫成規則、扣成本回測。週三做多 115 次，每筆淨 −25.7 點；最大 Put 履約價的守住率 33%，比隨機價位的 38% 還低；整數關卡都比隨機格線更常被穿越。三個說法都不成立。</p>
+  </article>
+
+  <article class="note" id="contrarian-indicators">
+    <time datetime="2026-10-30">2026 年 10 月 30 日</time>
+    <h2><a href="contrarian-indicators.html">台股反指標有用嗎？恐慌指數、融資、P/C 比、散戶多空比 2007–2026 檢驗</a></h2>
+    <p>「恐慌就買、融資大增要小心、斷頭就是底、散戶反指標」有沒有預測力？把 13 個常見反指標寫成預先登錄的假說，分樣本內外、扣成本並和隨機進場比較，沒有一個過門檻。買恐慌前十年是負的，融資比較像順勢指標；P/C 未平倉比最接近有效，但多重檢定校正後沒過。</p>
+  </article>
+
+  <article class="note" id="chart-patterns-evidence">
+    <time datetime="2026-10-30">2026 年 10 月 30 日</time>
+    <h2><a href="chart-patterns-evidence.html">技術型態有沒有用？用證據等級評讀 K 線、均線與帶量突破</a></h2>
+    <p>像實證醫學評讀療效一樣，替技術型態打證據等級：約 30 篇文獻，加上事前登記、只跑一次的台股驗證（2007–2026，含下市股）。沒有任何訊號拿到 A 級；K 線與個股均線交叉是 D 級。創 250 日新高是唯一兩段都顯著為正的訊號，20 日毛超額 +1.59%，扣成本只剩 +0.80%。</p>
+  </article>
+
+  <article class="note" id="tsmc-adr-premium">
+    <time datetime="2026-10-30">2026 年 10 月 30 日</time>
+    <h2><a href="tsmc-adr-premium.html">台積電 ADR 溢價會回歸嗎？用歷史數據看</a></h2>
+    <p>台積電 ADR 溢價會不會回到 0？用 2000 到 2026 年的日資料檢定：溢價繞著一個會移動的中樞均值回歸，偏離大約 5 到 7 週回一半，但中樞三次斷裂，四段平均依序是 44%、15%、6%、17%。偏離最大時，收斂多半是台股追上。推動溢價的是美國相對台灣的熱度，13 週以上的樣本外預測力接近 0。</p>
+  </article>
 
   <article class="note" id="ma240-vs-hold-0050">
     <time datetime="2026-10-29">2026 年 10 月 29 日</time>
