@@ -1,0 +1,180 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>幣安被駭後 TRX 資金費率差飆到年化 −335%，是套利機會嗎？OKX vs 幣安 206 組永續合約實測 | Chun Jui Lu</title>
+<meta name="description" content="幣安 2026 年 10 月 29 日被駭、暫停提領後，TRX 在站內折價 2.5%，OKX 對幣安的資金費率差飆到年化 −335%。我把兩家都有的 206 檔 USDT 永續合約用 30 天費率、同步盤口與掛單深度掃一次：穩定利差只剩年化 9–15%，TRX 是折價不是套利。研究方法，不構成投資建議。">
+<link rel="canonical" href="https://onepunchmed.com/markets/okx-binance-perp-arb.html">
+<meta property="og:type" content="article">
+<meta property="og:title" content="幣安被駭後 TRX 資金費率差飆到年化 −335%，是套利機會嗎？OKX vs 幣安 206 組永續合約實測 | Chun Jui Lu">
+<meta property="og:description" content="幣安 2026 年 10 月 29 日被駭、暫停提領後，TRX 在站內折價 2.5%，OKX 對幣安的資金費率差飆到年化 −335%。我把兩家都有的 206 檔 USDT 永續合約用 30 天費率、同步盤口與掛單深度掃一次：穩定利差只剩年化 9–15%，TRX 是折價不是套利。研究方法，不構成投資建議。">
+<meta property="og:url" content="https://onepunchmed.com/markets/okx-binance-perp-arb.html">
+<meta property="og:locale" content="zh_TW">
+<meta property="og:site_name" content="Chun Jui Lu">
+<meta name="twitter:card" content="summary">
+<script type="application/ld+json">
+{"@context": "https://schema.org", "@graph": [{"@type": "Article", "headline": "幣安被駭後 TRX 折價 2.5%、資金費率差飆到年化 −335%：這是套利機會嗎？我掃了 OKX 對幣安 206 組永續合約", "datePublished": "2026-10-31", "dateModified": "2026-10-31", "author": {"@type": "Person", "name": "Chun Jui Lu", "url": "https://onepunchmed.com/"}, "publisher": {"@type": "Person", "name": "Chun Jui Lu", "url": "https://onepunchmed.com/"}, "inLanguage": "zh-Hant", "mainEntityOfPage": "https://onepunchmed.com/markets/okx-binance-perp-arb.html"}, {"@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "About", "item": "https://onepunchmed.com/"}, {"@type": "ListItem", "position": 2, "name": "Markets", "item": "https://onepunchmed.com/markets/"}, {"@type": "ListItem", "position": 3, "name": "幣安被駭後 TRX 折價 2.5%、資金費率差飆到年化 −335%：這是套利機會嗎？我掃了 OKX 對幣安 206 組永續合約", "item": "https://onepunchmed.com/markets/okx-binance-perp-arb.html"}]}]}
+</script>
+<link rel="stylesheet" href="../style.css">
+<link rel="stylesheet" href="../article.css">
+</head>
+<body>
+<div class="wrap">
+<header class="site">
+  <a class="name" href="../">Chun Jui Lu</a>
+  <nav>
+    <a href="../">About</a>
+    <a href="../research.html">Research</a>
+    <a href="../data.html">Data</a>
+    <a href="./" aria-current="page">Markets</a>
+    <a href="../health/">Health</a>
+    <a href="../notes.html">Notes</a>
+    <a href="../disclosure.html">Disclosure</a>
+  </nav>
+</header>
+<main>
+  <h1>幣安被駭後 TRX 折價 2.5%、資金費率差飆到年化 −335%：這是套利機會嗎？我掃了 OKX 對幣安 206 組永續合約</h1>
+  <p class="lead">同一個幣在 OKX 和 Binance 各有一張永續合約，兩邊的資金費率和價格不會完全一樣，差額理論上可以一邊做多、一邊做空收走。我把兩家都有的 206 檔 USDT 永續合約拉出來，用 30 天的實際結算費率、同步抓的盤口和掛單深度算一次。結果是：方向穩定的利差只有年化 9–15%，而且都在成交量很小的幣；純價差扣完手續費沒有一組還剩得下；掃描當天最大的那個訊號，年化差 −335%，不是套利，是 Binance 被駭、暫停提領之後的站內折價。</p>
+  <p class="article-meta"><a rel="author" href="../">Chun Jui Lu</a> · <time datetime="2026-10-31">2026 年 10 月 31 日</time> · 加密貨幣、市場結構、套利</p>
+
+<div class="mdms-article">
+<section class="verdict">
+<h2>五個重點</h2>
+<ol>
+<li><b>穩定的費率差只有年化 9–15%。</b>206 組裡，30 天內有八成以上的天數方向一致的只有六檔小幣（CAP、GRVT、PIPPIN、MINA、AXS、ZK）。用兩家一般用戶的吃單費率算，四條腿來回 20 個基點（bp），要持有 5–8 天才打平，而 OKX 那一邊的日成交量只有 300 萬到 2,300 萬美元。</li>
+<li><b>純價差扣完成本不剩。</b>用同步盤口的「賣貴邊買價、買便宜邊賣價」算可成交的價差，超過 20 bp 的只有五檔，其中四檔在中價上下 10 bp 內的掛單不到 3,000 美元；掛單最厚的 PEPE 只有 12 bp。</li>
+<li><b>最大的訊號是交易所被駭。</b>TRX 在 OKX 的本期費率 −0.38%／8 小時，Binance 只有 −0.08%，年化差 −335%。同一時間 OKX 的 TRX 現貨比 Binance 貴 257 bp，而 BTC、ETH、SOL、USDC 都在 ±5 bp 內。這是 Binance 10 月 29 日熱錢包被駭、暫停提領後，TRX 在 Binance 站內的折價，30 天裡只有這一天異常。</li>
+<li><b>折價在現貨層，合約只是跟著指數走。</b>兩家現貨差 256 bp，兩家合約只差 29 bp，兩張合約的價格都落在兩個現貨價中間。因為 Binance 的 TRX 指數有 59% 是自家現貨，OKX 的指數有 27% 是 Binance 現貨，同一個折價被兩家的標記價和費率各吸收一部分。</li>
+<li><b>波動也不夠付成本。</b>折價出現後，合約對合約的價差每 5 分鐘對 1 小時中位數的擺動只有 ±10 bp，Binance 合約對自家現貨 ±20 bp，都小於 20–30 bp 的來回成本。想用「低買高賣等收斂」的方式來回賺，三層都做不起來。</li>
+</ol>
+</section>
+
+<section>
+<h2>一、合約之間的費率差與價差是什麼，我怎麼量</h2>
+<p>永續合約沒有到期日，交易所用資金費率把合約價格拉回現貨：合約比指數貴，多方每 8 小時（有些幣 4 小時、2 小時）付一筆錢給空方；比指數便宜就反過來。同一個幣在兩家交易所的費率不同，一邊做多、一邊做空，價格風險互相抵銷，剩下的就是費率差。這是「資金費率套利」。另一種是價差：同一個幣兩家的合約價格不同，賣貴的買便宜的，等它們收斂。兩種都只用合約，不碰現貨。</p>
+<p>我把 Binance USDT 本位永續（522 檔）和 OKX USDT 結算永續（517 檔）配對，兩家都有的 267 檔，再留下兩邊 24 小時成交量都超過 100 萬美元的 206 組。每一組量四件事：</p>
+<ul>
+<li><b>30 天實現費率差</b>：兩家過去 30 天每一期的實際結算費率加總，換算年化，相減。這是看「穩定不穩定」的主要指標。</li>
+<li><b>本期費率差</b>：兩家對下一次結算的預估費率，換算年化。這是看「現在有沒有事件」。</li>
+<li><b>可成交價差</b>：先用兩家的全市場盤口算一次，候選名單再連抓 5 輪同步盤口取中位數，用「賣貴邊的買價、買便宜邊的賣價」算，不是用中價。</li>
+<li><b>深度</b>：兩家掛單簿在中價上下 10 bp 內各有多少美元，取買賣兩側較小的一邊。</li>
+</ul>
+<p>成本假設是兩家一般用戶的吃單費率，每條腿 0.05%，進出各兩條腿，來回 20 bp；掛單費率 0.02%，來回 8 bp，但掛單不保證成交，我用吃單當基準。資料截止 2026 年 10 月 31 日 00:30（台北時間）。</p>
+</section>
+
+<section>
+<h2>二、穩定的利差只有年化一成，而且都在小幣</h2>
+<p>把 206 組按 30 天實現費率差的絕對值排序，前面幾名都是事件型：ONE 的 30 天差 +155%，但最近 7 天只剩 +2.5%，四分之一的差額來自單獨一天；IOST 的 −41% 只有 35% 的天數方向一致。把「30 天內至少八成的天數方向一致」加進去，剩下的是這六檔：</p>
+<div class="tbl"><table>
+    <thead><tr><th>幣</th><th class="n">30 天年化差</th><th class="n">同向天數</th><th class="n">吃單成本打平天數</th><th class="n">OKX 日成交量</th></tr></thead>
+    <tbody>
+      <tr><td>CAP</td><td class="n">−15%</td><td class="n">94%</td><td class="n">5</td><td class="n">2,300 萬美元</td></tr>
+      <tr><td>GRVT</td><td class="n">−13%</td><td class="n">94%</td><td class="n">5</td><td class="n">340 萬</td></tr>
+      <tr><td>PIPPIN</td><td class="n">−15%</td><td class="n">84%</td><td class="n">5</td><td class="n">290 萬</td></tr>
+      <tr><td>MINA</td><td class="n">−14%</td><td class="n">81%</td><td class="n">5</td><td class="n">290 萬</td></tr>
+      <tr><td>AXS</td><td class="n">−9%</td><td class="n">97%</td><td class="n">8</td><td class="n">400 萬</td></tr>
+      <tr><td>ZK</td><td class="n">−9%</td><td class="n">94%</td><td class="n">8</td><td class="n">500 萬</td></tr>
+    </tbody>
+</table></div>
+<p class="mut">負號表示 OKX 的費率比 Binance 低（多 OKX 那邊收費率、空 Binance 那邊付得少）。打平天數 = 20 bp ÷ 每天的費率差。</p>
+<p>年化 9–15% 聽起來不差，但它是在兩邊各放一份保證金、每天只收 2.5–4 bp 的情況下慢慢累積，中間任何一次費率翻向或價差拉開都會吃掉好幾天的收入。而且這些幣在 OKX 一天只成交幾百萬美元，中價上下 10 bp 內的掛單通常只有幾百到幾千美元。真正大的幣沒有在名單上：BTC、ETH、SOL 兩家的 30 天費率差都在 ±2% 以內，兩家的做市商早就把它套平了。</p>
+</section>
+
+<section>
+<h2>三、純價差扣完成本不剩</h2>
+<p>價差比費率差更容易看錯，因為兩家盤口不是同一毫秒抓的，波動大的幣會把時間差算成價差。第一輪用全市場盤口算出來的前幾名，重抓 5 輪同步盤口取中位數之後，大多縮水一半。最後超過 20 bp 吃單來回成本的只有這幾組：</p>
+<div class="tbl"><table>
+    <thead><tr><th>幣</th><th class="n">可成交價差</th><th class="n">Binance 10 bp 內掛單</th><th class="n">OKX 10 bp 內掛單</th><th>說明</th></tr></thead>
+    <tbody>
+      <tr><td>TRX</td><td class="n">31 bp</td><td class="n">19,000 美元</td><td class="n">13,000 美元</td><td>OKX 貴；第四節說明，是被駭事件</td></tr>
+      <tr><td>SOPH</td><td class="n">23 bp</td><td class="n">800</td><td class="n">4</td><td>OKX 那邊幾乎沒有掛單</td></tr>
+      <tr><td>RSR</td><td class="n">23 bp</td><td class="n">52</td><td class="n">120</td><td>兩邊都沒有掛單</td></tr>
+      <tr><td>GRVT</td><td class="n">21 bp</td><td class="n">330</td><td class="n">90</td><td>同上</td></tr>
+      <tr><td>PARTI</td><td class="n">19 bp</td><td class="n">2,400</td><td class="n">1,800</td><td>Binance 貴；同樣受被駭事件影響</td></tr>
+      <tr><td>PEPE</td><td class="n">12 bp</td><td class="n">16,000</td><td class="n">17,000</td><td>掛單最厚的一組，價差不夠付成本</td></tr>
+    </tbody>
+</table></div>
+<p>掛單厚的沒有價差，有價差的沒有掛單。這和我在<a href="tw-arbitrage.html">台股期現貨套利</a>那篇看到的一樣：公開可見的價差，大多是成本的倒影。</p>
+</section>
+
+<section>
+<h2>四、最大的訊號：TRX 年化差 −335%，來自交易所被駭</h2>
+<p>掃描當下最突出的是 TRX。OKX 的 TRX 永續本期預估費率 −0.38%／8 小時，前兩期 −0.85%、−0.20%；Binance 只有 −0.08%。年化差 −335%，是第二名的三倍。負費率表示空方付錢給多方，所以在 OKX 做多、在 Binance 做空，每 8 小時淨收大約 30 bp。看起來像是一個禮拜就能回本好幾次的機會。</p>
+<p>再看一層就不對了。同一時間 OKX 的 TRX 現貨比 Binance 的 TRX 現貨貴 257 bp，而 BTC、ETH、SOL、USDC 兩家現貨都在 ±5 bp 內。差的不是合約，是「放在 Binance 裡的 TRX」這個東西本身變便宜了。原因是 2026 年 10 月 29 日 22:15（UTC）Binance 熱錢包被駭，區塊鏈分析公司估計流出約 63 億美元，其中 Tron 鏈約 6.1 億 USDT，Binance 隨即暫停提領。提不出去的 TRX 和 TRC20 的 USDT 在站內被賣，站內價格就跟站外脫鉤。</p>
+<p>費率跟著指數走，指數裡有誰就重要了。Binance 的 TRX 指數成分是：Binance 自家現貨 59%、OKX 18%、MEXC 9%、Bybit 9%、Gate 6%；OKX 的 TRX 指數成分是：OKX 自家 27%、Binance 27%、Bybit 20%、Kucoin 13%、Gate 13%。兩家都把對方的現貨算進自己的指數，所以 Binance 的折價同時拉低了兩家的指數，只是比例不同。OKX 的合約價格高於自家被拉低的指數，費率就被算成大負值；Binance 的指數被自家現貨拉得更低，合約反而只比指數低一點。看起來是兩張合約之間的費率差，其實是同一個折價在兩個指數裡的權重差。</p>
+<p>用 30 天日線看就更清楚：兩家的 TRX 費率差在 10 月 30 日之前每天都在 ±0.03% 以內，10 月 30 日一天 Binance −0.24%、OKX −1.05%，30 天的年化差被這一天拉到 −9.5%。把這個當成「穩定利差」來排名，和臨床研究裡用一個極端病人拉高整組平均是同一件事。</p>
+</section>
+
+<section>
+<h2>五、折價在現貨層，合約只是跟著指數走</h2>
+<p>我把 10 月 28 日中午到 10 月 31 日凌晨的 5 分鐘資料拉出來，算三層價差：兩家現貨之間、兩家合約之間、Binance 合約對 Binance 自家現貨。</p>
+<div class="tbl"><table>
+    <thead><tr><th>價差（bp）</th><th class="n">事件前</th><th class="n">事件後範圍</th><th class="n">資料截止時</th></tr></thead>
+    <tbody>
+      <tr><td>OKX 現貨 ÷ Binance 現貨</td><td class="n">−5 到 +2</td><td class="n">+110 到 +530</td><td class="n">+256</td></tr>
+      <tr><td>OKX 合約 ÷ Binance 合約</td><td class="n">−6 到 +1</td><td class="n">+5 到 +68</td><td class="n">+29</td></tr>
+      <tr><td>Binance 合約 ÷ Binance 現貨</td><td class="n">−7 到 −3</td><td class="n">−41 到 +98</td><td class="n">+67</td></tr>
+    </tbody>
+</table></div>
+<p class="mut">事件開始於台北時間 10 月 30 日 06:00 那根 K 棒，和 Binance 公告的時間一致；最初一小時現貨差一度到 +851 bp。</p>
+<p>三個數字放在一起讀：Binance 現貨便宜 256 bp，Binance 合約比自家現貨貴 67 bp，OKX 合約又比 Binance 合約貴 29 bp，所以 OKX 合約比 OKX 自家現貨便宜大約 155 bp。兩張合約的價格都落在兩個現貨價的中間，離 OKX 現貨比離 Binance 現貨近一點。這其實是市場用合約價在表達「等提領恢復、折價收掉之後，TRX 大概值多少」。對合約交易者來說，Binance 的合約並沒有便宜 256 bp，只便宜 29 bp；要收走那 256 bp，只能在 Binance 買現貨、等提領恢復後提到別處賣，而那是在賭 Binance 會恢復提領、而且付得出來，不是套利。</p>
+<div class="callout"><p>這一段的方法論和<a href="tsmc-adr-premium.html">台積電 ADR 溢價</a>那篇相同：看到兩個市場價格不一樣，先問「價差在哪一層、誰能把它搬平」。ADR 的溢價是轉換額度造成的結構；這裡的折價是提領暫停造成的結構。兩者都不會因為你多空兩邊就收斂。</p></div>
+</section>
+
+<section>
+<h2>六、為什麼「低買高賣等收斂」也做不起來</h2>
+<p>折價既然會波動，能不能不等它收斂，而是在它上下擺動時來回做？我算了折價出現之後 221 根 5 分鐘 K 棒，每一層價差對自己 1 小時滾動中位數的偏離：</p>
+<div class="tbl"><table>
+    <thead><tr><th>價差</th><th class="n">5 分鐘變動中位數</th><th class="n">5 分鐘變動 90 分位</th><th class="n">對 1 小時中位數的偏離（10／90 分位）</th><th class="n">來回成本</th></tr></thead>
+    <tbody>
+      <tr><td>現貨對現貨</td><td class="n">12 bp</td><td class="n">67 bp</td><td class="n">−82／+65 bp</td><td class="n">無法只用合約做</td></tr>
+      <tr><td>合約對合約</td><td class="n">3 bp</td><td class="n">7 bp</td><td class="n">−9／+10 bp</td><td class="n">20 bp</td></tr>
+      <tr><td>Binance 合約對現貨</td><td class="n">4 bp</td><td class="n">13 bp</td><td class="n">−18／+22 bp</td><td class="n">約 30 bp</td></tr>
+    </tbody>
+</table></div>
+<p>合約對合約的擺動 ±10 bp，不到來回成本的一半；Binance 合約對自家現貨 ±20 bp，也低於現貨加合約約 30 bp 的成本。擺得夠大的只有現貨對現貨那一層（±70 bp），但要做它必須在 OKX 借 TRX 放空現貨，而且同樣要承擔 Binance 那一邊的提領風險。至於只在 Binance 做多合約、等它「漲回去」，從合約價已經落在中間這件事來看，市場對收斂方向的預期已經在價格裡，剩下的是 TRX 本身兩天 9% 的波動，那是方向性部位，不是套利。</p>
+<p>純合約裡唯一在算術上為正的結構，是在 OKX 做多、Binance 做空收 OKX 的負費率：每 8 小時淨收約 22 bp，進場要先買貴邊 30 bp 加 20 bp 手續費，大約兩期多才打平。但它的收入來自一個隨時會消失的事件：OKX 費率從 −0.85% 到 −0.20% 只隔了一期，提領恢復的那一刻費率和價差會一起歸零，而部位有一半放在正在暫停提領的交易所。這是對手方風險換來的費率，不是價差被套平的那種套利。</p>
+</section>
+
+<section>
+<h2>七、兩個會騙人的細節</h2>
+<ul>
+<li><b>同代號不同代幣。</b>QNT、BB、ON 在兩家是不同的專案，標記價差 −81%、+12 萬倍、+328 倍；LIT 兩家合約是同一個幣，現貨卻不是。配對時我用「標記價差超過 5% 就當成不同資產」剔除，否則 BB 會排在價差榜第一名。</li>
+<li><b>結算週期不一致。</b>206 組裡有 19 組兩家的結算間隔不同：RSR、SAND、PENDLE 等是 Binance 8 小時對 OKX 4 小時，PARTI 是 4 小時對 2 小時。費率不換算成年化就直接相減，會把週期差當成利差。Binance 幣名前面的 1000、1M（1000PEPE、1MBABYDOGE）也要換算回原幣再比價。</li>
+</ul>
+</section>
+
+<section>
+<h2>方法與限制</h2>
+<ul>
+<li>資料來源：Binance USDT 本位永續與現貨的公開 API（合約清單、預估費率、費率結算歷史、盤口、掛單簿、24 小時成交量、指數成分），OKX v5 公開 API（永續與現貨的同類資料、指數成分）。全部是公開端點，不需要帳戶。</li>
+<li>期間：30 天費率歷史到 2026 年 10 月 30 日 23:59；全市場快照 10 月 30 日 23:59 與 10 月 31 日 00:04；TRX 三層價差為 10 月 28 日 12:00 到 10 月 31 日 00:00 的 5 分鐘收盤，共 720 根；費率結算表為最近 12 期。時間都是台北時間。被駭事件的金額引自區塊鏈分析公司與媒體的初步估計，各家數字不一致。</li>
+<li>成本假設：兩家一般用戶吃單 0.05%、掛單 0.02%，每條腿一次；不含資金佔用、滑價超過一檔、提領費。</li>
+<li>這是一次性的橫斷面掃描加一個事件的描述，不是回測；沒有做顯著性檢定，也沒有預先登記。30 天年化差是用期間內費率加總除以實際小時數換算，結算週期不同的組別已各自換算。</li>
+<li>「本期費率差」用的是兩家對下一次結算的預估值，會在結算前持續變動；「可成交價差」是幾秒內連抓 5 輪的中位數，仍可能含時間差。掛單深度是當下一瞬間的快照。</li>
+<li>成交量門檻 100 萬美元、同向天數八成、深度 10 bp 都是為了這次掃描事先定的篩選條件，換門檻會換名單，但六檔小幣與三個結論不受影響。</li>
+<li>程式與原始資料：不公開。資料來源、規則與成本假設如上，足以用兩家交易所的公開 API 重做；有疑問歡迎來信討論。</li>
+</ul>
+</section>
+
+<section>
+<h2>延伸閱讀</h2>
+<ul>
+<li><a href="tw-arbitrage.html">台股套利為什麼對散戶不成立：用 6.8 年期貨資料算一次</a>：同一個問法用在台股期現貨：價差有沒有大過成本。</li>
+<li><a href="tsmc-adr-premium.html">台積電 ADR 溢價會回歸嗎？用歷史數據看</a>：兩個市場價格不一樣，先問價差是制度還是錯價。</li>
+<li><a href="backtest-checklist.html">用讀臨床試驗的方式讀回測：十個問題</a>：本文第四節把一天的極端值當成穩定利差，是讀排名時要問的那一題。</li>
+</ul>
+</section>
+<section class="disc">
+<p><b>免責聲明</b>　本文為作者個人學習紀錄，內容為研究方法與歷史資料回測，不構成任何有價證券之買賣建議或投資推介。作者非證券投資顧問業者，本站不收取任何費用、不接受委託。過去績效不代表未來結果，回測受資料與假設限制。讀者應自行判斷並承擔投資風險。</p>
+<p><b>持有揭露</b>　寫作時作者未持有文中提及之任何標的、期貨或 ADR 部位。</p>
+</section>
+</div>
+</main>
+<footer>
+  <div>Last updated: October 2026</div>
+</footer>
+</div>
+</body>
+</html>
