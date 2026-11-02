@@ -18,7 +18,8 @@ from html.parser import HTMLParser
 from pathlib import Path
 
 DEFAULT_SITE = "https://onepunchmed.com"
-AUTHOR_NAME = "Chun Jui Lu"
+AUTHOR_NAME = "onepunchmed"  # site brand: bylines, og:site_name, Article author
+PERSON_NAME = "Chun Jui Lu"  # real name kept on the About page Person (ORCID)
 EXCLUDE = {"_dev"}
 
 # Owner decision 2026-10-26: block training crawlers, allow search crawlers.
@@ -320,8 +321,8 @@ def main():
             persons = [n for n in all_nodes if has_type(n, "Person")]
             if not profiles:
                 fails.append(f"{tag} missing ProfilePage JSON-LD")
-            if not any(p_.get("name") == AUTHOR_NAME for p_ in persons):
-                fails.append(f"{tag} Person.name must be '{AUTHOR_NAME}'")
+            if not any(p_.get("name") == PERSON_NAME for p_ in persons):
+                fails.append(f"{tag} Person.name must be '{PERSON_NAME}'")
             if not any(as_list(p_.get("sameAs")) for p_ in persons):
                 fails.append(f"{tag} Person missing sameAs (ORCID, GitHub)")
         if rel == "markets/index.html" and not any(has_type(n, "BreadcrumbList") for n in all_nodes):

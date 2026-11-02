@@ -1,6 +1,6 @@
 # CLAUDE.md — onepunchmed.github.io
 
-Personal site of Chun Jui Lu: English academic profile (clinical machine learning) plus a Traditional Chinese `markets/` section of investment-research articles. Hand-written static HTML on GitHub Pages. No build step (`.nojekyll`).
+Personal site of Chun Jui Lu, branded **onepunchmed**: English academic profile (clinical machine learning) plus a Traditional Chinese `markets/` section of investment-research articles. Hand-written static HTML on GitHub Pages. No build step (`.nojekyll`).
 
 ## Current work: SEO / GEO
 
@@ -13,7 +13,7 @@ Work on branch `seo-handoff`, one task per commit. Do not merge to `main` (mergi
 ## Hard rules
 
 - Never change numbers, results, or claims in article bodies. Content edits (Phase 2) need the owner's per-article approval.
-- Author identity is the English name `Chun Jui Lu` only. Do not add a Chinese author page, a Chinese name, or titles/credentials to `markets/` pages. Structured data may describe only what is visible on the page.
+- Site brand and author byline is `onepunchmed` (owner decision 2026-11-03): site name, page-title suffix, bylines, og:site_name and Article author/publisher. The About page h1 and its Person JSON-LD (ORCID) keep the real name `Chun Jui Lu` with `alternateName: onepunchmed`. Do not add a Chinese author page, a Chinese name, or titles/credentials to `markets/` pages. Structured data may describe only what is visible on the page.
 - Keep every investment disclaimer ("不構成投資建議", 免責聲明, 持有揭露) intact.
 - Robots policy: block training crawlers, allow search crawlers (exact file in SEO_PLAN §4.2).
 - Do not invent the Search Console verification token or the custom domain; ask the owner.
