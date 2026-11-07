@@ -3,18 +3,18 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>台指週選 37400P 到期歸零，為何開盤仍成交在 10 點？結算規則、指數下限與逐筆成交 | onepunchmed</title>
-<meta name="description" content="2026-11-06 台指大跌開盤，當天結算的週選 37400P 開在 10 點、全日成交 16,420 口，到期給付是 0。從期交所結算價公式、證交所指數編製與 10% 跌幅限制，推導在明確前提下結算價的理論下界約 37,417 點，並分開列出當日已查證與仍屬條件的前提，以及逐筆成交與盤中保證金風險。歷史事件研究，不構成投資建議。">
+<title>台指跌停價算得出來，賣選擇權就「必賺」？37400P 事件研究 | onepunchmed</title>
+<meta name="description" content="2026-11-06 台指大跌，當天到期的週選 37400P 開盤成交 10 點，結算卻是 0。用期交所結算規則與 10% 跌幅限制，拆解這個價格從哪來、賣方風險在哪。研究方法，不構成投資建議。">
 <link rel="canonical" href="https://onepunchmed.com/markets/txo-expiry-floor.html">
 <meta property="og:type" content="article">
-<meta property="og:title" content="台指週選 37400P 到期歸零，為何開盤仍成交在 10 點？結算規則、指數下限與逐筆成交 | onepunchmed">
-<meta property="og:description" content="2026-11-06 台指大跌開盤，當天結算的週選 37400P 開在 10 點、全日成交 16,420 口，到期給付是 0。從期交所結算價公式、證交所指數編製與 10% 跌幅限制，推導在明確前提下結算價的理論下界約 37,417 點，並分開列出當日已查證與仍屬條件的前提，以及逐筆成交與盤中保證金風險。歷史事件研究，不構成投資建議。">
+<meta property="og:title" content="台指跌停價算得出來，賣選擇權就「必賺」？37400P 事件研究 | onepunchmed">
+<meta property="og:description" content="2026-11-06 台指大跌，當天到期的週選 37400P 開盤成交 10 點，結算卻是 0。用期交所結算規則與 10% 跌幅限制，拆解這個價格從哪來、賣方風險在哪。研究方法，不構成投資建議。">
 <meta property="og:url" content="https://onepunchmed.com/markets/txo-expiry-floor.html">
 <meta property="og:locale" content="zh_TW">
 <meta property="og:site_name" content="onepunchmed">
 <meta name="twitter:card" content="summary">
 <script type="application/ld+json">
-{"@context": "https://schema.org", "@graph": [{"@type": "Article", "headline": "台指週選 37400P 到期歸零，為何開盤仍成交在 10 點？", "datePublished": "2026-11-06", "dateModified": "2026-11-06", "author": {"@type": "Person", "name": "onepunchmed", "url": "https://onepunchmed.com/"}, "publisher": {"@type": "Person", "name": "onepunchmed", "url": "https://onepunchmed.com/"}, "inLanguage": "zh-Hant", "mainEntityOfPage": "https://onepunchmed.com/markets/txo-expiry-floor.html"}, {"@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "About", "item": "https://onepunchmed.com/"}, {"@type": "ListItem", "position": 2, "name": "Markets", "item": "https://onepunchmed.com/markets/"}, {"@type": "ListItem", "position": 3, "name": "台指週選 37400P 到期歸零，為何開盤仍成交在 10 點？", "item": "https://onepunchmed.com/markets/txo-expiry-floor.html"}]}]}
+{"@context": "https://schema.org", "@graph": [{"@type": "Article", "headline": "台指跌停價算得出來，賣選擇權就「必賺」？", "datePublished": "2026-11-06", "dateModified": "2026-11-06", "author": {"@type": "Person", "name": "onepunchmed", "url": "https://onepunchmed.com/"}, "publisher": {"@type": "Person", "name": "onepunchmed", "url": "https://onepunchmed.com/"}, "inLanguage": "zh-Hant", "mainEntityOfPage": "https://onepunchmed.com/markets/txo-expiry-floor.html"}, {"@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "About", "item": "https://onepunchmed.com/"}, {"@type": "ListItem", "position": 2, "name": "Markets", "item": "https://onepunchmed.com/markets/"}, {"@type": "ListItem", "position": 3, "name": "台指跌停價算得出來，賣選擇權就「必賺」？", "item": "https://onepunchmed.com/markets/txo-expiry-floor.html"}]}]}
 </script>
 <link rel="stylesheet" href="../style.css">
 <link rel="stylesheet" href="../article.css">
@@ -34,8 +34,8 @@
   </nav>
 </header>
 <main>
-  <h1>台指週選 37400P 到期歸零，為何開盤仍成交在 10 點？</h1>
-  <p class="lead">2026 年 11 月 6 日台股大跌開盤，當天結算的台指週選 37400 賣權（37400P）開在 10 點，全日成交 16,420 口，最後到期給付是 0。先講可以直接查證的史實：當天加權指數盤中最低 37,837.05、官方最後結算價 39,824，都高於 37400 與 37500 兩個履約價，所以兩個契約到期給付為零不需要任何推導。接著把三件容易混在一起的事分開：數學上，在明確的指數編製與漲跌幅前提下，可以推導出當天結算價的理論下界約 37,417 點；實證上，這些前提我查證了一部分，特殊公司行動與基值調整仍是條件；交易上，到期給付為零，不代表盤中交易沒有風險。結論是：這是一個值得研究的歷史現象，但一次事件不足以建立或驗證任何可重複的套利策略。</p>
+  <h1>台指跌停價算得出來，賣選擇權就「必賺」？</h1>
+  <p class="lead">2026 年 11 月 6 日台股大跌開盤，當天結算的台指週選 37400 賣權（37400P）開在 10 點，全日成交 16,420 口，最後到期給付是 0。先講可以直接查證的史實：當天加權指數盤中最低 37,837.05、官方最後結算價 39,824，都高於 37400 與 37500 兩個履約價，所以兩個契約到期給付為零不需要任何推導。接著把三件容易混在一起的事分開：數學上，在明確的指數編製與漲跌幅前提下，可以推導出當天結算價的理論下界約 37,417 點；實證上，這些前提我查證了一部分，特殊公司行動與基值調整仍是條件；交易上，到期給付為零，不代表盤中交易沒有風險。結論是：賣方不是「必賺」，盤中有保證金升高與被迫回補的風險；這是一個值得研究的歷史現象，但一次事件不足以建立或驗證任何可重複的套利策略。</p>
   <p class="article-meta"><a rel="author" href="../">onepunchmed</a> · <time datetime="2026-11-06">2026 年 11 月 6 日</time> · 事件研究、台指選擇權、結算日</p>
 
 <div class="mdms-article">
