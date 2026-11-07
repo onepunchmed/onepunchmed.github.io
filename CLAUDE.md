@@ -2,13 +2,18 @@
 
 Personal site of Chun Jui Lu, branded **onepunchmed**: English academic profile (clinical machine learning) plus a Traditional Chinese `markets/` section of investment-research articles. Hand-written static HTML on GitHub Pages. No build step (`.nojekyll`).
 
-## Current work: SEO / GEO
+Article-writing rules (compliance, structure, evidence, checklist): `~/Claude/onepunchmed-site/docs/WRITING_GUIDE.md`. SEO plan and tasks: `_dev/seo/SEO_PLAN.md`, `_dev/seo/TASKS.md`.
 
-- Plan and research: `_dev/seo/SEO_PLAN.md`
-- Tasks and phases: `_dev/seo/TASKS.md`
-- Acceptance: `python3 _dev/seo/seo_check.py` must exit 0
+## Branches, merge and "done"
 
-Work on branch `seo-handoff`, one task per commit. Do not merge to `main` (merging publishes the live site) until the owner approves.
+- One task per branch in its own worktree (`git worktree add -b <branch> ~/Claude/opm-<name> origin/main`); one article or change per PR. Never edit the shared checkout's branch from another session.
+- Merging to `main` publishes the live site: only after the owner approves the PR.
+- Integration check before asking to merge: `git fetch` and rebase the branch onto the latest `origin/main` (resolve `sitemap.xml`, `health/index.html`, `markets/index.html` list conflicts by keeping both entries), then rerun `python3 _dev/seo/seo_check.py`; it must exit 0 on the rebased branch, not only on the original base.
+- Report the four states separately: committed (branch + commit), checked (seo_check / fact-check result), approved (owner said merge), live (curl of the live URL returns 200 with the new text). "Merged" is not "live" until the curl check passes.
+
+## Fact-check results
+
+Every factual claim gets one of three results: **verified** (source found and read, link recorded), **contradicted** (fix or delete), **inconclusive** (no source found or source not readable). Inconclusive is not a pass: rewrite it as a stated condition or limitation, or remove it. Verification must read the source (WebSearch/WebFetch or NCBI eutils), never memory.
 
 ## Hard rules
 
