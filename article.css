@@ -79,6 +79,10 @@
 .mdms-article .tbl.stack td:first-child,.mdms-article .tbl.fit td:first-child{white-space:normal}
 .mdms-article .tbl.stack td:first-child{min-width:9em}
 @media (max-width:640px){
+.mdms-article .tbl td:first-child{white-space:normal;min-width:5em}
+.mdms-article .tbl th{white-space:normal}
+.mdms-article .tbl table{min-width:0}
+.mdms-article .tbl table.heat td:first-child,.mdms-article .tbl table.heat th:first-child{white-space:nowrap;min-width:0}
 .mdms-article .tbl.fit table{min-width:0}
 .mdms-article .tbl.fit td:first-child{min-width:5em}
 .mdms-article .tbl.fit th{white-space:normal}
@@ -90,4 +94,6 @@
 .mdms-article .tbl.stack td{display:block;padding:0;border:0;min-width:0;text-align:left;white-space:normal}
 .mdms-article .tbl.stack td:first-child{font-weight:600;min-width:0}
 .mdms-article .tbl.stack td:not(:first-child)::before{content:attr(data-label);display:block;font-size:12.5px;font-weight:600;color:var(--mut)}
+.mdms-article .tbl:not(.stack) td:first-child,.mdms-article .tbl:not(.stack) th:first-child{position:sticky;left:0;z-index:1;background:var(--paper)}
+.mdms-article li,.mdms-article p{overflow-wrap:anywhere}
 }

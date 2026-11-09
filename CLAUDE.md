@@ -9,6 +9,7 @@ Article-writing rules (compliance, structure, evidence, checklist): `~/Claude/on
 - One task per branch in its own worktree (`git worktree add -b <branch> ~/Claude/opm-<name> origin/main`); one article or change per PR. Never edit the shared checkout's branch from another session.
 - Merging to `main` publishes the live site: only after the owner approves the PR.
 - Integration check before asking to merge: `git fetch` and rebase the branch onto the latest `origin/main` (resolve `sitemap.xml`, `health/index.html`, `markets/index.html` list conflicts by keeping both entries), then rerun `python3 _dev/seo/seo_check.py`; it must exit 0 on the rebased branch, not only on the original base.
+- Phone layout check before asking to merge any page with a table or chart: open it at 375px wide and confirm no page-level sideways scroll, no first column pushing others off screen, no tall narrow text columns. Text-heavy tables use `<div class="tbl stack">` with `data-label` on each `td` (one card per row on phones); numeric tables stay as tables and may scroll inside `.tbl`.
 - Report the four states separately: committed (branch + commit), checked (seo_check / fact-check result), approved (owner said merge), live (curl of the live URL returns 200 with the new text). "Merged" is not "live" until the curl check passes.
 
 ## Fact-check results
