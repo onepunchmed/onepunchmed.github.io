@@ -52,26 +52,26 @@
 <section>
 <h2>一、證據等級怎麼定</h2>
 <p>借用實證醫學分級的精神，但改成投資回測的語言。每一級要過的關卡，對應臨床研究裡的設計品質：</p>
-<div class="tbl"><table><thead><tr><th>等級</th><th>條件</th><th>臨床上的類比</th></tr></thead><tbody>
-<tr><td>A</td><td>跨市場、扣成本、樣本外都成立</td><td>多個大型隨機試驗、硬終點一致</td></tr>
-<tr><td>B</td><td>成立但有條件：只在某些期間、要長持有，或只能降風險不能加報酬</td><td>有效，但限特定族群或只改善次要終點</td></tr>
-<tr><td>C</td><td>有統計上的資訊，但難以直接轉成扣成本後的獲利</td><td>替代終點有改善，硬終點未證實</td></tr>
-<tr><td>D</td><td>嚴謹檢定下無優勢，或方向相反</td><td>隨機試驗陰性，或有害</td></tr>
+<div class="tbl stack"><table><thead><tr><th>等級</th><th>條件</th><th>臨床上的類比</th></tr></thead><tbody>
+<tr><td data-label="等級">A</td><td data-label="條件">跨市場、扣成本、樣本外都成立</td><td data-label="臨床上的類比">多個大型隨機試驗、硬終點一致</td></tr>
+<tr><td data-label="等級">B</td><td data-label="條件">成立但有條件：只在某些期間、要長持有，或只能降風險不能加報酬</td><td data-label="臨床上的類比">有效，但限特定族群或只改善次要終點</td></tr>
+<tr><td data-label="等級">C</td><td data-label="條件">有統計上的資訊，但難以直接轉成扣成本後的獲利</td><td data-label="臨床上的類比">替代終點有改善，硬終點未證實</td></tr>
+<tr><td data-label="等級">D</td><td data-label="條件">嚴謹檢定下無優勢，或方向相反</td><td data-label="臨床上的類比">隨機試驗陰性，或有害</td></tr>
 </tbody></table></div>
 <p>扣成本像是看「淨效益」而不只看療效；樣本外像是外部驗證；資料窺探校正像是多重比較校正。很多型態在第一關（未扣成本的樣本內回測）看起來有效，就像只看替代終點的小型單中心研究。</p>
 </section>
 
 <section>
 <h2>二、證據總表</h2>
-<div class="tbl"><table><thead><tr><th>類別</th><th>文獻怎麼說</th><th>台股實測</th><th>等級</th></tr></thead><tbody>
-<tr><td>52 週高點／創新高</td><td>George–Hwang（2004）：接近 52 週高點的股票續強，解釋力勝過傳統動能，且長期不反轉；Huddart–Lang–Yetman（2009）：穿越 52 週高點時量能放大、之後報酬偏正。跨市場多數複製成立。</td><td>創 250 日新高 20 日毛超額 +1.59%（樣本外，t 3.2）</td><td>B+</td></tr>
-<tr><td>中期動能（12-1 月）</td><td>Jegadeesh–Titman（1993）、Asness–Moskowitz–Pedersen（2013）多市場成立；但有動能崩盤（Daniel–Moskowitz 2016）、發表後衰減（McLean–Pontiff 2016），亞洲較弱（Chui–Titman–Wei 2010）。</td><td>十分位多空：樣本內 +0.26%／月（t 0.4）、樣本外 +1.70%（t 3.0），時期依賴</td><td>B</td></tr>
-<tr><td>指數均線濾網</td><td>Brock–Lakonishok–LeBaron（1992）未扣成本有預測力；Faber（2007）降低回撤、報酬相近；報酬優勢在近期樣本消失（Sullivan–Timmermann–White 1999），降回撤效果較穩。</td><td>加權指數在 200 日均線之上才進場，可降低突破策略的最大回撤、報酬幾乎不變</td><td>B（風控用）</td></tr>
-<tr><td>經典圖形（頭肩、雙底、三角）</td><td>Lo–Mamaysky–Wang（2000）：型態出現後報酬分布確實改變，但未證明扣成本可獲利；Jiang–Kelly–Xiu（2023）用卷積神經網路讀 K 線圖可預測報酬，表示圖裡有資訊，但人工命名的型態太粗。</td><td>未測：定義自由度太高，最容易過擬合</td><td>C</td></tr>
-<tr><td>成交量</td><td>Gervais–Kaniel–Mingelgrin（2001）高量溢酬；Lee–Swaminathan（2000）高量股偏熱門、未來報酬較低；Barber–Odean（2008）吸睛股被散戶追買。方向依定義而異。</td><td>5 日／50 日量最高十分位：樣本內 −0.53%／月（t −2.3），樣本外不顯著</td><td>C（確認用）</td></tr>
-<tr><td>個股均線交叉、站上均線</td><td>Sullivan–Timmermann–White（1999）以 7,846 條規則做 Reality Check，原本最佳規則在 1987–1996 失效；Bajgrowicz–Scaillet（2012）控制錯誤發現率並扣成本後，道瓊 1897–2011 無獲利。</td><td>站上 MA50 20 日超額 −0.31%（樣本外，t −3.5）；黃金交叉不顯著</td><td>D</td></tr>
-<tr><td>K 線型態</td><td>Marshall–Young–Rose（2006）美股無價值；Marshall–Young–Cahan（2008）在 K 線發源地日本也無；Horton（2009）僅極少型態有微弱效果。</td><td>多頭吞噬、錘子 20 日超額顯著為負；空頭吞噬之後反而上漲</td><td>D</td></tr>
-<tr><td>短期反轉（1 週至 1 個月）</td><td>Jegadeesh（1990）毛報酬顯著；Avramov–Chordia–Goyal（2006）指出主要來自流動性差的股票，扣成本後消失。</td><td>多單扣成本 −0.65%／月（月換手 88%）</td><td>D</td></tr>
+<div class="tbl stack"><table><thead><tr><th>類別</th><th>文獻怎麼說</th><th>台股實測</th><th>等級</th></tr></thead><tbody>
+<tr><td data-label="類別">52 週高點／創新高</td><td data-label="文獻怎麼說">George–Hwang（2004）：接近 52 週高點的股票續強，解釋力勝過傳統動能，且長期不反轉；Huddart–Lang–Yetman（2009）：穿越 52 週高點時量能放大、之後報酬偏正。跨市場多數複製成立。</td><td data-label="台股實測">創 250 日新高 20 日毛超額 +1.59%（樣本外，t 3.2）</td><td data-label="等級">B+</td></tr>
+<tr><td data-label="類別">中期動能（12-1 月）</td><td data-label="文獻怎麼說">Jegadeesh–Titman（1993）、Asness–Moskowitz–Pedersen（2013）多市場成立；但有動能崩盤（Daniel–Moskowitz 2016）、發表後衰減（McLean–Pontiff 2016），亞洲較弱（Chui–Titman–Wei 2010）。</td><td data-label="台股實測">十分位多空：樣本內 +0.26%／月（t 0.4）、樣本外 +1.70%（t 3.0），時期依賴</td><td data-label="等級">B</td></tr>
+<tr><td data-label="類別">指數均線濾網</td><td data-label="文獻怎麼說">Brock–Lakonishok–LeBaron（1992）未扣成本有預測力；Faber（2007）降低回撤、報酬相近；報酬優勢在近期樣本消失（Sullivan–Timmermann–White 1999），降回撤效果較穩。</td><td data-label="台股實測">加權指數在 200 日均線之上才進場，可降低突破策略的最大回撤、報酬幾乎不變</td><td data-label="等級">B（風控用）</td></tr>
+<tr><td data-label="類別">經典圖形（頭肩、雙底、三角）</td><td data-label="文獻怎麼說">Lo–Mamaysky–Wang（2000）：型態出現後報酬分布確實改變，但未證明扣成本可獲利；Jiang–Kelly–Xiu（2023）用卷積神經網路讀 K 線圖可預測報酬，表示圖裡有資訊，但人工命名的型態太粗。</td><td data-label="台股實測">未測：定義自由度太高，最容易過擬合</td><td data-label="等級">C</td></tr>
+<tr><td data-label="類別">成交量</td><td data-label="文獻怎麼說">Gervais–Kaniel–Mingelgrin（2001）高量溢酬；Lee–Swaminathan（2000）高量股偏熱門、未來報酬較低；Barber–Odean（2008）吸睛股被散戶追買。方向依定義而異。</td><td data-label="台股實測">5 日／50 日量最高十分位：樣本內 −0.53%／月（t −2.3），樣本外不顯著</td><td data-label="等級">C（確認用）</td></tr>
+<tr><td data-label="類別">個股均線交叉、站上均線</td><td data-label="文獻怎麼說">Sullivan–Timmermann–White（1999）以 7,846 條規則做 Reality Check，原本最佳規則在 1987–1996 失效；Bajgrowicz–Scaillet（2012）控制錯誤發現率並扣成本後，道瓊 1897–2011 無獲利。</td><td data-label="台股實測">站上 MA50 20 日超額 −0.31%（樣本外，t −3.5）；黃金交叉不顯著</td><td data-label="等級">D</td></tr>
+<tr><td data-label="類別">K 線型態</td><td data-label="文獻怎麼說">Marshall–Young–Rose（2006）美股無價值；Marshall–Young–Cahan（2008）在 K 線發源地日本也無；Horton（2009）僅極少型態有微弱效果。</td><td data-label="台股實測">多頭吞噬、錘子 20 日超額顯著為負；空頭吞噬之後反而上漲</td><td data-label="等級">D</td></tr>
+<tr><td data-label="類別">短期反轉（1 週至 1 個月）</td><td data-label="文獻怎麼說">Jegadeesh（1990）毛報酬顯著；Avramov–Chordia–Goyal（2006）指出主要來自流動性差的股票，扣成本後消失。</td><td data-label="台股實測">多單扣成本 −0.65%／月（月換手 88%）</td><td data-label="等級">D</td></tr>
 </tbody></table></div>
 </section>
 

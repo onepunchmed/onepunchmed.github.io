@@ -52,12 +52,12 @@
 <section>
 <h2>一、每個數字先分級：事實、推估、無公開資料</h2>
 <p>臨床研究看證據會先問「這是隨機試驗、觀察研究，還是專家意見」。估值的輸入也該這樣分。兩份研究用的是同一套標籤，本文沿用：</p>
-<div class="tbl"><table class="rules"><thead><tr><th>等級</th><th>定義</th><th>例子</th></tr></thead><tbody>
-<tr><td><span class="pill yes">事實</span></td><td>有一手公開來源：交易所公告、招股書、公司財報、法規文件</td><td>宇樹發行價、總股本、解禁時程；Anthropic 各輪融資的投後估值（公司或領投方對外證實）</td></tr>
-<tr><td><span class="pill maybe">事實（報導）</span></td><td>可信媒體轉述未公開文件或消息來源，無法直接核對原文</td><td>Anthropic S-1 草稿的 2025 營收與虧損（Reuters、WSJ）；宇樹 2026 上半年扣非淨利（媒體整理半年報）</td></tr>
-<tr><td><span class="pill maybe">第三方估計</span></td><td>研究機構或資料商的統計，口徑可能和公司不同</td><td>SAG 統計的人形機器人出貨量；Wind 一致預期；二級市場平台的成交估值</td></tr>
-<tr><td><span class="pill no">推估</span></td><td>本文自己算出來的數字</td><td>所有情境假設、倍數、折現率、指數化的輸出</td></tr>
-<tr><td><span class="pill no">無公開資料</span></td><td>找不到可引用的來源，寫明而不是猜</td><td>Anthropic 的 GAAP 毛利率；宇樹是否已納入滬股通；宇樹 2022 年淨利</td></tr>
+<div class="tbl stack"><table class="rules"><thead><tr><th>等級</th><th>定義</th><th>例子</th></tr></thead><tbody>
+<tr><td data-label="等級"><span class="pill yes">事實</span></td><td data-label="定義">有一手公開來源：交易所公告、招股書、公司財報、法規文件</td><td data-label="例子">宇樹發行價、總股本、解禁時程；Anthropic 各輪融資的投後估值（公司或領投方對外證實）</td></tr>
+<tr><td data-label="等級"><span class="pill maybe">事實（報導）</span></td><td data-label="定義">可信媒體轉述未公開文件或消息來源，無法直接核對原文</td><td data-label="例子">Anthropic S-1 草稿的 2025 營收與虧損（Reuters、WSJ）；宇樹 2026 上半年扣非淨利（媒體整理半年報）</td></tr>
+<tr><td data-label="等級"><span class="pill maybe">第三方估計</span></td><td data-label="定義">研究機構或資料商的統計，口徑可能和公司不同</td><td data-label="例子">SAG 統計的人形機器人出貨量；Wind 一致預期；二級市場平台的成交估值</td></tr>
+<tr><td data-label="等級"><span class="pill no">推估</span></td><td data-label="定義">本文自己算出來的數字</td><td data-label="例子">所有情境假設、倍數、折現率、指數化的輸出</td></tr>
+<tr><td data-label="等級"><span class="pill no">無公開資料</span></td><td data-label="定義">找不到可引用的來源，寫明而不是猜</td><td data-label="例子">Anthropic 的 GAAP 毛利率；宇樹是否已納入滬股通；宇樹 2022 年淨利</td></tr>
 </tbody></table></div>
 <div class="callout"><p>兩個案例裡最重要的假設，剛好都落在「無公開資料」或「事實（報導）」那兩格：Anthropic 的毛利率只有 The Information 轉述的內部預估（2025 年約 40%，內部預測 2028 年約 77%），宇樹的人形機器人均價與境外收入占比只有媒體整理。這決定了後面的區間為什麼那麼寬。</p></div>
 </section>
@@ -65,14 +65,14 @@
 <section>
 <h2>二、Anthropic：價格從哪裡來</h2>
 <p>沒有上市的公司，公開資料裡的「估值」有三種來源，可信度依序遞減：公司自己融資時的投後估值、二級市場平台撮合的成交價、以及加密交易所的盤前永續合約。下表把 2025 到 2026 年的軌跡列出來，數字是公司估值，不是任何每股價格。</p>
-<div class="tbl"><table><thead><tr><th>時間</th><th>事件</th><th class="n">金額</th><th class="n">投後估值</th><th>等級</th></tr></thead><tbody>
-<tr><td>2025 年 3 月</td><td>Series E，Lightspeed 領投</td><td class="n">US$3.5B</td><td class="n">US$61.5B</td><td><span class="pill yes">事實</span></td></tr>
-<tr><td>2025 年 9 月</td><td>Series F，ICONIQ 等</td><td class="n">≈US$13B</td><td class="n">≈US$183B</td><td><span class="pill yes">事實</span></td></tr>
-<tr><td>2026 年 2 月</td><td>Series G</td><td class="n">US$30B</td><td class="n">US$380B</td><td><span class="pill yes">事實</span></td></tr>
-<tr><td>2026 年 5 月</td><td>Series H，預期為最後一輪私募；含 US$15B 雲端業者既有承諾</td><td class="n">US$65B</td><td class="n">US$965B</td><td><span class="pill yes">事實</span></td></tr>
-<tr><td>2026 年 7 月</td><td>二級市場平台（Caplight、Rainmaker）撮合價；賣方稀少</td><td class="n">—</td><td class="n">≈US$1.2T</td><td><span class="pill maybe">第三方估計</span></td></tr>
-<tr><td>2026 年 6 月起</td><td>幣安上線盤前永續合約；8 月起 Hyperliquid 也有</td><td class="n">—</td><td class="n">合約價 × 10 億</td><td><span class="pill maybe">市場報價，見下</span></td></tr>
-<tr><td>2026 年 6 月 1 日</td><td>秘密遞交 S-1；10 月下旬報導稱即將公開，截至 10 月 24 日未見 EDGAR 公開版</td><td class="n">—</td><td class="n">—</td><td><span class="pill maybe">事實（報導）</span></td></tr>
+<div class="tbl stack"><table><thead><tr><th>時間</th><th>事件</th><th class="n">金額</th><th class="n">投後估值</th><th>等級</th></tr></thead><tbody>
+<tr><td data-label="時間">2025 年 3 月</td><td data-label="事件">Series E，Lightspeed 領投</td><td data-label="金額" class="n">US$3.5B</td><td data-label="投後估值" class="n">US$61.5B</td><td data-label="等級"><span class="pill yes">事實</span></td></tr>
+<tr><td data-label="時間">2025 年 9 月</td><td data-label="事件">Series F，ICONIQ 等</td><td data-label="金額" class="n">≈US$13B</td><td data-label="投後估值" class="n">≈US$183B</td><td data-label="等級"><span class="pill yes">事實</span></td></tr>
+<tr><td data-label="時間">2026 年 2 月</td><td data-label="事件">Series G</td><td data-label="金額" class="n">US$30B</td><td data-label="投後估值" class="n">US$380B</td><td data-label="等級"><span class="pill yes">事實</span></td></tr>
+<tr><td data-label="時間">2026 年 5 月</td><td data-label="事件">Series H，預期為最後一輪私募；含 US$15B 雲端業者既有承諾</td><td data-label="金額" class="n">US$65B</td><td data-label="投後估值" class="n">US$965B</td><td data-label="等級"><span class="pill yes">事實</span></td></tr>
+<tr><td data-label="時間">2026 年 7 月</td><td data-label="事件">二級市場平台（Caplight、Rainmaker）撮合價；賣方稀少</td><td data-label="金額" class="n">—</td><td data-label="投後估值" class="n">≈US$1.2T</td><td data-label="等級"><span class="pill maybe">第三方估計</span></td></tr>
+<tr><td data-label="時間">2026 年 6 月起</td><td data-label="事件">幣安上線盤前永續合約；8 月起 Hyperliquid 也有</td><td data-label="金額" class="n">—</td><td data-label="投後估值" class="n">合約價 × 10 億</td><td data-label="等級"><span class="pill maybe">市場報價，見下</span></td></tr>
+<tr><td data-label="時間">2026 年 6 月 1 日</td><td data-label="事件">秘密遞交 S-1；10 月下旬報導稱即將公開，截至 10 月 24 日未見 EDGAR 公開版</td><td data-label="金額" class="n">—</td><td data-label="投後估值" class="n">—</td><td data-label="等級"><span class="pill maybe">事實（報導）</span></td></tr>
 </tbody></table></div>
 <h3>盤前永續合約是什麼、不是什麼</h3>
 <ul>
@@ -86,12 +86,12 @@
 <section>
 <h2>三、Anthropic：營收數字的口徑問題</h2>
 <p>這是公開資料最豐富、也最容易被誤讀的一塊。數字本身是媒體轉述 S-1 草稿與投資人簡報，等級全部是「事實（報導）」。</p>
-<div class="tbl"><table><thead><tr><th>期間</th><th class="n">營收</th><th class="n">成長</th><th>獲利與成本</th><th>來源性質</th></tr></thead><tbody>
-<tr><td>2024 全年</td><td class="n">US$0.39B</td><td class="n">—</td><td>營業虧損 US$2.98B</td><td>Reuters 引 S-1 草稿</td></tr>
-<tr><td>2025 全年</td><td class="n">US$4.59B</td><td class="n">+1,088%</td><td>營業虧損 US$8.06B；淨損 US$41.97B，其中約 US$34B 是可轉債非現金重估；算力支出 US$7.33B</td><td>同上</td></tr>
-<tr><td>2026 Q1</td><td class="n">≈US$4.8B</td><td class="n">—</td><td>—</td><td>媒體</td></tr>
-<tr><td>2026 Q2</td><td class="n">US$11.5–11.6B</td><td class="n">≈+140% 季增</td><td>上半年淨損 US$80.7B，其中約 US$72B 非現金；上半年算力支出近 US$9B</td><td>WSJ 引 S-1 草稿</td></tr>
-<tr><td>2026 Q3</td><td class="n">US$16.8B</td><td class="n">+45% 季增</td><td>公司稱連兩季「調整後」獲利、現金流為正；調整後營業利益率約 11%（排除股權薪酬），口徑未定義</td><td>FT 等</td></tr>
+<div class="tbl stack"><table><thead><tr><th>期間</th><th class="n">營收</th><th class="n">成長</th><th>獲利與成本</th><th>來源性質</th></tr></thead><tbody>
+<tr><td data-label="期間">2024 全年</td><td data-label="營收" class="n">US$0.39B</td><td data-label="成長" class="n">—</td><td data-label="獲利與成本">營業虧損 US$2.98B</td><td data-label="來源性質">Reuters 引 S-1 草稿</td></tr>
+<tr><td data-label="期間">2025 全年</td><td data-label="營收" class="n">US$4.59B</td><td data-label="成長" class="n">+1,088%</td><td data-label="獲利與成本">營業虧損 US$8.06B；淨損 US$41.97B，其中約 US$34B 是可轉債非現金重估；算力支出 US$7.33B</td><td data-label="來源性質">同上</td></tr>
+<tr><td data-label="期間">2026 Q1</td><td data-label="營收" class="n">≈US$4.8B</td><td data-label="成長" class="n">—</td><td data-label="獲利與成本">—</td><td data-label="來源性質">媒體</td></tr>
+<tr><td data-label="期間">2026 Q2</td><td data-label="營收" class="n">US$11.5–11.6B</td><td data-label="成長" class="n">≈+140% 季增</td><td data-label="獲利與成本">上半年淨損 US$80.7B，其中約 US$72B 非現金；上半年算力支出近 US$9B</td><td data-label="來源性質">WSJ 引 S-1 草稿</td></tr>
+<tr><td data-label="期間">2026 Q3</td><td data-label="營收" class="n">US$16.8B</td><td data-label="成長" class="n">+45% 季增</td><td data-label="獲利與成本">公司稱連兩季「調整後」獲利、現金流為正；調整後營業利益率約 11%（排除股權薪酬），口徑未定義</td><td data-label="來源性質">FT 等</td></tr>
 </tbody></table></div>
 <p>四個口徑問題，每一個都會讓「估值 ÷ 營收」的倍數差一截：</p>
 <ul>
@@ -105,10 +105,10 @@
 <section>
 <h2>四、Anthropic：三情境與輸出指數</h2>
 <p>沒有上市的公司做不了 P/E 或 P/B，可做的是「未來 12 個月營收 × 倍數 + 淨現金」。情境的差別在季增率與倍數；倍數的參照是 OpenAI 最近洽談價對年化營收約 20 倍、Mistral 約 21 倍，以及 2026 年 AI 基建題材 IPO 轉冷的環境。三組假設全部是推估。</p>
-<div class="tbl"><table><thead><tr><th>情境（權重）</th><th>營收成長假設</th><th>營業利益率</th><th>NTM 倍數</th><th class="n">2026 / 2027 / 2028 營收</th></tr></thead><tbody>
-<tr><td>樂觀（25%）</td><td>Q4 季增 30%；2027 每季 +20%；2028 每季 +12%</td><td>2027 20% → 2028 30%</td><td>18x → 12x</td><td class="n">US$55B / 141B / 242B</td></tr>
-<tr><td>基準（50%）</td><td>Q4 季增 20%；2027 每季 +12%；2028 每季 +9%</td><td>2027 10% → 2028 20%</td><td>15x → 9x</td><td class="n">US$53B / 108B / 158B</td></tr>
-<tr><td>悲觀（25%）</td><td>Q4 季增 5%；2027 每季 +3%（大客戶自研、價格戰）；2028 每季 +4%</td><td>2027 −10% → 2028 0%</td><td>8x → 5x</td><td class="n">US$51B / 76B / 88B</td></tr>
+<div class="tbl stack"><table><thead><tr><th>情境（權重）</th><th>營收成長假設</th><th>營業利益率</th><th>NTM 倍數</th><th class="n">2026 / 2027 / 2028 營收</th></tr></thead><tbody>
+<tr><td data-label="情境（權重）">樂觀（25%）</td><td data-label="營收成長假設">Q4 季增 30%；2027 每季 +20%；2028 每季 +12%</td><td data-label="營業利益率">2027 20% → 2028 30%</td><td data-label="NTM 倍數">18x → 12x</td><td data-label="2026 / 2027 / 2028 營收" class="n">US$55B / 141B / 242B</td></tr>
+<tr><td data-label="情境（權重）">基準（50%）</td><td data-label="營收成長假設">Q4 季增 20%；2027 每季 +12%；2028 每季 +9%</td><td data-label="營業利益率">2027 10% → 2028 20%</td><td data-label="NTM 倍數">15x → 9x</td><td data-label="2026 / 2027 / 2028 營收" class="n">US$53B / 108B / 158B</td></tr>
+<tr><td data-label="情境（權重）">悲觀（25%）</td><td data-label="營收成長假設">Q4 季增 5%；2027 每季 +3%（大客戶自研、價格戰）；2028 每季 +4%</td><td data-label="營業利益率">2027 −10% → 2028 0%</td><td data-label="NTM 倍數">8x → 5x</td><td data-label="2026 / 2027 / 2028 營收" class="n">US$51B / 76B / 88B</td></tr>
 </tbody></table></div>
 <p>輸出以「同一期的基準情境 = 100」呈現。這樣做有兩個用意：第一，避免把推估包裝成價格；第二，指數讓讀者一眼看到區間的寬度，這才是這個練習的結論。</p>
 <div class="tbl"><table><thead><tr><th>期末</th><th class="n">樂觀</th><th class="n">基準</th><th class="n">悲觀</th><th class="n">機率加權</th><th class="n">高低比</th></tr></thead><tbody>
@@ -129,13 +129,13 @@
 <section>
 <h2>五、宇樹：上市公司模板之外的六層檢查</h2>
 <p>宇樹科技 2026 年 8 月 19 日在上交所科創板上市（688836，簡稱帶 W 代表同股不同權）。它有財報、有股價，看起來可以用一般上市公司的模板，但有六件事會讓模板失真，每一件都要先查、先標等級：</p>
-<div class="tbl"><table class="rules"><thead><tr><th>檢查</th><th>查到什麼</th><th>等級</th><th>對估值的意義</th></tr></thead><tbody>
-<tr><td>上市場所與結構</td><td>只有 A 股，無 H 股、無 ADR、無 VIE。創辦人持股 21.44% 加員工平台 9.85%，A 類股每股 10 票，合計表決權約 65%</td><td><span class="pill yes">事實</span></td><td>沒有跨市場價差可以參照；治理折價</td></tr>
-<tr><td>流通盤與解禁</td><td>上市首日可流通 3,009 萬股（7.44%）；2027 年 2 月解禁 0.56%，2027 年 8 月 19 日解禁約 56.6%，早期股東成本為個位數到數十元</td><td><span class="pill yes">事實</span>（解禁股數依比例更正了一則報導的誤植）</td><td>7% 流通盤下的股價是小額資金決定的；解禁是已知日期的供給變化</td></tr>
-<tr><td>政策與監管</td><td>中國端：首批 6 項人形機器人國標 2027 年 4 月 1 日實施、九部門推動具身智能進入商貿。美國端：1260H 清單 2026 年 6 月生效、NDAA 條款眾議院通過參議院未跟進、GUARD Act 委員會審議中、301 關稅 25% 加 12.5%</td><td><span class="pill yes">事實</span>，逐項標「已生效／審議中／未發生」</td><td>境外收入逾 35%，美國端每一項審議中的法案都是悲觀情境的輸入</td></tr>
-<tr><td>資料可信度</td><td>營收、淨利、出貨量分別有公司口徑與第三方口徑，見第六節交叉驗證</td><td>混合</td><td>同一指標兩個數字時兩個都列，寫明採用哪一個</td></tr>
-<tr><td>本地倍數與境外倍數</td><td>港股同業優必選約 10 倍 2026E P/S；A 股給宇樹的 P/S 高一個數量級。恒生 AH 溢價指數 124.5，A 股平均比 H 股貴約 25%</td><td><span class="pill maybe">第三方估計</span></td><td>這個案例沒有「中國折價」，是 A 股題材溢價加小流通盤；本地倍數與境外倍數要分開看、不預設方向</td></tr>
-<tr><td>互聯互通</td><td>是否已納入滬股通：無公開資料。科創板個股通常須先成為指數成份股</td><td><span class="pill no">無公開資料</span></td><td>外資管道影響未來的投資人結構，目前無法納入</td></tr>
+<div class="tbl stack"><table class="rules"><thead><tr><th>檢查</th><th>查到什麼</th><th>等級</th><th>對估值的意義</th></tr></thead><tbody>
+<tr><td data-label="檢查">上市場所與結構</td><td data-label="查到什麼">只有 A 股，無 H 股、無 ADR、無 VIE。創辦人持股 21.44% 加員工平台 9.85%，A 類股每股 10 票，合計表決權約 65%</td><td data-label="等級"><span class="pill yes">事實</span></td><td data-label="對估值的意義">沒有跨市場價差可以參照；治理折價</td></tr>
+<tr><td data-label="檢查">流通盤與解禁</td><td data-label="查到什麼">上市首日可流通 3,009 萬股（7.44%）；2027 年 2 月解禁 0.56%，2027 年 8 月 19 日解禁約 56.6%，早期股東成本為個位數到數十元</td><td data-label="等級"><span class="pill yes">事實</span>（解禁股數依比例更正了一則報導的誤植）</td><td data-label="對估值的意義">7% 流通盤下的股價是小額資金決定的；解禁是已知日期的供給變化</td></tr>
+<tr><td data-label="檢查">政策與監管</td><td data-label="查到什麼">中國端：首批 6 項人形機器人國標 2027 年 4 月 1 日實施、九部門推動具身智能進入商貿。美國端：1260H 清單 2026 年 6 月生效、NDAA 條款眾議院通過參議院未跟進、GUARD Act 委員會審議中、301 關稅 25% 加 12.5%</td><td data-label="等級"><span class="pill yes">事實</span>，逐項標「已生效／審議中／未發生」</td><td data-label="對估值的意義">境外收入逾 35%，美國端每一項審議中的法案都是悲觀情境的輸入</td></tr>
+<tr><td data-label="檢查">資料可信度</td><td data-label="查到什麼">營收、淨利、出貨量分別有公司口徑與第三方口徑，見第六節交叉驗證</td><td data-label="等級">混合</td><td data-label="對估值的意義">同一指標兩個數字時兩個都列，寫明採用哪一個</td></tr>
+<tr><td data-label="檢查">本地倍數與境外倍數</td><td data-label="查到什麼">港股同業優必選約 10 倍 2026E P/S；A 股給宇樹的 P/S 高一個數量級。恒生 AH 溢價指數 124.5，A 股平均比 H 股貴約 25%</td><td data-label="等級"><span class="pill maybe">第三方估計</span></td><td data-label="對估值的意義">這個案例沒有「中國折價」，是 A 股題材溢價加小流通盤；本地倍數與境外倍數要分開看、不預設方向</td></tr>
+<tr><td data-label="檢查">互聯互通</td><td data-label="查到什麼">是否已納入滬股通：無公開資料。科創板個股通常須先成為指數成份股</td><td data-label="等級"><span class="pill no">無公開資料</span></td><td data-label="對估值的意義">外資管道影響未來的投資人結構，目前無法納入</td></tr>
 </tbody></table></div>
 </section>
 
@@ -150,14 +150,14 @@
 <tr><td>人形機器人收入占比</td><td class="n">0</td><td class="n">1.9%</td><td class="n">27.6%</td><td class="n">51.5%（前三季）</td><td class="n">無公開資料</td></tr>
 </tbody></table></div>
 <p>2025 年扣非淨利高於歸母淨利，是因為 ¥3.49 億股份支付費用。一張表裡有五格「無公開資料」，本身就是結論的一部分：這家公司的歷史財務只有三年半可用。</p>
-<div class="tbl"><table class="rules"><thead><tr><th>檢查</th><th>結果</th><th>判定</th></tr></thead><tbody>
-<tr><td>2025 營收：17.08 vs 16.99</td><td>招股書口徑為營業收入 ¥17.08 億，另一媒體整理為 ¥16.99 億，差異可能來自主營與總營收口徑。模型採用 17.08</td><td><span class="pill maybe">小差異</span></td></tr>
-<tr><td>出貨 × 均價 vs 收入占比</td><td>5,511 台 × 均價 ¥16.6 萬 ≈ ¥9.1 億，約占 2025 營收 54%，與前三季 51.5% 的占比一致</td><td><span class="pill yes">吻合</span></td></tr>
-<tr><td>公司出貨 vs 第三方</td><td>SAG 估 2026 上半年約 5,900 台、全球份額 31%，被智元（約 8,400 台）超越；公司沒有單獨公布上半年出貨量</td><td><span class="pill maybe">僅一個來源</span></td></tr>
-<tr><td>均價走勢</td><td>人形均價從 2023 年 ¥59.3 萬降到 2025 年 ¥16.6 萬；入門機種 2026 年 6 月降至 ¥2.99 萬。營收成長主要靠量</td><td><span class="pill no">毛利壓力</span></td></tr>
-<tr><td>現金流品質</td><td>2026 Q1 經營現金流年減 85.7%；招股書提示存貨與應收增長快</td><td><span class="pill no">警訊</span></td></tr>
-<tr><td>海關與政府採購</td><td>境外收入占比長期逾 35%，但海關數據無法對到單一公司；高校採購標案未系統彙整</td><td><span class="pill no">無法驗證</span></td></tr>
-<tr><td>需求結構</td><td>2025 年前三季人形機器人收入中，科研教育占逾 70%，工業與商業只約 5%；2026 上半年全球出貨逾六成流向展演與科研</td><td><span class="pill maybe">第三方估計</span></td></tr>
+<div class="tbl stack"><table class="rules"><thead><tr><th>檢查</th><th>結果</th><th>判定</th></tr></thead><tbody>
+<tr><td data-label="檢查">2025 營收：17.08 vs 16.99</td><td data-label="結果">招股書口徑為營業收入 ¥17.08 億，另一媒體整理為 ¥16.99 億，差異可能來自主營與總營收口徑。模型採用 17.08</td><td data-label="判定"><span class="pill maybe">小差異</span></td></tr>
+<tr><td data-label="檢查">出貨 × 均價 vs 收入占比</td><td data-label="結果">5,511 台 × 均價 ¥16.6 萬 ≈ ¥9.1 億，約占 2025 營收 54%，與前三季 51.5% 的占比一致</td><td data-label="判定"><span class="pill yes">吻合</span></td></tr>
+<tr><td data-label="檢查">公司出貨 vs 第三方</td><td data-label="結果">SAG 估 2026 上半年約 5,900 台、全球份額 31%，被智元（約 8,400 台）超越；公司沒有單獨公布上半年出貨量</td><td data-label="判定"><span class="pill maybe">僅一個來源</span></td></tr>
+<tr><td data-label="檢查">均價走勢</td><td data-label="結果">人形均價從 2023 年 ¥59.3 萬降到 2025 年 ¥16.6 萬；入門機種 2026 年 6 月降至 ¥2.99 萬。營收成長主要靠量</td><td data-label="判定"><span class="pill no">毛利壓力</span></td></tr>
+<tr><td data-label="檢查">現金流品質</td><td data-label="結果">2026 Q1 經營現金流年減 85.7%；招股書提示存貨與應收增長快</td><td data-label="判定"><span class="pill no">警訊</span></td></tr>
+<tr><td data-label="檢查">海關與政府採購</td><td data-label="結果">境外收入占比長期逾 35%，但海關數據無法對到單一公司；高校採購標案未系統彙整</td><td data-label="判定"><span class="pill no">無法驗證</span></td></tr>
+<tr><td data-label="檢查">需求結構</td><td data-label="結果">2025 年前三季人形機器人收入中，科研教育占逾 70%，工業與商業只約 5%；2026 上半年全球出貨逾六成流向展演與科研</td><td data-label="判定"><span class="pill maybe">第三方估計</span></td></tr>
 </tbody></table></div>
 </section>
 
