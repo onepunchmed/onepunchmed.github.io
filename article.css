@@ -76,3 +76,18 @@
 .mdms-article .tag.fact{color:var(--accent)}
 .mdms-article .tag.est{color:var(--warn)}
 .mdms-article .rules td:first-child{white-space:normal;min-width:9em}
+.mdms-article .tbl.stack td:first-child,.mdms-article .tbl.fit td:first-child{white-space:normal}
+.mdms-article .tbl.stack td:first-child{min-width:9em}
+@media (max-width:640px){
+.mdms-article .tbl.fit table{min-width:0}
+.mdms-article .tbl.fit td:first-child{min-width:5em}
+.mdms-article .tbl.fit th{white-space:normal}
+.mdms-article .tbl.stack{border:0;border-radius:0;background:none;overflow:visible}
+.mdms-article .tbl.stack table{display:block;min-width:0;font-size:15px}
+.mdms-article .tbl.stack thead{display:none}
+.mdms-article .tbl.stack tbody{display:flex;flex-direction:column;gap:10px}
+.mdms-article .tbl.stack tr{display:flex;flex-direction:column;gap:8px;background:var(--paper);border:1px solid var(--line);border-radius:8px;padding:12px 14px}
+.mdms-article .tbl.stack td{display:block;padding:0;border:0;min-width:0;text-align:left;white-space:normal}
+.mdms-article .tbl.stack td:first-child{font-weight:600;min-width:0}
+.mdms-article .tbl.stack td:not(:first-child)::before{content:attr(data-label);display:block;font-size:12.5px;font-weight:600;color:var(--mut)}
+}
