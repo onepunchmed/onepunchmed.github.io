@@ -53,15 +53,15 @@
 <section>
 <h2>一、測了哪些說法</h2>
 <p>每個說法都轉成一條可以機械執行的規則：指標的今日數值落在過去 252 個交易日的 90 百分位以上（或 10 百分位以下）就觸發，T 日收盤得到訊號、T+1 收盤進場，持有 20 或 60 個交易日。融資用 20 日變化率和「水位 / 年均」兩種定義。</p>
-<div class="tbl"><table><thead><tr><th>假說</th><th>民間說法</th><th>規則</th></tr></thead><tbody>
-<tr><td>H1a / H1b</td><td>台股恐慌就買、太安逸要小心</td><td>VIXTWN ≥ 90 百分位買；≤ 10 百分位賣</td></tr>
-<tr><td>H2a / H2b</td><td>美股恐慌就買</td><td>美國 VIX ≥ 90 百分位買；≤ 10 百分位賣</td></tr>
-<tr><td>H3a / H3b</td><td>融資大增要小心、斷頭就是底</td><td>融資 20 日暴增賣；暴減買</td></tr>
-<tr><td>H4</td><td>融資水位太高要小心</td><td>融資水位 / 年均 ≥ 90 百分位賣</td></tr>
-<tr><td>H6</td><td>空單太多會軋空</td><td>券資比 ≥ 90 百分位買</td></tr>
-<tr><td>H7a / H7b</td><td>選擇權 P/C 比是反指標</td><td>P/C 未平倉比 ≥ 90 百分位買；≤ 10 百分位賣</td></tr>
-<tr><td>H8a / H8b</td><td>散戶反指標</td><td>小台散戶極多賣；極空買（僅描述）</td></tr>
-<tr><td>H10</td><td>多種恐慌同時出現就是底</td><td>綜合恐慌 ≥ 90 百分位買</td></tr>
+<div class="tbl stack"><table><thead><tr><th>假說</th><th>民間說法</th><th>規則</th></tr></thead><tbody>
+<tr><td data-label="假說">H1a / H1b</td><td data-label="民間說法">台股恐慌就買、太安逸要小心</td><td data-label="規則">VIXTWN ≥ 90 百分位買；≤ 10 百分位賣</td></tr>
+<tr><td data-label="假說">H2a / H2b</td><td data-label="民間說法">美股恐慌就買</td><td data-label="規則">美國 VIX ≥ 90 百分位買；≤ 10 百分位賣</td></tr>
+<tr><td data-label="假說">H3a / H3b</td><td data-label="民間說法">融資大增要小心、斷頭就是底</td><td data-label="規則">融資 20 日暴增賣；暴減買</td></tr>
+<tr><td data-label="假說">H4</td><td data-label="民間說法">融資水位太高要小心</td><td data-label="規則">融資水位 / 年均 ≥ 90 百分位賣</td></tr>
+<tr><td data-label="假說">H6</td><td data-label="民間說法">空單太多會軋空</td><td data-label="規則">券資比 ≥ 90 百分位買</td></tr>
+<tr><td data-label="假說">H7a / H7b</td><td data-label="民間說法">選擇權 P/C 比是反指標</td><td data-label="規則">P/C 未平倉比 ≥ 90 百分位買；≤ 10 百分位賣</td></tr>
+<tr><td data-label="假說">H8a / H8b</td><td data-label="民間說法">散戶反指標</td><td data-label="規則">小台散戶極多賣；極空買（僅描述）</td></tr>
+<tr><td data-label="假說">H10</td><td data-label="民間說法">多種恐慌同時出現就是底</td><td data-label="規則">綜合恐慌 ≥ 90 百分位買</td></tr>
 </tbody></table></div>
 <p>另有兩個常見說法沒有測：大盤融資維持率低檔（H5）與違約交割金額暴增（H9），找不到可批量下載的公開歷史資料。</p>
 </section>
@@ -110,12 +110,12 @@
 <section>
 <h2>五、P/C 未平倉比：撐過大部分推翻測試，但還不算驗證</h2>
 <p>H7a 是 13 個訊號裡唯一在樣本內、樣本外方向都一致而且勝過隨機進場的。門檻改 80 或 95 百分位、改 T+2 進場，方向都不變；2007–2026 有觸發的 19 個年度中 18 年平均為正。因為數字好看，又另外寫了一份預先登錄的推翻測試，專門試著否定它，不再調參數：</p>
-<div class="tbl"><table><thead><tr><th>推翻測試</th><th class="n">樣本外結果</th><th>預先登錄標準</th><th>結果</th></tr></thead><tbody>
-<tr><td>循環位移：訊號序列整段平移，保留訊號與波動的叢聚</td><td class="n">p 0.0486（20 日）/ 0.0066（60 日）</td><td>p &lt; 0.05</td><td>通過</td></tr>
-<tr><td>家族多重檢定：20 個訊號 × 視窗一起校正</td><td class="n">FWER p 0.4078 / 0.1359</td><td>&lt; 0.10</td><td>未過（全期 60 日 0.0752 才過）</td></tr>
-<tr><td>配對同樣「距月結算天數」的隨機進場</td><td class="n">勝過 96.5%</td><td>≥ 95</td><td>通過</td></tr>
-<tr><td>控制過去 60 日報酬、MA200、VIXTWN、P/C 變化後的 t（20 日）</td><td class="n">2.74</td><td>≥ 2</td><td>通過</td></tr>
-<tr><td>以年為單位區塊重抽：每筆淨報酬 95% 區間（全期 88 筆）</td><td class="n">+2.4%（1.35 ~ 3.59）</td><td>下界 &gt; 0</td><td>通過</td></tr>
+<div class="tbl stack"><table><thead><tr><th>推翻測試</th><th class="n">樣本外結果</th><th>預先登錄標準</th><th>結果</th></tr></thead><tbody>
+<tr><td data-label="推翻測試">循環位移：訊號序列整段平移，保留訊號與波動的叢聚</td><td data-label="樣本外結果" class="n">p 0.0486（20 日）/ 0.0066（60 日）</td><td data-label="預先登錄標準">p &lt; 0.05</td><td data-label="結果">通過</td></tr>
+<tr><td data-label="推翻測試">家族多重檢定：20 個訊號 × 視窗一起校正</td><td data-label="樣本外結果" class="n">FWER p 0.4078 / 0.1359</td><td data-label="預先登錄標準">&lt; 0.10</td><td data-label="結果">未過（全期 60 日 0.0752 才過）</td></tr>
+<tr><td data-label="推翻測試">配對同樣「距月結算天數」的隨機進場</td><td data-label="樣本外結果" class="n">勝過 96.5%</td><td data-label="預先登錄標準">≥ 95</td><td data-label="結果">通過</td></tr>
+<tr><td data-label="推翻測試">控制過去 60 日報酬、MA200、VIXTWN、P/C 變化後的 t（20 日）</td><td data-label="樣本外結果" class="n">2.74</td><td data-label="預先登錄標準">≥ 2</td><td data-label="結果">通過</td></tr>
+<tr><td data-label="推翻測試">以年為單位區塊重抽：每筆淨報酬 95% 區間（全期 88 筆）</td><td data-label="樣本外結果" class="n">+2.4%（1.35 ~ 3.59）</td><td data-label="預先登錄標準">下界 &gt; 0</td><td data-label="結果">通過</td></tr>
 </tbody></table></div>
 <p>唯一沒過的是家族多重檢定：一次測 20 個想法，最好的那個本來就可能只是運氣最好。依事先寫好的規則，它不升級為「已驗證」。</p>
 <p>另外兩個觀察有助於解讀：</p>

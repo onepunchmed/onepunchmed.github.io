@@ -52,34 +52,34 @@
 <section>
 <h2>一、成熟上市公司為什麼要用四個方法</h2>
 <p>未上市公司只能用融資輪與合約價格當錨，因為沒有盈餘。台積電有 30 年財報、穩定配息和完整的歷史本益比，所以可以用多個方法互相檢核，再疊上情境與機率。每個方法回答的問題不一樣，缺點也不一樣，權重反映的是「市場主要用什麼定價」與「哪個方法能當煞車」。</p>
-<div class="tbl"><table><thead><tr><th>方法</th><th>做法</th><th class="n">權重</th><th>為什麼這樣用</th></tr></thead><tbody>
-<tr><td>遠期本益比</td><td>下一年 EPS × 情境本益比</td><td class="n">50%</td><td>市場主要用這個定價台積電；10 年遠期本益比區間 12.0x 到 30.7x，中位數 19.8x，可作錨點。缺點是倍數本身就是結論的一半。</td></tr>
-<tr><td>DCF（自由現金流折現）</td><td>2027 到 2030 逐年自由現金流折現，加終值與淨現金</td><td class="n">35%</td><td>台積電資本支出極重，DCF 能把「錢花在擴產」的代價算進去，是本益比法的煞車。缺點是終值占比極高（見第四節）。</td></tr>
-<tr><td>P/B–ROE</td><td>合理淨值比 =（ROE − g）÷（r − g），乘每股淨值</td><td class="n">15%</td><td>檢查高 ROE 能不能持續；ROE 一回落，淨值比會大幅下修。缺點是分母 r − g 很小，結果對 g 極度敏感。</td></tr>
-<tr><td>反向 DCF</td><td>固定利潤率，倒推讓 DCF 等於市價的營收成長率</td><td class="n">檢核用</td><td>先問「市場已經定價了什麼」，再判斷自己的假設是比市場樂觀還是悲觀。不直接產生數字。</td></tr>
-<tr><td>景氣循環調整盈餘</td><td>悲觀情境用接近歷史平均的淨利率（42% 到 45%）與谷底倍數</td><td class="n">情境錨</td><td>半導體有週期，2022 年遠期本益比曾跌到 12x。沒有這個錨，悲觀情境會太溫和。</td></tr>
-<tr><td>股利折現（DDM）</td><td>未採用</td><td class="n">0%</td><td>殖利率約 1.2%，配息率刻意壓低以支應資本支出，DDM 對成長期公司會算得太低。</td></tr>
+<div class="tbl stack"><table><thead><tr><th>方法</th><th>做法</th><th class="n">權重</th><th>為什麼這樣用</th></tr></thead><tbody>
+<tr><td data-label="方法">遠期本益比</td><td data-label="做法">下一年 EPS × 情境本益比</td><td data-label="權重" class="n">50%</td><td data-label="為什麼這樣用">市場主要用這個定價台積電；10 年遠期本益比區間 12.0x 到 30.7x，中位數 19.8x，可作錨點。缺點是倍數本身就是結論的一半。</td></tr>
+<tr><td data-label="方法">DCF（自由現金流折現）</td><td data-label="做法">2027 到 2030 逐年自由現金流折現，加終值與淨現金</td><td data-label="權重" class="n">35%</td><td data-label="為什麼這樣用">台積電資本支出極重，DCF 能把「錢花在擴產」的代價算進去，是本益比法的煞車。缺點是終值占比極高（見第四節）。</td></tr>
+<tr><td data-label="方法">P/B–ROE</td><td data-label="做法">合理淨值比 =（ROE − g）÷（r − g），乘每股淨值</td><td data-label="權重" class="n">15%</td><td data-label="為什麼這樣用">檢查高 ROE 能不能持續；ROE 一回落，淨值比會大幅下修。缺點是分母 r − g 很小，結果對 g 極度敏感。</td></tr>
+<tr><td data-label="方法">反向 DCF</td><td data-label="做法">固定利潤率，倒推讓 DCF 等於市價的營收成長率</td><td data-label="權重" class="n">檢核用</td><td data-label="為什麼這樣用">先問「市場已經定價了什麼」，再判斷自己的假設是比市場樂觀還是悲觀。不直接產生數字。</td></tr>
+<tr><td data-label="方法">景氣循環調整盈餘</td><td data-label="做法">悲觀情境用接近歷史平均的淨利率（42% 到 45%）與谷底倍數</td><td data-label="權重" class="n">情境錨</td><td data-label="為什麼這樣用">半導體有週期，2022 年遠期本益比曾跌到 12x。沒有這個錨，悲觀情境會太溫和。</td></tr>
+<tr><td data-label="方法">股利折現（DDM）</td><td data-label="做法">未採用</td><td data-label="權重" class="n">0%</td><td data-label="為什麼這樣用">殖利率約 1.2%，配息率刻意壓低以支應資本支出，DDM 對成長期公司會算得太低。</td></tr>
 </tbody></table></div>
 </section>
 
 <section>
 <h2>二、輸入從哪裡來：全部是公開資料</h2>
 <p>估值的第一步是把「事實」與「推估」分開標記。下表是模型用到的每一個輸入，事實有來源，推估寫出怎麼推。沒有取得的資料直接寫沒有，不用猜的數字補。</p>
-<div class="tbl"><table><thead><tr><th>項目</th><th>數字</th><th>性質</th><th>來源</th></tr></thead><tbody>
-<tr><td>2025 全年</td><td>營收 US$122.0B、毛利率 59.9%、營益率 50.8%、EPS NT$66.25</td><td><span class="tag fact">事實</span></td><td><a href="https://www.ctee.com.tw/news/20260115701196-430501" target="_blank" rel="noopener">工商時報</a>，2026-01-15</td></tr>
-<tr><td>2026 年第二季</td><td>營收 US$40.2B、毛利率 67.7%、營益率 60.3%、EPS NT$27.25</td><td><span class="tag fact">事實</span></td><td><a href="https://technews.tw/2026/07/16/tsmcs-second-quarter-revenue-and-net-profit-both-exceeded-expectations/" target="_blank" rel="noopener">科技新報</a>，2026-07-16</td></tr>
-<tr><td>2026 年第三季</td><td>營收 US$46.72B、毛利率 66.4%、營益率 58.7%、淨利率 51.1%、ROE 45.5%、EPS NT$29.43；HPC 占 68%、7 奈米以下占 79%</td><td><span class="tag fact">事實</span></td><td><a href="https://www.fool.com/earnings/call-transcripts/2026/10/15/tsmc-tsm-q3-2026-earnings-call-transcript/" target="_blank" rel="noopener">法說會逐字稿</a>，2026-10-15</td></tr>
-<tr><td>2026 年第四季財測</td><td>營收 US$52.3B 到 54.3B、毛利率 65% 到 67%、營益率 56.5% 到 58.5%；匯率假設 31.8</td><td><span class="tag fact">事實（財測）</span></td><td>同上</td></tr>
-<tr><td>2026 全年推估</td><td>營收約 US$175.7B（公司指引美元成長約 44%）、EPS 約 NT$111.8</td><td><span class="tag est">推估</span></td><td>由前三季實際值加第四季財測中值推得</td></tr>
-<tr><td>資本支出</td><td>2026 年 600 億到 640 億美元；2026 到 2028 年「顯著更高」，法人估 2027 年 750 億到 900 億美元</td><td><span class="tag fact">事實</span>／法人估 <span class="tag est">推估</span></td><td>法說會逐字稿；<a href="https://www.ctee.com.tw/news/20261014700084-439901" target="_blank" rel="noopener">工商時報</a>，2026-10-14</td></tr>
-<tr><td>毛利率壓力</td><td>第三季毛利率季減 1.3 個百分點，主因 2 奈米爬坡與海外廠；海外廠稀釋後段將擴大到 3 到 4 個百分點</td><td><span class="tag fact">事實（公司說法）</span></td><td>法說會逐字稿</td></tr>
-<tr><td>現金與淨現金</td><td>現金與有價證券約 NT$4 兆；模型取淨現金 NT$3 兆</td><td><span class="tag fact">事實</span>／淨現金 <span class="tag est">推估</span></td><td>法說會；負債金額本次未取得，無公開資料可核</td></tr>
-<tr><td>股數</td><td>約 259.3 億股（由市值 66.9 兆 ÷ 盤中價 2,580 回推）</td><td><span class="tag est">推估</span></td><td><a href="https://www.cna.com.tw/news/afe/202610050031.aspx" target="_blank" rel="noopener">中央社</a>，2026-10-05</td></tr>
-<tr><td>每股淨值</td><td>2026 年底約 NT$285（由第三季 ROE 45.5% 回推約 260，再加第四季獲利扣除配息）</td><td><span class="tag est">推估</span></td><td>精確資產負債表本次未取得</td></tr>
-<tr><td>歷史本益比</td><td>遠期本益比 19.0x；10 年區間 12.0x（2022-09）到 30.7x（2021-03），中位數 19.8x。年底 TTM 本益比：2015 年 9.5x、2021 年 35.2x、2022 年 11.0x</td><td><span class="tag fact">事實</span></td><td><a href="https://www.gurufocus.com/term/forward-pe-ratio/TSM" target="_blank" rel="noopener">GuruFocus</a>，2026-10-23；<a href="https://www.macrotrends.net/stocks/charts/TSM/taiwan-semiconductor-manufacturing/pe-ratio" target="_blank" rel="noopener">Macrotrends</a></td></tr>
-<tr><td>市價（只用於反向 DCF）</td><td>2026-10-22 收盤 NT$2,385</td><td><span class="tag fact">事實</span></td><td><a href="https://tw.stock.yahoo.com/quote/2330.TW" target="_blank" rel="noopener">Yahoo 股市</a></td></tr>
-<tr><td>折現率（WACC）</td><td>9%：無風險利率約 2% ＋ β 1.2 × 股權風險溢酬約 6%，近乎零負債所以 WACC ≈ 股權成本</td><td><span class="tag est">推估</span></td><td>各項參數都是常見取值，第六節會看它的敏感度</td></tr>
-<tr><td>永續成長率</td><td>3%</td><td><span class="tag est">假設</span></td><td>略高於長期通膨，低於名目 GDP 成長</td></tr>
+<div class="tbl stack"><table><thead><tr><th>項目</th><th>數字</th><th>性質</th><th>來源</th></tr></thead><tbody>
+<tr><td data-label="項目">2025 全年</td><td data-label="數字">營收 US$122.0B、毛利率 59.9%、營益率 50.8%、EPS NT$66.25</td><td data-label="性質"><span class="tag fact">事實</span></td><td data-label="來源"><a href="https://www.ctee.com.tw/news/20260115701196-430501" target="_blank" rel="noopener">工商時報</a>，2026-01-15</td></tr>
+<tr><td data-label="項目">2026 年第二季</td><td data-label="數字">營收 US$40.2B、毛利率 67.7%、營益率 60.3%、EPS NT$27.25</td><td data-label="性質"><span class="tag fact">事實</span></td><td data-label="來源"><a href="https://technews.tw/2026/07/16/tsmcs-second-quarter-revenue-and-net-profit-both-exceeded-expectations/" target="_blank" rel="noopener">科技新報</a>，2026-07-16</td></tr>
+<tr><td data-label="項目">2026 年第三季</td><td data-label="數字">營收 US$46.72B、毛利率 66.4%、營益率 58.7%、淨利率 51.1%、ROE 45.5%、EPS NT$29.43；HPC 占 68%、7 奈米以下占 79%</td><td data-label="性質"><span class="tag fact">事實</span></td><td data-label="來源"><a href="https://www.fool.com/earnings/call-transcripts/2026/10/15/tsmc-tsm-q3-2026-earnings-call-transcript/" target="_blank" rel="noopener">法說會逐字稿</a>，2026-10-15</td></tr>
+<tr><td data-label="項目">2026 年第四季財測</td><td data-label="數字">營收 US$52.3B 到 54.3B、毛利率 65% 到 67%、營益率 56.5% 到 58.5%；匯率假設 31.8</td><td data-label="性質"><span class="tag fact">事實（財測）</span></td><td data-label="來源">同上</td></tr>
+<tr><td data-label="項目">2026 全年推估</td><td data-label="數字">營收約 US$175.7B（公司指引美元成長約 44%）、EPS 約 NT$111.8</td><td data-label="性質"><span class="tag est">推估</span></td><td data-label="來源">由前三季實際值加第四季財測中值推得</td></tr>
+<tr><td data-label="項目">資本支出</td><td data-label="數字">2026 年 600 億到 640 億美元；2026 到 2028 年「顯著更高」，法人估 2027 年 750 億到 900 億美元</td><td data-label="性質"><span class="tag fact">事實</span>／法人估 <span class="tag est">推估</span></td><td data-label="來源">法說會逐字稿；<a href="https://www.ctee.com.tw/news/20261014700084-439901" target="_blank" rel="noopener">工商時報</a>，2026-10-14</td></tr>
+<tr><td data-label="項目">毛利率壓力</td><td data-label="數字">第三季毛利率季減 1.3 個百分點，主因 2 奈米爬坡與海外廠；海外廠稀釋後段將擴大到 3 到 4 個百分點</td><td data-label="性質"><span class="tag fact">事實（公司說法）</span></td><td data-label="來源">法說會逐字稿</td></tr>
+<tr><td data-label="項目">現金與淨現金</td><td data-label="數字">現金與有價證券約 NT$4 兆；模型取淨現金 NT$3 兆</td><td data-label="性質"><span class="tag fact">事實</span>／淨現金 <span class="tag est">推估</span></td><td data-label="來源">法說會；負債金額本次未取得，無公開資料可核</td></tr>
+<tr><td data-label="項目">股數</td><td data-label="數字">約 259.3 億股（由市值 66.9 兆 ÷ 盤中價 2,580 回推）</td><td data-label="性質"><span class="tag est">推估</span></td><td data-label="來源"><a href="https://www.cna.com.tw/news/afe/202610050031.aspx" target="_blank" rel="noopener">中央社</a>，2026-10-05</td></tr>
+<tr><td data-label="項目">每股淨值</td><td data-label="數字">2026 年底約 NT$285（由第三季 ROE 45.5% 回推約 260，再加第四季獲利扣除配息）</td><td data-label="性質"><span class="tag est">推估</span></td><td data-label="來源">精確資產負債表本次未取得</td></tr>
+<tr><td data-label="項目">歷史本益比</td><td data-label="數字">遠期本益比 19.0x；10 年區間 12.0x（2022-09）到 30.7x（2021-03），中位數 19.8x。年底 TTM 本益比：2015 年 9.5x、2021 年 35.2x、2022 年 11.0x</td><td data-label="性質"><span class="tag fact">事實</span></td><td data-label="來源"><a href="https://www.gurufocus.com/term/forward-pe-ratio/TSM" target="_blank" rel="noopener">GuruFocus</a>，2026-10-23；<a href="https://www.macrotrends.net/stocks/charts/TSM/taiwan-semiconductor-manufacturing/pe-ratio" target="_blank" rel="noopener">Macrotrends</a></td></tr>
+<tr><td data-label="項目">市價（只用於反向 DCF）</td><td data-label="數字">2026-10-22 收盤 NT$2,385</td><td data-label="性質"><span class="tag fact">事實</span></td><td data-label="來源"><a href="https://tw.stock.yahoo.com/quote/2330.TW" target="_blank" rel="noopener">Yahoo 股市</a></td></tr>
+<tr><td data-label="項目">折現率（WACC）</td><td data-label="數字">9%：無風險利率約 2% ＋ β 1.2 × 股權風險溢酬約 6%，近乎零負債所以 WACC ≈ 股權成本</td><td data-label="性質"><span class="tag est">推估</span></td><td data-label="來源">各項參數都是常見取值，第六節會看它的敏感度</td></tr>
+<tr><td data-label="項目">永續成長率</td><td data-label="數字">3%</td><td data-label="性質"><span class="tag est">假設</span></td><td data-label="來源">略高於長期通膨，低於名目 GDP 成長</td></tr>
 </tbody></table></div>
 <p class="mut">本次未能取得：台積電官方新聞稿全文（改用媒體與逐字稿）、精確資產負債表、2026 年第一季的營收與毛利率。這些缺口都標在表裡，重做時優先補上。</p>
 </section>
@@ -306,14 +306,14 @@
 <section>
 <h2>七、哪些事件會動到哪個假設</h2>
 <p>估值做完之後，比結果更有用的是這張對照表：之後看到新聞時，知道它動的是模型裡的哪一格、方向往哪邊。這些都是研究日當時公開資料裡看得到的變數。</p>
-<div class="tbl"><table class="rules"><thead><tr><th>事件或資料</th><th>動到哪個假設</th><th>方向與量級</th></tr></thead><tbody>
-<tr><td>2027 年 1 月法說會的 2027 年營收與資本支出指引</td><td>2027 年成長率、FCF 利潤率</td><td>這是模型裡最早會被公開資料驗證的假設。單看 2027 年成長率影響 ±7%；若連帶改變對 2028 年以後的看法，影響放大到 ±15%。</td></tr>
-<tr><td>雲端業者與 AI 新創的融資成本（研究日時 CoreWeave 債券殖利率近 16%、Oracle CDS 創 18 年高）</td><td>2028 年成長率、悲觀情境機率</td><td>融資變貴，下游買算力的能力下降；悲觀情境機率每加 10 個百分點，加權值約少 8%。</td></tr>
-<tr><td>2027 年資本支出落在 750 億還是 900 億美元</td><td>FCF 利潤率</td><td>單一年的差距只影響 DCF 不到 1%；若 2028 年以後也維持同樣水準，接近每年 FCF 利潤率少 3 個百分點，約 −9%。資本支出同時墊高 2028 年後的產能與成長，方向不是單邊的。</td></tr>
-<tr><td>2 奈米爬坡與海外廠稀釋（公司估後段 3 到 4 個百分點）</td><td>毛利率 → 淨利率與 FCF 利潤率</td><td>稀釋擴大則三個情境的利潤率同步下修；2027 年漲價與美國產能另行定價是反向因素。</td></tr>
-<tr><td>美國 10 年期公債殖利率（研究日前後一度接近 5%）</td><td>WACC</td><td>無風險利率每高 0.5 個百分點，DCF 約少 8%，而且終值縮得最多。</td></tr>
-<tr><td>2 奈米產能 2027 年翻倍、A14 2028 年量產；Samsung 與 Intel 先進製程進度</td><td>2029 年後成長率、永續成長率、終值倍數</td><td>獨占延續則終值相關假設可用上緣；競爭者追上則反之。這組假設合計決定八成的 DCF 價值，卻最難用近期資料驗證。</td></tr>
-<tr><td>景氣循環：2022 年遠期本益比曾到 12x</td><td>悲觀情境的倍數與淨利率</td><td>悲觀情境之所以到 51 到 70，是成長、利潤率與倍數同時收縮的結果。在 DCF 裡只把成長率換成悲觀路徑就到 61，只換利潤率到 83；在本益比法裡只換 EPS 或只換倍數都在 90 左右。</td></tr>
+<div class="tbl stack"><table class="rules"><thead><tr><th>事件或資料</th><th>動到哪個假設</th><th>方向與量級</th></tr></thead><tbody>
+<tr><td data-label="事件或資料">2027 年 1 月法說會的 2027 年營收與資本支出指引</td><td data-label="動到哪個假設">2027 年成長率、FCF 利潤率</td><td data-label="方向與量級">這是模型裡最早會被公開資料驗證的假設。單看 2027 年成長率影響 ±7%；若連帶改變對 2028 年以後的看法，影響放大到 ±15%。</td></tr>
+<tr><td data-label="事件或資料">雲端業者與 AI 新創的融資成本（研究日時 CoreWeave 債券殖利率近 16%、Oracle CDS 創 18 年高）</td><td data-label="動到哪個假設">2028 年成長率、悲觀情境機率</td><td data-label="方向與量級">融資變貴，下游買算力的能力下降；悲觀情境機率每加 10 個百分點，加權值約少 8%。</td></tr>
+<tr><td data-label="事件或資料">2027 年資本支出落在 750 億還是 900 億美元</td><td data-label="動到哪個假設">FCF 利潤率</td><td data-label="方向與量級">單一年的差距只影響 DCF 不到 1%；若 2028 年以後也維持同樣水準，接近每年 FCF 利潤率少 3 個百分點，約 −9%。資本支出同時墊高 2028 年後的產能與成長，方向不是單邊的。</td></tr>
+<tr><td data-label="事件或資料">2 奈米爬坡與海外廠稀釋（公司估後段 3 到 4 個百分點）</td><td data-label="動到哪個假設">毛利率 → 淨利率與 FCF 利潤率</td><td data-label="方向與量級">稀釋擴大則三個情境的利潤率同步下修；2027 年漲價與美國產能另行定價是反向因素。</td></tr>
+<tr><td data-label="事件或資料">美國 10 年期公債殖利率（研究日前後一度接近 5%）</td><td data-label="動到哪個假設">WACC</td><td data-label="方向與量級">無風險利率每高 0.5 個百分點，DCF 約少 8%，而且終值縮得最多。</td></tr>
+<tr><td data-label="事件或資料">2 奈米產能 2027 年翻倍、A14 2028 年量產；Samsung 與 Intel 先進製程進度</td><td data-label="動到哪個假設">2029 年後成長率、永續成長率、終值倍數</td><td data-label="方向與量級">獨占延續則終值相關假設可用上緣；競爭者追上則反之。這組假設合計決定八成的 DCF 價值，卻最難用近期資料驗證。</td></tr>
+<tr><td data-label="事件或資料">景氣循環：2022 年遠期本益比曾到 12x</td><td data-label="動到哪個假設">悲觀情境的倍數與淨利率</td><td data-label="方向與量級">悲觀情境之所以到 51 到 70，是成長、利潤率與倍數同時收縮的結果。在 DCF 裡只把成長率換成悲觀路徑就到 61，只換利潤率到 83；在本益比法裡只換 EPS 或只換倍數都在 90 左右。</td></tr>
 </tbody></table></div>
 </section>
 

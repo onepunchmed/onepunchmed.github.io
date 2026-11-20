@@ -53,14 +53,14 @@
 <h2>一、研究設計：先寫死規則再看結果</h2>
 <p>臨床試驗在收第一位病人之前就要登記主要終點，避免事後挑對自己有利的結果。這次回測也一樣：資料還在下載、還沒算任何數字之前，我先寫下主要版本、主要終點和全部要跑的替代版本，存檔並記下時間（2026-10-29 17:25）與檔案雜湊值。之後所有結果，不論好看與否，都照這份設計報告。</p>
 <p>兩組拿到的錢完全相同，就像兩組病人吃同樣的總劑量，只比給藥時機：</p>
-<div class="tbl"><table class="rules"><thead><tr><th>項目</th><th>設定</th></tr></thead><tbody>
-<tr><td>每月資金</td><td>NT$10,000，在每月 6 日當天或之後第一個交易日入帳</td></tr>
-<tr><td>定期定額（對照組）</td><td>入帳當天全部買進 0050</td></tr>
-<tr><td>逢低加碼（主要版本）</td><td>入帳當天先買 50%，另外 50% 存進預備金。若當天 0050 含息還原價比過去 252 個交易日的最高價低 20% 以上，預備金全部買進。只在扣款日檢查，每月最多一次</td></tr>
-<tr><td>預備金</td><td>年利率 1.0% 按日計息，約當一年期定存</td></tr>
-<tr><td>成本</td><td>手續費 0.1425% × 0.6，每筆最低 NT$1；不賣出，不計稅與二代健保</td></tr>
-<tr><td>主要終點</td><td>所有 10 年滾動視窗中，逢低加碼期末財富高於定期定額的比例；效果量用兩者比值的中位數與範圍</td></tr>
-<tr><td>資料</td><td>證交所個股日成交資訊（2010-01-04 起）與除權息計算結果表；配息在除息日以收盤價再投入；2025 年 6 月 1 拆 4 分割以股數乘 4 處理</td></tr>
+<div class="tbl stack"><table class="rules"><thead><tr><th>項目</th><th>設定</th></tr></thead><tbody>
+<tr><td data-label="項目">每月資金</td><td data-label="設定">NT$10,000，在每月 6 日當天或之後第一個交易日入帳</td></tr>
+<tr><td data-label="項目">定期定額（對照組）</td><td data-label="設定">入帳當天全部買進 0050</td></tr>
+<tr><td data-label="項目">逢低加碼（主要版本）</td><td data-label="設定">入帳當天先買 50%，另外 50% 存進預備金。若當天 0050 含息還原價比過去 252 個交易日的最高價低 20% 以上，預備金全部買進。只在扣款日檢查，每月最多一次</td></tr>
+<tr><td data-label="項目">預備金</td><td data-label="設定">年利率 1.0% 按日計息，約當一年期定存</td></tr>
+<tr><td data-label="項目">成本</td><td data-label="設定">手續費 0.1425% × 0.6，每筆最低 NT$1；不賣出，不計稅與二代健保</td></tr>
+<tr><td data-label="項目">主要終點</td><td data-label="設定">所有 10 年滾動視窗中，逢低加碼期末財富高於定期定額的比例；效果量用兩者比值的中位數與範圍</td></tr>
+<tr><td data-label="項目">資料</td><td data-label="設定">證交所個股日成交資訊（2010-01-04 起）與除權息計算結果表；配息在除息日以收盤價再投入；2025 年 6 月 1 拆 4 分割以股數乘 4 處理</td></tr>
 </tbody></table></div>
 </section>
 
@@ -95,16 +95,16 @@
 <section>
 <h2>四、規則在刀口上：差 0.2 個百分點就錯過</h2>
 <p>規則每月只檢查一次。下表是每日收盤曾經跌破一年高點 20% 的年份，對照扣款日當天看到的最大跌幅：</p>
-<div class="tbl"><table><thead><tr><th class="n">年份</th><th class="n">當年最深（日收盤）</th><th class="n">扣款日看到的最深</th><th>主要版本有沒有觸發</th></tr></thead><tbody>
-<tr><td class="n">2011</td><td class="n">−23.0%（12-19）</td><td class="n">−19.8%（12-06）</td><td>沒有</td></tr>
-<tr><td class="n">2012</td><td class="n">−20.6%（06-04）</td><td class="n">−18.9%（06-06）</td><td>沒有</td></tr>
-<tr><td class="n">2015</td><td class="n">−21.0%（08-24）</td><td class="n">−15.8%（09-07）</td><td>沒有</td></tr>
-<tr><td class="n">2016</td><td class="n">−20.9%（01-21）</td><td class="n">−17.1%（01-06）</td><td>沒有</td></tr>
-<tr><td class="n">2020</td><td class="n">−28.2%（03-19）</td><td class="n">−19.3%（04-06）</td><td>沒有</td></tr>
-<tr><td class="n">2022</td><td class="n">−34.0%（10-25）</td><td class="n">−31.3%（11-07）</td><td>有</td></tr>
-<tr><td class="n">2023</td><td class="n">−24.5%（01-04）</td><td class="n">−23.6%（01-06）</td><td>有</td></tr>
-<tr><td class="n">2024</td><td class="n">−21.3%（08-05）</td><td class="n">−17.0%（08-06）</td><td>沒有</td></tr>
-<tr><td class="n">2025</td><td class="n">−27.5%（04-09）</td><td class="n">−21.4%（04-07）</td><td>有</td></tr>
+<div class="tbl stack"><table><thead><tr><th class="n">年份</th><th class="n">當年最深（日收盤）</th><th class="n">扣款日看到的最深</th><th>主要版本有沒有觸發</th></tr></thead><tbody>
+<tr><td data-label="年份" class="n">2011</td><td data-label="當年最深（日收盤）" class="n">−23.0%（12-19）</td><td data-label="扣款日看到的最深" class="n">−19.8%（12-06）</td><td data-label="主要版本有沒有觸發">沒有</td></tr>
+<tr><td data-label="年份" class="n">2012</td><td data-label="當年最深（日收盤）" class="n">−20.6%（06-04）</td><td data-label="扣款日看到的最深" class="n">−18.9%（06-06）</td><td data-label="主要版本有沒有觸發">沒有</td></tr>
+<tr><td data-label="年份" class="n">2015</td><td data-label="當年最深（日收盤）" class="n">−21.0%（08-24）</td><td data-label="扣款日看到的最深" class="n">−15.8%（09-07）</td><td data-label="主要版本有沒有觸發">沒有</td></tr>
+<tr><td data-label="年份" class="n">2016</td><td data-label="當年最深（日收盤）" class="n">−20.9%（01-21）</td><td data-label="扣款日看到的最深" class="n">−17.1%（01-06）</td><td data-label="主要版本有沒有觸發">沒有</td></tr>
+<tr><td data-label="年份" class="n">2020</td><td data-label="當年最深（日收盤）" class="n">−28.2%（03-19）</td><td data-label="扣款日看到的最深" class="n">−19.3%（04-06）</td><td data-label="主要版本有沒有觸發">沒有</td></tr>
+<tr><td data-label="年份" class="n">2022</td><td data-label="當年最深（日收盤）" class="n">−34.0%（10-25）</td><td data-label="扣款日看到的最深" class="n">−31.3%（11-07）</td><td data-label="主要版本有沒有觸發">有</td></tr>
+<tr><td data-label="年份" class="n">2023</td><td data-label="當年最深（日收盤）" class="n">−24.5%（01-04）</td><td data-label="扣款日看到的最深" class="n">−23.6%（01-06）</td><td data-label="主要版本有沒有觸發">有</td></tr>
+<tr><td data-label="年份" class="n">2024</td><td data-label="當年最深（日收盤）" class="n">−21.3%（08-05）</td><td data-label="扣款日看到的最深" class="n">−17.0%（08-06）</td><td data-label="主要版本有沒有觸發">沒有</td></tr>
+<tr><td data-label="年份" class="n">2025</td><td data-label="當年最深（日收盤）" class="n">−27.5%（04-09）</td><td data-label="扣款日看到的最深" class="n">−21.4%（04-07）</td><td data-label="主要版本有沒有觸發">有</td></tr>
 </tbody></table></div>
 <p>2011 年 12 月扣款日看到 −19.8%，2020 年 4 月看到 −19.3%，都只差不到一個百分點。觸發時點對門檻和扣款日很敏感，例如扣款日改成 16 日或 26 日，2011 年就會觸發；但在預先列出的版本裡，只有門檻改成 −15% 會改變勝負，扣款日改變不影響結論。每日檢查的版本不在預先登記之內，本文沒有測。下一節把所有版本攤開。</p>
 </section>

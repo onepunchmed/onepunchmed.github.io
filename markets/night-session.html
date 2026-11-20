@@ -92,11 +92,11 @@
 </div>
 <p>但兩段變動共用同一個 05:00 的價格。只要這個價格有誤差，第一段多算的部分，第二段就會少算回來，兩段自然呈現負相關，跟市場有沒有錯價無關。臨床研究對這件事很熟悉：一次血壓量得特別高的病人，下次量通常會低一點，這是量測誤差造成的均值回歸，不是治療有效。</p>
 <p>所以要分辨「真的反轉」和「量測誤差」，做了三個檢查：</p>
-<div class="tbl"><table class="rules"><thead><tr><th>檢查</th><th>做法</th><th class="n">相關</th></tr></thead><tbody>
-<tr><td>原始結果</td><td>夜盤期貨換算回現貨價（換算本身的誤差約 24 bp）</td><td class="n">-0.51</td></tr>
-<tr><td>① 拿掉換算</td><td>三個時點全部用期貨本身的價格：日盤收盤、夜盤收盤、隔天開盤</td><td class="n">-0.22</td></tr>
-<tr><td>② 訊號早一步</td><td>實際交易要先看到訊號才能下單。用 04:00 的價格當訊號、05:00 成交（28 晚的逐筆資料）</td><td class="n">+0.44</td></tr>
-<tr><td>③ 拉長樣本</td><td>2024 年 1 月起用 ADR 收盤價，518 晚，看夜盤溢價偏離和隔天開盤的變動</td><td class="n">0.002</td></tr>
+<div class="tbl stack"><table class="rules"><thead><tr><th>檢查</th><th>做法</th><th class="n">相關</th></tr></thead><tbody>
+<tr><td data-label="檢查">原始結果</td><td data-label="做法">夜盤期貨換算回現貨價（換算本身的誤差約 24 bp）</td><td data-label="相關" class="n">-0.51</td></tr>
+<tr><td data-label="檢查">① 拿掉換算</td><td data-label="做法">三個時點全部用期貨本身的價格：日盤收盤、夜盤收盤、隔天開盤</td><td data-label="相關" class="n">-0.22</td></tr>
+<tr><td data-label="檢查">② 訊號早一步</td><td data-label="做法">實際交易要先看到訊號才能下單。用 04:00 的價格當訊號、05:00 成交（28 晚的逐筆資料）</td><td data-label="相關" class="n">+0.44</td></tr>
+<tr><td data-label="檢查">③ 拉長樣本</td><td data-label="做法">2024 年 1 月起用 ADR 收盤價，518 晚，看夜盤溢價偏離和隔天開盤的變動</td><td data-label="相關" class="n">0.002</td></tr>
 </tbody></table></div>
 <p>拿掉換算，反轉剩不到一半；訊號提早一小時，方向就反過來了；兩年半的 ADR 資料完全看不到關係。真正會「回來」的，大部分是 05:00 那一個價格本身的雜訊，而雜訊是沒辦法在它出現之前交易的。</p>
 <p>直接回測也一樣。夜盤收盤當場進場、隔天 08:45 開盤出場，兩腿各扣買賣價差、期交稅、手續費與對沖腿的手續費，以期貨名目金額的 bp 表示：</p>
