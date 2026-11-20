@@ -24,6 +24,7 @@ Every factual claim gets one of three results: **verified** (source found and re
 - Robots policy: block training crawlers, allow search crawlers (exact file in SEO_PLAN §4.2).
 - Do not invent the Search Console verification token or the custom domain; ask the owner.
 - Keep existing HTML style: same indentation, same CSS classes, no frameworks, no new JS.
+- Every page carries the Cloudflare Web Analytics beacon (owner approved 2026-11-21, the one allowed script). New pages: run `python3 _dev/add_beacon.py`; `seo_check.py` fails without it, and the `add-beacon` workflow adds it to PR branches automatically.
 - Chinese text: Traditional Chinese (zh-Hant, Taiwan usage); keep the site's existing punctuation style.
 
 ## Workflow (owner's model policy)

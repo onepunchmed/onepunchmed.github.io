@@ -21,6 +21,8 @@ DEFAULT_SITE = "https://onepunchmed.com"
 AUTHOR_NAME = "onepunchmed"  # site brand: bylines, og:site_name, Article author
 PERSON_NAME = "Chun Jui Lu"  # real name kept on the About page Person (ORCID)
 EXCLUDE = {"_dev"}
+# Cloudflare Web Analytics beacon token (owner approved 2026-11-21); see _dev/add_beacon.py.
+BEACON_TOKEN = "28f7e614b4e242bf952ea885535cab68"
 
 # Owner decision 2026-10-26: block training crawlers, allow search crawlers.
 MUST_BLOCK = ["GPTBot", "ClaudeBot", "Google-Extended", "Applebot-Extended",
@@ -213,6 +215,8 @@ def main():
 
         if not pp.html_lang:
             fails.append(f"{tag} <html> missing lang")
+        if BEACON_TOKEN not in p.read_text(encoding="utf-8"):
+            fails.append(f"{tag} missing Cloudflare Web Analytics beacon; run python3 _dev/add_beacon.py")
         if not pp.title:
             fails.append(f"{tag} missing <title>")
         else:
