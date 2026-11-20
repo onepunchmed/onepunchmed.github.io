@@ -1,0 +1,173 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>醫院資訊系統 HIS 是什麼？掛號、醫令、藥局、檢驗、申報與電子病歷模組，導入失敗的研究證據 | onepunchmed</title>
+<meta name="description" content="醫院／診所資訊系統（HIS）是什麼？說明掛號、醫令、藥局、檢驗、健保申報與電子病歷模組如何串接，整理 CPOE 統合分析、導入後死亡率上升的研究、EMR 採用障礙系統性回顧與電子病歷法規，列出選擇系統時該問的問題。文獻與制度整理，不構成醫療、法律或採購建議。">
+<link rel="canonical" href="https://onepunchmed.com/informatics/his-hospital-information-system.html">
+<meta property="og:type" content="article">
+<meta property="og:title" content="醫院資訊系統 HIS 是什麼？掛號、醫令、藥局、檢驗、申報與電子病歷模組，導入失敗的研究證據 | onepunchmed">
+<meta property="og:description" content="醫院／診所資訊系統（HIS）是什麼？說明掛號、醫令、藥局、檢驗、健保申報與電子病歷模組如何串接，整理 CPOE 統合分析、導入後死亡率上升的研究、EMR 採用障礙系統性回顧與電子病歷法規，列出選擇系統時該問的問題。文獻與制度整理，不構成醫療、法律或採購建議。">
+<meta property="og:url" content="https://onepunchmed.com/informatics/his-hospital-information-system.html">
+<meta property="og:locale" content="zh_TW">
+<meta property="og:site_name" content="onepunchmed">
+<meta name="twitter:card" content="summary">
+<script type="application/ld+json">
+{"@context": "https://schema.org", "@graph": [{"@type": "Article", "headline": "醫院資訊系統 HIS 是什麼？組成模組、導入失敗的證據與選擇時該問的問題", "datePublished": "2026-11-21", "dateModified": "2026-11-21", "author": {"@type": "Person", "name": "onepunchmed", "url": "https://onepunchmed.com/"}, "publisher": {"@type": "Person", "name": "onepunchmed", "url": "https://onepunchmed.com/"}, "inLanguage": "zh-Hant", "mainEntityOfPage": "https://onepunchmed.com/informatics/his-hospital-information-system.html"}, {"@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "About", "item": "https://onepunchmed.com/"}, {"@type": "ListItem", "position": 2, "name": "Informatics", "item": "https://onepunchmed.com/informatics/"}, {"@type": "ListItem", "position": 3, "name": "醫院資訊系統 HIS 是什麼？組成模組、導入失敗的證據與選擇時該問的問題", "item": "https://onepunchmed.com/informatics/his-hospital-information-system.html"}]}]}
+</script>
+<link rel="stylesheet" href="../style.css">
+<link rel="stylesheet" href="../article.css">
+</head>
+<body>
+<div class="wrap">
+<header class="site">
+  <a class="name" href="../">onepunchmed</a>
+  <nav>
+    <a href="../">About</a>
+    <a href="../research.html">Research</a>
+    <a href="../data.html">Data</a>
+    <a href="../markets/">Markets</a>
+    <a href="../health/">Health</a>
+    <a href="./" aria-current="page">Informatics</a>
+    <a href="../notes.html">Notes</a>
+    <a href="../disclosure.html">Disclosure</a>
+  </nav>
+</header>
+<main>
+  <h1>醫院資訊系統 HIS 是什麼？組成模組、導入失敗的證據與選擇時該問的問題</h1>
+  <p class="lead">醫院資訊系統（Hospital Information System，HIS）是醫院或診所把掛號、看診開立醫令、藥局、檢驗、健保申報與電子病歷串在一起的軟體總稱。它不是單一軟體，而是一組共用病人資料的模組。結論先講：電腦化醫令在統合分析中讓處方錯誤約減半，但同一類系統在某家兒童醫院導入後，死亡率反而上升；研究一再指出，失敗的主因多半不是程式本身，而是導入過程、工作流程與變革管理。</p>
+  <p class="article-meta"><a rel="author" href="../">onepunchmed</a> · <time datetime="2026-11-21">2026 年 11 月 21 日</time> · 醫院資訊系統、電子病歷、導入</p>
+
+<div class="mdms-article">
+<section class="verdict">
+<h2>四個重點</h2>
+<ol>
+<li><b>電腦化醫令（CPOE）平均能讓處方錯誤約減半。</b>Radley 等（2013）的統合分析：單筆醫令出錯機率降低 48%（95% CI 41–55%）；Nuckols 等（2014）的統合分析：可預防的藥物不良事件 RR 0.47（0.31–0.71）。</li>
+<li><b>同一類系統也可能讓結果變差。</b>Han 等（2005）報告一家兒童醫院導入 CPOE 後，轉入病人死亡率從 2.80% 升到 6.57%（校正後 OR 3.28）；另一家醫院 Del Beccaro 等（2006）導入後死亡率沒有上升。差別在怎麼導入，不只是用哪一套。</li>
+<li><b>資訊系統本身會製造新的錯誤。</b>Koppel 等（2005）在一家醫院找到 22 類由 CPOE 促成的用藥錯誤風險；Kim 等（2017）的系統性回顧中，34 篇研究有 18 篇的資訊系統問題與病人傷害或死亡有關。</li>
+<li><b>採用障礙最常見的是成本、技術、時間與抗拒改變。</b>兩篇系統性回顧（Boonstra 2010、Kruse 2016）都指向同一件事：導入應當成組織變革專案來管理。</li>
+</ol>
+</section>
+
+<section>
+<h2>一、HIS 是什麼：一組共用病人資料的模組</h2>
+<p>一位病人從掛號到離開，資料會經過好幾個部門。HIS 的工作是讓同一筆病人資料只輸入一次，各模組依權限讀寫。各機構、各系統切分模組的方式不同，下表是本文為了說明所用的分類，不是官方標準。</p>
+<div class="tbl stack"><table><thead><tr><th>模組</th><th>做什麼</th><th>出錯時常見的影響</th></tr></thead><tbody>
+<tr><td data-label="模組">掛號與病人主檔</td><td data-label="做什麼">建立病人身分、讀取健保卡、排診與報到</td><td data-label="出錯時常見的影響">同一人建成兩筆病歷，或兩人資料混在一起，後面每個模組都跟著錯</td></tr>
+<tr><td data-label="模組">醫令（CPOE）</td><td data-label="做什麼">醫師用電腦開藥、檢驗、檢查與處置，可附交互作用與劑量提醒</td><td data-label="出錯時常見的影響">選錯病人、選錯品項或劑量；提醒太多時被習慣性略過</td></tr>
+<tr><td data-label="模組">藥局</td><td data-label="做什麼">接收處方、調劑核對、庫存</td><td data-label="出錯時常見的影響">醫令與藥局資料不同步，造成重複給藥或漏藥</td></tr>
+<tr><td data-label="模組">檢驗（LIS）與影像</td><td data-label="做什麼">檢體與檢查排程、儀器結果回傳、報告</td><td data-label="出錯時常見的影響">結果延遲或沒有通知到開單醫師</td></tr>
+<tr><td data-label="模組">健保申報與批價</td><td data-label="做什麼">把醫令轉成費用與申報資料，送健保署</td><td data-label="出錯時常見的影響">核刪、補報與帳務錯誤；醫令代碼對照錯會整批出錯</td></tr>
+<tr><td data-label="模組">電子病歷</td><td data-label="做什麼">病程、醫囑、報告的電子紀錄、簽章與保存</td><td data-label="出錯時常見的影響">簽章或保存不符法規；資料無法調閱或交換</td></tr>
+</tbody></table></div>
+<p>診所和醫院的差別主要在規模：診所常是一套整合軟體，醫院則常由多個子系統透過介面串接。介面愈多，資料對不上、同步延遲的機會愈多。</p>
+</section>
+
+<section>
+<h2>二、台灣的電子病歷規定：簽章、保存、委外與交換</h2>
+<p>在台灣，電子病歷受衛福部《醫療機構電子病歷製作及管理辦法》規範（最新修正 2022 年 7 月 18 日）。和選系統直接相關的條文要點：</p>
+<ul>
+<li><b>管理機制</b>：醫療機構要建立電子病歷資訊系統的管理機制，相關執行紀錄保存 5 年（第 3 條）。</li>
+<li><b>資安事故通報</b>：發生資安事故，應於 72 小時內通報地方主管機關（第 5 條）。</li>
+<li><b>委外</b>：可委託受託機構建置或管理，但受託機構須通過中央主管機關認可的資訊安全標準驗證（第 6 條）。</li>
+<li><b>雲端</b>：可使用雲端服務，資料原則上存放在我國境內（第 8 條）。</li>
+<li><b>電子簽章</b>：應於 24 小時內完成電子簽章，原則上使用醫事人員憑證（第 11、12 條）。</li>
+<li><b>交換</b>：中央主管機關設電子病歷交換平臺，交換須經病人同意（第 18、19 條）。</li>
+</ul>
+<p>健保申報的格式、上傳管道與期限由健保署公告，會隨制度更新；本文沒有逐項核對，選系統時應以健保署最新公告為準，並請廠商說明更新的時程與方式。</p>
+</section>
+
+<section>
+<h2>三、導入的證據：平均有效，但個別醫院可能變差</h2>
+<ul>
+<li><b>處方錯誤</b>：Radley 等（JAMIA 2013）的統合分析，CPOE 讓單筆醫令出錯的機率降低 48%（41–55%）。</li>
+<li><b>藥物不良事件</b>：Nuckols 等（Syst Rev 2014）的統合分析，可預防的藥物不良事件 RR 0.47（0.31–0.71），用藥錯誤 RR 0.46。</li>
+<li><b>加護病房</b>：Prgomet 等（JAMIA 2017）納入 20 篇研究，處方錯誤降低 85%、ICU 死亡率降低 12%，但住院天數與院內死亡率沒有顯著變化。</li>
+<li><b>導入後死亡率上升</b>：Han 等（Pediatrics 2005），一家兒童醫院導入 CPOE 後 5 個月內，轉入病人死亡率由 2.80%（39/1,394）升到 6.57%（36/548），校正後 OR 3.28（1.94–5.55）。這是導入前後比較，不是隨機試驗，有其他因素同時改變的可能。</li>
+<li><b>另一家醫院沒有變差</b>：Del Beccaro 等（Pediatrics 2006），兒童加護病房導入後死亡率 4.22% 對 3.46%，差異不顯著。</li>
+</ul>
+<div class="callout"><p>這很像藥物試驗的「平均療效」與「個別病人反應」：統合分析告訴我們 CPOE 平均有益，但不保證每一家醫院導入都有益。導入方式、流程設計、訓練與上線後監測，等於這個「藥」的劑量與用法。</p></div>
+<p>上面的研究多數是導入前後比較，且以美國醫院為主，品質低於隨機試驗；結果不能直接外推到台灣的診所。</p>
+</section>
+
+<section>
+<h2>四、為什麼會失敗：新錯誤、時間負擔與變革管理</h2>
+<ul>
+<li><b>系統會製造新類型的錯誤</b>：Koppel 等（JAMA 2005）在一家醫院找到 22 類由 CPOE 促成的用藥錯誤風險，例如畫面資訊零散、與既有流程不合。Ash 等（JAMIA 2004）把非預期後果分成兩大類：資訊輸入與檢索的過程、溝通與協調的過程。Campbell 等（JAMIA 2006）則歸納出 9 大類非預期不良後果。</li>
+<li><b>資訊系統問題會傷到病人</b>：Kim 等（JAMIA 2017）的系統性回顧納入 34 篇研究，其中 18 篇（53%）的資訊系統問題與病人傷害或死亡有關。</li>
+<li><b>停機</b>：Larsen 等（2019）在一家醫院發現，系統停機期間檢驗結果的回報時間平均延遲 62%。這是單一醫院研究。</li>
+<li><b>醫師時間</b>：Sinsky 等（Ann Intern Med 2016）觀察美國門診醫師，電子病歷與桌面工作佔 49.2% 的時間，直接面對病人只佔 27.0%；每 1 小時直接看診，約另花 2 小時在電子病歷與桌面工作。</li>
+<li><b>採用障礙</b>：Boonstra 與 Broekhuis（2010）的系統性回顧納入 22 篇研究，歸納出 8 大類障礙：財務、技術、時間、心理、社會、法律、組織、變革過程，並認為組織與變革過程是影響其他障礙的中介因素。Kruse 等（2016）整理出 39 項障礙，最常見的是成本、技術問題、技術支援與抗拒改變。</li>
+</ul>
+<p>兩篇回顧的共同結論是：導入應當成一個變革專案，由專人管理，而不是買了軟體就結束。</p>
+</section>
+
+<section>
+<h2>五、選擇系統時該問的問題</h2>
+<p>以下問題整理自上面的研究與法規，以及美國 ONC 的 SAFER Guides（一套 8 份的醫療資訊安全自評清單，2025 年更新，其中一份專講停機應變）。這是提問清單，不是評分標準，也不代表任何產品比較好。</p>
+<div class="tbl stack"><table><thead><tr><th>面向</th><th>可以問的問題</th><th>對應證據</th></tr></thead><tbody>
+<tr><td data-label="面向">流程</td><td data-label="可以問的問題">能否用我們實際的看診、調劑、批價流程做一次完整試跑？哪些步驟會比現在多？</td><td data-label="對應證據">Koppel 2005；Sinsky 2016</td></tr>
+<tr><td data-label="面向">用藥安全</td><td data-label="可以問的問題">醫令有哪些劑量、過敏、交互作用提醒？能否調整提醒的條件以免太多？</td><td data-label="對應證據">Radley 2013；Nuckols 2014</td></tr>
+<tr><td data-label="面向">導入計畫</td><td data-label="可以問的問題">上線前訓練幾小時、誰負責？上線後頭幾週有沒有現場支援與錯誤回報管道？</td><td data-label="對應證據">Han 2005；Boonstra 2010</td></tr>
+<tr><td data-label="面向">停機應變</td><td data-label="可以問的問題">斷線或主機故障時怎麼掛號、開藥、查過去紀錄？多久能恢復？資料怎麼補登？</td><td data-label="對應證據">Larsen 2019；SAFER Guides</td></tr>
+<tr><td data-label="面向">法規</td><td data-label="可以問的問題">電子簽章、紀錄保存、資安事故通報、委外與雲端存放位置是否符合電子病歷管理辦法？</td><td data-label="對應證據">電子病歷製作及管理辦法</td></tr>
+<tr><td data-label="面向">申報</td><td data-label="可以問的問題">健保格式或代碼更新時，多久能完成更新？更新是否另外收費？</td><td data-label="對應證據">健保署公告（依最新版本）</td></tr>
+<tr><td data-label="面向">資料可攜</td><td data-label="可以問的問題">換系統時，病歷與醫令資料能否用標準格式完整匯出？匯出要多久？</td><td data-label="對應證據">電子病歷交換規定</td></tr>
+<tr><td data-label="面向">支援與成本</td><td data-label="可以問的問題">總成本含哪些項目（授權、維護、介面、硬體、訓練）？技術支援的回應時間？</td><td data-label="對應證據">Kruse 2016</td></tr>
+</tbody></table></div>
+</section>
+
+<section>
+<h2>方法與限制</h2>
+<ul>
+<li>本文是敘述性文獻整理，不是系統性回顧。研究數字取自 PubMed 摘要；法規取自全國法規資料庫原文。</li>
+<li>資料查證截止日：2026 年 11 月 21 日。</li>
+<li>多數研究是美國醫院的導入前後比較，證據品質低於隨機試驗，也不能直接外推到台灣診所。</li>
+<li>模組分類是本文的說明用分類，不是官方或國際標準。</li>
+<li>健保申報格式與上傳流程、電子病歷交換的技術規格，本文未逐項核對，請以健保署與衛福部最新公告為準。</li>
+<li>本文不比較、不推薦任何廠商或產品。</li>
+</ul>
+</section>
+
+<section>
+<h2>參考文獻</h2>
+<ol>
+<li>Radley DC, et al. Reduction in medication errors in hospitals due to adoption of computerized provider order entry systems. J Am Med Inform Assoc 2013. <a href="https://doi.org/10.1136/amiajnl-2012-001241">doi:10.1136/amiajnl-2012-001241</a>；<a href="https://pubmed.ncbi.nlm.nih.gov/23425440/">PMID 23425440</a></li>
+<li>Nuckols TK, et al. The effectiveness of computerized order entry at reducing preventable adverse drug events and medication errors in hospital settings: a systematic review and meta-analysis. Syst Rev 2014;3:56. <a href="https://doi.org/10.1186/2046-4053-3-56">doi:10.1186/2046-4053-3-56</a>；<a href="https://pubmed.ncbi.nlm.nih.gov/24894078/">PMID 24894078</a></li>
+<li>Prgomet M, et al. Impact of commercial computerized provider order entry (CPOE) and clinical decision support systems (CDSSs) on medication errors, length of stay, and mortality in intensive care units: a systematic review and meta-analysis. J Am Med Inform Assoc 2017. <a href="https://doi.org/10.1093/jamia/ocw145">doi:10.1093/jamia/ocw145</a>；<a href="https://pubmed.ncbi.nlm.nih.gov/28395016/">PMID 28395016</a></li>
+<li>Han YY, et al. Unexpected increased mortality after implementation of a commercially sold computerized physician order entry system. Pediatrics 2005;116(6):1506–1512. <a href="https://doi.org/10.1542/peds.2005-1287">doi:10.1542/peds.2005-1287</a>；<a href="https://pubmed.ncbi.nlm.nih.gov/16322178/">PMID 16322178</a></li>
+<li>Del Beccaro MA, et al. Computerized provider order entry implementation: no association with increased mortality rates in an intensive care unit. Pediatrics 2006;118(1):290–295. <a href="https://doi.org/10.1542/peds.2006-0367">doi:10.1542/peds.2006-0367</a>；<a href="https://pubmed.ncbi.nlm.nih.gov/16818577/">PMID 16818577</a></li>
+<li>Koppel R, et al. Role of computerized physician order entry systems in facilitating medication errors. JAMA 2005;293(10):1197–1203. <a href="https://doi.org/10.1001/jama.293.10.1197">doi:10.1001/jama.293.10.1197</a>；<a href="https://pubmed.ncbi.nlm.nih.gov/15755942/">PMID 15755942</a></li>
+<li>Ash JS, Berg M, Coiera E. Some unintended consequences of information technology in health care: the nature of patient care information system-related errors. J Am Med Inform Assoc 2004;11(2):104–112. <a href="https://doi.org/10.1197/jamia.M1471">doi:10.1197/jamia.M1471</a>；<a href="https://pubmed.ncbi.nlm.nih.gov/14633936/">PMID 14633936</a></li>
+<li>Campbell EM, et al. Types of unintended consequences related to computerized provider order entry. J Am Med Inform Assoc 2006;13(5):547–556. <a href="https://doi.org/10.1197/jamia.M2042">doi:10.1197/jamia.M2042</a>；<a href="https://pubmed.ncbi.nlm.nih.gov/16799128/">PMID 16799128</a></li>
+<li>Kim MO, Coiera E, Magrabi F. Problems with health information technology and their effects on care delivery and patient outcomes: a systematic review. J Am Med Inform Assoc 2017. <a href="https://doi.org/10.1093/jamia/ocw154">doi:10.1093/jamia/ocw154</a>；<a href="https://pubmed.ncbi.nlm.nih.gov/28011595/">PMID 28011595</a></li>
+<li>Larsen E, et al. Continuing patient care during electronic health record downtime. Appl Clin Inform 2019. <a href="https://doi.org/10.1055/s-0039-1692678">doi:10.1055/s-0039-1692678</a>；<a href="https://pubmed.ncbi.nlm.nih.gov/31291677/">PMID 31291677</a></li>
+<li>Sinsky C, et al. Allocation of physician time in ambulatory practice: a time and motion study in 4 specialties. Ann Intern Med 2016;165(11):753–760. <a href="https://doi.org/10.7326/M16-0961">doi:10.7326/M16-0961</a>；<a href="https://pubmed.ncbi.nlm.nih.gov/27595430/">PMID 27595430</a></li>
+<li>Boonstra A, Broekhuis M. Barriers to the acceptance of electronic medical records by physicians from systematic review to taxonomy and interventions. BMC Health Serv Res 2010;10:231. <a href="https://doi.org/10.1186/1472-6963-10-231">doi:10.1186/1472-6963-10-231</a>；<a href="https://pubmed.ncbi.nlm.nih.gov/20691097/">PMID 20691097</a></li>
+<li>Kruse CS, et al. Barriers to electronic health record adoption: a systematic literature review. J Med Syst 2016. <a href="https://doi.org/10.1007/s10916-016-0628-9">doi:10.1007/s10916-016-0628-9</a>；<a href="https://pubmed.ncbi.nlm.nih.gov/27714560/">PMID 27714560</a></li>
+<li>衛生福利部。醫療機構電子病歷製作及管理辦法（2022 年 7 月 18 日修正）。<a href="https://law.moj.gov.tw/LawClass/LawAll.aspx?pcode=L0020121">全國法規資料庫</a></li>
+<li>Office of the National Coordinator for Health IT. SAFER Guides. <a href="https://www.healthit.gov/topic/safety/safer-guides">HealthIT.gov</a></li>
+</ol>
+</section>
+<section>
+<h2>延伸閱讀</h2>
+<ul>
+<li><a href="../data.html">Data</a>：本站使用的公開健康資料來源。</li>
+<li><a href="../research.html">Research</a>：臨床機器學習研究。</li>
+<li><a href="../markets/backtest-checklist.html">用讀臨床試驗的方式讀回測：十個問題</a>：導入前後比較的偏誤，在投資研究也一樣。</li>
+</ul>
+</section>
+<section class="disc">
+<p><b>免責聲明</b>　本文為文獻與制度整理，不構成醫療、法律或採購建議。法規與健保規定以主管機關最新公告為準；導入或更換資訊系統前，請諮詢相關專業人員。</p>
+<p><b>利益揭露</b>　本文未接受任何廠商贊助，不推薦任何廠商或產品，本站不收取任何費用。</p>
+</section>
+</div>
+</main>
+<footer>
+  <div>Last updated: November 2026</div>
+</footer>
+</div>
+<!-- Cloudflare Web Analytics --><script type='module' src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "28f7e614b4e242bf952ea885535cab68"}'></script><!-- End Cloudflare Web Analytics -->
+</body>
+</html>
