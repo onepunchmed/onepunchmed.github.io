@@ -1,0 +1,194 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>醫療 AI 預測模型怎麼讀？外部驗證、校準度、敗血症模型與 TRIPOD+AI、CONSORT-AI | onepunchmed</title>
+<meta name="description" content="醫療 AI 預測模型怎麼評讀？用讀臨床試驗的方式，看內部與外部驗證、鑑別度與校準度、資料漂移，敗血症模型外部驗證 AUC 0.63 的案例，TRIPOD+AI 與 CONSORT-AI 報告規範，以及 FDA AI 醫材清單 1,610 項的審查路徑。文獻與制度整理，不構成醫療、法律或採購建議。">
+<link rel="canonical" href="https://onepunchmed.com/informatics/clinical-ai-model-appraisal.html">
+<meta property="og:type" content="article">
+<meta property="og:title" content="醫療 AI 預測模型怎麼讀？外部驗證、校準度、敗血症模型與 TRIPOD+AI、CONSORT-AI | onepunchmed">
+<meta property="og:description" content="醫療 AI 預測模型怎麼評讀？用讀臨床試驗的方式，看內部與外部驗證、鑑別度與校準度、資料漂移，敗血症模型外部驗證 AUC 0.63 的案例，TRIPOD+AI 與 CONSORT-AI 報告規範，以及 FDA AI 醫材清單 1,610 項的審查路徑。文獻與制度整理，不構成醫療、法律或採購建議。">
+<meta property="og:url" content="https://onepunchmed.com/informatics/clinical-ai-model-appraisal.html">
+<meta property="og:locale" content="zh_TW">
+<meta property="og:site_name" content="onepunchmed">
+<meta name="twitter:card" content="summary">
+<script type="application/ld+json">
+{"@context": "https://schema.org", "@graph": [{"@type": "Article", "headline": "醫療 AI 預測模型怎麼讀？外部驗證、校準度與真實部署的落差", "datePublished": "2026-11-21", "dateModified": "2026-11-21", "author": {"@type": "Person", "name": "onepunchmed", "url": "https://onepunchmed.com/"}, "publisher": {"@type": "Person", "name": "onepunchmed", "url": "https://onepunchmed.com/"}, "inLanguage": "zh-Hant", "mainEntityOfPage": "https://onepunchmed.com/informatics/clinical-ai-model-appraisal.html"}, {"@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "About", "item": "https://onepunchmed.com/"}, {"@type": "ListItem", "position": 2, "name": "Informatics", "item": "https://onepunchmed.com/informatics/"}, {"@type": "ListItem", "position": 3, "name": "醫療 AI 預測模型怎麼讀？外部驗證、校準度與真實部署的落差", "item": "https://onepunchmed.com/informatics/clinical-ai-model-appraisal.html"}]}]}
+</script>
+<link rel="stylesheet" href="../style.css">
+<link rel="stylesheet" href="../article.css">
+</head>
+<body>
+<div class="wrap">
+<header class="site">
+  <a class="name" href="../">onepunchmed</a>
+  <nav>
+    <a href="../">About</a>
+    <a href="../research.html">Research</a>
+    <a href="../data.html">Data</a>
+    <a href="../markets/">Markets</a>
+    <a href="../health/">Health</a>
+    <a href="./" aria-current="page">Informatics</a>
+    <a href="../notes.html">Notes</a>
+    <a href="../disclosure.html">Disclosure</a>
+  </nav>
+</header>
+<main>
+  <h1>醫療 AI 預測模型怎麼讀？外部驗證、校準度與真實部署的落差</h1>
+  <p class="lead">一篇醫療 AI 論文寫「AUC 0.9」，離「放進醫院能幫到病人」還差很遠。我用讀臨床試驗的方式把它拆成四關：在別的醫院還準不準（外部驗證）、預測的機率是否等於真實發生率（校準度）、資料變了會不會壞（漂移）、有沒有隨機試驗證明病人結果變好。結論先講：多數模型卡在第一、二關；一個在美國數百家醫院使用的敗血症模型，外部驗證的 AUC 只有 0.63；而 FDA 核准清單上的 AI 醫材，絕大多數走的是證明「與既有產品實質等同」的 510(k) 路徑。</p>
+  <p class="article-meta"><a rel="author" href="../">onepunchmed</a> · <time datetime="2026-11-21">2026 年 11 月 21 日</time> · 醫療 AI、預測模型、研究方法</p>
+
+<div class="mdms-article">
+<section class="verdict">
+<h2>五個重點</h2>
+<ol>
+<li><b>開發時的準確度，不等於換一家醫院的準確度。</b>2020 年一篇 COVID-19 預測模型的系統性回顧收了 232 個模型，全部被評為偏誤風險高或不明，只有 11 個（5%）在外部驗證中畫了校準圖。</li>
+<li><b>真實案例：廣泛部署的敗血症模型，外部驗證表現差。</b>密西根大學 27,697 名病人、38,455 次住院：AUC 0.63，漏掉 67% 的敗血症病人，同時對 18% 的住院病人發出警示。</li>
+<li><b>校準度常被忽略，但臨床決策用的是「機率」。</b>同一批 COVID 死亡模型在 18 國資料中，觀察值與預期值比（O:E）介於 0.18 到 2.59，也就是有的地方高估五倍、有的低估兩倍半。</li>
+<li><b>能證明病人受益的隨機試驗很少，報告也不完整。</b>到 2021 年 10 月只找到 41 個機器學習介入的隨機試驗，沒有一個完全符合 CONSORT-AI；2024 年的回顧找到 86 個，81% 報告主要終點陽性，但多為單中心、終點多是診斷率而非病人結果。</li>
+<li><b>「FDA 核准」多數是 510(k)。</b>FDA AI 醫材清單（2026 年 9 月版）我數到 1,610 筆，約 96% 是 510(k)，只有 17 筆走最嚴格的上市前核准（PMA）。510(k) 審的是與已上市產品「實質等同」，不是證明病人結果變好。</li>
+</ol>
+</section>
+
+<section>
+<h2>一、先對照：讀 AI 模型就像讀一篇藥物研究</h2>
+<p>我讀 AI 論文時，會把每個環節對應到熟悉的臨床研究階段。這個對照是我自己的類比，不是任何指引的正式分類。</p>
+<div class="tbl stack"><table><thead><tr><th>AI 模型的環節</th><th>類比的臨床研究</th><th>要問的問題</th></tr></thead><tbody>
+<tr><td data-label="AI 模型的環節">開發與內部驗證</td><td data-label="類比的臨床研究">第一、二期試驗（同一群人、同一個中心）</td><td data-label="要問的問題">有沒有用交叉驗證或拔靴法校正過度擬合？測試資料是否真的沒被看過？</td></tr>
+<tr><td data-label="AI 模型的環節">外部驗證</td><td data-label="類比的臨床研究">在不同族群重做試驗</td><td data-label="要問的問題">換醫院、換時期、換族群後，鑑別度與校準度剩多少？</td></tr>
+<tr><td data-label="AI 模型的環節">校準度</td><td data-label="類比的臨床研究">劑量是否準確</td><td data-label="要問的問題">模型說 20% 風險的那群人，實際是不是約 20% 發生？</td></tr>
+<tr><td data-label="AI 模型的環節">資料漂移與更新</td><td data-label="類比的臨床研究">上市後監測</td><td data-label="要問的問題">病人組成、編碼、檢驗方法改變後，有沒有人在監測和更新？</td></tr>
+<tr><td data-label="AI 模型的環節">隨機試驗</td><td data-label="類比的臨床研究">第三期試驗</td><td data-label="要問的問題">用了模型的那組，病人結果是否比照常照護好？</td></tr>
+</tbody></table></div>
+<p>回測也是同一套邏輯：樣本內的漂亮績效，要拿樣本外資料檢驗；這部分我在<a href="../markets/backtest-checklist.html">用讀臨床試驗的方式讀回測</a>寫過。</p>
+</section>
+
+<section>
+<h2>二、內部與外部驗證：多數模型沒有走到第二步</h2>
+<p><b>內部驗證</b>是用開發資料本身（例如切出一部分、交叉驗證）估計表現；<b>外部驗證</b>是拿另一家醫院、另一段時間或另一個族群的資料重新測。內部驗證只能估計過度擬合，回答不了「搬到別處還準不準」。</p>
+<p>COVID-19 疫情初期是一次大型自然實驗。Wynants 等人的活體系統性回顧到 2020 年 7 月收了 169 篇研究、232 個模型，用 PROBAST 工具評讀，<b>全部</b>被評為偏誤風險高或不明，常見原因是對照病人選擇不具代表性、排除追蹤結束前未發生事件的病人、過度擬合風險高、報告不清楚；只有 11 個模型（5%）做了附校準圖的外部驗證。</p>
+<p>後續的個別病人資料統合分析，挑出 8 個偏誤風險較低的死亡預測模型，拿 18 個國家、46,914 名住院病人重新驗證：合併 C 統計量（等同 AUC）介於 0.67 到 0.80，而且各地差異很大。換句話說，連「比較好的」模型，換了地方也會縮水。</p>
+</section>
+
+<section>
+<h2>三、鑑別度與校準度：AUC 高不代表機率準</h2>
+<ul>
+<li><b>鑑別度</b>（discrimination，常用 AUC 或 C 統計量）：模型能不能把會發生和不會發生的人排在正確的先後順序。0.5 等於丟銅板，1 是完美。</li>
+<li><b>校準度</b>（calibration）：模型說的機率和實際發生率是否一致。常用校準圖、校準斜率（理想值 1）、觀察與預期比 O:E（理想值 1）。</li>
+</ul>
+<p>兩者可以分開壞掉：一個模型可以排序很準，但每個人的風險都高估一倍。Van Calster 等人 2019 年稱校準度是預測分析的「阿基里斯腱」，主張校準不良的模型可能誤導臨床決策，外部驗證時要評估校準，必要時更新模型；他們也提醒，校準曲線需要夠大的樣本才可靠。</p>
+<p>上面那份 18 國的 COVID 統合分析就是例子：8 個模型的校準斜率介於 0.22 到 1.22，O:E 介於 0.18 到 2.59。如果醫院用其中一個模型的「死亡率 30%」來決定誰住加護病房，在某些地方等於嚴重高估、某些地方嚴重低估。</p>
+</section>
+
+<section>
+<h2>四、資料漂移：模型會隨醫院一起變老</h2>
+<p><b>資料漂移</b>（dataset shift）指模型上線後，輸入資料或疾病盛行率和開發時不同，例如病人組成改變、診斷編碼或檢驗儀器更換、照護流程調整。這類變化不會出現在原始論文裡，只能靠上線後持續監測發現。</p>
+<p>上面兩份 COVID 研究顯示的「換地方就變」，本質上是同一個問題：模型學到的是某個時空的資料，不是疾病本身。Van Calster 等人的結論之一，就是模型要在需要時更新。讀論文時可以問：作者有沒有做時間上的外部驗證（用較晚期間的資料測）、有沒有說明上線後由誰監測、多久重新校準一次。</p>
+</section>
+
+<section>
+<h2>五、真實部署失敗：敗血症預測模型的外部驗證</h2>
+<p>Wong 等人 2021 年在 JAMA Internal Medicine 發表一個專有敗血症預測模型的外部驗證。論文指出這個模型已在美國數百家醫院使用，但上線前沒有充分獨立評估。研究在密西根大學醫學中心進行，納入 2018 年 12 月到 2019 年 10 月的 27,697 名成人、38,455 次住院，其中 2,552 名（7%）發生敗血症。</p>
+<div class="tbl"><table><thead><tr><th>指標</th><th>結果</th></tr></thead><tbody>
+<tr><td>住院層級 AUC</td><td>0.63（95% CI 0.62–0.64）</td></tr>
+<tr><td>漏掉的敗血症病人</td><td>1,709 / 2,552（67%）</td></tr>
+<tr><td>發出警示的住院病人（分數 ≥ 6）</td><td>6,971 / 38,455（18%）</td></tr>
+<tr><td>抓到「醫師還沒及時給抗生素」的病人</td><td>183 / 2,552（7%）</td></tr>
+</tbody></table></div>
+<p>作者結論是這個模型鑑別度與校準度都差，並帶來大量警示疲勞。最後一列最值得看：模型真正的臨床價值，是抓到醫師自己還沒發現的病人，而這部分只有 7%。很多模型的「準」，其實是在預測醫師已經在處理的事。</p>
+<p>反過來說，成功的部署往往靠大量非技術工作。杜克大學把一個敗血症深度學習模型整合進日常照護的實作研究指出，成功整合需要大量投入：協調利害關係人、建立信任、界定角色、訓練第一線人員；作者也寫到，機器學習模型真正融入日常照護的案例很少。</p>
+</section>
+
+<section>
+<h2>六、報告規範：TRIPOD+AI 看模型，CONSORT-AI 看試驗</h2>
+<div class="tbl stack"><table><thead><tr><th>規範</th><th>適用研究</th><th>重點</th></tr></thead><tbody>
+<tr><td data-label="規範">TRIPOD+AI（2024）</td><td data-label="適用研究">開發或驗證預測模型，不論用迴歸或機器學習</td><td data-label="重點">27 項清單，另有摘要清單；取代 2015 年版 TRIPOD，舊版不應再用</td></tr>
+<tr><td data-label="規範">CONSORT-AI（2020）</td><td data-label="適用研究">評估含 AI 介入的隨機試驗報告</td><td data-label="重點">在 CONSORT 2010 之外加 14 項：AI 介入的描述與使用條件、整合的場域、輸入與輸出資料的處理、人與 AI 的互動、錯誤案例分析</td></tr>
+<tr><td data-label="規範">SPIRIT-AI（2020）</td><td data-label="適用研究">含 AI 介入的試驗計畫書</td><td data-label="重點">在 SPIRIT 2013 之外加 15 項，與 CONSORT-AI 同時發展</td></tr>
+<tr><td data-label="規範">PROBAST</td><td data-label="適用研究">評讀預測模型研究的偏誤風險</td><td data-label="重點">上述 COVID 系統性回顧用的評讀工具</td></tr>
+</tbody></table></div>
+<p>報告規範不是品質保證，只是讓讀者有東西可以檢查。實際遵循情況並不好：Plana 等人的系統性回顧找到 41 個機器學習介入的隨機試驗（中位數 294 人，51% 單中心），<b>沒有一個</b>完全符合 CONSORT-AI。最常缺的是：沒評估輸入資料品質不佳或缺失時怎麼辦（93%）、沒分析模型出錯的案例（93%）、沒說明程式或演算法是否可取得（90%）。</p>
+</section>
+
+<section>
+<h2>七、隨機試驗：有，但多半還在量「診斷率」</h2>
+<p>Han 等人 2024 年在 Lancet Digital Health 的範圍回顧找到 86 個 AI 臨床隨機試驗，美國與中國最多，以醫學影像的深度學習為主，集中在腸胃科與放射科。70 個（81%）報告主要終點陽性，但主要終點多是診斷率或表現；作者指出單中心為主、人口學資料報告少、可能有發表偏誤，並建議未來試驗優先採用與病人相關的結果。</p>
+<p>用臨床試驗的語言講：這些多半還是「替代終點」試驗。內視鏡多找到幾顆瘜肉，和病人少得大腸癌、少死亡，是兩件事。</p>
+</section>
+
+<section>
+<h2>八、FDA AI 醫材清單：數量多，但大多走 510(k)</h2>
+<p>FDA 公開一份「AI 醫材清單」，頁面標示內容更新到 2026 年 9 月 4 日。我下載頁面計算表格中的送審編號，得到 1,610 筆：約 1,553 筆 510(k)（K 開頭）、40 筆 De Novo（DEN 開頭）、17 筆 PMA（P 開頭）。FDA 在頁面上說明，這份清單主要靠產品摘要中的 AI 相關字詞辨識，<b>不是完整清單</b>；也說未來會嘗試標示採用基礎模型或大型語言模型功能的醫材。</p>
+<ul>
+<li><b>510(k)</b>：向 FDA 證明新產品與已合法上市、不需 PMA 的產品「實質等同」。</li>
+<li><b>De Novo</b>：找不到可比較的既有產品（例如 510(k) 被判定不實質等同、沒有比較對象）時，申請新分類的途徑。</li>
+<li><b>PMA</b>：FDA 說明這是最嚴格的醫材上市申請類型。</li>
+</ul>
+<p>所以看到「FDA 核准」或「FDA 認可」時，要再問一句：哪一條路徑、核准時附了什麼證據。清單上的條目只代表通過了該路徑的上市前要求，不代表已證明能改善病人結果。</p>
+</section>
+
+<section>
+<h2>九、讀一篇醫療 AI 論文的八個問題</h2>
+<ol>
+<li>預測什麼結果、在什麼時間點預測？結果的定義是臨床診斷，還是帳單編碼？</li>
+<li>開發資料來自哪裡、哪幾年、多少事件數？</li>
+<li>有沒有外部驗證？是換醫院、換時期，還是只是同一資料庫隨機切？</li>
+<li>除了 AUC，有沒有報告校準圖、校準斜率或 O:E？</li>
+<li>模型抓到的，是醫師已經在處理的病人，還是醫師還沒發現的病人？</li>
+<li>警示頻率多高？每抓到一個真陽性要發幾次警示？</li>
+<li>有沒有隨機試驗，主要終點是病人結果還是替代終點？</li>
+<li>上線後誰監測、多久更新？有沒有依 TRIPOD+AI 或 CONSORT-AI 報告？</li>
+</ol>
+</section>
+
+<section>
+<h2>方法與限制</h2>
+<ul>
+<li>本文是敘述性文獻與制度整理，不是系統性回顧。研究數字取自 PubMed 收錄的原文摘要；FDA 數字為我於 2026 年 11 月 21 日下載清單頁面後，以送審編號字首計數，可能與 FDA 自行統計略有出入，且 P 開頭編號可能包含補充申請。</li>
+<li>資料查證截止日：2026 年 11 月 21 日。</li>
+<li>內部驗證、外部驗證、校準度、資料漂移的白話定義與臨床試驗類比是作者整理，不是指引原文。</li>
+<li>敗血症模型案例是單一學術醫學中心、2018–2019 年的回溯性資料，不能代表該模型在其他醫院或後續版本的表現。</li>
+<li>台灣衛福部食藥署對 AI 醫材的審查規定，本文未逐項整理。</li>
+<li>本文不評比、不推薦任何廠商或產品；提到敗血症模型是因為它是已發表的外部驗證案例。</li>
+</ul>
+</section>
+
+<section>
+<h2>參考文獻</h2>
+<ol>
+<li>Wong A, et al. External validation of a widely implemented proprietary sepsis prediction model in hospitalized patients. JAMA Intern Med 2021;181(8):1065–1070. <a href="https://pubmed.ncbi.nlm.nih.gov/34152373/">PMID 34152373</a></li>
+<li>Wynants L, et al. Prediction models for diagnosis and prognosis of covid-19: systematic review and critical appraisal（living review update）. BMJ 2020. <a href="https://pubmed.ncbi.nlm.nih.gov/32265220/">PMID 32265220</a></li>
+<li>de Jong VMT, et al. Clinical prediction models for mortality in patients with covid-19: external validation and individual participant data meta-analysis. BMJ 2022. <a href="https://pubmed.ncbi.nlm.nih.gov/35820692/">PMID 35820692</a></li>
+<li>Van Calster B, et al. Calibration: the Achilles heel of predictive analytics. BMC Med 2019;17:230. <a href="https://pubmed.ncbi.nlm.nih.gov/31842878/">PMID 31842878</a></li>
+<li>Collins GS, et al. TRIPOD+AI statement: updated guidance for reporting clinical prediction models that use regression or machine learning methods. BMJ 2024;385:e078378. <a href="https://pubmed.ncbi.nlm.nih.gov/38626948/">PMID 38626948</a></li>
+<li>Liu X, et al. Reporting guidelines for clinical trial reports for interventions involving artificial intelligence: the CONSORT-AI extension. Nat Med 2020. <a href="https://pubmed.ncbi.nlm.nih.gov/32908283/">PMID 32908283</a></li>
+<li>Cruz Rivera S, et al. Guidelines for clinical trial protocols for interventions involving artificial intelligence: the SPIRIT-AI extension. Nat Med 2020. <a href="https://pubmed.ncbi.nlm.nih.gov/32908284/">PMID 32908284</a></li>
+<li>Plana D, et al. Randomized clinical trials of machine learning interventions in health care: a systematic review. JAMA Netw Open 2022;5(9):e2233946. <a href="https://pubmed.ncbi.nlm.nih.gov/36173632/">PMID 36173632</a></li>
+<li>Han R, et al. Randomised controlled trials evaluating artificial intelligence in clinical practice: a scoping review. Lancet Digit Health 2024. <a href="https://pubmed.ncbi.nlm.nih.gov/38670745/">PMID 38670745</a></li>
+<li>Sendak MP, et al. Real-world integration of a sepsis deep learning technology into routine clinical care: implementation study. JMIR Med Inform 2020;8(7):e15182. <a href="https://pubmed.ncbi.nlm.nih.gov/32673244/">PMID 32673244</a></li>
+<li>U.S. Food and Drug Administration. Artificial Intelligence-Enabled Medical Devices（content current as of 09/04/2026）. <a href="https://www.fda.gov/medical-devices/software-medical-device-samd/artificial-intelligence-enabled-medical-devices">FDA</a></li>
+</ol>
+</section>
+
+<section>
+<h2>延伸閱讀</h2>
+<ul>
+<li><a href="../markets/backtest-checklist.html">用讀臨床試驗的方式讀回測：十個問題</a>：樣本內與樣本外，和內部與外部驗證是同一件事。</li>
+<li><a href="../research.html">Research</a>：我自己的臨床機器學習研究。</li>
+<li><a href="../data.html">Data</a>：研究用的公開資料來源。</li>
+</ul>
+</section>
+<section class="disc">
+<p><b>免責聲明</b>　本文為文獻與制度整理，不構成醫療、法律或採購建議，也不能取代醫師診斷或專業評估。醫療院所導入任何 AI 系統前，請依主管機關規定與院內審查程序評估。</p>
+<p><b>利益揭露</b>　本文未接受任何廠商贊助，不推薦任何品牌或產品，本站不收取任何費用。</p>
+</section>
+</div>
+</main>
+<footer>
+  <div>Last updated: November 2026</div>
+</footer>
+</div>
+<!-- Cloudflare Web Analytics --><script type='module' src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "28f7e614b4e242bf952ea885535cab68"}'></script><!-- End Cloudflare Web Analytics -->
+</body>
+</html>
