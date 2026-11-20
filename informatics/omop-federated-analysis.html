@@ -1,0 +1,178 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>OMOP 共同資料模型與聯邦式分析：跨院研究不搬資料，LEGEND 等網路研究的做法與限制 | onepunchmed</title>
+<meta name="description" content="OMOP 共同資料模型是什麼？整理 OHDSI 網路研究（LEGEND 高血壓 490 萬人）、經驗校正、資料品質檢查、聯邦式學習的系統性回顧與隱私攻擊研究，以及台灣健保資料條例與衛福部聯邦學習平台的現況。文獻與制度整理，不構成醫療、法律或採購建議。">
+<link rel="canonical" href="https://onepunchmed.com/informatics/omop-federated-analysis.html">
+<meta property="og:type" content="article">
+<meta property="og:title" content="OMOP 共同資料模型與聯邦式分析：跨院研究不搬資料，LEGEND 等網路研究的做法與限制 | onepunchmed">
+<meta property="og:description" content="OMOP 共同資料模型是什麼？整理 OHDSI 網路研究（LEGEND 高血壓 490 萬人）、經驗校正、資料品質檢查、聯邦式學習的系統性回顧與隱私攻擊研究，以及台灣健保資料條例與衛福部聯邦學習平台的現況。文獻與制度整理，不構成醫療、法律或採購建議。">
+<meta property="og:url" content="https://onepunchmed.com/informatics/omop-federated-analysis.html">
+<meta property="og:locale" content="zh_TW">
+<meta property="og:site_name" content="onepunchmed">
+<meta name="twitter:card" content="summary">
+<script type="application/ld+json">
+{"@context": "https://schema.org", "@graph": [{"@type": "Article", "headline": "OMOP 共同資料模型與聯邦式分析：跨院研究不搬資料", "datePublished": "2026-11-21", "dateModified": "2026-11-21", "author": {"@type": "Person", "name": "onepunchmed", "url": "https://onepunchmed.com/"}, "publisher": {"@type": "Person", "name": "onepunchmed", "url": "https://onepunchmed.com/"}, "inLanguage": "zh-Hant", "mainEntityOfPage": "https://onepunchmed.com/informatics/omop-federated-analysis.html"}, {"@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "About", "item": "https://onepunchmed.com/"}, {"@type": "ListItem", "position": 2, "name": "Informatics", "item": "https://onepunchmed.com/informatics/"}, {"@type": "ListItem", "position": 3, "name": "OMOP 共同資料模型與聯邦式分析：跨院研究不搬資料", "item": "https://onepunchmed.com/informatics/omop-federated-analysis.html"}]}]}
+</script>
+<link rel="stylesheet" href="../style.css">
+<link rel="stylesheet" href="../article.css">
+</head>
+<body>
+<div class="wrap">
+<header class="site">
+  <a class="name" href="../">onepunchmed</a>
+  <nav>
+    <a href="../">About</a>
+    <a href="../research.html">Research</a>
+    <a href="../data.html">Data</a>
+    <a href="../markets/">Markets</a>
+    <a href="../health/">Health</a>
+    <a href="./" aria-current="page">Informatics</a>
+    <a href="../notes.html">Notes</a>
+    <a href="../disclosure.html">Disclosure</a>
+  </nav>
+</header>
+<main>
+  <h1>OMOP 共同資料模型與聯邦式分析：跨院研究不搬資料</h1>
+  <p class="lead">每家醫院的病歷欄位、代碼與習慣都不同，跨院研究最大的成本常常不是統計，而是把資料「翻譯」成同一種語言。OMOP 共同資料模型（CDM）就是這種翻譯規格；搭配「程式送到資料端、只回傳統計結果」的分散式做法，可以不搬病歷就做多國研究。結論先講：這套方法已經做出百萬人等級、預先公開所有假說的研究，但它解決的是「格式一致」，不保證「資料正確」；聯邦式學習多數仍停在概念驗證，而且只傳模型參數也不等於沒有隱私風險。</p>
+  <p class="article-meta"><a rel="author" href="../">onepunchmed</a> · <time datetime="2026-11-21">2026 年 11 月 21 日</time> · 資料標準、真實世界證據、聯邦式學習</p>
+
+<div class="mdms-article">
+<section class="verdict">
+<h2>五個重點</h2>
+<ol>
+<li><b>OMOP 是分析用的共同格式，不是醫院作業系統。</b>它把各院資料轉成以病人為中心的同一組表格，並用標準詞彙（如 SNOMED、LOINC、RxNorm）統一代碼；目前版本為 5.4。</li>
+<li><b>分散式網路可以做到很大規模。</b>OHDSI 2016 年的治療路徑研究串連 4 國、11 個資料源、約 2.5 億病人，資料留在各地，只把彙總結果集中。</li>
+<li><b>LEGEND 高血壓研究示範了「把偏誤也當成要估的量」。</b>9 個資料庫、490 萬人、約 22,000 個校正後風險比；多數藥物類別之間沒有差異，thiazide 類利尿劑的主要療效結果優於 ACE 抑制劑（如心肌梗塞 HR 0.84，0.75–0.95）。</li>
+<li><b>聯邦式學習多半還沒走出實驗室。</b>2024 年系統性回顧納入 612 篇醫療應用研究，只有 5.2% 是真實場域應用；20 個機構合作的 COVID-19 模型是少數實際跨院訓練的例子。</li>
+<li><b>台灣兩條路並行。</b>已有醫院體系把 400 多萬人的病歷轉成 OMOP；衛福部 2026 年啟動全國聯邦學習平台；健保資料的目的外利用則因 2022 年憲法判決，在 2025 年 12 月通過專法並納入退出權。</li>
+</ol>
+</section>
+
+<section>
+<h2>一、OMOP 是什麼：先把資料翻成同一種語言</h2>
+<p>OMOP 共同資料模型（Observational Medical Outcomes Partnership Common Data Model）由 OHDSI（Observational Health Data Sciences and Informatics）社群維護。Book of OHDSI 說明它的設計原則：資料是為了分析而組織，不是為了醫院或保險人的日常作業；以病人為中心，每筆紀錄至少記下「誰」與「哪一天」；姓名、精確生日等可能辨識個人的資料盡量不收。</p>
+<p>格式一致之外，更關鍵的是「標準詞彙」。同一個診斷在 A 院用 ICD-10、在 B 院用院內自訂碼，轉換時都要對應（Maps to）到同一個標準概念；疾病多對應到 SNOMED，檢驗到 LOINC，藥物到 RxNorm。OHDSI 的詞彙集透過 ATHENA 免費下載。HL7 的 FHIR 轉 OMOP 實作指引也以 CDM 5.4 為對象。</p>
+<div class="callout"><p>臨床類比：這像多中心試驗的「共同病例報告表」。各中心照同一份表格、同一套定義填資料，事後才能合併分析；差別是 OMOP 是事後把既有病歷轉成同一份表格，轉換本身就可能出錯。</p></div>
+</section>
+
+<section>
+<h2>二、OHDSI 網路研究：程式出門，資料留下</h2>
+<p>資料轉成 OMOP 後，研究團隊可以先寫好一份分析程式，交給各資料庫的持有者在自己的環境裡執行，只回傳彙總統計（例如人數、風險比），再集中合併。這叫分散式網路研究（distributed network study），和「把病歷全部集中到一個資料庫」的做法相反。</p>
+<ul>
+<li><b>治療路徑研究</b>：Hripcsak 等（PNAS 2016）串連 4 個國家、11 個資料源，包括電子病歷與保險申報資料，約 2.5 億病人。資料全部對應到共同標準，用分散式模型維護病人隱私，結果集中彙總。第 2 型糖尿病的第一線用藥明顯集中在 metformin；約 10% 的糖尿病與憂鬱症病人、將近 25% 的高血壓病人，走的是同一族群中獨一無二的治療路徑。</li>
+<li><b>這說明什麼</b>：大規模國際觀察性研究在技術上可行；但各資料源之間的差異仍大，作者也指出這是把臨床試驗結果推廣到真實世界時的挑戰。</li>
+</ul>
+</section>
+
+<section>
+<h2>三、LEGEND 的做法：預先公開所有比較，連偏誤一起估</h2>
+<p>觀察性研究最常被質疑的三件事是殘餘混淆、發表偏誤，以及挑結果發表（p-hacking）。LEGEND（Large-scale Evidence Generation and Evaluation across a Network of Databases）的高血壓研究（Suchard 等，Lancet 2019）針對這三點設計：</p>
+<div class="tbl stack"><table><thead><tr><th>問題</th><th>LEGEND 的對策</th><th>白話</th></tr></thead><tbody>
+<tr><td data-label="問題">殘餘混淆</td><td data-label="LEGEND 的對策">新使用者世代設計＋大規模傾向分數調整</td><td data-label="白話">只比剛開始用藥的人，並用大量基線變項估傾向分數讓兩組可比</td></tr>
+<tr><td data-label="問題">系統性偏誤</td><td data-label="LEGEND 的對策">大量「對照結果」做經驗校正</td><td data-label="白話">用已知和藥物無關的結果，量出這套方法本身會誤報多少</td></tr>
+<tr><td data-label="問題">挑結果發表</td><td data-label="LEGEND 的對策">預先列出並全部公開所有比較</td><td data-label="白話">每一組藥物 × 每一個結果都報，不只報顯著的</td></tr>
+</tbody></table></div>
+<p>研究在 6 個保險申報與 3 個電子病歷資料庫進行，納入 490 萬人，比較高血壓第一線五類藥物，主要結果為急性心肌梗塞、心衰竭住院與中風，另有 6 個次要療效結果與 46 個安全性結果，共產出約 22,000 個校正後的風險比。</p>
+<ul>
+<li><b>多數比較沒有差異</b>，和現行指引「五類都可當第一線」一致。</li>
+<li><b>例外一</b>：thiazide 或 thiazide 類利尿劑優於 ACE 抑制劑，心肌梗塞 HR 0.84（0.75–0.95）、心衰竭住院 0.83（0.74–0.95）、中風 0.83（0.74–0.95），安全性也偏向利尿劑。</li>
+<li><b>例外二</b>：非 dihydropyridine 類鈣離子阻斷劑明顯劣於其他四類。</li>
+</ul>
+<p>經驗校正的根據來自 Schuemie 等（Stat Med 2014）：他們把三種常見觀察性研究設計套用在「負對照」（一般認為不會造成該結果的藥物）上，發現多數設計在真實沒有效果時仍會宣稱顯著；用負對照估出的誤差分布校正後，假陽性可降回約 5%。套用到文獻上，作者估計 p&lt;0.05 的發現中至少 54% 在校正後不再顯著。</p>
+<div class="callout"><p>讀法：LEGEND 的價值在於方法透明與規模，不在於取代隨機試驗。它仍是觀察性資料，結論是「在這套偏誤控制下的估計」；thiazide 的優勢是用藥初期的結果，也需要和既有試驗證據一起看。</p></div>
+</section>
+
+<section>
+<h2>四、格式一致不等於資料正確：資料品質要另外檢查</h2>
+<p>把病歷轉成 OMOP，只保證欄位與代碼長得一樣。原始資料若漏記、錯植或對應錯誤，轉換後一樣是錯的。Blacketer 等（JAMIA 2021）發表的資料品質儀表板（Data Quality Dashboard）是開源工具，依「符合性、完整性、合理性」三類架構，對一個 OMOP 資料庫自動執行超過 3,300 項可設定的檢查，例如必填欄位是否空白、日期是否早於出生、數值是否超出合理範圍。</p>
+<p>作者的主張是：資料品質報告應該和研究結果一起公開。換句話說，讀網路研究時，除了看效果大小，也要問「各資料庫有沒有附品質檢查結果」。</p>
+</section>
+
+<section>
+<h2>五、聯邦式學習：模型出門訓練，只傳參數</h2>
+<p>OHDSI 網路研究多半回傳的是統計結果；聯邦式學習（federated learning）則是讓機器學習模型輪流到各院「就地訓練」，各院只回傳模型參數或梯度，由中央伺服器合併成新模型，再送回各院繼續訓練。病歷本身不離開醫院。</p>
+<ul>
+<li><b>實際案例</b>：Dayan 等（Nat Med 2021）的 EXAM 模型，由全球 20 個機構以聯邦式學習訓練，用生命徵象、檢驗與胸部 X 光預測 COVID-19 病人到急診後 24 與 72 小時的氧氣需求。平均 AUC 高於 0.92；和各院只用自己資料訓練的模型相比，跨院平均 AUC 提升 16%，可推廣性平均提升 38%。這些資料沒有事先統一格式（unharmonized）。</li>
+<li><b>整體證據</b>：Teo 等（Cell Rep Med 2024）系統性回顧從 22,693 篇文獻中納入 612 篇醫療聯邦式學習研究，多數是概念驗證，只有 5.2% 是真實場域應用；最常見的科別是放射科與內科，資料類型以醫學影像最多。作者強調臨床轉譯的障礙與真實世界影響仍待評估。</li>
+</ul>
+<div class="tbl stack"><table><thead><tr><th>做法</th><th>傳出醫院的東西</th><th>適合的問題</th></tr></thead><tbody>
+<tr><td data-label="做法">集中式資料庫</td><td data-label="傳出醫院的東西">去識別化後的個人層級資料</td><td data-label="適合的問題">任何分析，但集中保管風險與法規門檻最高</td></tr>
+<tr><td data-label="做法">分散式網路研究（如 OHDSI）</td><td data-label="傳出醫院的東西">彙總統計（人數、風險比等）</td><td data-label="適合的問題">描述性研究、療效與安全性比較</td></tr>
+<tr><td data-label="做法">聯邦式學習</td><td data-label="傳出醫院的東西">模型參數或梯度</td><td data-label="適合的問題">訓練與外部驗證預測模型</td></tr>
+</tbody></table></div>
+</section>
+
+<section>
+<h2>六、隱私：資料不出門，不代表沒有風險</h2>
+<ul>
+<li><b>梯度可以被反推</b>：El Azzouzi 等（2026）模擬跨院聯邦式學習，用三類法文臨床報告訓練語言模型，發現惡意的中央伺服器可從回傳梯度重建原文：批次大小為 1 時，字詞層級還原率超過 95%；序列長達 512 個字詞時仍高於 60%，還原內容包含姓名、日期與基因標記。作者結論是：單靠聯邦式學習不足以保護敏感臨床文字，實際部署前要加上其他防護（如加密、差分隱私）。</li>
+<li><b>小格子問題</b>：分散式研究回傳的是彙總數字，但若某一格人數很少，仍可能指向特定個人；實務上要設定最小回報人數。這是一般統計揭露控制原則，不是特定研究的結果。</li>
+<li><b>治理比技術重要</b>：誰可以發起研究、程式由誰審查、結果誰能看，都要有制度。聯邦式架構降低了「集中一份大資料」的風險，但沒有取代倫理審查與資料治理。</li>
+</ul>
+</section>
+
+<section>
+<h2>七、台灣現況：醫院轉 OMOP、國家建聯邦平台、健保資料入法</h2>
+<ul>
+<li><b>醫院端導入 OMOP</b>：Nguyen 等（BMJ Health Care Inform 2024）說明臺北醫學大學臨床研究資料庫（TMUCRD）整合三家附屬醫院的電子病歷，涵蓋 2004–2021 年、超過 415 萬病人，已轉換為 OMOP CDM，並可連結死亡與癌症登記資料。這是台灣已發表的醫院 OMOP 資料庫實例；其他醫院的導入狀況，本文沒有找到可查證的官方統計。</li>
+<li><b>衛福部聯邦學習平台</b>：衛福部資訊處 2026 年 1 月 28 日宣布啟動「高算力中心暨跨國聯邦學習平台」，整合 16 家 AI 外部驗證中心合作醫院，以衛福部伺服器作為模型聚合中心，各院資料不需離開院內即可跨院訓練與驗證，並與泰國瑪希敦大學建立跨國驗證機制。官方新聞稿沒有說明平台採用哪一種共同資料模型。</li>
+<li><b>健保資料的法律基礎</b>：憲法法庭 111 年憲判字第 13 號判決（2022 年 8 月 12 日）處理健保資料目的外利用的爭議。衛福部說明，《全民健康保險資料管理條例》於 2025 年 12 月 2 日立法院三讀，全文 27 條，把健保資料目的外利用的規範從作業規則提升到法律位階，並定明請求停止利用（退出權）的主體、事由、程序、效力，以及例外不許停止利用的情形。</li>
+</ul>
+<p>對研究者的意義：跨院研究在台灣有了技術基礎（OMOP 資料庫、聯邦學習平台）與法律框架（健保資料條例），但兩者如何銜接、退出權如何落實到分散式分析，仍要看後續子法與各計畫的實際規範。</p>
+</section>
+
+<section>
+<h2>方法與限制</h2>
+<ul>
+<li>本文是敘述性文獻與制度整理，不是系統性回顧。研究數字取自 PubMed 收錄的原文摘要；OMOP 規格取自 Book of OHDSI 與 HL7 FHIR 轉 OMOP 實作指引；台灣制度取自衛福部官方新聞稿。</li>
+<li>資料查證截止日：2026 年 11 月 21 日。</li>
+<li>LEGEND 與治療路徑研究的作者多為 OHDSI 社群成員，研究經費部分來自藥廠與資料公司（原文已揭露）；本文未找到獨立團隊系統性比較 OMOP 網路研究與隨機試驗一致性的研究，因此不對「OMOP 研究的可信度」下整體結論。</li>
+<li>轉換成 OMOP 時的資訊流失與對應錯誤率，因資料庫而異，本文沒有引用單一數字。</li>
+<li>聯邦式學習的隱私攻擊結果來自模擬研究，實際風險取決於部署時的防護設計。</li>
+<li>本文不比較、也不推薦任何資料平台、軟體或廠商。</li>
+</ul>
+</section>
+
+<section>
+<h2>參考文獻</h2>
+<ol>
+<li>Hripcsak G, et al. Observational Health Data Sciences and Informatics (OHDSI): opportunities for observational researchers. Stud Health Technol Inform 2015;216:574–578. <a href="https://pubmed.ncbi.nlm.nih.gov/26262116/">PMID 26262116</a></li>
+<li>Hripcsak G, et al. Characterizing treatment pathways at scale using the OHDSI network. Proc Natl Acad Sci U S A 2016;113(27):7329–7336. <a href="https://doi.org/10.1073/pnas.1510502113">doi:10.1073/pnas.1510502113</a>；<a href="https://pubmed.ncbi.nlm.nih.gov/27274072/">PMID 27274072</a></li>
+<li>Suchard MA, et al. Comprehensive comparative effectiveness and safety of first-line antihypertensive drug classes: a systematic, multinational, large-scale analysis. Lancet 2019;394(10211):1816–1826. <a href="https://doi.org/10.1016/S0140-6736(19)32317-7">doi:10.1016/S0140-6736(19)32317-7</a>；<a href="https://pubmed.ncbi.nlm.nih.gov/31668726/">PMID 31668726</a></li>
+<li>Schuemie MJ, et al. Interpreting observational studies: why empirical calibration is needed to correct p-values. Stat Med 2014;33(2):209–218. <a href="https://doi.org/10.1002/sim.5925">doi:10.1002/sim.5925</a>；<a href="https://pubmed.ncbi.nlm.nih.gov/23900808/">PMID 23900808</a></li>
+<li>Blacketer C, et al. Increasing trust in real-world evidence through evaluation of observational data quality. J Am Med Inform Assoc 2021;28(10):2251–2257. <a href="https://doi.org/10.1093/jamia/ocab132">doi:10.1093/jamia/ocab132</a>；<a href="https://pubmed.ncbi.nlm.nih.gov/34313749/">PMID 34313749</a></li>
+<li>Rieke N, et al. The future of digital health with federated learning. NPJ Digit Med 2020;3:119. <a href="https://doi.org/10.1038/s41746-020-00323-1">doi:10.1038/s41746-020-00323-1</a>；<a href="https://pubmed.ncbi.nlm.nih.gov/33015372/">PMID 33015372</a></li>
+<li>Dayan I, et al. Federated learning for predicting clinical outcomes in patients with COVID-19. Nat Med 2021;27(10):1735–1743. <a href="https://doi.org/10.1038/s41591-021-01506-3">doi:10.1038/s41591-021-01506-3</a>；<a href="https://pubmed.ncbi.nlm.nih.gov/34526699/">PMID 34526699</a></li>
+<li>Teo ZL, et al. Federated machine learning in healthcare: a systematic review on clinical applications and technical architecture. Cell Rep Med 2024;5(2):101419. <a href="https://doi.org/10.1016/j.xcrm.2024.101419">doi:10.1016/j.xcrm.2024.101419</a>；<a href="https://pubmed.ncbi.nlm.nih.gov/38340728/">PMID 38340728</a></li>
+<li>El Azzouzi M, et al. Recovering sensitive medical text in federated learning. Stud Health Technol Inform 2026;336:1466–1470. <a href="https://doi.org/10.3233/SHTI260452">doi:10.3233/SHTI260452</a>；<a href="https://pubmed.ncbi.nlm.nih.gov/42175124/">PMID 42175124</a></li>
+<li>Nguyen PA, et al. Taipei Medical University Clinical Research Database: a collaborative hospital EHR database aligned with international common data standards. BMJ Health Care Inform 2024;31(1). <a href="https://doi.org/10.1136/bmjhci-2023-100890">doi:10.1136/bmjhci-2023-100890</a>；<a href="https://pubmed.ncbi.nlm.nih.gov/38749529/">PMID 38749529</a></li>
+<li>OHDSI. The Book of OHDSI, Chapter 4 The Common Data Model; Chapter 5 Standardized Vocabularies. <a href="https://book.ohdsi.org/CommonDataModel.html">book.ohdsi.org</a></li>
+<li>HL7 International. FHIR to OMOP Implementation Guide: The OMOP CDM. <a href="https://hl7.org/fhir/uv/omop/INFORMATIVE1/en/the-omop-cdm.html">hl7.org</a></li>
+<li>衛生福利部資訊處。衛生福利部「高算力中心暨跨國聯邦學習平台」啟動大會 聚焦3大特色（2026-01-28）。<a href="https://dep.mohw.gov.tw/DOIM/cp-935-85277-114.html">衛福部</a></li>
+<li>衛生福利部。立法院三讀通過「全民健康保險資料管理條例」 保障個人資訊隱私權及健保資料合理利用（2025-12-02）。<a href="https://mohw.gov.tw/cp-16-84706-1.html">衛福部</a></li>
+</ol>
+</section>
+<section>
+<h2>延伸閱讀</h2>
+<ul>
+<li><a href="../research.html">Finding the missing diagnoses</a>：用基層診所長期申報紀錄找出未被編碼的糖尿病與腎臟病（英文）。</li>
+<li><a href="../data.html">Data</a>：一家基層診所三十多年的例行紀錄，單一院所資料的優點與限制（英文）。</li>
+<li><a href="../markets/backtest-checklist.html">用讀臨床試驗的方式讀回測：十個問題</a>：預先登記、多重比較與混淆，在觀察性資料裡都是同一類問題。</li>
+</ul>
+</section>
+<section class="disc">
+<p><b>免責聲明</b>　本文為文獻與制度整理，不構成醫療、法律或採購建議。研究資料的取得與利用，請依個人資料保護法、全民健康保險資料管理條例等現行法規與所屬機構倫理審查規定辦理；法規細節以主管機關公告為準。</p>
+<p><b>利益揭露</b>　本文未接受任何廠商贊助，不推薦任何品牌、產品或平台，本站不收取任何費用。</p>
+</section>
+</div>
+</main>
+<footer>
+  <div>Last updated: November 2026</div>
+</footer>
+</div>
+<!-- Cloudflare Web Analytics --><script type='module' src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "28f7e614b4e242bf952ea885535cab68"}'></script><!-- End Cloudflare Web Analytics -->
+</body>
+</html>
