@@ -1,0 +1,186 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>HL7 FHIR 是什麼？和 HL7 v2、CDA 差在哪，台灣 TW Core 與美國 Cures Act 經驗 | onepunchmed</title>
+<meta name="description" content="HL7 FHIR 是什麼？整理 FHIR 和 HL7 v2、CDA 的差異，衛福部 TW Core IG 1.0.0、次世代數位醫療平臺、健保事前審查 FHIR 指引的最新進度，以及美國 21st Century Cures Act 上路後的實際數據，看對診所與病人的影響。文獻與制度整理，不構成醫療、法律或採購建議。">
+<link rel="canonical" href="https://onepunchmed.com/informatics/fhir-interoperability-taiwan.html">
+<meta property="og:type" content="article">
+<meta property="og:title" content="HL7 FHIR 是什麼？和 HL7 v2、CDA 差在哪，台灣 TW Core 與美國 Cures Act 經驗 | onepunchmed">
+<meta property="og:description" content="HL7 FHIR 是什麼？整理 FHIR 和 HL7 v2、CDA 的差異，衛福部 TW Core IG 1.0.0、次世代數位醫療平臺、健保事前審查 FHIR 指引的最新進度，以及美國 21st Century Cures Act 上路後的實際數據，看對診所與病人的影響。文獻與制度整理，不構成醫療、法律或採購建議。">
+<meta property="og:url" content="https://onepunchmed.com/informatics/fhir-interoperability-taiwan.html">
+<meta property="og:locale" content="zh_TW">
+<meta property="og:site_name" content="onepunchmed">
+<meta name="twitter:card" content="summary">
+<script type="application/ld+json">
+{"@context": "https://schema.org", "@graph": [{"@type": "Article", "headline": "HL7 FHIR 是什麼？和 HL7 v2、CDA 差在哪，台灣 TW Core 與美國 Cures Act 經驗", "datePublished": "2026-11-21", "dateModified": "2026-11-21", "author": {"@type": "Person", "name": "onepunchmed", "url": "https://onepunchmed.com/"}, "publisher": {"@type": "Person", "name": "onepunchmed", "url": "https://onepunchmed.com/"}, "inLanguage": "zh-Hant", "mainEntityOfPage": "https://onepunchmed.com/informatics/fhir-interoperability-taiwan.html"}, {"@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "About", "item": "https://onepunchmed.com/"}, {"@type": "ListItem", "position": 2, "name": "Informatics", "item": "https://onepunchmed.com/informatics/"}, {"@type": "ListItem", "position": 3, "name": "HL7 FHIR 是什麼？和 HL7 v2、CDA 差在哪，台灣 TW Core 與美國 Cures Act 經驗", "item": "https://onepunchmed.com/informatics/fhir-interoperability-taiwan.html"}]}]}
+</script>
+<link rel="stylesheet" href="../style.css">
+<link rel="stylesheet" href="../article.css">
+</head>
+<body>
+<div class="wrap">
+<header class="site">
+  <a class="name" href="../">onepunchmed</a>
+  <nav>
+    <a href="../">About</a>
+    <a href="../research.html">Research</a>
+    <a href="../data.html">Data</a>
+    <a href="../markets/">Markets</a>
+    <a href="../health/">Health</a>
+    <a href="./" aria-current="page">Informatics</a>
+    <a href="../notes.html">Notes</a>
+    <a href="../disclosure.html">Disclosure</a>
+  </nav>
+</header>
+<main>
+  <h1>HL7 FHIR 是什麼？和 HL7 v2、CDA 差在哪，台灣 TW Core 與美國 Cures Act 經驗</h1>
+  <p class="lead">FHIR（Fast Healthcare Interoperability Resources）是 HL7 組織制定的醫療資料交換標準，把病歷拆成「病人、檢驗結果、用藥」這類小單位，用網頁常見的 HTTP、JSON 交換。結論先講：台灣的規格已經到位（衛福部 TW Core IG 1.0.0），三大醫療體系 2025 年底完成跨院互通示範，但診所與病人日常感受到的改變還很有限；美國用法律強制 API 與禁止資訊封鎖之後，病人用 App 看病歷的比例上升，但「有標準」和「資料真的流動」之間仍有落差。</p>
+  <p class="article-meta"><a rel="author" href="../">onepunchmed</a> · <time datetime="2026-11-21">2026 年 11 月 21 日</time> · 資料互通、FHIR、電子病歷</p>
+
+<div class="mdms-article">
+<section class="verdict">
+<h2>五個重點</h2>
+<ol>
+<li><b>FHIR 和舊標準最大的差別是「顆粒度」。</b>HL7 v2 用訊息段（segment）傳一整則事件，段落不能單獨操作；CDA 是一整份含表頭的臨床文件；FHIR 的資源（Resource）可以單獨讀寫，也能組成訊息或文件。</li>
+<li><b>台灣的核心規格是 TW Core IG 1.0.0。</b>由衛福部資訊處發布、以 FHIR R4（4.0.1）為基礎，官網標示為現行正式版，套件產生日 2025 年 12 月 10 日；官方說明預計每年正式更版一至二次。</li>
+<li><b>台灣的推動以「平台＋示範醫院」為主，不是法律強制。</b>衛福部 2026 年 5 月的新聞稿稱，2025 年底長庚、馬偕與中山三大醫療體系已完成跨院病歷互通；健保署另有癌症用藥事前審查的 FHIR 實作指引（TWPAS IG，頁面標示 2026 年 10 月 28 日生效的 v1.3.0）。</li>
+<li><b>美國走的是法規強制。</b>21st Century Cures Act 於 2016 年 12 月 13 日簽署；資訊封鎖規定自 2021 年 4 月 5 日適用，到 2026 年 7 月底，官方入口共收到 2,563 件通報。認證系統廠商須在 2022 年底前提供 FHIR 標準 API，ONC 表示超過 95% 準時達成。</li>
+<li><b>對病人的效果看得到，但不等於「資料都互通」。</b>美國 2024 年調查中 65% 的人曾被提供並使用線上病歷，用 App 存取的比例從 2020 年 38% 升到 57%；但 59% 的人同時有多個入口，只有 7% 用整合型 App。</li>
+</ol>
+</section>
+
+<section>
+<h2>一、FHIR 是什麼：把病歷拆成可以單獨讀寫的「資源」</h2>
+<p>HL7 官方規格的定義是：FHIR 由一組稱為「資源」的模組化元件組成，涵蓋病人、醫事人員、機構、裝置等行政概念，以及各種臨床概念。每個資源都附一段人看得懂的 HTML 文字，機器讀不懂時還能顯示給人看。</p>
+<p>技術上，FHIR 建立在網頁標準上：XML、JSON、HTTP、OAuth，支援 RESTful 架構，也支援用訊息或文件交換。對開發者來說，這代表「查一位病人的最近一次糖化血色素」可以像呼叫一般網頁 API 一樣，只拿一筆 Observation，不用整份病歷。</p>
+<p>版本方面，目前各國實作最常引用的是 R4（4.0.1），HL7 稱之為「正式規範（Normative）與試用（STU）混合」的標準：核心部分保持穩定，其他部分仍在試用。HL7 已發布取代 R4 的 5.0.0（R5），但台灣 TW Core 與美國法規引用的仍是 R4。</p>
+</section>
+
+<section>
+<h2>二、和 HL7 v2、CDA 差在哪：訊息、文件、資源三種思路</h2>
+<p>以下差異取自 HL7 FHIR R4 規格中與 v2、CDA 的官方比較頁。</p>
+<div class="tbl stack"><table><thead><tr><th>面向</th><th>HL7 v2</th><th>CDA（HL7 v3 系列）</th><th>FHIR</th></tr></thead><tbody>
+<tr><td data-label="面向">基本單位</td><td data-label="HL7 v2">由可重用訊息段組成的「訊息」</td><td data-label="CDA（HL7 v3 系列）">含標準表頭與章節的「臨床文件」</td><td data-label="FHIR">可獨立維護的「資源」</td></tr>
+<tr><td data-label="面向">能否只拿一小塊</td><td data-label="HL7 v2">訊息段不能單獨操作</td><td data-label="CDA（HL7 v3 系列）">以整份文件交換</td><td data-label="FHIR">可以單獨讀寫一個資源</td></tr>
+<tr><td data-label="面向">交換方式</td><td data-label="HL7 v2">事件觸發的訊息</td><td data-label="CDA（HL7 v3 系列）">文件</td><td data-label="FHIR">REST、訊息、文件、服務都支援</td></tr>
+<tr><td data-label="面向">內容範圍</td><td data-label="HL7 v2">—</td><td data-label="CDA（HL7 v3 系列）">只限有臨床意義的內容</td><td data-label="FHIR">不限，主體也可以不是病人</td></tr>
+<tr><td data-label="面向">語意怎麼定</td><td data-label="HL7 v2">—</td><td data-label="CDA（HL7 v3 系列）">高度抽象的模型，靠 templateId 指定</td><td data-label="FHIR">由資源本身定義</td></tr>
+<tr><td data-label="面向">人可讀內容</td><td data-label="HL7 v2">不提供</td><td data-label="CDA（HL7 v3 系列）">文件本身可讀</td><td data-label="FHIR">每個資源都必須附</td></tr>
+<tr><td data-label="面向">在地擴充</td><td data-label="HL7 v2">自訂 Z 段</td><td data-label="CDA（HL7 v3 系列）">—</td><td data-label="FHIR">擴充欄位可出現在任何層級</td></tr>
+</tbody></table></div>
+<p>表中「—」代表官方比較頁沒有就該面向描述。FHIR 不是要立刻取代舊標準：規格明寫 FHIR 也能承載傳統的 CDA R2 文件，而醫院內部的 v2 介面多半會長期並存。實務上常見的是「院內照舊、對外轉成 FHIR」。</p>
+</section>
+
+<section>
+<h2>三、台灣：TW Core IG 已到 1.0.0，推動靠平台與示範醫院</h2>
+<p><b>實作指引（IG）是什麼？</b>FHIR 本身很寬鬆，各國要再規定「身分證號放哪個欄位、用哪套代碼」，這份在地規則就是實作指引。TW Core IG 是台灣的核心指引，其他專題指引在它上面延伸。</p>
+<ul>
+<li><b>TW Core IG</b>：作者為衛福部資訊處（次世代數位醫療平臺專案辦公室），官網標示 1.0.0 為現行正式版、以 FHIR 4.0.1 為基礎，頁面產生日 2025 年 12 月 10 日，並記載 2025 年 12 月 9 日因實作需求異動部分內容。官方說明自 2024 年 5 月起，依電子病歷標準發展工作小組決議，預計每年正式更版一至二次；持續建置版（CI build）的修改會先徵求意見，確認後才併入正式版。截至本文查證日，官網仍以 1.0.0 為現行版。</li>
+<li><b>其他已登錄的國家級 IG</b>：衛福部醫療資訊標準平台列出電子病歷交換單張、健保癌症用藥事前審查、電子處方箋與調劑單張、傳染病檢驗報告、長期照顧、醫療保險理賠等實作指引。</li>
+<li><b>電子病歷交換中心（EEC）</b>：依電子病歷交換單張實作指引的說明，EEC 由衛福部建置，在病人同意及醫師授權下，可取得病人過去 6 個月的病歷資料；該指引用 FHIR 定義出院病摘、門診病歷、檢驗檢查、醫療影像及報告、電子處方箋、調劑單張六類表單（指引版本 v0.2.0）。</li>
+<li><b>次世代數位醫療平臺與 FHIR Box</b>：衛福部 2024 年 8 月說明會新聞稿寫「計劃於 2025 年初完成首階段平台的建置」。2025 年 12 月的成果發表稱已協助三家示範醫院導入 FHIR 電子病歷萃取工具。2026 年 5 月國科會委員會議相關新聞稿稱，2025 年底長庚、馬偕與中山三大醫療體系已完成跨院病歷互通，並提出「FHIR Box」概念。2026 年 6 月的演講資料稱，臺灣核心資料集（TWCDI）涵蓋 20 大類、超過 10 萬項可交換欄位，約 60 家醫院串聯於四大臨床 AI 驗證中心。2026 年 8 月成立國家數位健康互通性與效能認證實驗室，FHIR Box 認證分軟體、硬體與整體解決方案三種。</li>
+<li><b>健保署</b>：臺灣健保事前審查實作指引（TWPAS IG）由健保署規劃，用於癌症用藥事前審查上傳，含「癌藥」與「免疫製劑」兩套 Profile；頁面標示 v1.3.0、2026 年 10 月 28 日生效，並於 2026 年 11 月 4 日異動值集路徑。指引背景說明也提到健保署正規劃 NGS 申報資料收載、癌症重大傷病申請與療效追蹤的數位轉型。</li>
+</ul>
+<div class="callout"><p>讀法：上面這些多數是「規格發布」與「示範成果」，屬於中間指標。像藥物研發看到生物標記改善，還不等於病人結局改善；跨院互通要看的是「醫師實際調閱幾次、重複檢查有沒有減少」，這類成果數據本文查證時沒有找到官方公開統計。</p></div>
+</section>
+
+<section>
+<h2>四、美國 21st Century Cures Act：用法規強制 API 與禁止資訊封鎖</h2>
+<ul>
+<li><b>法律</b>：21st Century Cures Act（Public Law 114-255）於 2016 年 12 月 13 日簽署，授權主管機關規範「資訊封鎖」（information blocking），也就是醫療機構、系統廠商或資訊交換組織無正當理由妨礙電子健康資訊的存取與交換。</li>
+<li><b>ONC 施行細則</b>：2020 年 5 月 1 日刊登於聯邦公報。資訊封鎖規定自 2021 年 4 月 5 日開始適用。系統認證方面，新增 §170.315(g)(10) 標準化 API：以 HL7 FHIR 為基礎、對應美國核心資料集（USCDI）的唯讀 API，廠商須在 2022 年 12 月 31 日前提供給客戶；ONC 表示超過 95% 的認證系統廠商準時達成。HTI-1 規則再要求自 2024 年 3 月 11 日起，經授權的 App 存取須能在使用者要求後 1 小時內撤銷。</li>
+<li><b>CMS 病人存取規則（CMS-9115-F）</b>：要求 Medicare Advantage、Medicaid、CHIP 與聯邦交易所的保險計畫提供「病人存取 API」，讓投保人用第三方 App 取得理賠與臨床資料，技術上沿用 FHIR R4.0.1。原定 2021 年 1 月 1 日生效，因 COVID-19 延到 2021 年 7 月 1 日開始執法。</li>
+<li><b>資訊封鎖通報</b>：ONC 統計，2021 年 4 月 5 日到 2026 年 7 月 31 日，通報入口共收到 2,563 件，其中 2,450 件屬可能的資訊封鎖主張。ONC 也說明，登記為主張不代表已啟動調查或確定違規。</li>
+</ul>
+</section>
+
+<section>
+<h2>五、規定上路後的實際數據：病人用得更多，但入口仍分散</h2>
+<ul>
+<li><b>病人端</b>：ASTP/ONC 依 2024 年全國調查（HINTS）發布的數據摘要指出，65% 的人曾被提供並實際使用線上病歷或病人入口網站；用 App 存取的比例從 2020 年 38% 升到 2024 年 57%；89% 被提供線上存取的人表示受到醫療人員鼓勵。但 59% 的人有多個病人入口，只有 7% 使用整合多個入口的 App，16% 完全沒有線上病歷。</li>
+<li><b>醫院端</b>：Apathy 等（JAMIA 2025）分析美國醫院 2018–2023 年資料，偏鄉關鍵醫院（critical access hospital）在多數進階電子病歷功能上追趕了差距，但 2023 年落差最大的是 FHIR 批次匯出（bulk export）用途，用於分析與報表的比例是 63% 比 81%。</li>
+<li><b>App 開發端</b>：Barker 等（JAMIA 2024）對數位健康公司做全國調查，討論串接電子病歷 API 的經驗；Neinstein 等（JMIR 2020）訪談醫療體系開放病人端 API 的經驗。這兩篇是了解實作經驗的入口，本文未讀全文，不引用其結論與數字。</li>
+</ul>
+<p>這些都是描述性調查，不能直接推論「是 Cures Act 造成的」：同一段期間還有 COVID-19 推動遠距醫療與數位化。比較保守的說法是：法規強制與使用率上升同時發生，而入口分散的問題並沒有隨標準統一而消失。</p>
+</section>
+
+<section>
+<h2>六、對診所與病人的實際影響</h2>
+<p><b>對基層診所</b>（以下是依上述制度推論的條件，不是已觀察到的結果）：</p>
+<ul>
+<li>診所目前多半不必自己寫 FHIR：若使用的醫療資訊系統已支援 TW Core 與 EEC 單張，影響主要在系統升級與設定；若系統尚未支援，要參與跨院調閱或電子化事前審查，就取決於系統端是否跟進。</li>
+<li>台灣目前的推動以獎勵、示範與認證為主，沒有類似美國資訊封鎖的罰則；診所會不會被要求，要看衛福部與健保署後續公告。</li>
+<li>美國經驗顯示，資源較少的機構在進階功能（例如 FHIR 批次匯出）上落後，規模小的院所可能需要更長的導入時間。</li>
+</ul>
+<p><b>對病人</b>：</p>
+<ul>
+<li>跨院互通若普及，好處是轉診時醫師較容易看到前一家的檢驗與影像；EEC 的調閱仍須病人同意與醫師授權。</li>
+<li>美國病人用 App 看病歷的比例上升，但同時面對多個入口；標準化 API 讓整合型 App 成為可能，實際使用的人仍是少數。</li>
+<li>資料能被 App 取用，也代表隱私授權變得重要：美國 HTI-1 要求授權可在 1 小時內撤銷，就是因應這個風險。</li>
+</ul>
+</section>
+
+<section>
+<h2>方法與限制</h2>
+<ul>
+<li>本文是敘述性的制度與文獻整理，不是系統性回顧。來源以 HL7 官方規格、衛福部與健保署實作指引網站、衛福部資訊處新聞稿、美國 ONC／CMS 官方頁面與同儕審查論文為主。</li>
+<li>資料查證截止日：2026 年 11 月 21 日。規格版本更新頻繁，讀者應以各官網現行版為準。</li>
+<li>健保署官網與部分媒體網站在查證時無法讀取，因此健保癌藥事前審查的開放日期與參與醫院家數未寫入本文。</li>
+<li>台灣跨院互通的時程與醫院數取自衛福部新聞稿與演講資料，屬機關自述，本文沒有獨立資料可驗證。</li>
+<li>醫療院所電子病歷製作及管理辦法的條文本文未逐條核對，因此沒有寫診所的法定義務。</li>
+<li>美國數據為描述性調查，不能推論因果；美國與台灣的支付制度、法規架構不同，經驗不能直接移植。</li>
+<li>本文不評比、不推薦任何系統廠商或產品。</li>
+</ul>
+</section>
+
+<section>
+<h2>參考文獻</h2>
+<ol>
+<li>HL7 International. FHIR R4 (v4.0.1) Summary. <a href="https://hl7.org/fhir/R4/summary.html">hl7.org/fhir/R4/summary.html</a></li>
+<li>HL7 International. FHIR R4: Comparison with HL7 v2. <a href="https://hl7.org/fhir/R4/comparison-v2.html">hl7.org/fhir/R4/comparison-v2.html</a></li>
+<li>HL7 International. FHIR R4: Comparison with CDA. <a href="https://hl7.org/fhir/R4/comparison-cda.html">hl7.org/fhir/R4/comparison-cda.html</a></li>
+<li>衛生福利部資訊處。臺灣核心實作指引（TW Core IG）v1.0.0。<a href="https://twcore.mohw.gov.tw/ig/twcore/">twcore.mohw.gov.tw/ig/twcore/</a></li>
+<li>衛生福利部資訊處。電子病歷交換單張實作指引（EMR-IG）v0.2.0。<a href="https://twcore.mohw.gov.tw/ig/emr/">twcore.mohw.gov.tw/ig/emr/</a></li>
+<li>衛生福利部。臺灣醫療資訊標準平台：國家實作指引列表。<a href="https://medstandard.mohw.gov.tw/tw-core-implementation-guide">medstandard.mohw.gov.tw</a></li>
+<li>中央健康保險署。臺灣健保事前審查實作指引（TWPAS IG）v1.3.0。<a href="https://nhicore.nhi.gov.tw/pas/">nhicore.nhi.gov.tw/pas/</a></li>
+<li>衛生福利部資訊處。次世代數位醫療平台說明會新聞稿（2024-08-12）。<a href="https://dep.mohw.gov.tw/DOIM/cp-7156-79680-114.html">dep.mohw.gov.tw</a></li>
+<li>衛生福利部資訊處。跨院 FHIR 資料中台成果發表會（2025-12-15）。<a href="https://dep.mohw.gov.tw/DOIM/cp-935-84831-114.html">dep.mohw.gov.tw</a></li>
+<li>衛生福利部資訊處。國科會第 21 次委員會議相關新聞稿（2026-05-26）。<a href="https://dep.mohw.gov.tw/DOIM/cp-935-86614-114.html">dep.mohw.gov.tw</a></li>
+<li>衛生福利部資訊處。2026 BIO 演講新聞稿（2026-06-25）。<a href="https://dep.mohw.gov.tw/DOIM/cp-935-87002-114.html">dep.mohw.gov.tw</a></li>
+<li>衛生福利部資訊處。國家數位健康互通性與效能認證實驗室成立（2026-08-18）。<a href="https://dep.mohw.gov.tw/DOIM/cp-935-87472-114.html">dep.mohw.gov.tw</a></li>
+<li>21st Century Cures Act, Public Law 114-255, 130 Stat. 1033 (Dec. 13, 2016). <a href="https://www.gpo.gov/fdsys/pkg/PLAW-114publ255/pdf/PLAW-114publ255.pdf">GPO</a></li>
+<li>Office of the National Coordinator for Health IT. 21st Century Cures Act: Interoperability, Information Blocking, and the ONC Health IT Certification Program. Federal Register 2020;85(85), May 1, 2020. <a href="https://www.govinfo.gov/content/pkg/FR-2020-05-01/html/2020-07419.htm">govinfo.gov</a></li>
+<li>ONC. On the Road to Cures Update: Certified API Technology; Achieving a Major Milestone: Health IT Developers Certify to Cures Update. <a href="https://healthit.gov/blog/interoperability/achieving-a-major-milestone-health-it-developers-certify-to-cures-update/">HealthITBuzz</a></li>
+<li>ONC. Health Data, Technology, and Interoperability (HTI-1) final rule. Federal Register 2024;89(6), Jan. 9, 2024. <a href="https://www.govinfo.gov/content/pkg/FR-2024-01-09/html/2023-28857.htm">govinfo.gov</a></li>
+<li>CMS. Interoperability and Patient Access Final Rule (CMS-9115-F). <a href="https://www.cms.gov/priorities/key-initiatives/burden-reduction/policies-and-regulations/cms-interoperability-and-patient-access-final-rule-cms-9115-f">cms.gov</a></li>
+<li>ONC. Information Blocking Claims: By the Numbers（Quick Stat，2026 年 7 月更新）。<a href="https://healthit.gov/data/quickstats/information-blocking-claims-numbers/">healthit.gov</a></li>
+<li>ASTP/ONC. Individuals' Access and Use of Patient Portals and Smartphone Health Apps, 2024. Data Brief No. 77. <a href="https://healthit.gov/data/data-briefs/individuals-access-and-use-patient-portals-and-smartphone-health-apps-2024/">healthit.gov</a></li>
+<li>Apathy NC, et al. Trending in the right direction: critical access hospitals increased adoption of advanced electronic health record functions from 2018 to 2023. J Am Med Inform Assoc 2025;32(1):71–78. <a href="https://pubmed.ncbi.nlm.nih.gov/39504475/">PMID 39504475</a></li>
+<li>Barker W, et al. A national survey of digital health company experiences with electronic health record application programming interfaces. J Am Med Inform Assoc 2024;31(4):866–874. <a href="https://pubmed.ncbi.nlm.nih.gov/38281124/">PMID 38281124</a></li>
+<li>Neinstein A, et al. Deploying patient-facing application programming interfaces: thematic analysis of health system experiences. J Med Internet Res 2020;22(4):e16813. <a href="https://pubmed.ncbi.nlm.nih.gov/31983680/">PMID 31983680</a></li>
+</ol>
+</section>
+<section>
+<h2>延伸閱讀</h2>
+<ul>
+<li><a href="./">醫療資訊 Informatics 總覽</a>：本區其他醫院資訊系統、電子病歷與醫療 AI 整理。</li>
+<li><a href="../data.html">Data</a>：本站使用的公開健康資料來源。</li>
+<li><a href="../research.html">Research</a>：臨床機器學習研究，資料互通是模型能否跨院驗證的前提。</li>
+<li><a href="../markets/backtest-checklist.html">用讀臨床試驗的方式讀回測：十個問題</a>：中間指標與真正結局的差別，在投資研究也一樣。</li>
+</ul>
+</section>
+<section class="disc">
+<p><b>免責聲明</b>　本文為文獻與制度整理，不構成醫療、法律或採購建議，也不能取代主管機關公告與專業諮詢。醫療院所導入資訊系統或處理病歷交換，請依衛生福利部、中央健康保險署最新公告與法規辦理。</p>
+<p><b>利益揭露</b>　本文未接受任何廠商贊助，不推薦任何系統廠商、產品或通路，本站不收取任何費用。</p>
+</section>
+</div>
+</main>
+<footer>
+  <div>Last updated: November 2026</div>
+</footer>
+</div>
+<!-- Cloudflare Web Analytics --><script type='module' src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "28f7e614b4e242bf952ea885535cab68"}'></script><!-- End Cloudflare Web Analytics -->
+</body>
+</html>
