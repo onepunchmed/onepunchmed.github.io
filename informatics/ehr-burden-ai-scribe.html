@@ -1,0 +1,191 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>電子病歷文書負擔與醫師倦怠：每看診一小時花多少 EHR 時間、AI 環境聽寫的隨機試驗 | onepunchmed</title>
+<meta name="description" content="醫師每看診一小時要花多少電子病歷時間？整理時間動作研究、EHR 日誌研究與倦怠統合分析，再看 2025 年兩個 AI 環境聽寫（ambient scribe）隨機試驗與觀察研究：省下多少時間、倦怠改善多少、病歷錯誤與隱私風險。文獻與制度整理，不構成醫療、法律或採購建議。">
+<link rel="canonical" href="https://onepunchmed.com/informatics/ehr-burden-ai-scribe.html">
+<meta property="og:type" content="article">
+<meta property="og:title" content="電子病歷文書負擔與醫師倦怠：每看診一小時花多少 EHR 時間、AI 環境聽寫的隨機試驗 | onepunchmed">
+<meta property="og:description" content="醫師每看診一小時要花多少電子病歷時間？整理時間動作研究、EHR 日誌研究與倦怠統合分析，再看 2025 年兩個 AI 環境聽寫（ambient scribe）隨機試驗與觀察研究：省下多少時間、倦怠改善多少、病歷錯誤與隱私風險。文獻與制度整理，不構成醫療、法律或採購建議。">
+<meta property="og:url" content="https://onepunchmed.com/informatics/ehr-burden-ai-scribe.html">
+<meta property="og:locale" content="zh_TW">
+<meta property="og:site_name" content="onepunchmed">
+<meta name="twitter:card" content="summary">
+<script type="application/ld+json">
+{"@context": "https://schema.org", "@graph": [{"@type": "Article", "headline": "電子病歷文書負擔與醫師倦怠：AI 環境聽寫的隨機試驗怎麼說", "datePublished": "2026-11-21", "dateModified": "2026-11-21", "author": {"@type": "Person", "name": "onepunchmed", "url": "https://onepunchmed.com/"}, "publisher": {"@type": "Person", "name": "onepunchmed", "url": "https://onepunchmed.com/"}, "inLanguage": "zh-Hant", "mainEntityOfPage": "https://onepunchmed.com/informatics/ehr-burden-ai-scribe.html"}, {"@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "About", "item": "https://onepunchmed.com/"}, {"@type": "ListItem", "position": 2, "name": "Informatics", "item": "https://onepunchmed.com/informatics/"}, {"@type": "ListItem", "position": 3, "name": "電子病歷文書負擔與醫師倦怠：AI 環境聽寫的隨機試驗怎麼說", "item": "https://onepunchmed.com/informatics/ehr-burden-ai-scribe.html"}]}]}
+</script>
+<link rel="stylesheet" href="../style.css">
+<link rel="stylesheet" href="../article.css">
+</head>
+<body>
+<div class="wrap">
+<header class="site">
+  <a class="name" href="../">onepunchmed</a>
+  <nav>
+    <a href="../">About</a>
+    <a href="../research.html">Research</a>
+    <a href="../data.html">Data</a>
+    <a href="../markets/">Markets</a>
+    <a href="../health/">Health</a>
+    <a href="./" aria-current="page">Informatics</a>
+    <a href="../notes.html">Notes</a>
+    <a href="../disclosure.html">Disclosure</a>
+  </nav>
+</header>
+<main>
+  <h1>電子病歷文書負擔與醫師倦怠：AI 環境聽寫的隨機試驗怎麼說</h1>
+  <p class="lead">美國門診的時間動作研究發現，醫師每花 1 小時面對病人，診間內還要再花將近 2 小時在電子病歷（EHR）與桌面工作上。AI 環境聽寫（ambient scribe，錄下看診對話、自動產生病歷草稿）被當成解方，2025 年底終於有了兩個隨機試驗。結論先講：寫病歷的時間有減少，但幅度不大（每天約 20 分鐘，或寫病歷時間少約一成，而且只有一種工具達顯著）；倦怠分數改善，但多是次要結果或自評；病歷仍會漏寫、寫錯，錄音也帶來新的隱私問題。</p>
+  <p class="article-meta"><a rel="author" href="../">onepunchmed</a> · <time datetime="2026-11-21">2026 年 11 月 21 日</time> · 電子病歷、醫師倦怠、生成式 AI</p>
+
+<div class="mdms-article">
+<section class="verdict">
+<h2>五個重點</h2>
+<ol>
+<li><b>病歷工作比看病人還多。</b>美國 4 個專科 57 位醫師、觀察 430 小時：門診日 27.0% 時間面對病人，49.2% 在 EHR 與桌面工作；下班後每晚再自填 1–2 小時。</li>
+<li><b>換成「每次看診」算，基層醫師中位數 36.2 分鐘在 EHR。</b>美國兩家醫學中心 307 位基層醫師的日誌資料，其中下班時段（俗稱 pajama time）6.2 分鐘；不同診所之間差到 2 倍。</li>
+<li><b>EHR 負擔和倦怠有關聯，但多是橫斷面。</b>一篇統合分析（37 篇、66,556 人）合併倦怠盛行率 40.4%；下班後花較多 EHR 時間者倦怠的勝算比 2.43。這是相關，不是因果。</li>
+<li><b>兩個隨機試驗：省時有限，倦怠有改善訊號。</b>66 人的階梯式試驗，寫病歷時間每天少 0.36 小時、工作耗竭分數下降；238 人的三組試驗，只有一種工具讓寫病歷時間顯著少 9.5%，另一種沒差。</li>
+<li><b>正確性與隱私不能交給機器。</b>一個 31 位醫師的品質改善計畫評了 356 份 AI 病歷，18% 有漏寫、11.5% 有憑空產生的內容（hallucination），5.3% 的病歷含有若不修正可能造成嚴重傷害的錯誤。</li>
+</ol>
+</section>
+
+<section>
+<h2>一、時間動作研究：每面對病人 1 小時，EHR 與桌面工作近 2 小時</h2>
+<p>時間動作研究（time-motion study）是派觀察員拿碼錶跟著醫師，逐項記下每段時間在做什麼。Sinsky 等（Ann Intern Med 2016）觀察美國 4 州、家醫科、內科、心臟科、骨科共 57 位醫師，合計 430 小時：</p>
+<ul>
+<li>整個門診日，27.0% 時間直接面對病人，49.2% 在 EHR 與桌面工作。</li>
+<li>即使人在診間、病人就在面前，也只有 52.9% 時間在跟病人互動，37.0% 在 EHR 與桌面工作。</li>
+<li>21 位填了下班日誌的醫師，每晚另外花 1–2 小時，多半是 EHR 工作。</li>
+<li>作者的結論：每提供 1 小時面對面看診，診間內還要再花將近 2 小時在 EHR 與桌面工作。</li>
+</ul>
+<p>限制：參與的是自願、表現較好的診所，研究設計是描述性的，不能做統計比較。</p>
+</section>
+
+<section>
+<h2>二、EHR 日誌研究：基層醫師一天約 6 小時在系統裡</h2>
+<p>另一種量法是讀 EHR 的使用紀錄（event log／audit log）：每次點擊、打字都有時間戳記，可以算出醫師在系統裡待了多久，不用觀察員。缺點是「開著視窗」不一定等於「在工作」，各研究的閒置判定規則也不同。</p>
+<div class="tbl stack"><table><thead><tr><th>研究</th><th>對象與資料</th><th>主要數字</th></tr></thead><tbody>
+<tr><td data-label="研究">Tai-Seale 等，Health Aff 2017</td><td data-label="對象與資料">美國 471 位基層醫師，2011–2014 年逾 3,100 萬筆 EHR 紀錄</td><td data-label="主要數字">每天門診看診 3.08 小時、「桌面醫療」（回病人訊息、開檢查、看報告等）3.17 小時；看診時間逐年減少，桌面工作逐年增加</td></tr>
+<tr><td data-label="研究">Arndt 等，Ann Fam Med 2017</td><td data-label="對象與資料">美國威斯康辛州單一體系 142 位家醫科醫師，3 年日誌，並以直接觀察驗證</td><td data-label="主要數字">以 1.0 全職換算，11.4 小時工作日中 5.9 小時在 EHR（診間時段 4.5 小時、下班後 1.4 小時）；文書與行政約占 44.2%，收件匣 23.7%</td></tr>
+<tr><td data-label="研究">Rotenstein 等，JAMA Netw Open 2023</td><td data-label="對象與資料">美國兩家醫學中心 31 間診所、307 位基層醫師，2021 年</td><td data-label="主要數字">每次看診中位數 36.2 分鐘在 EHR（IQR 28.9–45.7），下班時段 6.2 分鐘、收件匣 7.8 分鐘；各診所中位數從 23.5 到 47.9 分鐘</td></tr>
+</tbody></table></div>
+<p>Rotenstein 等的研究也發現，系統層面的分工和 EHR 時間有關：醫囑由團隊分擔比例高於中位數，每次看診 EHR 時間少 3.81 分鐘；診所有藥事技術員協助，少 7.87 分鐘。這提醒我們，文書負擔有一部分是流程與人力設計的問題，不只是打字速度。</p>
+<p>同一團隊另一篇用全美 215,207 位門診醫師日誌的分析（JGIM 2023）發現，主要靠口述與轉錄寫病歷的醫師，每次看診寫病歷的時間比主要用範本工具的人少；主要靠複製貼上的人則花更多時間。這是橫斷面比較，無法判斷是工具本身造成的差異。</p>
+</section>
+
+<section>
+<h2>三、EHR 與倦怠：相關很一致，因果還沒證明</h2>
+<p>Wu 等（JMIR Med Inform 2024）的系統性回顧與統合分析，納入 2009–2022 年 32 篇橫斷面與 5 篇病例對照研究、66,556 人（主要是醫師與護理師）：</p>
+<ul>
+<li>與 EHR 使用相關的倦怠，合併盛行率 40.4%（95% CI 37.5%–43.2%）。</li>
+<li>病例對照研究中，下班後花較多時間在 EHR 的人，倦怠勝算比 2.43（2.31–2.57）。</li>
+</ul>
+<p>讀法：這些研究幾乎都是調查與觀察，倦怠和 EHR 時間可能互為因果，也可能同時被工作量、科別、排班等因素影響。就像觀察到「吃保健食品的人比較健康」不等於保健食品有效，要知道「減少 EHR 時間能不能減少倦怠」，需要隨機試驗。</p>
+</section>
+
+<section>
+<h2>四、AI 環境聽寫的隨機試驗：兩個試驗，結果不完全一致</h2>
+<p>AI 環境聽寫是在看診時錄下醫病對話，經語音辨識與生成式語言模型整理成病歷草稿，醫師審閱、修改後簽署。2025 年 11 月，NEJM AI 同時刊出兩個門診隨機試驗。本文不寫工具名稱，兩個試驗中的工具以甲、乙代稱。</p>
+<div class="tbl stack"><table><thead><tr><th>試驗</th><th>設計</th><th>主要結果</th><th>次要結果</th></tr></thead><tbody>
+<tr><td data-label="試驗">Afshar 等（美國兩州門診）</td><td data-label="設計">66 位醫療人員，24 週階梯式（stepped-wedge）個別隨機，意向治療分析；71,487 份病歷中 38% 用 AI 產生</td><td data-label="主要結果">工作耗竭／人際疏離分數下降 0.44 分（5 分量表，95% CI −0.62 至 −0.25）；專業成就感 +0.14 分，作者判定未達顯著</td><td data-label="次要結果">寫病歷時間每天少 0.36 小時（約 22 分鐘）；下班後工作每天少 0.50 小時，但排除最極端 3% 的觀察值後不再顯著；病歷品質量表各面向平均 3.97–4.99 分（5 分量表）</td></tr>
+<tr><td data-label="試驗">Lukac 等（美國門診）</td><td data-label="設計">238 位門診醫師、14 個專科，1:1:1 分到工具甲、工具乙或一般照護，2024 年 11 月至 2025 年 1 月</td><td data-label="主要結果">寫病歷時間：工具乙比對照組少 9.5%（95% CI −17.2% 至 −1.8%）；工具甲 −1.7%（−9.4% 至 +5.9%），沒有差異</td><td data-label="次要結果">兩種工具的倦怠、工作負荷量表都有改善方向，作者說需要更大型多中心試驗確認；回報 1 件輕度不良事件；醫師自評有臨床意義的錯誤「偶爾」出現</td></tr>
+</tbody></table></div>
+<p>兩個試驗有幾個共同點值得注意：</p>
+<ul>
+<li><b>使用率不高。</b>第一個試驗中 38% 的病歷用 AI；第二個試驗兩種工具分別只用在 33.5% 與 29.5% 的看診。分到 AI 組的醫師，多數看診仍然自己寫。</li>
+<li><b>省下的時間是「寫病歷」，不是整個 EHR 工作。</b>收件匣、醫囑、回訊息不在 AI 聽寫的範圍內，而日誌研究顯示這些占了 EHR 時間的一大塊。</li>
+<li><b>倦怠是自評，而且無法盲化。</b>醫師知道自己有沒有用 AI，期待效應可能放大量表上的改善。</li>
+<li><b>追蹤很短。</b>第二個試驗約 2 個月、第一個 24 週，還看不出新鮮感消退後的效果。</li>
+</ul>
+</section>
+
+<section>
+<h2>五、觀察研究：自評改善大，客觀量測小</h2>
+<p>隨機試驗之外，已有不少前後比較與觀察研究。Hassan 等（Appl Clin Inform 2025）的系統性回顧只找到 11 篇符合條件的實施研究，其中 10 篇發表於 2024 年：10 篇有量效率的研究中 9 篇至少一項效率指標改善，但 AI 準確度不一、常需人工修改。幾篇較大的研究：</p>
+<ul>
+<li><b>Olson 等（JAMA Netw Open 2025）</b>：美國 6 個醫療體系、263 位門診醫療人員，用同一套工具 30 天前後問卷，倦怠比例從 51.9% 降到 38.8%。但這是自願參與、沒有對照組的品質改善研究，問卷完成率 60.3%，部分作者任職於該工具的廠商。</li>
+<li><b>Martini 等（Ann Emerg Med 2026）</b>：20 間急診、275 位主治醫師，直接用 EHR 日誌量測，31% 的看診用 AI 聽寫。同一位醫師的 AI 病歷比自己寫的，校正後主動編輯時間少約 2.4 分鐘，但病歷長約 14%；72 小時內回診沒有增加。作者認為效果大小和門診隨機試驗一致。</li>
+<li><b>Wojda 等（Appl Clin Inform 2026）</b>：重複橫斷面問卷，基線 1,600 人回覆，1、3、6 個月後只剩 172、117、101 人。工作負荷與文書負擔的自評下降，但倦怠反而隨時間增加；作者推測受多重因素與非配對資料影響。</li>
+</ul>
+<p>綜合來看，「每次看診省幾分鐘、每天省 20 分鐘左右」是比較一致的量級；問卷上的大幅改善，要考慮自願參與、沒有對照與期待效應。</p>
+</section>
+
+<section>
+<h2>六、病歷正確性：漏寫最常見，少數錯誤可能傷人</h2>
+<p>AI 病歷的錯誤大致分四種：漏寫（對話有、病歷沒寫）、誤植（寫進不該寫的內容）、憑空產生（hallucination，對話中沒有的內容）、偏誤。</p>
+<ul>
+<li><b>Taylor 等（JMIR Med Inform 2026）</b>：31 位醫師兩個月內用 AI 產生 7,545 份門診病歷，抽評 356 份（4.7%）：漏寫 18%、憑空產生 11.5%、誤植 9.3%、偏誤 1.1%。有錯的大多為輕到中度，但 5.3% 的病歷含有若未修正可能造成嚴重或立即傷害的錯誤。醫師修改 AI 文字的中位數是 9.0%，而且有 14.9% 的病歷完全沒改就送出。</li>
+<li><b>Weiss 等（JAMIA 2026）</b>：用兩段模擬看診錄音讓三套工具產生病歷，56 位醫師評分；逐字對照錄音的稽核發現，醫師最喜歡的那套工具並不是錯誤最少的。醫師也常把其實沒錯的內容誤判為憑空產生。樣本很小，屬探索性。</li>
+</ul>
+<p>重點在於：AI 寫得越流暢，越容易讓人不看就簽。AI 只產生草稿，最後簽署的仍是醫師；審閱時間如果被省掉，省下的就不只是時間，還有一道安全檢查。</p>
+</section>
+
+<section>
+<h2>七、隱私與同意：錄音讓病歷多了一層資料</h2>
+<p>傳統病歷只有醫師寫下的摘要；AI 聽寫多了完整錄音與逐字稿，而且可能由院外的服務處理。Gerke 等（NEJM AI 2026）指出，各家廠商對錄音、逐字稿與病歷各保存多久、是否拿來訓練模型，做法差異很大；導入時需要明確的資料流程治理、保存與刪除政策，以及透明的同意程序。</p>
+<p>在台灣，《個人資料保護法》第 6 條把病歷、醫療、健康檢查等個人資料列為特種個資，原則上不得蒐集、處理或利用，只有法律明文規定、履行法定義務且有適當安全維護、經當事人書面同意等例外情形才可以。看診錄音與逐字稿若含有這些資訊，醫療機構要先釐清適用哪一款例外、資料存在哪裡、誰能存取、保存多久。本文不判斷個別導入方案是否合法，實際適用請洽法律專業意見。</p>
+<p>導入前可以問的問題：</p>
+<ul>
+<li>病人是否被告知正在錄音？不同意時是否有不錄音的替代流程？</li>
+<li>錄音與逐字稿在病歷完成後保存多久？是否用於訓練模型？</li>
+<li>資料是否離開院內或國境？處理方的存取權限與稽核紀錄如何？</li>
+<li>AI 產生的病歷是否標記？醫師審閱與修改是否留下紀錄？</li>
+</ul>
+</section>
+
+<section>
+<h2>方法與限制</h2>
+<ul>
+<li>本文是敘述性文獻整理，不是系統性回顧。以 PubMed 檢索時間動作研究、EHR 日誌研究、統合分析與 AI 環境聽寫的隨機試驗與觀察研究，數字取自原文摘要。</li>
+<li>資料查證截止日：2026 年 11 月 21 日。</li>
+<li>引用的研究幾乎都在美國，健保給付、看診量與病歷規範和台灣不同。EHR 時間的比例與 AI 聽寫的效果不能直接外推到台灣；本文沒有找到台灣的同類隨機試驗。</li>
+<li>AI 工具更新很快，2024–2025 年試驗中的版本，不代表現在或其他工具的表現；本文不比較、也不推薦任何廠商或產品。</li>
+<li>倦怠量表多為自評，試驗無法盲化；日誌時間的定義各研究不同，數字不宜跨研究直接相減。</li>
+<li>法律段落只引用《個人資料保護法》第 6 條條文，不是法律意見。</li>
+</ul>
+</section>
+
+<section>
+<h2>參考文獻</h2>
+<ol>
+<li>Sinsky C, et al. Allocation of physician time in ambulatory practice: a time and motion study in 4 specialties. Ann Intern Med 2016;165(11):753–760. <a href="https://doi.org/10.7326/M16-0961">doi:10.7326/M16-0961</a>；<a href="https://pubmed.ncbi.nlm.nih.gov/27595430/">PMID 27595430</a></li>
+<li>Tai-Seale M, et al. Electronic health record logs indicate that physicians split time evenly between seeing patients and desktop medicine. Health Aff 2017;36(4):655–662. <a href="https://doi.org/10.1377/hlthaff.2016.0811">doi:10.1377/hlthaff.2016.0811</a>；<a href="https://pubmed.ncbi.nlm.nih.gov/28373331/">PMID 28373331</a></li>
+<li>Arndt BG, et al. Tethered to the EHR: primary care physician workload assessment using EHR event log data and time-motion observations. Ann Fam Med 2017;15(5):419–426. <a href="https://doi.org/10.1370/afm.2121">doi:10.1370/afm.2121</a>；<a href="https://pubmed.ncbi.nlm.nih.gov/28893811/">PMID 28893811</a></li>
+<li>Rotenstein LS, et al. System-level factors and time spent on electronic health records by primary care physicians. JAMA Netw Open 2023;6(11):e2344713. <a href="https://doi.org/10.1001/jamanetworkopen.2023.44713">doi:10.1001/jamanetworkopen.2023.44713</a>；<a href="https://pubmed.ncbi.nlm.nih.gov/37991757/">PMID 37991757</a></li>
+<li>Rotenstein LS, et al. Physician note composition patterns and time on the EHR across specialty types: a national, cross-sectional study. J Gen Intern Med 2023;38(5):1119–1126. <a href="https://doi.org/10.1007/s11606-022-07834-5">doi:10.1007/s11606-022-07834-5</a>；<a href="https://pubmed.ncbi.nlm.nih.gov/36418647/">PMID 36418647</a></li>
+<li>Wu Y, et al. Evaluating the prevalence of burnout among health care professionals related to electronic health record use: systematic review and meta-analysis. JMIR Med Inform 2024;12:e54811. <a href="https://doi.org/10.2196/54811">doi:10.2196/54811</a>；<a href="https://pubmed.ncbi.nlm.nih.gov/38865188/">PMID 38865188</a></li>
+<li>Afshar M, et al. A pragmatic randomized controlled trial of ambient artificial intelligence to improve health practitioner well-being. NEJM AI 2025;2(12). <a href="https://doi.org/10.1056/AIoa2500945">doi:10.1056/AIoa2500945</a>；<a href="https://pubmed.ncbi.nlm.nih.gov/41625485/">PMID 41625485</a></li>
+<li>Lukac PJ, et al. Ambient AI scribes in clinical practice: a randomized trial. NEJM AI 2025;2(12). <a href="https://doi.org/10.1056/AIoa2501000">doi:10.1056/AIoa2501000</a>；<a href="https://pubmed.ncbi.nlm.nih.gov/41497288/">PMID 41497288</a></li>
+<li>Hassan H, et al. Clinical implementation of artificial intelligence scribes in health care: a systematic review. Appl Clin Inform 2025;16(4):1121–1135. <a href="https://doi.org/10.1055/a-2597-2017">doi:10.1055/a-2597-2017</a>；<a href="https://pubmed.ncbi.nlm.nih.gov/40306686/">PMID 40306686</a></li>
+<li>Olson KD, et al. Use of ambient AI scribes to reduce administrative burden and professional burnout. JAMA Netw Open 2025;8(10):e2534976. <a href="https://doi.org/10.1001/jamanetworkopen.2025.34976">doi:10.1001/jamanetworkopen.2025.34976</a>；<a href="https://pubmed.ncbi.nlm.nih.gov/41037268/">PMID 41037268</a></li>
+<li>Martini WA, et al. Ambient artificial intelligence scribe use and objective documentation effort among emergency physicians. Ann Emerg Med 2026 (online ahead of print). <a href="https://doi.org/10.1016/j.annemergmed.2026.08.737">doi:10.1016/j.annemergmed.2026.08.737</a>；<a href="https://pubmed.ncbi.nlm.nih.gov/42949694/">PMID 42949694</a></li>
+<li>Wojda T, et al. From burden to balance: trends in documentation workload with ambient artificial intelligence scribe adoption. Appl Clin Inform 2026;17(3):484–492. <a href="https://doi.org/10.1055/a-2892-7988">doi:10.1055/a-2892-7988</a>；<a href="https://pubmed.ncbi.nlm.nih.gov/42285173/">PMID 42285173</a></li>
+<li>Taylor SL, et al. Quality of clinical notes created by ambient listening generative AI: pragmatic prospective pilot study. JMIR Med Inform 2026;14:e86474. <a href="https://doi.org/10.2196/86474">doi:10.2196/86474</a>；<a href="https://pubmed.ncbi.nlm.nih.gov/41996389/">PMID 41996389</a></li>
+<li>Weiss E, et al. Comparative evaluation of ambient digital scribe systems in clinical documentation. J Am Med Inform Assoc 2026;33(11):2177–2185. <a href="https://doi.org/10.1093/jamia/ocag157">doi:10.1093/jamia/ocag157</a>；<a href="https://pubmed.ncbi.nlm.nih.gov/42776572/">PMID 42776572</a></li>
+<li>Gerke S, et al. Privacy considerations of artificial intelligence scribes. NEJM AI 2026;3(6). <a href="https://doi.org/10.1056/AIpc2501401">doi:10.1056/AIpc2501401</a>；<a href="https://pubmed.ncbi.nlm.nih.gov/42932620/">PMID 42932620</a></li>
+<li>全國法規資料庫。個人資料保護法第 6 條。<a href="https://law.moj.gov.tw/LawClass/LawSingle.aspx?pcode=I0050021&amp;flno=6">law.moj.gov.tw</a></li>
+</ol>
+</section>
+<section>
+<h2>延伸閱讀</h2>
+<ul>
+<li><a href="../research.html">Research</a>：臨床機器學習研究與方法。</li>
+<li><a href="../data.html">Data</a>：健康資料來源與使用方式。</li>
+<li><a href="../markets/backtest-checklist.html">用讀臨床試驗的方式讀回測：十個問題</a>：沒有對照組、自願參與、期待效應，評估 AI 工具和評估回測一樣會踩到。</li>
+</ul>
+</section>
+<section class="disc">
+<p><b>免責聲明</b>　本文為文獻與制度整理，不構成醫療、法律或採購建議。醫療機構導入任何病歷輔助工具前，請依自身情況評估，並諮詢資訊安全、法律與臨床專業人員。</p>
+<p><b>利益揭露</b>　本文未接受任何廠商贊助，不推薦任何品牌或產品，本站不收取任何費用。</p>
+</section>
+</div>
+</main>
+<footer>
+  <div>Last updated: November 2026</div>
+</footer>
+</div>
+<!-- Cloudflare Web Analytics --><script type='module' src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "28f7e614b4e242bf952ea885535cab68"}'></script><!-- End Cloudflare Web Analytics -->
+</body>
+</html>
