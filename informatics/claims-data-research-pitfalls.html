@@ -1,0 +1,187 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>用健保資料做研究的陷阱：診斷碼效度、ICD-9 轉 ICD-10 斷點、立即時間偏誤與 RECORD 規範 | onepunchmed</title>
+<meta name="description" content="用台灣健保申報資料（NHIRD）做研究前要先知道的陷阱：診斷碼效度驗證研究的 PPV 與敏感度、申報資料缺漏的變項、2016 年 ICD-9-CM 轉 ICD-10-CM 的編碼斷點、立即時間偏誤、適應症混淆，以及 RECORD 報告規範。文獻與制度整理，不構成醫療、法律或採購建議。">
+<link rel="canonical" href="https://onepunchmed.com/informatics/claims-data-research-pitfalls.html">
+<meta property="og:type" content="article">
+<meta property="og:title" content="用健保資料做研究的陷阱：診斷碼效度、ICD-9 轉 ICD-10 斷點、立即時間偏誤與 RECORD 規範 | onepunchmed">
+<meta property="og:description" content="用台灣健保申報資料（NHIRD）做研究前要先知道的陷阱：診斷碼效度驗證研究的 PPV 與敏感度、申報資料缺漏的變項、2016 年 ICD-9-CM 轉 ICD-10-CM 的編碼斷點、立即時間偏誤、適應症混淆，以及 RECORD 報告規範。文獻與制度整理，不構成醫療、法律或採購建議。">
+<meta property="og:url" content="https://onepunchmed.com/informatics/claims-data-research-pitfalls.html">
+<meta property="og:locale" content="zh_TW">
+<meta property="og:site_name" content="onepunchmed">
+<meta name="twitter:card" content="summary">
+<script type="application/ld+json">
+{"@context": "https://schema.org", "@graph": [{"@type": "Article", "headline": "用健保資料做研究的陷阱：診斷碼效度、編碼斷點、立即時間偏誤與 RECORD 規範", "datePublished": "2026-11-21", "dateModified": "2026-11-21", "author": {"@type": "Person", "name": "onepunchmed", "url": "https://onepunchmed.com/"}, "publisher": {"@type": "Person", "name": "onepunchmed", "url": "https://onepunchmed.com/"}, "inLanguage": "zh-Hant", "mainEntityOfPage": "https://onepunchmed.com/informatics/claims-data-research-pitfalls.html"}, {"@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "About", "item": "https://onepunchmed.com/"}, {"@type": "ListItem", "position": 2, "name": "Informatics", "item": "https://onepunchmed.com/informatics/"}, {"@type": "ListItem", "position": 3, "name": "用健保資料做研究的陷阱：診斷碼效度、編碼斷點、立即時間偏誤與 RECORD 規範", "item": "https://onepunchmed.com/informatics/claims-data-research-pitfalls.html"}]}]}
+</script>
+<link rel="stylesheet" href="../style.css">
+<link rel="stylesheet" href="../article.css">
+</head>
+<body>
+<div class="wrap">
+<header class="site">
+  <a class="name" href="../">onepunchmed</a>
+  <nav>
+    <a href="../">About</a>
+    <a href="../research.html">Research</a>
+    <a href="../data.html">Data</a>
+    <a href="../markets/">Markets</a>
+    <a href="../health/">Health</a>
+    <a href="./" aria-current="page">Informatics</a>
+    <a href="../notes.html">Notes</a>
+    <a href="../disclosure.html">Disclosure</a>
+  </nav>
+</header>
+<main>
+  <h1>用健保資料做研究的陷阱：診斷碼效度、編碼斷點、立即時間偏誤與 RECORD 規範</h1>
+  <p class="lead">台灣的健保資料庫（NHIRD）涵蓋幾乎全民的就醫紀錄，是做真實世界研究的大資源。但申報資料是為了請款而產生，不是為了研究。結論先講：診斷碼要先看有沒有驗證研究、驗證的是哪一種寫法；2016 年起的 ICD-10-CM 和之前的 ICD-9-CM 不能直接接起來；很多重要變項（抽菸、BMI、檢驗值）申報檔裡根本沒有；而「立即時間偏誤」和「適應症混淆」可以讓一個沒效的藥看起來很有效。</p>
+  <p class="article-meta"><a rel="author" href="../">onepunchmed</a> · <time datetime="2026-11-21">2026 年 11 月 21 日</time> · 健保資料庫、研究方法、偏誤</p>
+
+<div class="mdms-article">
+<section class="verdict">
+<h2>五個重點</h2>
+<ol>
+<li><b>診斷碼準不準，取決於病、寫法和參考標準。</b>健保資料的急性缺血性中風碼，在單一醫學中心以中風登錄為參考，PPV 88.4%、敏感度 97.3%；同一份整理表裡，冠狀動脈疾病碼在中風病人中 PPV 只有 47.6%。</li>
+<li><b>申報資料缺很多研究需要的東西。</b>檢驗值、癌症分期、BMI、抽菸、教育、收入等，NHIRD 本身沒有，要串接衛福部衛生福利資料科學中心的其他資料庫才拿得到。</li>
+<li><b>2016 年換成 ICD-10-CM，是一道斷點。</b>一項 32 種疾病的中斷時間序列研究發現，不到一半的疾病在轉換前後盛行率平順銜接。</li>
+<li><b>立即時間偏誤會憑空做出「保護效果」。</b>如果「有用藥」的定義要求病人先活到拿藥那天，那段時間就被錯放在用藥組；這種偏誤隨不朽時間變長而變大。</li>
+<li><b>RECORD 是寫報告時的檢查表。</b>它是 STROBE 的延伸，13 項，專門處理例行收集資料的報告問題；藥物流行病學另有 RECORD-PE。</li>
+</ol>
+</section>
+
+<section>
+<h2>一、健保申報資料是什麼：為請款而生的資料</h2>
+<p>NHIRD 收錄的是醫療院所向健保申報的門診、住院、處方等紀錄，可用個人識別碼串連成病人層級的資料。2016 年以前，診斷以 ICD-9-CM 記錄，2016 年起改用 ICD-10；藥品則用健保自己的藥品代碼，這套代碼沒有階層結構，很多研究者會再對應到 ATC 分類。衛福部設立的衛生福利資料科學中心（HWDC）集中管理 NHIRD 與約 70 個健康相關資料庫，研究者須在中心以遠端連線方式現場分析（Hsieh 等，2019）。</p>
+<p>「為請款而生」帶來兩個後果。第一，診斷碼會受給付規則影響：Hsieh 等指出，和所有電子健康資料一樣，NHIRD 可能有編碼錯誤或刻意「上調」（upcoding），例如為了避免核刪而把診斷寫得更嚴重。第二，沒有申報理由的資訊就不會出現。這兩點決定了下面每個陷阱。</p>
+<div class="callout"><p>臨床類比：診斷碼像一個沒有做過效度研究的新檢驗。陽性不等於有病，陰性也不等於沒病，要先知道它的 PPV 和敏感度，才能決定能不能拿來分組。</p></div>
+</section>
+
+<section>
+<h2>二、診斷碼效度：先找驗證研究，再決定病例定義</h2>
+<p>效度研究把申報資料的診斷碼和「參考標準」（病歷審閱、疾病登錄、檢驗結果）比對，最常報告兩個數字：PPV（被碼到的人裡真的有病的比例）和敏感度（真的有病的人裡有被碼到的比例）。下表是台灣幾個驗證研究的結果：</p>
+<div class="tbl stack"><table><thead><tr><th>疾病與編碼</th><th>參考標準</th><th>結果</th><th>出處</th></tr></thead><tbody>
+<tr><td data-label="疾病與編碼">缺血性中風（ICD-9，住院主診斷，1999 年）</td><td data-label="參考標準">單一醫學中心病歷與影像</td><td data-label="結果">372 例中 364 例（97.85%）確認為缺血性中風；共病診斷整體一致率只有 48.39%</td><td data-label="出處">Cheng 等，2011</td></tr>
+<tr><td data-label="疾病與編碼">急性缺血性中風（ICD-9 433xx／434xx，2006–2008）</td><td data-label="參考標準">台灣中風登錄，未串到者審病歷與影像</td><td data-label="結果">1,736 人，PPV 88.4%、敏感度 97.3%；202 例偽陽性中 44 例為 433x0／434x0</td><td data-label="出處">Hsieh 等，2015</td></tr>
+<tr><td data-label="疾病與編碼">中風病人的共病（ICD-9）</td><td data-label="參考標準">台灣中風登錄</td><td data-label="結果">敏感度／PPV：高血壓 92.4%／88.5%、糖尿病 90.9%／92.0%、高血脂 69.1%／89.5%、心房顫動 72.8%／71.1%、冠狀動脈疾病 63.7%／47.6%</td><td data-label="出處">Hsieh 等 2019 整理表</td></tr>
+<tr><td data-label="疾病與編碼">急性出血性中風（ICD-10-CM I60／I61，2018–2019）</td><td data-label="參考標準">中風登錄，未登錄者審病歷與影像</td><td data-label="結果">任一診斷欄位：PPV 88.6%、敏感度 98.6%；限主診斷欄位：PPV 98.2%、敏感度 93.1%</td><td data-label="出處">Hsieh 等，2021</td></tr>
+<tr><td data-label="疾病與編碼">精神病與情感性疾患（ICD-9 與 ICD-10，住院）</td><td data-label="參考標準">結構化病歷審閱，727 人</td><td data-label="結果">常見診斷或廣義類別 PPV 與敏感度 ≥ 0.70；低盛行診斷較差；ICD-10 的效度傾向優於 ICD-9</td><td data-label="出處">Wang 等，2025</td></tr>
+</tbody></table></div>
+<p>讀這張表的四個重點：</p>
+<ul>
+<li><b>寫法會改變數字。</b>同樣是出血性中風，限定主診斷欄位 PPV 從 88.6% 升到 98.2%，代價是敏感度從 98.6% 降到 93.1%。缺血性中風用五碼而非三碼，可以明顯減少偽陽性。病例定義要照驗證研究的寫法，不能自己改了還引用它的效度。</li>
+<li><b>主診斷準，不代表共病也準。</b>同一批中風病人，主診斷幾乎都對，但共病整體一致率不到一半。拿申報碼當共病校正或排除條件時，誤分類可能比主要暴露更嚴重。</li>
+<li><b>加上處方可以改善一部分。</b>ICD-10-CM 時期的研究顯示，納入中風住院前的門診與住院診斷碼能提高一致性；再加入處方資料，可改善高血壓、糖尿病、高血脂、心房顫動的判定，冠心症則沒有改善（Hsieh 等，2022）。</li>
+<li><b>驗證研究多半來自單一或少數醫院</b>，參考標準本身也有誤差；外推到全國、基層診所或其他年代，要寫成限制。</li>
+</ul>
+</section>
+
+<section>
+<h2>三、缺漏：申報資料裡沒有的變項</h2>
+<p>Hsieh 等（2019）列出，串接 HWDC 其他資料庫後才拿得到、NHIRD 本身沒有的變項，包括理學檢查結果、檢驗數據、癌症分期、失能程度、生活品質、BMI、抽菸、婚姻、教育、家戶所得。這篇回顧也把「未測量的混淆因子」列為 NHIRD 研究常被質疑的兩大問題之一。</p>
+<ul>
+<li><b>「沒有碼」不等於「沒有病」。</b>沒有就醫、自費、或診斷沒寫進申報欄位的人，都會被歸到「沒有」。拿診斷碼陰性的人當對照組，等於假設敏感度是 100%。</li>
+<li><b>用代理變項要講清楚。</b>例如用「慢性阻塞性肺病診斷」代替抽菸，代理的品質本身需要驗證，不能直接當作已校正抽菸。</li>
+<li><b>串接是解法之一，但會改變樣本。</b>例如串接癌症登錄可拿到分期，但研究對象就變成有登錄的人，要寫明串接成功率與差異。</li>
+</ul>
+</section>
+
+<section>
+<h2>四、2016 年 ICD-9-CM 轉 ICD-10-CM：時間序列上的斷點</h2>
+<p>台灣健保自 2016 年起改用 ICD-10-CM。Hsu 等（2021）用 NHIRD 估計 32 種疾病 2014–2017 年每 3 個月的盛行率，比較兩種 ICD-10-CM 定義：文獻中驗證過的碼，以及用既有對照表從 ICD-9-CM 轉過來的碼，再用分段迴歸檢查轉換前後的變化。</p>
+<ul>
+<li>用文獻碼時，19 種疾病的水準出現顯著跳動；用對照表時是 11 種。</li>
+<li>兩種定義都不一致的包括瓣膜性心臟病、周邊血管疾病、肝病、轉移性癌症、類風濕性關節炎、凝血異常、貧血、酒精濫用與精神病等。</li>
+<li>作者結論：32 種疾病中不到一半能平順轉換。</li>
+</ul>
+<p>實務上的意義：研究期間跨過 2016 年時，「發生率在 2016 年突然上升或下降」很可能是編碼造成的，不是疾病趨勢；以 2016 年前後切開的比較（例如政策前後）也會把編碼變化混進政策效果。可行做法是分開報告兩個時期、用驗證過的 ICD-10-CM 定義、做只用單一編碼時期的敏感度分析。Hsieh 等 2019 年發表時還提到 ICD-10 診斷碼尚未被驗證；之後已有 ICD-10-CM 時期的中風、中風危險因子與精神科驗證研究（上表），但涵蓋的疾病仍有限。</p>
+</section>
+
+<section>
+<h2>五、立即時間偏誤（immortal time bias）：沒效的藥看起來有效</h2>
+<p>Suissa（2008）的定義：不朽時間是追蹤期間中，因為暴露的定義方式，研究結果不可能發生的那一段時間。典型情境是：從診斷日開始追蹤，「用藥組」定義為「追蹤期間曾經拿過藥」的人。要被分到用藥組，病人必須先活到拿藥那天；從診斷到拿藥之間那段時間，用藥組的人不可能死亡，卻被算進用藥組的人年。</p>
+<ul>
+<li>這種偏誤最早在 1970 年代心臟移植存活研究中被發現，後來在藥物流行病學又大量出現，造成許多「藥物大幅降低死亡率」的觀察性研究結果（Suissa，2008）。</li>
+<li>Suissa 的分析顯示，因錯分或排除不朽時間造成的率比偏誤，隨不朽時間長度等比例增加；當結果事件的風險隨時間下降時，偏誤更明顯。</li>
+<li>Lévesque 等（BMJ 2010）以 statin 與糖尿病進展為例，說明世代研究中的同一問題。</li>
+</ul>
+<p>避開方法：把用藥當作隨時間改變的暴露（拿藥前的時間算在未用藥組），或用新使用者設計，讓兩組從同一個時間點開始追蹤。更系統的作法是「目標試驗模擬」：先寫出理想的隨機試驗（收案條件、治療策略、分派、追蹤起點、結果），再用觀察資料模擬；Hernán 與 Robins（2016）指出，這個框架讓研究設計可以被逐項批評，並有助避開常見的方法陷阱。讓「符合收案、分派策略、開始追蹤」三件事對齊在同一天，就是在防不朽時間。</p>
+<div class="callout"><p>這和投資回測的「存活者偏誤」是同一類問題：只看活到今天的股票或基金，等於把「活下來」當成了結果。見 <a href="../markets/backtest-checklist.html">回測可信嗎</a>。</p></div>
+</section>
+
+<section>
+<h2>六、適應症混淆：病比較重的人才會被開藥</h2>
+<p>醫師開藥是有理由的。病比較重、風險比較高、或預後比較好的人，比較會（或比較不會）拿到某個治療，而這個理由本身就和結果有關。這叫適應症混淆（confounding by indication），JAMA 有一篇專文討論（Kyriacou 與 Lewis，2016）。在申報資料裡，這個問題特別難處理，因為決定開藥的關鍵資訊（檢驗值、嚴重度、功能狀態）往往正是申報檔缺的那些（見第三節）。</p>
+<ul>
+<li><b>選對比較組</b>：比「用 A 藥」和「用同適應症的 B 藥」（主動對照），通常比「用 A 藥」和「沒用藥」更公平，因為兩組都有同樣的開藥理由。</li>
+<li><b>傾向分數只能平衡測得到的變項。</b>沒進資料的嚴重度，配對或加權都校正不了，要用敏感度分析說明需要多強的未測混淆才會推翻結論。</li>
+<li><b>結果太好要懷疑。</b>觀察性研究若顯示某藥讓死亡率大降、遠超過隨機試驗，先檢查不朽時間與適應症混淆，再談效果。</li>
+</ul>
+</section>
+
+<section>
+<h2>七、RECORD：寫報告時逐項對照</h2>
+<p>RECORD（REporting of studies Conducted using Observational Routinely-collected health Data）是 STROBE 的延伸，專門處理「為行政或臨床目的、而非預先研究目的收集的資料」在報告上的特殊問題，共 13 項，涵蓋標題、摘要、前言、方法、結果、討論與其他資訊（Benchimol 等，2015）。2018 年再針對藥物流行病學推出 RECORD-PE，適用於電子病歷、基層資料庫、登錄與申報資料的藥物效益與安全性研究（Langan 等，2018）。</p>
+<p>對健保資料研究，下面幾件事最常被漏寫，也是 RECORD 要求交代的方向：</p>
+<div class="tbl stack"><table><thead><tr><th>要寫清楚的事</th><th>對應的陷阱</th></tr></thead><tbody>
+<tr><td data-label="要寫清楚的事">病例、暴露、結果與共病的完整代碼清單與演算法，以及引用哪篇驗證研究</td><td data-label="對應的陷阱">診斷碼效度（第二節）</td></tr>
+<tr><td data-label="要寫清楚的事">資料庫名稱、年份、串接方法與串接成功率</td><td data-label="對應的陷阱">缺漏與串接造成的樣本改變（第三節）</td></tr>
+<tr><td data-label="要寫清楚的事">研究期間是否跨 2016 年，ICD-9-CM 與 ICD-10-CM 的定義如何對應</td><td data-label="對應的陷阱">編碼斷點（第四節）</td></tr>
+<tr><td data-label="要寫清楚的事">追蹤起點、暴露定義、用藥是否隨時間改變；最好附研究設計圖</td><td data-label="對應的陷阱">立即時間偏誤（第五節）</td></tr>
+<tr><td data-label="要寫清楚的事">比較組怎麼選、校正了哪些變項、沒有哪些變項</td><td data-label="對應的陷阱">適應症混淆（第六節）</td></tr>
+</tbody></table></div>
+<p>完整清單請直接看 RECORD 原文與 record-statement.org；上表是我依本文主題整理的對照，不是 RECORD 的條目原文。</p>
+</section>
+
+<section>
+<h2>方法與限制</h2>
+<ul>
+<li>本文是敘述性文獻整理，不是系統性回顧。台灣驗證研究以 PubMed 檢索、讀摘要或全文取得數字；方法學概念取自原始方法學論文。</li>
+<li>資料查證截止日：2026 年 11 月 21 日。</li>
+<li>表中的效度數字來自特定醫院、特定年代與特定參考標準，不能直接外推到其他族群、層級的醫療院所或年份。</li>
+<li>本文沒有逐一列出所有台灣驗證研究，只選中風、心血管危險因子與精神科作為例子；做研究時請針對自己的疾病另找驗證研究。</li>
+<li>HWDC 的申請規則、可用資料庫與費用會變動，本文不整理；以衛福部最新公告為準。</li>
+<li>RECORD 對照表為作者整理，條目以原文為準。</li>
+</ul>
+</section>
+
+<section>
+<h2>參考文獻</h2>
+<ol>
+<li>Hsieh CY, et al. Taiwan's National Health Insurance Research Database: past and future. Clin Epidemiol 2019;11:349–358. <a href="https://doi.org/10.2147/CLEP.S196293">doi:10.2147/CLEP.S196293</a>；<a href="https://pubmed.ncbi.nlm.nih.gov/31118821/">PMID 31118821</a></li>
+<li>Cheng CL, et al. Validation of the National Health Insurance Research Database with ischemic stroke cases in Taiwan. Pharmacoepidemiol Drug Saf 2011;20(3):236–242. <a href="https://doi.org/10.1002/pds.2087">doi:10.1002/pds.2087</a>；<a href="https://pubmed.ncbi.nlm.nih.gov/21351304/">PMID 21351304</a></li>
+<li>Hsieh CY, et al. Validating the diagnosis of acute ischemic stroke in a National Health Insurance claims database. J Formos Med Assoc 2015;114(3):254–259. <a href="https://doi.org/10.1016/j.jfma.2013.09.009">doi:10.1016/j.jfma.2013.09.009</a>；<a href="https://pubmed.ncbi.nlm.nih.gov/24140108/">PMID 24140108</a></li>
+<li>Hsieh MT, et al. Validation of ICD-10-CM diagnosis codes for identification of patients with acute hemorrhagic stroke in a national health insurance claims database. Clin Epidemiol 2021;13:43–51. <a href="https://doi.org/10.2147/CLEP.S288518">doi:10.2147/CLEP.S288518</a>；<a href="https://pubmed.ncbi.nlm.nih.gov/33469381/">PMID 33469381</a></li>
+<li>Hsieh MT, et al. Validation of stroke risk factors in patients with acute ischemic stroke, transient ischemic attack, or intracerebral hemorrhage on Taiwan's National Health Insurance claims data. Clin Epidemiol 2022;14:327–335. <a href="https://doi.org/10.2147/CLEP.S353435">doi:10.2147/CLEP.S353435</a>；<a href="https://pubmed.ncbi.nlm.nih.gov/35330593/">PMID 35330593</a></li>
+<li>Wang YW, et al. Assessing the validity of claims-based diagnostic codes for psychotic and affective disorders and the influence of the coding transition from the ICD-9 to the ICD-10 in Taiwan's National Health Insurance Research Database. Clin Epidemiol 2025;17:635–645. <a href="https://doi.org/10.2147/CLEP.S522618">doi:10.2147/CLEP.S522618</a>；<a href="https://pubmed.ncbi.nlm.nih.gov/40661787/">PMID 40661787</a></li>
+<li>Hsu MC, et al. Effect of ICD-9-CM to ICD-10-CM coding system transition on identification of common conditions: an interrupted time series analysis. Pharmacoepidemiol Drug Saf 2021;30(12):1653–1674. <a href="https://doi.org/10.1002/pds.5330">doi:10.1002/pds.5330</a>；<a href="https://pubmed.ncbi.nlm.nih.gov/34258812/">PMID 34258812</a></li>
+<li>Suissa S. Immortal time bias in pharmaco-epidemiology. Am J Epidemiol 2008;167(4):492–499. <a href="https://doi.org/10.1093/aje/kwm324">doi:10.1093/aje/kwm324</a>；<a href="https://pubmed.ncbi.nlm.nih.gov/18056625/">PMID 18056625</a></li>
+<li>Lévesque LE, et al. Problem of immortal time bias in cohort studies: example using statins for preventing progression of diabetes. BMJ 2010;340:b5087. <a href="https://doi.org/10.1136/bmj.b5087">doi:10.1136/bmj.b5087</a>；<a href="https://pubmed.ncbi.nlm.nih.gov/20228141/">PMID 20228141</a></li>
+<li>Hernán MA, Robins JM. Using big data to emulate a target trial when a randomized trial is not available. Am J Epidemiol 2016;183(8):758–764. <a href="https://doi.org/10.1093/aje/kwv254">doi:10.1093/aje/kwv254</a>；<a href="https://pubmed.ncbi.nlm.nih.gov/26994063/">PMID 26994063</a></li>
+<li>Kyriacou DN, Lewis RJ. Confounding by indication in clinical research. JAMA 2016;316(17):1818–1819. <a href="https://doi.org/10.1001/jama.2016.16435">doi:10.1001/jama.2016.16435</a>；<a href="https://pubmed.ncbi.nlm.nih.gov/27802529/">PMID 27802529</a></li>
+<li>Benchimol EI, et al. The REporting of studies Conducted using Observational Routinely-collected health Data (RECORD) statement. PLoS Med 2015;12(10):e1001885. <a href="https://doi.org/10.1371/journal.pmed.1001885">doi:10.1371/journal.pmed.1001885</a>；<a href="https://pubmed.ncbi.nlm.nih.gov/26440803/">PMID 26440803</a></li>
+<li>Langan SM, et al. The reporting of studies conducted using observational routinely collected health data statement for pharmacoepidemiology (RECORD-PE). BMJ 2018;363:k3532. <a href="https://doi.org/10.1136/bmj.k3532">doi:10.1136/bmj.k3532</a>；<a href="https://pubmed.ncbi.nlm.nih.gov/30429167/">PMID 30429167</a></li>
+</ol>
+</section>
+<section>
+<h2>延伸閱讀</h2>
+<ul>
+<li><a href="../research.html">Finding the missing diagnoses</a>：用基層長期病歷找出漏診的第二型糖尿病與慢性腎臟病，正是「沒有碼不等於沒有病」的例子（英文）。</li>
+<li><a href="../data.html">Data</a>：一間社區基層診所三十多年例行紀錄的資料說明（英文）。</li>
+<li><a href="../markets/backtest-checklist.html">回測可信嗎？用讀臨床試驗的方式檢查前瞻偏誤、過度擬合與存活者偏誤</a>：同一類偏誤在投資研究的樣子。</li>
+</ul>
+</section>
+<section class="disc">
+<p><b>免責聲明</b>　本文為文獻與制度整理，不構成醫療、法律或採購建議，也不能取代研究倫理審查、統計諮詢或主管機關的正式規定。實際申請與使用健保資料，請依衛生福利部與資料提供單位的最新規範辦理。</p>
+<p><b>利益揭露</b>　本文未接受任何廠商贊助，不推薦任何廠商、產品或服務，本站不收取任何費用。</p>
+</section>
+</div>
+</main>
+<footer>
+  <div>Last updated: November 2026</div>
+</footer>
+</div>
+<!-- Cloudflare Web Analytics --><script type='module' src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "28f7e614b4e242bf952ea885535cab68"}'></script><!-- End Cloudflare Web Analytics -->
+</body>
+</html>
