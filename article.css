@@ -96,4 +96,13 @@
 .mdms-article .tbl.stack td:not(:first-child)::before{content:attr(data-label);display:block;font-size:12.5px;font-weight:600;color:var(--mut)}
 .mdms-article .tbl:not(.stack) td:first-child,.mdms-article .tbl:not(.stack) th:first-child{position:sticky;left:0;z-index:1;background:var(--paper)}
 .mdms-article li,.mdms-article p{overflow-wrap:anywhere}
+.mdms-article .chartbox{overflow-x:visible;padding-left:20px}
+.mdms-article .chart{min-width:0;overflow:visible}
+.mdms-article .chart :is(line,path,polyline,polygon,rect,circle){vector-effect:non-scaling-stroke}
+.mdms-article .chart[viewBox^="0 0 900 "] text{font-size:22px}
+.mdms-article .chart[viewBox^="0 0 760 "] text{font-size:19px}
+.mdms-article .chart[viewBox^="0 0 640 "] text{font-size:16px}
+.mdms-article .chart[viewBox="0 0 760 170"]{min-width:620px}
+.mdms-article .chartbox:has(.chart[viewBox="0 0 760 170"]){overflow-x:auto}
+.mdms-article .chart[viewBox="0 0 760 170"] text{font-size:14px}
 }
