@@ -1,0 +1,195 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>醫院被勒索病毒攻擊會害死病人嗎？急診、死亡率研究、HHS 通報趨勢與台灣資安法規 | onepunchmed</title>
+<meta name="description" content="醫院遭勒索病毒攻擊對病人有什麼影響？整理急診量、中風代碼、住院死亡率的研究與系統性回顧，美國 HHS 500 人以上洩漏通報 15 年趨勢，台灣官方公開的醫院事件、資通安全管理法子法的分級與通報時限，以及診所可參考的基本防護框架。文獻與制度整理，不構成醫療、法律或採購建議。">
+<link rel="canonical" href="https://onepunchmed.com/informatics/healthcare-ransomware.html">
+<meta property="og:type" content="article">
+<meta property="og:title" content="醫院被勒索病毒攻擊會害死病人嗎？急診、死亡率研究、HHS 通報趨勢與台灣資安法規 | onepunchmed">
+<meta property="og:description" content="醫院遭勒索病毒攻擊對病人有什麼影響？整理急診量、中風代碼、住院死亡率的研究與系統性回顧，美國 HHS 500 人以上洩漏通報 15 年趨勢，台灣官方公開的醫院事件、資通安全管理法子法的分級與通報時限，以及診所可參考的基本防護框架。文獻與制度整理，不構成醫療、法律或採購建議。">
+<meta property="og:url" content="https://onepunchmed.com/informatics/healthcare-ransomware.html">
+<meta property="og:locale" content="zh_TW">
+<meta property="og:site_name" content="onepunchmed">
+<meta name="twitter:card" content="summary">
+<script type="application/ld+json">
+{"@context": "https://schema.org", "@graph": [{"@type": "Article", "headline": "醫院被勒索病毒攻擊會害死病人嗎？急診、死亡率研究與台灣資安法規", "datePublished": "2026-11-21", "dateModified": "2026-11-21", "author": {"@type": "Person", "name": "onepunchmed", "url": "https://onepunchmed.com/"}, "publisher": {"@type": "Person", "name": "onepunchmed", "url": "https://onepunchmed.com/"}, "inLanguage": "zh-Hant", "mainEntityOfPage": "https://onepunchmed.com/informatics/healthcare-ransomware.html"}, {"@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "About", "item": "https://onepunchmed.com/"}, {"@type": "ListItem", "position": 2, "name": "Informatics", "item": "https://onepunchmed.com/informatics/"}, {"@type": "ListItem", "position": 3, "name": "醫院被勒索病毒攻擊會害死病人嗎？急診、死亡率研究與台灣資安法規", "item": "https://onepunchmed.com/informatics/healthcare-ransomware.html"}]}]}
+</script>
+<link rel="stylesheet" href="../style.css">
+<link rel="stylesheet" href="../article.css">
+</head>
+<body>
+<div class="wrap">
+<header class="site">
+  <a class="name" href="../">onepunchmed</a>
+  <nav>
+    <a href="../">About</a>
+    <a href="../research.html">Research</a>
+    <a href="../data.html">Data</a>
+    <a href="../markets/">Markets</a>
+    <a href="../health/">Health</a>
+    <a href="./" aria-current="page">Informatics</a>
+    <a href="../notes.html">Notes</a>
+    <a href="../disclosure.html">Disclosure</a>
+  </nav>
+</header>
+<main>
+  <h1>醫院被勒索病毒攻擊會害死病人嗎？急診、死亡率研究與台灣資安法規</h1>
+  <p class="lead">勒索病毒常被當成「IT 部門的問題」，但醫院系統停擺時，受影響的是急診、中風處置與住院病人。過去五年已有幾篇用真實攻擊事件做的研究。結論先講：攻擊會讓受害醫院服務量短期下降，鄰近醫院急診湧入、中風代碼增加；以 Medicare 資料估計，攻擊時已住院的病人院內死亡率增加約三成多。證據多來自美國的觀察性研究，因果強度有限，但方向一致。</p>
+  <p class="article-meta"><a rel="author" href="../">onepunchmed</a> · <time datetime="2026-11-21">2026 年 11 月 21 日</time> · 醫療資安、勒索病毒、資通安全管理法</p>
+
+<div class="mdms-article">
+<section class="verdict">
+<h2>五個重點</h2>
+<ol>
+<li><b>受害醫院服務量短期下降，約 3 週恢復。</b>連結 Medicare 申報資料的研究：攻擊第一週服務量下降 17–24%，3 週內回復。</li>
+<li><b>攻擊時已住院的病人，院內死亡率增加 34–38%。</b>這是同一研究的正式發表版本；屬觀察性設計，不是隨機試驗。</li>
+<li><b>沒被攻擊的鄰近醫院也受影響。</b>2021 年聖地牙哥事件期間，2 間鄰近急診每日人數 218 增為 251，中風代碼 59 增為 102。</li>
+<li><b>醫療資料洩漏以駭客事件為主。</b>美國 HHS 500 人以上通報中，駭客／IT 事件占比由 2010 年 4% 升到 2023–2024 年 81%；勒索占件數比例 2020–2021 年最高（31%）。</li>
+<li><b>台灣：通報時限 1 小時，重大事件 36 小時內完成損害控制。</b>公立醫學中心列 A 級、公立區域與地區醫院列 B 級；2025 年衛福部公開了至少兩起醫院勒索事件。</li>
+</ol>
+</section>
+
+<section>
+<h2>一、總覽：效果多大、證據多可信</h2>
+<p>「證據可信度」是作者依研究設計、樣本與一致性做的保守判斷，參考 GRADE 精神，不是原論文的正式評等。這類研究無法隨機分派「誰被攻擊」，最好的設計是事件前後比較或差異中的差異。</p>
+<div class="tbl stack"><table><thead><tr><th>結果</th><th>最佳證據</th><th>效果大小</th><th>證據可信度</th></tr></thead><tbody>
+<tr><td data-label="結果">受害醫院服務量</td><td data-label="最佳證據">Neprash 等，Medicare 申報資料（AEJ 2026）</td><td data-label="效果大小">第一週下降 17–24%，3 週內恢復</td><td data-label="證據可信度">中</td></tr>
+<tr><td data-label="結果">住院病人院內死亡</td><td data-label="最佳證據">同上</td><td data-label="效果大小">攻擊時已住院者增加 34–38%</td><td data-label="證據可信度">低至中（單一研究、觀察性）</td></tr>
+<tr><td data-label="結果">鄰近醫院急診</td><td data-label="最佳證據">Dameff 等（JAMA Netw Open 2023），19,857 次急診</td><td data-label="效果大小">每日 218 → 251 人；候診中位數 21 → 31 分鐘</td><td data-label="證據可信度">低（單一事件、2 家醫院）</td></tr>
+<tr><td data-label="結果">鄰近醫院心跳停止</td><td data-label="最佳證據">Pham 等（Crit Care Explor 2024），78 例</td><td data-label="效果大小">21 → 38 例；到院前心跳停止神經功能良好存活 40.0% → 4.5%</td><td data-label="證據可信度">極低（樣本很小）</td></tr>
+<tr><td data-label="結果">病人層級傷害類型</td><td data-label="最佳證據">Straw 等系統性回顧（JMIR 2026），59 篇</td><td data-label="效果大小">316 項傷害；異質性高，未做統合分析</td><td data-label="證據可信度">描述性</td></tr>
+</tbody></table></div>
+</section>
+
+<section>
+<h2>二、受害醫院：服務量掉兩成，住院病人死亡率上升</h2>
+<ul>
+<li><b>趨勢</b>：Neprash 等（JAMA Health Forum 2022）以 THREAT 資料庫整理 2016–2021 年美國醫療機構勒索攻擊共 374 起，每年由 43 起增為 91 起，合計曝光近 4,200 萬名病人的健康資訊。其中 166 起（44.4%）中斷醫療服務：系統停擺 156 起、取消排程照護 38 起、救護車分流 16 起。</li>
+<li><b>服務量與死亡率</b>：Neprash、McGlave、Nikpay（American Economic Journal: Economic Policy 2026）把自建攻擊資料庫連到 Medicare 申報：攻擊第一週服務量下降 17–24%，3 週內恢復；攻擊開始時已住院的病人，院內死亡率增加 34–38%。早期工作論文版的數字與死亡人數推估不同，本文只引用正式發表版。</li>
+<li><b>城鄉差異</b>：同團隊（J Rural Health 2024）分析，攻擊第一週住院量在鄉村醫院下降 14.7%、都市醫院 16.9%；急診量鄉村下降 10.0%、都市 19.3%，2–3 週恢復。</li>
+</ul>
+<div class="callout"><p>讀法：死亡率上升 34–38% 是「相對」增加，而且只在攻擊當時住院的病人身上觀察到。這像藥物上市後的觀察性安全訊號：方向值得重視，但沒有隨機對照，可能有醫院特性等未測量的混淆。</p></div>
+</section>
+
+<section>
+<h2>三、鄰近醫院：病人湧入，時間敏感疾病最受影響</h2>
+<p>Dameff 等（JAMA Netw Open 2023）研究 2021 年 5 月聖地牙哥一個醫療體系遭勒索（受攻擊的 4 家醫院約占區域住院出院數 25%）時，2 間沒有被攻擊的鄰近學術急診。比較攻擊前 4 週與攻擊期 4 週：</p>
+<ul>
+<li>每日平均急診人數 218.4 比 251.4；候診時間中位數 21 比 31 分鐘；住院病人急診停留中位數 614 比 822 分鐘。</li>
+<li>中風代碼啟動 59 比 102 次，確診中風 22 比 47 例；未看診即離開的人也增加。</li>
+</ul>
+<p>同一事件的另一研究（Pham 等 2024）發現鄰近醫院心跳停止由 21 例增為 38 例，到院前心跳停止病人神經功能良好的存活率由 40.0% 降到 4.5%。兩篇都是單一事件、樣本小，只能說明「區域醫療系統是連動的」，不能推估一般效果大小。</p>
+<p>2026 年的系統性回顧（Straw 等，JMIR）整理 59 篇研究、316 項病人層級傷害，指出兩類高風險病人：時間敏感疾病（中風、心跳停止、重大創傷），以及高度依賴數位系統、病情可能快速惡化的病人（例如癌症治療、糖尿病、依賴電子處方的人）。</p>
+<p>另一個相關但不同的問題是「資料外洩」：Choi 等（Health Serv Res 2019）用 2012–2016 年 3,025 家醫院資料，發現外洩後 3 年內，急性心肌梗塞到院至心電圖時間最多增加 2.7 分鐘、30 天死亡率最多增加 0.36 個百分點；作者歸因於外洩後的補救措施，不是攻擊本身。</p>
+</section>
+
+<section>
+<h2>四、美國 HHS 洩漏通報：15 年來駭客事件成為主因</h2>
+<p>美國醫療機構發生影響 500 人以上的健康資訊洩漏，須通報 HHS 民權辦公室（OCR）並公開於其通報網站。Jiang、Ross、Bai（JAMA Netw Open 2025）整理 2009 年 10 月到 2024 年 10 月的通報，去重後 6,468 起：</p>
+<div class="tbl"><table><thead><tr><th>指標</th><th>數字</th></tr></thead><tbody>
+<tr><td>2010–2024 駭客／IT 事件</td><td>3,540 起</td></tr>
+<tr><td>2010–2024 勒索事件</td><td>1,090 起</td></tr>
+<tr><td>受影響紀錄合計</td><td>7.32 億筆（駭客／IT 88%、勒索 39%）</td></tr>
+<tr><td>駭客／IT 占件數比例</td><td>2010 年 4% → 2023–2024 年 81%</td></tr>
+<tr><td>勒索占件數比例</td><td>2016 年 9%；2020–2021 年 31%；2022 年 28%；2023 年 22%；2024 年（至 10 月）11%</td></tr>
+<tr><td>勒索占受影響紀錄比例</td><td>2020–2023 年約 44–51%；2024 年 69%</td></tr>
+</tbody></table></div>
+<p>勒索占「件數」比例近兩年下降，但占「受影響紀錄」比例上升，代表單一事件規模變大。作者提醒實際件數可能被低估，且這個資料庫不收 500 人以下的事件，小型診所的事件多數不在其中。</p>
+</section>
+
+<section>
+<h2>五、台灣：官方公開事件與資通安全管理法的要求</h2>
+<p><b>官方公開的事件</b>（只列醫院或政府自己公開的）：</p>
+<ul>
+<li><b>2025 年 2 月，馬偕紀念醫院</b>：院方聲明 2 月 9 日發現系統異常，通報衛福部資安聯防平台並向調查局報案，影響主要在淡水、北投院區急診，當日恢復，院方稱無病患個資外洩（台灣英文新聞轉述院方聲明）。衛福部表示資安署首次派專家進駐醫院協助。</li>
+<li><b>2025 年 3 月，彰化基督教醫院</b>：衛福部新聞稿說明醫院遭勒索攻擊，定義為系統性攻擊，核心系統已全面恢復，部分非核心系統仍在修復，並啟動全國資安應變機制。</li>
+</ul>
+<p><b>法規要求</b>：依《資通安全責任等級分級辦法》（全國法規資料庫，現行版本修正於 2026 年 1 月），責任等級分 A 到 E 五級：</p>
+<div class="tbl stack"><table><thead><tr><th>等級</th><th>醫療相關對象（條文）</th></tr></thead><tbody>
+<tr><td data-label="等級">A 級</td><td data-label="醫療相關對象（條文）">公立醫學中心；主管機關認定系統失效會造成災難性或非常嚴重影響的關鍵基礎設施提供者（第 4 條）</td></tr>
+<tr><td data-label="等級">B 級</td><td data-label="醫療相關對象（條文）">公立區域醫院、地區醫院；認定為嚴重影響的關鍵基礎設施提供者（第 5 條）</td></tr>
+<tr><td data-label="等級">C 級</td><td data-label="醫療相關對象（條文）">自行或委外維運有權限管理功能之資通系統者（第 6 條）</td></tr>
+<tr><td data-label="等級">多重符合</td><td data-label="醫療相關對象（條文）">取最高等級（第 9 條）</td></tr>
+</tbody></table></div>
+<p>私立醫院不是依院別直接列等，而是由中央目的事業主管機關認定為關鍵基礎設施提供者後適用；各等級應辦事項（例如管理制度、人員、稽核）規定在辦法附表，本文未逐項核對。</p>
+<p>事件發生後，依《資通安全事件通報應變及演練辦法》：</p>
+<ul>
+<li>知悉資安事件後 <b>1 小時內</b>通報（特定非公務機關依主管機關指定方式）。</li>
+<li>第一、二級事件 <b>72 小時內</b>、重大資通安全事件 <b>36 小時內</b>完成損害控制或復原。</li>
+<li>完成損害控制後 <b>1 個月內</b>送交調查、處理及改善報告。</li>
+</ul>
+</section>
+
+<section>
+<h2>六、診所能做的基本防護：先照框架盤點</h2>
+<p>多數診所不在上述分級名單內，也沒有專職資訊人員。台灣目前沒有找到衛福部專為診所寫的資安指引；可參考美國 HHS 405(d) 計畫的《Health Industry Cybersecurity Practices》（HICP，2023 版），其技術第一冊就是寫給小型醫療機構。十項做法：</p>
+<ol>
+<li>電子郵件防護</li>
+<li>端點（電腦）防護</li>
+<li>身分與存取管理</li>
+<li>資料保護與防止外洩</li>
+<li>資訊資產管理（知道自己有哪些設備與系統）</li>
+<li>網路管理</li>
+<li>弱點管理（更新與修補）</li>
+<li>資安事件應變</li>
+<li>連網醫療器材安全</li>
+<li>資安治理與監督</li>
+</ol>
+<p>落到小診所的實際做法，可以先問三個問題：誰能登入哪些系統、資料有沒有能在系統全毀時還原的備份、真的出事時第一通電話打給誰。HICP 不是台灣法規，條目要依診所規模與資訊廠商的合約分工調整。</p>
+</section>
+
+<section>
+<h2>方法與限制</h2>
+<ul>
+<li>本文是敘述性文獻與制度整理，不是系統性回顧。研究數字取自 PubMed 摘要、PMC 全文或期刊摘要；法規取自全國法規資料庫；事件取自衛福部新聞稿與院方聲明（新聞轉述）。</li>
+<li>資料查證截止日：2026 年 11 月 21 日。</li>
+<li>病人結果研究幾乎都來自美國，攻擊無法隨機分派，結果可能受醫院特性與同期事件混淆；死亡率研究目前只有一個團隊的分析。</li>
+<li>HHS 官方新聞稿中常被引用的「勒索相關大型洩漏增加 264%」等數字，本文未能讀到原文，因此不引用，改用同儕審查研究的通報資料整理。</li>
+<li>台灣其他媒體報導過的醫院資安事件，若沒有官方或院方公開說明，本文不列。</li>
+<li>資通安全責任等級各級應辦事項的附表未逐項核對；《資通安全管理法》母法的最新修正內容本文未整理。</li>
+<li>本文不討論攻擊手法，也不評比任何資安產品或廠商。</li>
+</ul>
+</section>
+
+<section>
+<h2>參考文獻</h2>
+<ol>
+<li>Neprash HT, McGlave C, Nikpay S. Hacked to pieces? The effects of ransomware attacks on hospitals and patients. Am Econ J Econ Policy 2026;18(1):256–281. <a href="https://doi.org/10.1257/pol.20240594">doi:10.1257/pol.20240594</a></li>
+<li>Neprash HT, McGlave CC, Cross DA, et al. Trends in ransomware attacks on US hospitals, clinics, and other health care delivery organizations, 2016–2021. JAMA Health Forum 2022;3(12):e224873. <a href="https://pubmed.ncbi.nlm.nih.gov/36580326/">PMID 36580326</a></li>
+<li>Neprash HT, McGlave CC, Rydberg K, Henning-Smith C. J Rural Health 2024;40(4):728–737. <a href="https://pubmed.ncbi.nlm.nih.gov/38494590/">PMID 38494590</a></li>
+<li>Dameff C, Tully J, Chan TC, et al. Ransomware attack associated with disruptions at adjacent emergency departments in the US. JAMA Netw Open 2023;6(5):e2312270. <a href="https://pubmed.ncbi.nlm.nih.gov/37155166/">PMID 37155166</a></li>
+<li>Pham TT, Loo TM, Malhotra A, et al. Ransomware cyberattack associated with cardiac arrest incidence and outcomes at untargeted, adjacent hospitals. Crit Care Explor 2024;6(4):e1079. <a href="https://pubmed.ncbi.nlm.nih.gov/38605720/">PMID 38605720</a></li>
+<li>Straw I, Kumar D, Kweon S, et al. Unveiling patient-level harms and at-risk clinical groups during hospital cyberattacks: systematic review. J Med Internet Res 2026;28:e88257. <a href="https://doi.org/10.2196/88257">doi:10.2196/88257</a></li>
+<li>Choi SJ, Johnson ME, Lehmann CU. Data breach remediation efforts and their implications for hospital quality. Health Serv Res 2019;54(5):971–980. <a href="https://pubmed.ncbi.nlm.nih.gov/31506956/">PMID 31506956</a></li>
+<li>Jiang JX, Ross JS, Bai G. Ransomware attacks and data breaches in US health care systems. JAMA Netw Open 2025;8(5):e2510180. <a href="https://pubmed.ncbi.nlm.nih.gov/40366661/">PMID 40366661</a></li>
+<li>衛生福利部。彰化基督教醫院遭勒索攻擊，衛福部迅速啟動全國資安應變機制（2025-03-04）。<a href="https://www.mohw.gov.tw/cp-16-81726-1.html">衛福部新聞稿</a></li>
+<li>台灣英文新聞。馬偕醫院遭勒索軟體攻擊（2025-02-12，轉述院方聲明與衛福部說明）。<a href="https://www.taiwannews.com.tw/zh/news/6035183">報導</a></li>
+<li>資通安全責任等級分級辦法。<a href="https://law.moj.gov.tw/LawClass/LawAll.aspx?pcode=A0030304">全國法規資料庫</a></li>
+<li>資通安全事件通報應變及演練辦法。<a href="https://law.moj.gov.tw/LawClass/LawAll.aspx?pcode=A0030305">全國法規資料庫</a></li>
+<li>U.S. Department of Health and Human Services, 405(d) Program. Health Industry Cybersecurity Practices (HICP), 2023 Edition. <a href="https://hhscyber.hhs.gov/cornerstone-hicp.html">HHS 405(d)</a></li>
+</ol>
+</section>
+<section>
+<h2>延伸閱讀</h2>
+<ul>
+<li><a href="./">醫療資訊 Informatics</a>：醫院資訊系統、資料互通與醫療 AI 的其他整理。</li>
+<li><a href="../data.html">Data</a>：本站使用的健康資料來源。</li>
+<li><a href="../markets/backtest-checklist.html">用讀臨床試驗的方式讀回測：十個問題</a>：觀察性資料與混淆的讀法。</li>
+</ul>
+</section>
+<section class="disc">
+<p><b>免責聲明</b>　本文為文獻與制度整理，不構成醫療、法律或採購建議。醫療機構的資安責任等級、通報義務與防護措施，請依主管機關認定與現行法規，並諮詢專業資安或法律人員。</p>
+<p><b>利益揭露</b>　本文未接受任何廠商贊助，不推薦任何品牌、產品或服務，本站不收取任何費用。</p>
+</section>
+</div>
+</main>
+
+<footer>
+  <div>Last updated: November 2026</div>
+</footer>
+</div>
+<!-- Cloudflare Web Analytics --><script type='module' src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "28f7e614b4e242bf952ea885535cab68"}'></script><!-- End Cloudflare Web Analytics -->
+</body>
+</html>
