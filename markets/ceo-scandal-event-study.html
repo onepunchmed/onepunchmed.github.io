@@ -1,0 +1,156 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>執行長醜聞之後股價會反彈嗎？16 家美股公司的事後事件研究 | onepunchmed</title>
+<meta name="description" content="社群流傳「貝佐斯、蓋茲出軌後市值都增加 2 兆美元」。把美國上市公司執行長或創辦人個人醜聞做成事件研究：事發後買進持有一年，相對 S&P 500 平均 −4.2%，落在同一批股票隨機進場分布的約第 11 百分位。研究方法，不構成投資建議。">
+<link rel="canonical" href="https://onepunchmed.com/markets/ceo-scandal-event-study.html">
+<meta property="og:type" content="article">
+<meta property="og:title" content="執行長醜聞之後股價會反彈嗎？16 家美股公司的事後事件研究 | onepunchmed">
+<meta property="og:description" content="社群流傳「貝佐斯、蓋茲出軌後市值都增加 2 兆美元」。把美國上市公司執行長或創辦人個人醜聞做成事件研究：事發後買進持有一年，相對 S&P 500 平均 −4.2%，落在同一批股票隨機進場分布的約第 11 百分位。研究方法，不構成投資建議。">
+<meta property="og:url" content="https://onepunchmed.com/markets/ceo-scandal-event-study.html">
+<meta property="og:locale" content="zh_TW">
+<meta property="og:site_name" content="onepunchmed">
+<meta name="twitter:card" content="summary">
+<script type="application/ld+json">
+{"@context": "https://schema.org", "@graph": [{"@type": "Article", "headline": "執行長醜聞之後股價會反彈嗎？16 家美股公司的事後事件研究", "description": "社群流傳「貝佐斯、蓋茲出軌後市值都增加 2 兆美元」。把美國上市公司執行長或創辦人個人醜聞做成事件研究：事發後買進持有一年，相對 S&P 500 平均 −4.2%，落在同一批股票隨機進場分布的約第 11 百分位。研究方法，不構成投資建議。", "datePublished": "2026-11-21", "dateModified": "2026-11-21", "author": {"@type": "Person", "name": "onepunchmed", "url": "https://onepunchmed.com/"}, "publisher": {"@type": "Person", "name": "onepunchmed", "url": "https://onepunchmed.com/"}, "inLanguage": "zh-Hant", "mainEntityOfPage": "https://onepunchmed.com/markets/ceo-scandal-event-study.html"}, {"@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "About", "item": "https://onepunchmed.com/"}, {"@type": "ListItem", "position": 2, "name": "Markets", "item": "https://onepunchmed.com/markets/"}, {"@type": "ListItem", "position": 3, "name": "執行長醜聞之後股價會反彈嗎？16 家美股公司的事後事件研究", "item": "https://onepunchmed.com/markets/ceo-scandal-event-study.html"}]}]}
+</script>
+<link rel="stylesheet" href="../style.css">
+<link rel="stylesheet" href="../article.css">
+</head>
+<body>
+<div class="wrap">
+<header class="site">
+  <a class="name" href="../">onepunchmed</a>
+  <nav>
+    <a href="../">About</a>
+    <a href="../research.html">Research</a>
+    <a href="../data.html">Data</a>
+    <a href="./" aria-current="page">Markets</a>
+    <a href="../health/">Health</a>
+    <a href="../informatics/">Informatics</a>
+    <a href="../notes.html">Notes</a>
+    <a href="../disclosure.html">Disclosure</a>
+  </nav>
+</header>
+<main>
+  <h1>執行長醜聞之後股價會反彈嗎？16 家美股公司的事後事件研究</h1>
+  <p class="lead">2026 年 11 月 10 日，Reddit 的輝達股票討論區流傳一張標題為「Buy the dip」的圖：把貝佐斯 2019 年 1 月、蓋茲 2021 年 5 月的醜聞報導，配上亞馬遜與微軟之後的股價走勢，據英國《國際財經時報》（IBTimes）轉述，圖中主張兩家市值之後各增加約 2 兆美元。這張圖好笑，但它其實是一個可以檢驗的主張：執行長個人醜聞之後，股價會跑贏大盤。本文先拆解兩個例子為什麼不能當證據，再用事件研究檢驗一次。</p>
+  <p class="article-meta"><a rel="author" href="../">onepunchmed</a> · <time datetime="2026-11-21">2026 年 11 月 21 日</time> · 美股、事件研究、公司治理</p>
+
+<div class="mdms-article">
+<section class="verdict">
+<h2>四個重點</h2>
+<ol>
+<li><b>圖中的兩個例子沒有跑贏。</b>亞馬遜自貝佐斯事件以來 +213%，同期 S&P 500 ETF（SPY）+219%，小輸大盤；微軟自蓋茲事件 +124%，同期 Nasdaq 100 ETF（QQQ）+105%，沒有醜聞的 Apple +175%。兩兆美元來自大型科技股的整體牛市。</li>
+<li><b>主檢定：一年後平均落後大盤 4.2%。</b>16 家公司（每家只取最早一件）事發後第一個交易日收盤買進、持有一年，相對 SPY 平均 −4.2%、中位數 −8.1%，只有 44% 跑贏。</li>
+<li><b>比同一批股票隨便挑一天買更差。</b>同一批公司隨機進場 5,000 次的分布中，醜聞事件落在約第 11 百分位。</li>
+<li><b>比較明顯的是事發當天的負反應。</b>若把事發當天算進去，5 日超額平均約 −3.4%；但這段跌幅在第一則報導出來後就已發生，等到 day0 收盤才進場，5 日超額只剩 −1.3%（t −1.35）。這是探索性觀察，不是事先設定的檢定。</li>
+</ol>
+</section>
+
+<section>
+<h2>一、為什麼這兩個例子不能當證據</h2>
+<ul>
+<li><b>挑樣本與倖存者偏誤：</b>只挑事後大漲的兩家，忽略英特爾、惠普、Under Armour、Wynn 這些事後一年大輸的。</li>
+<li><b>缺少分母：</b>2019–2026 年任何一檔美國大型科技股都漲很多。要問的是「比沒有醜聞的同類股多漲多少」。</li>
+<li><b>用絕對金額誤導：</b>2 兆美元聽起來很多，但對 1–2 兆市值的公司來說，就是跟著大盤翻倍。</li>
+<li><b>沒有經濟機制：</b>醜聞若影響股價，理論上是負向（關鍵人風險、治理折價、訴訟），不會讓公司賺更多錢。</li>
+</ul>
+<div class="tbl"><table><thead><tr><th>起點</th><th class="n">亞馬遜</th><th class="n">微軟</th><th class="n">Apple</th><th class="n">Alphabet</th><th class="n">QQQ</th><th class="n">SPY</th></tr></thead><tbody>
+<tr><td>貝佐斯 2019-01-09</td><td class="n">+213%</td><td class="n">+447%</td><td class="n">+842%</td><td class="n">+432%</td><td class="n">+328%</td><td class="n">+219%</td></tr>
+<tr><td>蓋茲 2021-05-04</td><td class="n">+57%</td><td class="n">+124%</td><td class="n">+175%</td><td class="n">+149%</td><td class="n">+105%</td><td class="n">+90%</td></tr>
+</tbody></table></div>
+<p>事件日收盤至 2026-11-06 的還原股價報酬，含股利。資料：Yahoo Finance 調整後收盤。</p>
+</section>
+
+<section>
+<h2>二、研究設計</h2>
+<ul>
+<li><b>事件：</b>美國上市公司執行長或創辦人的個人醜聞，包括婚外情、職場戀情、性騷擾指控、吸毒、不當言論；不含會計詐欺。</li>
+<li><b>事件日：</b>首則主要媒體報導後第一個交易日（day0）。</li>
+<li><b>主樣本：</b>每家公司只取最早一件，避免同一位執行長的多起事件主導結果。原計畫 20 家，3 家因已下市或代號更替取不到股價，1 家依規則改列次樣本，實際 16 家。</li>
+<li><b>主檢定：</b>day0 收盤進場，持有 250 個交易日，買進持有超額報酬（BHAR）相對 SPY 大於 0。通過需 t ≥ 2.6、Holm p < 0.05、安慰劑百分位 ≥ 95。</li>
+<li><b>安慰劑：</b>同一批公司從 2005 年起、排除所有事件前後約一年，隨機抽一天，重複 5,000 次。</li>
+</ul>
+<p>這是事後檢驗：規則與事件清單沒有在看股價前公開登錄或封存，作者寫作時已知道部分結果（見方法與限制），請把結果當作探索性。</p>
+</section>
+
+<section>
+<h2>三、結果</h2>
+<div class="tbl"><table><thead><tr><th>窗口</th><th class="n">n</th><th class="n">平均</th><th class="n">中位數</th><th class="n">t</th><th class="n">Holm p</th><th class="n">跑贏比例</th></tr></thead><tbody>
+<tr><td>1 日</td><td class="n">16</td><td class="n">+0.6%</td><td class="n">0.0%</td><td class="n">+0.60</td><td class="n">1.00</td><td class="n">50%</td></tr>
+<tr><td>5 日</td><td class="n">16</td><td class="n">−1.3%</td><td class="n">−1.4%</td><td class="n">−1.35</td><td class="n">0.98</td><td class="n">31%</td></tr>
+<tr><td>20 日</td><td class="n">16</td><td class="n">−1.9%</td><td class="n">−2.0%</td><td class="n">−0.99</td><td class="n">1.00</td><td class="n">31%</td></tr>
+<tr><td>60 日</td><td class="n">16</td><td class="n">−1.7%</td><td class="n">−3.2%</td><td class="n">−0.35</td><td class="n">1.00</td><td class="n">44%</td></tr>
+<tr><td><b>250 日（主檢定）</b></td><td class="n">16</td><td class="n"><b>−4.2%</b></td><td class="n"><b>−8.1%</b></td><td class="n"><b>−0.53</b></td><td class="n"><b>1.00</b></td><td class="n"><b>44%</b></td></tr>
+</tbody></table></div>
+<p>可交易窗口：day0 收盤進場，相對 SPY。Holm p 為單尾（超額大於 0）檢定、5 個窗口一起校正。</p>
+<div class="tbl"><table><thead><tr><th>窗口</th><th class="n">醜聞事件平均</th><th class="n">隨機日平均</th><th class="n">隨機 5%～95%</th><th class="n">醜聞的百分位</th></tr></thead><tbody>
+<tr><td>5 日</td><td class="n">−1.3%</td><td class="n">+0.2%</td><td class="n">−1.8% ～ +2.2%</td><td class="n">11</td></tr>
+<tr><td>60 日</td><td class="n">−1.7%</td><td class="n">+2.1%</td><td class="n">−4.8% ～ +10.1%</td><td class="n">20</td></tr>
+<tr><td>250 日</td><td class="n">−4.2%</td><td class="n">+10.4%</td><td class="n">−7.8% ～ +39.2%</td><td class="n">11</td></tr>
+</tbody></table></div>
+<p>這些公司本身多是長期大贏家，所以真正該比的是「同一批股票在其他日子買」。醜聞後一年的表現落在約第 11 百分位，比隨便挑一天買更差。隨機抽樣的百分位會隨亂數種子小幅變動（約 ±2）。</p>
+</section>
+
+<section>
+<h2>四、個別事件</h2>
+<div class="tbl stack"><table><thead><tr><th>公司</th><th>人物</th><th>事件</th><th>day0</th><th>250 日超額</th></tr></thead><tbody>
+<tr><td data-label="公司">亞馬遜</td><td data-label="人物">Jeff Bezos</td><td data-label="事件">宣布離婚，隨後小報報導婚外情</td><td data-label="day0">2019-01-09</td><td data-label="250 日超額">−13.6%</td></tr>
+<tr><td data-label="公司">微軟</td><td data-label="人物">Bill Gates</td><td data-label="事件">宣布離婚（5/16 另有董事會曾調查其與員工關係的報導）</td><td data-label="day0">2021-05-04</td><td data-label="250 日超額">+12.3%</td></tr>
+<tr><td data-label="公司">麥當勞</td><td data-label="人物">Steve Easterbrook</td><td data-label="事件">職場戀情</td><td data-label="day0">2019-11-04</td><td data-label="250 日超額">+3.8%</td></tr>
+<tr><td data-label="公司">英特爾</td><td data-label="人物">Brian Krzanich</td><td data-label="事件">職場戀情</td><td data-label="day0">2018-06-21</td><td data-label="250 日超額">−17.5%</td></tr>
+<tr><td data-label="公司">Wynn</td><td data-label="人物">Steve Wynn</td><td data-label="事件">性騷擾指控</td><td data-label="day0">2018-01-26</td><td data-label="250 日超額">−36.6%</td></tr>
+<tr><td data-label="公司">特斯拉</td><td data-label="人物">Elon Musk</td><td data-label="事件">不當推文</td><td data-label="day0">2018-07-16</td><td data-label="250 日超額">−32.8%</td></tr>
+<tr><td data-label="公司">德州儀器</td><td data-label="人物">Brian Crutcher</td><td data-label="事件">違反行為準則（公司稱與個人行為有關）</td><td data-label="day0">2018-07-17</td><td data-label="250 日超額">−2.2%</td></tr>
+<tr><td data-label="公司">惠普</td><td data-label="人物">Mark Hurd</td><td data-label="事件">性騷擾調查後被認定違反公司行為準則</td><td data-label="day0">2010-08-09</td><td data-label="250 日超額">−39.8%</td></tr>
+<tr><td data-label="公司">百思買</td><td data-label="人物">Brian Dunn</td><td data-label="事件">與女性員工的私人關係</td><td data-label="day0">2012-04-10</td><td data-label="250 日超額">+3.1%</td></tr>
+<tr><td data-label="公司">波音</td><td data-label="人物">Harry Stonecipher</td><td data-label="事件">與員工婚外情</td><td data-label="day0">2005-03-07</td><td data-label="250 日超額">+19.4%</td></tr>
+<tr><td data-label="公司">洛克希德馬丁</td><td data-label="人物">Christopher Kubasik</td><td data-label="事件">與下屬婚外情</td><td data-label="day0">2012-11-09</td><td data-label="250 日超額">+28.2%</td></tr>
+<tr><td data-label="公司">棒約翰</td><td data-label="人物">John Schnatter</td><td data-label="事件">會議中使用種族歧視字眼（時任董事長）</td><td data-label="day0">2018-07-11</td><td data-label="250 日超額">−16.5%</td></tr>
+<tr><td data-label="公司">Under Armour</td><td data-label="人物">Kevin Plank</td><td data-label="事件">WSJ 報導公司職場文化與脫衣舞俱樂部報帳（公司否認 Plank 本人涉入）</td><td data-label="day0">2018-11-05</td><td data-label="250 日超額">−25.6%</td></tr>
+<tr><td data-label="公司">Priceline</td><td data-label="人物">Darren Huston</td><td data-label="事件">職場戀情</td><td data-label="day0">2016-04-28</td><td data-label="250 日超額">+16.6%</td></tr>
+<tr><td data-label="公司">Kohl's</td><td data-label="人物">Ashley Buchanan</td><td data-label="事件">未揭露與供應商創辦人的關係（利益衝突）</td><td data-label="day0">2025-05-01</td><td data-label="250 日超額">+86.6%</td></tr>
+<tr><td data-label="公司">Lululemon</td><td data-label="人物">Chip Wilson</td><td data-label="事件">受訪稱褲子不適合部分女性身材（時任董事長）</td><td data-label="day0">2013-11-07</td><td data-label="250 日超額">−56.4%</td></tr>
+</tbody></table></div>
+<p>超額為含 day0 當日的事件窗，相對 SPY。單一事件的雜訊遠大於任何「醜聞效應」：Kohl's 的 +87% 有一部分來自之後的迷因股行情，Lululemon 的 −57% 也跨越多個公司事件。另有 3 件（Activision、CBS、Guess）因已下市或代號更替取不到股價，未納入。表中數字為作者以 Yahoo Finance 還原股價重算（day0 前一日收盤至 day0 後第 249 個交易日），和主檢定的進場點差一天。</p>
+</section>
+
+<section>
+<h2>五、輝達這次</h2>
+<p>據媒體報導，黃仁勳於 2026-11-08 透過輝達新聞室發表道歉、承認婚外情，輝達董事會之後由獨立董事主導展開調查；11/12 輝達公告黃仁勳辭去總裁、執行長與董事職務，由財務長 Colette Kress 暫代執行長。之後美國國會要求他出席作證。這次牽涉董事會調查與國會程序，歷史樣本中沒有可比案例。n = 1 不構成證據；作者只把 11/09 記為事件日，之後回看，不據此做任何判斷。</p>
+</section>
+
+<section>
+<h2>方法與限制</h2>
+<ul>
+<li>事後檢驗：規則沒有事先登錄；作者訂規則前已知道部分常識層級的結果（例如亞馬遜、微軟、特斯拉事後大漲），有前視偏誤。</li>
+<li>選樣：事件清單依媒體知名度挑選，偏向大型、存活的公司；3 件取不到股價者未納入，方向影響未知。</li>
+<li>事件定義較寬：Under Armour（公司文化報導）與 Kohl's（利益衝突）不完全是執行長個人私生活醜聞；Schnatter、Wilson 事發時是董事長而非執行長，蓋茲 2021 年已不是微軟執行長或董事。</li>
+<li>部分公告時間（盤前或盤後）未逐一核實；事件窗已涵蓋當日反應。未扣交易成本與稅，結論是不交易，影響不大。</li>
+<li>股價：Yahoo Finance 調整後收盤。程式與原始資料：不公開。</li>
+</ul>
+</section>
+<section>
+<h2>延伸閱讀</h2>
+<ul>
+<li><a href="backtest-checklist.html">用讀臨床試驗的方式讀回測：十個問題</a>：倖存者偏誤、基準率與安慰劑對照。</li>
+<li><a href="sealed-valuation.html">估值先封存</a>：先鎖住答案再看結果的做法。</li>
+<li><a href="sox-drawdown-recession-check.html">費半從高點跌三成</a>：同一段時間輝達的其他新聞。</li>
+</ul>
+</section>
+<section class="disc">
+<p><b>免責聲明</b>　本文為作者個人學習紀錄，內容為研究方法與歷史資料回測，不構成任何有價證券之買賣建議或投資推介。作者非證券投資顧問業者，本站不收取任何費用、不接受委託。過去績效不代表未來結果，回測受資料與假設限制。讀者應自行判斷並承擔投資風險。</p>
+<p><b>持有揭露</b>　寫作時作者未持有文中提及之任何標的、期貨或 ADR 部位。本文不構成對任何個股的買賣建議。</p>
+</section>
+</div>
+</main>
+<footer>
+  <div>Last updated: November 2026</div>
+</footer>
+</div>
+<!-- Cloudflare Web Analytics --><script type='module' src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "28f7e614b4e242bf952ea885535cab68"}'></script><!-- End Cloudflare Web Analytics -->
+</body>
+</html>
